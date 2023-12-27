@@ -4,16 +4,22 @@ import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
 
 const RegisterScreen = ({ navigation }) => {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [userData, setUserData] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+    phoneNumber: "",
+  });
+
+  const handleInputChange = (field, value) => {
+    setUserData((prevUserData) => ({
+      ...prevUserData,
+      [field]: value,
+    }));
+  };
 
   const handleRegister = () => {
-    console.log("Full Name:", fullName);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Phone Number:", phoneNumber);
+    console.log("User Data:", userData);
   };
 
   return (
@@ -21,33 +27,34 @@ const RegisterScreen = ({ navigation }) => {
       <View>
         <LogoComponent />
       </View>
+
       <Text style={styles.titleFormScreen}>Sign Up</Text>
       <View style={styles.formContainer}>
         <View>
           <TextInput
             style={styles.inputDesign}
             placeholder="Enter your Full Name"
-            value={fullName}
-            onChangeText={(text) => setFullName(text)}
+            value={userData.fullName}
+            onChangeText={(text) => handleInputChange("fullName", text)}
           />
           <TextInput
             style={styles.inputDesign}
             placeholder="Enter your email"
-            value={email}
-            onChangeText={(text) => setEmail(text)}
+            value={userData.email}
+            onChangeText={(text) => handleInputChange("email", text)}
           />
           <TextInput
             style={styles.inputDesign}
             placeholder="Enter your password"
             secureTextEntry
-            value={password}
-            onChangeText={(text) => setPassword(text)}
+            value={userData.password}
+            onChangeText={(text) => handleInputChange("password", text)}
           />
           <TextInput
             style={styles.inputDesign}
             placeholder="Enter your phone number"
-            value={phoneNumber}
-            onChangeText={(text) => setPhoneNumber(text)}
+            value={userData.phoneNumber}
+            onChangeText={(text) => handleInputChange("phoneNumber", text)}
           />
         </View>
       </View>
