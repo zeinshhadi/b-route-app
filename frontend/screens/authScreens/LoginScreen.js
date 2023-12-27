@@ -17,7 +17,6 @@ const LoginScreen = ({ navigation }) => {
         <View>
           <TextInput style={styles.inputDesign} placeholder="Enter your email " />
           <TextInput style={styles.inputDesign} placeholder="Enter your password" />
-          <TextInput style={styles.inputDesign} placeholder="Enter your phone number" />
         </View>
       </View>
       <Button>Login</Button>
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    gap: 50,
+    gap: 20,
   },
   inputDesign: {
     borderRadius: 5,

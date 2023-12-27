@@ -2,11 +2,11 @@ import React, { Children } from "react";
 import { View, Pressable, Text, StyleSheet } from "react-native";
 import Colors from "../../utils/colors";
 
-const Button = ({ children }) => {
+const Button = ({ children, onPress }) => {
   return (
     <>
       <View style={styles.button}>
-        <Pressable >
+        <Pressable onPress={onPress}>
           <Text style={styles.buttonText}>{children}</Text>
         </Pressable>
       </View>
