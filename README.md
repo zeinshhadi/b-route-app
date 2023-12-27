@@ -26,6 +26,7 @@
 . As a passenger, I want to be able to communicate with the driver in case of any issues or special requests during the journey.
 
 #Driver User Stories:
+
 . As a driver, I want to view the list of booked passengers and their seat numbers so that I can ensure a smooth boarding process.
 
 . As a driver, I want to receive notifications when passengers are waiting at the pickup point so that I can manage the schedule efficiently.
@@ -37,6 +38,7 @@
 . As a driver, I want to be able to mark a seat as occupied or vacant to keep the seat availability information up-to-date.
 
 #Admin User Stories:
+
 . As an admin, I want to monitor the real-time location of all buses on the system to ensure smooth operations.
 
 . As an admin, I want to receive notifications for any critical issues reported by passengers or drivers.
