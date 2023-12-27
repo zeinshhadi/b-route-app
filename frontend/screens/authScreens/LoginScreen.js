@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, StyleSheet, TextInput, Pressable } from "react-native";
 import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
 
 const LoginScreen = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleRegister = () => {
     navigation.navigate("RegisterScreen");
   };
+
+  const handleLogin = () => {
+    console.log("Email:", email);
+    console.log("Password:", password);
+  };
+
   return (
     <View style={styles.outerContainer}>
       <View>
@@ -15,11 +24,22 @@ const LoginScreen = ({ navigation }) => {
       <Text style={styles.titleFormScreen}>Log in</Text>
       <View style={styles.formContainer}>
         <View>
-          <TextInput style={styles.inputDesign} placeholder="Enter your email " />
-          <TextInput style={styles.inputDesign} placeholder="Enter your password" />
+          <TextInput
+            style={styles.inputDesign}
+            placeholder="Enter your email"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
+          <TextInput
+            style={styles.inputDesign}
+            placeholder="Enter your password"
+            secureTextEntry
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+          />
         </View>
       </View>
-      <Button>Login</Button>
+      <Button onPress={handleLogin}>Login</Button>
       <View style={styles.registerContainer}>
         <Text style={styles.registerText}>Don't have an account?</Text>
         <Pressable onPress={handleRegister}>
