@@ -10,9 +10,44 @@
 > Coffee Express aims to streamline the coffee-ordering process by providing a user-friendly platform for customers to place orders and pick up their coffee at their convenience. We believe in enhancing the coffee experience by saving time and ensuring customer satisfaction.
 
 ### User Stories
-- As a user, I want to browse the menu, so I can find my favorite coffee drinks.
-- As a user, I want to customize my order, so I can add or remove ingredients according to my preferences.
-- As a user, I want to pay for my order through the app, so I can avoid waiting in line at the store.
+
+Passenger User Stories:
+
+As a passenger, I want to view the real-time location of the bus on the map so that I can plan my departure accordingly.
+
+As a passenger, I want to see the availability of seats on the bus in real-time so that I can choose a bus with available seats.
+
+As a passenger, I want to receive notifications when my booked bus is about to arrive so that I can be ready for boarding.
+
+As a passenger, I want to view the details of my booked seat (location, number, etc.) so that I can easily find it on the bus.
+
+As a passenger, I want to receive a notification after the journey ends, prompting me to rate the service and provide feedback.
+
+As a passenger, I want to be able to communicate with the driver in case of any issues or special requests during the journey.
+
+Driver User Stories:
+
+As a driver, I want to view the list of booked passengers and their seat numbers so that I can ensure a smooth boarding process.
+
+As a driver, I want to receive notifications when passengers are waiting at the pickup point so that I can manage the schedule efficiently.
+
+As a driver, I want to view the route and expected arrival time at each stop to provide accurate information to passengers.
+
+As a driver, I want to receive notifications when passengers send messages or have special requests so that I can respond appropriately.
+
+As a driver, I want to be able to mark a seat as occupied or vacant to keep the seat availability information up-to-date.
+
+Admin User Stories:
+
+As an admin, I want to monitor the real-time location of all buses on the system to ensure smooth operations.
+
+As an admin, I want to receive notifications for any critical issues reported by passengers or drivers.
+
+As an admin, I want to view and analyze passenger ratings and feedback for each journey to assess overall service quality.
+
+As an admin, I want to have access to a chat interface where I can communicate with both drivers and passengers to address any concerns.
+
+As an admin, I want to be able to update bus schedules, routes, and other relevant information in the system.
 
 <br><br>
 
@@ -22,13 +57,15 @@
 > We designed Coffee Express using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
 
 ### Wireframes
-| Login screen  | Register screen |  Landing screen |
-| ---| ---| ---|
+
+| Login screen                            | Register screen                       | Landing screen                        |
+| --------------------------------------- | ------------------------------------- | ------------------------------------- |
 | ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
 
 ### Mockups
-| Home screen  | Menu Screen | Order Screen |
-| ---| ---| ---|
+
+| Home screen                             | Menu Screen                           | Order Screen                          |
+| --------------------------------------- | ------------------------------------- | ------------------------------------- |
 | ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
 
 <br><br>
@@ -39,17 +76,19 @@
 > Using the wireframes and mockups as a guide, we implemented the Coffee Express app with the following features:
 
 ### User Screens (Mobile)
-| Login screen  | Register screen | Landing screen | Loading screen |
-| ---| ---| ---| ---|
+
+| Login screen                              | Register screen                         | Landing screen                          | Loading screen                          |
+| ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-| Home screen  | Menu Screen | Order Screen | Checkout Screen |
+| Home screen                               | Menu Screen                             | Order Screen                            | Checkout Screen                         |
 | ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
 
 ### Admin Screens (Web)
-| Login screen  | Register screen |  Landing screen |
-| ---| ---| ---|
+
+| Login screen                            | Register screen                       | Landing screen                        |
+| --------------------------------------- | ------------------------------------- | ------------------------------------- |
 | ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-| Home screen  | Menu Screen | Order Screen |
+| Home screen                             | Menu Screen                           | Order Screen                          |
 | ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
 
 <br><br>
@@ -57,7 +96,7 @@
 <!-- Tech stack -->
 <img src="./readme/title5.svg"/>
 
-###  Coffee Express is built using the following technologies:
+### Coffee Express is built using the following technologies:
 
 - This project uses the [Flutter app development framework](https://flutter.dev/). Flutter is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
 - For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
@@ -75,7 +114,8 @@
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+
+- npm
   ```sh
   npm install npm@latest -g
   ```
@@ -95,7 +135,7 @@ _Below is an example of how you can instruct your audience on installing and set
    ```
 4. Enter your API in `config.js`
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   const API_KEY = "ENTER YOUR API";
    ```
 
 Now, you should be able to run Coffee Express locally and explore its features.
