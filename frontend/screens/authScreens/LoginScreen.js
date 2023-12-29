@@ -1,19 +1,38 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, TextInput, Pressable } from "react-native";
+import { Text, View, StyleSheet, TextInput, Pressable, ActivityIndicator } from "react-native";
 import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
+import axios from "axios";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleRegister = () => {
     navigation.navigate("RegisterScreen");
   };
 
-  const handleLogin = () => {
-    console.log("Email:", email);
-    console.log("Password:", password);
+  const handleLogin = async () => {
+    try {
+      setLoading(true);
+
+      const response = await axios.post("http://192.168.1.10:8000/api/login", {
+        email,
+        password,
+      });
+
+      console.log("Login Response:", response.data.authorization.token);
+      if (response.data && response.data.status === "success") {
+        navigation.navigate("HomeScreen");
+      } else {
+        console.error("Login failed");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -39,7 +58,9 @@ const LoginScreen = ({ navigation }) => {
           />
         </View>
       </View>
-      <Button onPress={handleLogin}>Login</Button>
+      <Button onPress={handleLogin} disabled={loading}>
+        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Login</Text>}
+      </Button>
       <View style={styles.registerContainer}>
         <Text style={styles.registerText}>Don't have an account?</Text>
         <Pressable onPress={handleRegister}>

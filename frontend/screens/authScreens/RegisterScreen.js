@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, TextInput, Pressable } from "react-native";
+import { Text, View, StyleSheet, TextInput, Pressable, ActivityIndicator } from "react-native";
 import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
-
+import axios from "axios";
 const RegisterScreen = ({ navigation }) => {
   const [userData, setUserData] = useState({
     fullName: "",
@@ -11,6 +11,8 @@ const RegisterScreen = ({ navigation }) => {
     phoneNumber: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleInputChange = (field, value) => {
     setUserData((prevUserData) => ({
       ...prevUserData,
@@ -18,10 +20,40 @@ const RegisterScreen = ({ navigation }) => {
     }));
   };
 
-  const handleRegister = () => {
-    console.log("User Data:", userData);
-  };
+  const handleRegister = async () => {
+    try {
+      if (!userData.firstName || !userData.lastName || !userData.email || !userData.password || !userData.phoneNumber) {
+        console.error("Please fill in all fields");
+        return;
+      }
 
+      setLoading(true);
+
+      const registrationData = {
+        first_name: userData.firstName,
+        last_name: userData.lastName,
+        email: userData.email,
+        password: userData.password,
+        phone_number: userData.phoneNumber,
+      };
+
+      console.log("Registration Request Data:", registrationData);
+
+      const response = await axios.post("http://192.168.1.10:8000/api/register", registrationData);
+
+      console.log("Registration Response:", response.data);
+
+      if (response.data.status === "success") {
+        navigation.navigate("HomeScreen");
+      } else {
+        console.error("Registration failed");
+      }
+    } catch (error) {
+      console.error("Error during registration:", error.message || error);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <View style={styles.outerContainer}>
       <View>
@@ -33,9 +65,15 @@ const RegisterScreen = ({ navigation }) => {
         <View>
           <TextInput
             style={styles.inputDesign}
-            placeholder="Enter your Full Name"
-            value={userData.fullName}
-            onChangeText={(text) => handleInputChange("fullName", text)}
+            placeholder="Enter your First Name"
+            value={userData.firstName}
+            onChangeText={(text) => handleInputChange("firstName", text)}
+          />
+          <TextInput
+            style={styles.inputDesign}
+            placeholder="Enter your Last Name"
+            value={userData.lastName}
+            onChangeText={(text) => handleInputChange("lastName", text)}
           />
           <TextInput
             style={styles.inputDesign}
@@ -58,7 +96,9 @@ const RegisterScreen = ({ navigation }) => {
           />
         </View>
       </View>
-      <Button onPress={handleRegister}>Sign Up</Button>
+      <Button onPress={handleRegister} disabled={loading}>
+        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Sign Up</Text>}
+      </Button>
       <View style={styles.registerContainer}>
         <Text style={styles.registerText}>Already have an account?</Text>
         <Pressable onPress={() => navigation.navigate("LogInScreen")}>
