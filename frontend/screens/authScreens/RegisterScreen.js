@@ -39,11 +39,18 @@ const RegisterScreen = ({ navigation }) => {
 
       console.log("Registration Request Data:", registrationData);
 
-      const response = await axios.post("http://192.168.1.10:8000/api/register", registrationData);
+      const response = await axios.post("http://192.168.0.102:8000/api/register", registrationData);
 
       console.log("Registration Response:", response.data);
 
       if (response.data.status === "success") {
+        const storeToken = async (token) => {
+          try {
+            await AsyncStorage.setItem("userToken", token);
+          } catch (error) {
+            console.error("Error storing token:", error);
+          }
+        };
         navigation.navigate("HomeScreen");
       } else {
         console.error("Registration failed");

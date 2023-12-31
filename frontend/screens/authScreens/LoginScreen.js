@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, TextInput, Pressable, ActivityIndicator } from 
 import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
 import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -17,14 +18,27 @@ const LoginScreen = ({ navigation }) => {
     try {
       setLoading(true);
 
-      const response = await axios.post("http://192.168.1.10:8000/api/login", {
+      const response = await axios.post("http://192.168.0.102:8000/api/login", {
         email,
         password,
       });
 
-      console.log("Login Response:", response.data.authorization.token);
       if (response.data && response.data.status === "success") {
-        navigation.navigate("HomeScreen");
+        const token = response.data.authorization.token;
+
+        // Store the token in AsyncStorage
+        try {
+          await AsyncStorage.setItem("userToken", token);
+          console.log(`Token stored successfully: ${token}`);
+        } catch (error) {
+          console.error("Error storing token:", error);
+        }
+
+        if (response.data.user.role_type === "passenger") {
+          navigation.navigate("HomeScreen");
+        } else {
+          navigation.navigate("AdminHomeScreen");
+        }
       } else {
         console.error("Login failed");
       }
