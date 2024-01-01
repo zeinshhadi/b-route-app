@@ -19,5 +19,6 @@ class Driver extends Model
         'driver_license',
         'driver_status',
         'bus_id',
-        'user_id'];
+        'user_id',
+    'role_type'];
 }
