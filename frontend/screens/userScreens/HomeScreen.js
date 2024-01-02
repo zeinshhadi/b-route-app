@@ -42,7 +42,9 @@ const HomeScreen = () => {
       return;
     }
     const location = await getCurrentPositionAsync();
-    console.log(location);
+    let lat = location.coords.latitude;
+    let lon = location.coords.longitude;
+    console.log(lat, lon);
   }
   return (
     <View style={styles.container}>

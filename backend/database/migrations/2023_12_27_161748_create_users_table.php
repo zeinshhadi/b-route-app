@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('image')->nullable();
+            
             $table->string('phone_number');
             $table->string('role_type')->default('passenger');
             $table->timestamps();

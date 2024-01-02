@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->float('start_location');
             $table->float('end_location');
-            $table->integer('rate_user');
-            $table->integer('rate_driver');
+            $table->integer('rate');
             $table->integer('price')->default(20);
             $table->text('review');
             $table->unsignedBigInteger('user_id');

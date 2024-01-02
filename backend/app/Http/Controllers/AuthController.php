@@ -57,7 +57,6 @@ class AuthController extends Controller
             'email'=>$request->email,
             'password' => Hash::make($request->password),
             'phone_number'=>$request->phone_number,
-            'image'=>$request->image,
             'role_type' => $request->input('role_type', 'passenger'),
         ]);
 
