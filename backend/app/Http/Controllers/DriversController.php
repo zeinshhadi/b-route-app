@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Validator;
 
 class DriversController extends Controller
 {
-        public function __construct()
+    public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware(['auth:api', 'admin']);
     }
     public function create_driver(Request $request)
     {
