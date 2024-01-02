@@ -34,10 +34,9 @@ Route::controller(DriversController::class)->group(function () {
 });
 
 
-
-
 Route::controller(BusesController::class)->group(function () {
     Route::post('register/bus', 'create_bus');
+    Route::get('all/buses', 'getAllBuses');
 
 });
 

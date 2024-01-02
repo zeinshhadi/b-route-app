@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class BusesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth:api', 'admin']);
+    }
     public function create_bus(Request $req){
              $bus= Bus::create($req->all());
 
