@@ -34,7 +34,7 @@ class DriversController extends Controller
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
             'phone_number' => $request->input('phone_number'),
-            'role_type' => 'user', 
+            'role_type' => 'driver', 
         ]);
 
       
