@@ -48,4 +48,47 @@ class DriversController extends Controller
     
         return response()->json(['message' => 'Driver created successfully'], 201);
     }
+     public function deleteDriverByUserId($userId)
+    {    
+        $user = User::find($userId);
+
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+        $driver = $user->driver;
+
+        if ($driver) {
+            $driver->delete();
+            $user->delete();
+
+            return response()->json(['message' => 'Driver deleted successfully']);
+        }
+
+        return response()->json(['error' => 'Driver not found'], 404);
+    }
+
+    public function getAllDrivers()
+    {
+        $drivers = Driver::with('user')->get();
+
+        return response()->json(['drivers' => $drivers]);
+    }
+
+    public function getDriverByUserId($userId)
+    {
+        $user = User::find($userId);
+
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+        $driver = $user->driver;
+
+        if ($driver) {
+            return response()->json(['driver' => $driver]);
+        }
+
+        return response()->json(['error' => 'Driver not found'], 404);
+    }
 }

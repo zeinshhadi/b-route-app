@@ -24,10 +24,18 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('refresh', 'refresh');
 
 });
+
 Route::controller(DriversController::class)->group(function () {
     Route::post('register/driver', 'create_driver');
+    Route::delete('/delete/driver/{userId}', 'deleteDriverByUserId');
+    Route::get('all/drivers', 'getAllDrivers');
+    Route::get('/driver/{userId}', 'getDriverByUserId');
 
 });
+
+
+
+
 Route::controller(BusesController::class)->group(function () {
     Route::post('register/bus', 'create_bus');
 
