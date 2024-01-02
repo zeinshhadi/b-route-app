@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('vin')->unique();
             $table->string('image')->nullable();
             $table->string('driver_license')->unique();
             $table->boolean('driver_status')->default(false);

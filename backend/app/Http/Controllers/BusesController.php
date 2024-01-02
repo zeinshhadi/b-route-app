@@ -9,12 +9,8 @@ use Illuminate\Support\Facades\Auth;
 class BusesController extends Controller
 {
     public function create_bus(Request $req){
-        if(Auth::check()){
-            $user = Auth::user();
-            if($user&&$user->role_type=='admin'){
-                $bus= Bus::create($req->all());
-            }
-        }
+             $bus= Bus::create($req->all());
+
     }
         public function getAllBuses()
     {

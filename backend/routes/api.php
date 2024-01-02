@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BusesController;
+use App\Http\Controllers\DriversController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +22,14 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('register', 'register');
     Route::post('logout', 'logout');
     Route::post('refresh', 'refresh');
+
+});
+Route::controller(DriversController::class)->group(function () {
+    Route::post('register/driver', 'create_driver');
+
+});
+Route::controller(BusesController::class)->group(function () {
+    Route::post('register/bus', 'create_bus');
 
 });
 

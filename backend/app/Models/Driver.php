@@ -21,4 +21,14 @@ class Driver extends Model
         'bus_id',
         'user_id',
     'role_type'];
+
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
+public function bus()
+{
+    return $this->belongsTo(Bus::class);
+}
 }

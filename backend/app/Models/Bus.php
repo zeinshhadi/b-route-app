@@ -9,4 +9,8 @@ class Bus extends Model
 {
     use HasFactory;
     protected $fillable = ['vin','color','plate_number','model','number_of_seats'];
+public function driver()
+{
+    return $this->hasOne(Driver::class);
+}
 }
