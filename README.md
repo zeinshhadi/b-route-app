@@ -11,7 +11,7 @@
 
 ### User Stories
 
-#Passenger User Stories:
+### Passenger User Stories
 
 . As a passenger, I want to view the real-time location of the bus on the map so that I can plan my departure accordingly.
 
@@ -25,7 +25,7 @@
 
 . As a passenger, I want to be able to communicate with the driver in case of any issues or special requests during the journey.
 
-##Driver User Stories:
+### Driver User Stories
 
 . As a driver, I want to view the list of booked passengers and their seat numbers so that I can ensure a smooth boarding process.
 
@@ -37,7 +37,7 @@
 
 . As a driver, I want to be able to mark a seat as occupied or vacant to keep the seat availability information up-to-date.
 
-#Admin User Stories:
+### Admin User Stories
 
 . As an admin, I want to monitor the real-time location of all buses on the system to ensure smooth operations.
 
