@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Text } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import CategoryGridTile from "../../components/grid/CategoryGridTile";
 
 const AdminHomeScreen = () => {
   const [token, setToken] = useState(null);
@@ -24,7 +25,14 @@ const AdminHomeScreen = () => {
     }
   };
 
-  return <Text>Hello Admin</Text>;
+  return (
+    <>
+      <CategoryGridTile color={"grey"} title={"bus"} />
+      <CategoryGridTile color={"grey"} title={"bus"} />
+      <CategoryGridTile color={"grey"} title={"bus"} />
+      <CategoryGridTile color={"grey"} title={"bus"} />
+    </>
+  );
 };
 
 export default AdminHomeScreen;
