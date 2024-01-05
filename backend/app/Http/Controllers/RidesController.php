@@ -19,6 +19,7 @@ public function __construct()
             'end_location'=>0,
             'rate'=>0,
             'price'=>0,
+            'review'=>'No review',
             'user_id'=>$user->id,
             'driver_id'=>$request->driver_id,
             ]);
