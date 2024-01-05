@@ -25,8 +25,13 @@ public function __construct()
     }
 
     public function end_ride(Request $request){
-         $user = Auth::user();
-        $ride= Ride::where('user_id',$user->user_id)->latest()->first();
-          $ride = Ride::where('ride_id',$ride->ride_id)->update(["end_location"=>$request->end_location]);
+        $user = Auth::user();
+        $ride= Ride::where('user_id',$user->id)->latest()->first();
+        $ride->update(['end_location' => $request->end_location]);
+    }
+    public function add_feedback(Request $request){
+        $user = Auth::user();
+        $ride= Ride::where('user_id',$user->id)->latest()->first();
+        $ride->update(["rate"=>$request->input('rate'),"review"=>$request->input('review')]);
     }
 }
