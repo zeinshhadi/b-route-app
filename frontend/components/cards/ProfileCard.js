@@ -7,8 +7,8 @@ const ProfileCard = ({ cardTitle, cardDetail }) => {
     <Pressable>
       <View style={styles.profileCardContainer}>
         <View style={styles.leftCardProfile}>
-          <Text>Your Email : </Text>
-          <Text>Zeinshhadi@gmail.com</Text>
+          <Text>{cardTitle}</Text>
+          <Text>{cardDetail}</Text>
         </View>
         <View>
           <Icon name="arrow-right" size={30} color="black" />
@@ -24,10 +24,11 @@ const styles = StyleSheet.create({
   profileCardContainer: {
     flexDirection: "row",
     padding: 10,
-    height: 100,
+    height: 80,
     backgroundColor: "#D9D9D9",
     borderRadius: 10,
-    margin: 30,
+    marginTop: 5,
+    marginHorizontal: 20,
     justifyContent: "space-around",
     alignItems: "center",
   },

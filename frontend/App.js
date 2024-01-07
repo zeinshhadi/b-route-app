@@ -10,6 +10,7 @@ import BusDetails from "./screens/userScreens/BusDetails";
 import UserFeedback from "./screens/userScreens/UserFeedback";
 import SearchBar from "./components/common/SearchBar";
 import ProfileCard from "./components/cards/ProfileCard";
+import EditProfile from "./screens/userScreens/EditProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +21,7 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="LogInScreen">
-            <Stack.Screen name="LogInScreen" component={ProfileCard} options={{ headerShown: false }} />
+            <Stack.Screen name="LogInScreen" component={EditProfile} options={{ headerShown: false }} />
             <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerShown: false }} />
             <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
             <Stack.Screen name="AdminHomeScreen" component={AdminHomeScreen} options={{ headerShown: false }} />
