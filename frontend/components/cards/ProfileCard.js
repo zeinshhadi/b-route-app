@@ -29,10 +29,11 @@ const styles = StyleSheet.create({
     marginTop: 5,
     justifyContent: "space-around",
     alignItems: "center",
-    width: "85%",
+    width: "100%",
   },
   leftCardProfile: {
     justifyContent: "space-around",
     height: "100%",
+    width: "80%",
   },
 });

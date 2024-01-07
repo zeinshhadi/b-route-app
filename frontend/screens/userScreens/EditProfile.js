@@ -9,13 +9,17 @@ const EditProfile = () => {
   };
   return (
     <View style={styles.editProfileScreen}>
-      <View>
+      <View style={styles.editProfileBody}>
         <Text style={styles.cardTitleStyle}>User Data</Text>
-        <ProfileCard cardTitle="Phone Number " cardDetail="+961503760" />
-        <ProfileCard cardTitle="Email " cardDetail="zeinshhadi@gmail.com" />
+        <ProfileCard cardTitle="Phone Number: " cardDetail="+961503760" />
+        <ProfileCard cardTitle="Email: " cardDetail="zeinshhadi@gmail.com" />
+        <ProfileCard cardTitle="Name: " cardDetail="zeinShhadi" />
         <Text style={styles.cardTitleStyle}>Ride History:</Text>
-        <ProfileCard cardTitle="Your rides history:" cardDetail="Last ride since 08L56 am" />
+        <ProfileCard cardTitle="Your rides history:" cardDetail="Last ride since 08:56 am" />
       </View>
+      <Button>
+        <Text>LogOut</Text>
+      </Button>
     </View>
   );
 };
@@ -26,10 +30,15 @@ const styles = StyleSheet.create({
   editProfileScreen: {
     flex: 1,
     marginTop: 20,
-    marginHorizontal: 20,
+    marginHorizontal: 0,
+    gap: 20,
     justifyContent: "center",
     alignItems: "center",
+    alignContent: "center",
     width: "100%",
+  },
+  editProfileBody: {
+    width: "90%",
   },
   cardTitleStyle: {
     alignSelf: "flex-start",
