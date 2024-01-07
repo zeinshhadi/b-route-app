@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     justifyContent: "space-around",
     alignItems: "center",
+    width: "80%",
   },
   leftCardProfile: {
     justifyContent: "space-around",
