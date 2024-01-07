@@ -23,9 +23,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#D9D9D9",
     height: 40,
     marginTop: 30,
-    marginHorizontal: 20,
     justifyContent: "center",
     alignItems: "center",
+    width: "100%",
   },
   inputSearchDesign: {
     alignSelf: "flex-start",

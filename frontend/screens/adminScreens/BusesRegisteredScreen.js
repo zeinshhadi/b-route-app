@@ -1,15 +1,29 @@
 import React from "react";
 import { View } from "react-native";
-import { SearchBar } from "react-native-screens";
 import DetailsCard from "../../components/cards/DetailsCard";
+import SearchBar from "../../components/common/SearchBar";
+import { StyleSheet } from "react-native";
 
 const BusesRegisteredScreen = () => {
   return (
-    <View>
-      <SearchBar />
-      <DetailsCard />
+    <View style={styles.BusesRegisteredContainer}>
+      <View style={styles.innerContainer}>
+        <SearchBar />
+        <DetailsCard />
+      </View>
     </View>
   );
 };
 
 export default BusesRegisteredScreen;
+
+const styles = StyleSheet.create({
+  BusesRegisteredContainer: {
+    justifyContent: "center",
+    width: "100%",
+    alignItems: "center",
+  },
+  innerContainer: {
+    width: "90%",
+  },
+});
