@@ -39,7 +39,7 @@ const RegisterScreen = ({ navigation }) => {
 
       console.log("Registration Request Data:", registrationData);
 
-      const response = await axios.post("http://192.168.0.102:8000/api/register", registrationData);
+      const response = await axios.post("http://192.168.1.7:8000/api/register", registrationData);
 
       console.log("Registration Response:", response.data);
 
@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     gap: 20,
+    backgroundColor: "white",
   },
   inputDesign: {
     borderRadius: 5,

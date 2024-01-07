@@ -18,8 +18,8 @@ public function __construct()
             'start_location' => $request->start_location,
             'end_location'=>0,
             'rate'=>0,
-            'price'=>0,
-            'review'=>'No review',
+            'price'=>20,
+            'review'=>'NoReview',
             'user_id'=>$user->id,
             'driver_id'=>$request->driver_id,
             ]);
@@ -30,6 +30,8 @@ public function __construct()
         $ride= Ride::where('user_id',$user->id)->latest()->first();
         $ride->update(['end_location' => $request->end_location]);
     }
+
+    
     public function add_feedback(Request $request){
         $user = Auth::user();
         $ride= Ride::where('user_id',$user->id)->latest()->first();

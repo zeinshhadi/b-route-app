@@ -18,7 +18,7 @@ const LoginScreen = ({ navigation }) => {
     try {
       setLoading(true);
 
-      const response = await axios.post("http://192.168.0.102:8000/api/login", {
+      const response = await axios.post("http://192.168.1.7:8000/api/login", {
         email,
         password,
       });
@@ -26,7 +26,6 @@ const LoginScreen = ({ navigation }) => {
       if (response.data && response.data.status === "success") {
         const token = response.data.authorization.token;
 
-        // Store the token in AsyncStorage
         try {
           await AsyncStorage.setItem("userToken", token);
           console.log(`Token stored successfully: ${token}`);
@@ -93,6 +92,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     gap: 20,
+    backgroundColor: "white",
   },
   inputDesign: {
     borderRadius: 5,
