@@ -6,11 +6,11 @@ import { View } from "react-native";
 const DetailsCard = () => {
   return (
     <View style={styles.detailsCardContainer}>
-      <View>
+      <View style={styles.detailsCard}>
         <Text>Bus#1</Text>
         <Text>Bus Model</Text>
       </View>
-      <View>
+      <View style={styles.detailsCard}>
         <Text>More Details</Text>
         <Text>Status</Text>
       </View>
@@ -22,6 +22,17 @@ export default DetailsCard;
 
 const styles = StyleSheet.create({
   detailsCardContainer: {
-    padding: 10,
+    flexDirection: "row",
+    height: 80,
+    backgroundColor: "#D9D9D9",
+    borderRadius: 10,
+    marginTop: 5,
+    justifyContent: "space-around",
+    alignItems: "center",
+    width: "100%",
+  },
+  detailsCard: {
+    height: "100%",
+    justifyContent: "space-around",
   },
 });
