@@ -20,13 +20,14 @@ export default function App() {
       <StatusBar style="black" />
       <SafeAreaView style={styles.container}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="LogInScreen">
-            <Stack.Screen name="LogInScreen" component={EditProfile} options={{ headerShown: false }} />
+          <Stack.Navigator initialRouteName="EditProfile">
+            <Stack.Screen name="EditProfile" component={EditProfile} options={{ headerShown: true }} />
+            <Stack.Screen name="LogInScreen" component={LoginScreen} options={{ headerShown: false }} />
             <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerShown: false }} />
             <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
             <Stack.Screen name="AdminHomeScreen" component={AdminHomeScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="BusDetailScreen" component={BusDetails} />
-            <Stack.Screen name="UserFeedbackScreen" component={UserFeedback} />
+            <Stack.Screen name="BusDetailScreen" component={BusDetails} options={{ headerShown: true }} />
+            <Stack.Screen name="UserFeedbackScreen" component={UserFeedback} options={{ headerShown: true }} />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>

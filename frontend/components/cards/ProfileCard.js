@@ -23,15 +23,13 @@ export default ProfileCard;
 const styles = StyleSheet.create({
   profileCardContainer: {
     flexDirection: "row",
-    padding: 10,
     height: 80,
     backgroundColor: "#D9D9D9",
     borderRadius: 10,
     marginTop: 5,
-    marginHorizontal: 20,
     justifyContent: "space-around",
     alignItems: "center",
-    width: "80%",
+    width: "85%",
   },
   leftCardProfile: {
     justifyContent: "space-around",
