@@ -9,7 +9,7 @@ const ZonesRegisteredScreen = () => {
     <View style={styles.BusesRegisteredContainer}>
       <View style={styles.innerContainer}>
         <SearchBar />
-        <DetailsCard cardTitle={"Zone#"} cardDetail={"Saida"} tempText={"MoreDetails"} status={"status"} />
+        <DetailsCard cardTitle={"Zone#"} cardDetail={"zoneName"} tempText={"MoreDetails"} status={"status"} />
       </View>
     </View>
   );
