@@ -27,10 +27,7 @@ const AdminHomeScreen = () => {
 
   return (
     <>
-      <CategoryGridTile color={"grey"} title={"bus"} />
-      <CategoryGridTile color={"grey"} title={"bus"} />
-      <CategoryGridTile color={"grey"} title={"bus"} />
-      <CategoryGridTile color={"grey"} title={"bus"} />
+      <CategoryGridTile />
     </>
   );
 };
