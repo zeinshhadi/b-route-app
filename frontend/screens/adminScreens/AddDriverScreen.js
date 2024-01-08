@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Text, View, StyleSheet, TextInput, ActivityIndicator, Image, ScrollView } from "react-native";
 import Button from "../../components/common/Button";
-import LogoComponent from "../../components/common/LogoComponent";
-import axios from "axios";
 import { Dropdown } from "react-native-element-dropdown";
 const AddDriverScreen = ({ navigation }) => {
   const data = [
@@ -164,13 +162,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 20,
     backgroundColor: "white",
+    paddingBottom: 10,
   },
   inputDesign: {
     borderRadius: 5,
     backgroundColor: "#D9D9D9",
     height: 50,
     width: "100%",
-    margin: 5,
+    marginVertical: 5,
     padding: 8,
   },
   formContainer: {
@@ -205,7 +204,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 8,
     width: "100%",
-    marginLeft: 5,
   },
 
   placeholderStyle: {
