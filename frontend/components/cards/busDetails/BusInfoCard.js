@@ -6,7 +6,12 @@ import BusTextDetails from "./BusTextDetails";
 const BusInfoCard = () => {
   return (
     <View style={styles.busInformationContainer}>
-      <BusTextDetails detailTitle={"bus Type"} detailInfo={"NISSAN"} />
+      <BusTextDetails detailTitle={"Model"} detailInfo={"NISSAN"} />
+      <BusTextDetails detailTitle={"Vin"} detailInfo={"123456987365"} />
+      <BusTextDetails detailTitle={"color"} detailInfo={"Black"} />
+      <BusTextDetails detailTitle={"Number of Seats"} detailInfo={"20"} />
+      <BusTextDetails detailTitle={"Added At"} detailInfo={"20/02/2021"} />
+      <BusTextDetails detailTitle={"bus id"} detailInfo={"2"} />
     </View>
   );
 };
