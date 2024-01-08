@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Alert, StyleSheet, View, Button } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import MapView from "react-native-maps";
 import { getCurrentPositionAsync, useForegroundPermissions, PermissionStatus } from "expo-location";
+import Button from "../../components/common/Button";
 
 const HomeScreen = () => {
   const [token, setToken] = useState(null);
@@ -51,7 +52,9 @@ const HomeScreen = () => {
       <MapView style={styles.map} />
 
       <View style={styles.buttonContainer}>
-        <Button title="Get Location" onPress={() => getLocationHandler()} />
+        <Button onPress={() => getLocationHandler()}>
+          <Text>Get Location</Text>
+        </Button>
       </View>
     </View>
   );
