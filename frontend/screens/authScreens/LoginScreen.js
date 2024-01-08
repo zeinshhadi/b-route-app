@@ -17,7 +17,11 @@ const LoginScreen = ({ navigation }) => {
   };
   useEffect(() => {
     if (authState.isLoggedIn) {
-      navigation.navigate("HomeScreen");
+      if (authState.user.role_type == "passenger") {
+        navigation.navigate("HomeScreen");
+      } else if (authState.user.role_type == "admin") {
+        navigation.navigate("AdminHomeScreen");
+      }
     }
     if (authState.error) {
       setError(authState.error);
