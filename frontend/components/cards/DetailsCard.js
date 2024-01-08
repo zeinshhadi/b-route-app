@@ -3,16 +3,16 @@ import { StyleSheet } from "react-native";
 import { Text } from "react-native";
 import { View } from "react-native";
 
-const DetailsCard = () => {
+const DetailsCard = ({ cardTitle, cardDetail, status, tempText }) => {
   return (
     <View style={styles.detailsCardContainer}>
       <View style={styles.detailsCard}>
-        <Text>Bus#1</Text>
-        <Text>Bus Model</Text>
+        <Text>{cardTitle}</Text>
+        <Text>{cardDetail}</Text>
       </View>
       <View style={styles.detailsCard}>
-        <Text>More Details</Text>
-        <Text>Status</Text>
+        <Text>{tempText}</Text>
+        <Text>{status}</Text>
       </View>
     </View>
   );

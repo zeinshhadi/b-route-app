@@ -9,7 +9,7 @@ const BusesRegisteredScreen = () => {
     <View style={styles.BusesRegisteredContainer}>
       <View style={styles.innerContainer}>
         <SearchBar />
-        <DetailsCard />
+        <DetailsCard cardTitle={"bus#"} cardDetail={"model"} tempText={"MoreDetails"} status={"status"} />
       </View>
     </View>
   );
