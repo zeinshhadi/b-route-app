@@ -23,7 +23,7 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <Provider store={store}>
           <NavigationContainer>
-            <Stack.Navigator initialRouteName="AdminHomeScreen">
+            <Stack.Navigator initialRouteName="RegisterScreen">
               <Stack.Screen name="LogInScreen" component={LoginScreen} options={{ headerShown: false }} />
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerShown: false }} />
               <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
