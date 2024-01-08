@@ -25,7 +25,7 @@ const CategoryGridTile = () => {
           <Text style={styles.titleContainer}>Reviews</Text>
         </View>
         <View style={styles.gridContainer}>
-          <GridComponent>
+          <GridComponent onPress={() => navigateToScreen("ZonesRegistered")}>
             <Text>Zones</Text>
           </GridComponent>
           <Text style={styles.titleContainer}>Zones</Text>

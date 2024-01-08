@@ -13,6 +13,7 @@ import UserFeedback from "./screens/userScreens/UserFeedback";
 import EditProfile from "./screens/userScreens/EditProfile";
 import BusesRegisteredScreen from "./screens/adminScreens/BusesRegisteredScreen";
 import BusInformationScreen from "./screens/adminScreens/BusInformationScreen";
+import ZonesRegisteredScreen from "./screens/adminScreens/ZonesRegisteredScreen";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -32,6 +33,7 @@ export default function App() {
               <Stack.Screen name="UserFeedbackScreen" component={UserFeedback} options={{ headerShown: true }} />
               <Stack.Screen name="BusesRegistered" component={BusesRegisteredScreen} options={{ headerShown: true }} />
               <Stack.Screen name="BusInformation" component={BusInformationScreen} options={{ headerShown: true }} />
+              <Stack.Screen name="ZonesRegistered" component={ZonesRegisteredScreen} options={{ headerShown: true }} />
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>

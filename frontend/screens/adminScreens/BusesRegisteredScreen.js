@@ -1,15 +1,17 @@
 import React from "react";
-import { View } from "react-native";
+import { Pressable, View } from "react-native";
 import DetailsCard from "../../components/cards/DetailsCard";
 import SearchBar from "../../components/common/SearchBar";
 import { StyleSheet } from "react-native";
 
-const BusesRegisteredScreen = () => {
+const BusesRegisteredScreen = ({ navigation }) => {
   return (
     <View style={styles.BusesRegisteredContainer}>
       <View style={styles.innerContainer}>
         <SearchBar />
-        <DetailsCard cardTitle={"bus#"} cardDetail={"model"} tempText={"MoreDetails"} status={"status"} />
+        <Pressable onPress={() => navigation.navigate("BusInformation")}>
+          <DetailsCard cardTitle={"bus#"} cardDetail={"model"} tempText={"MoreDetails"} status={"status"} />
+        </Pressable>
       </View>
     </View>
   );
