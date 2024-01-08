@@ -1,8 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import GridComponent from "./GridComponent";
-
+import { useNavigation } from "@react-navigation/native";
 const CategoryGridTile = () => {
+  const navigation = useNavigation();
+  const navigateToScreen = (screenName) => {
+    navigation.navigate(screenName);
+  };
   return (
     <View style={styles.mainAdminScreenContainer}>
       <View style={styles.mainAdminScreenContainer}>
@@ -25,10 +29,10 @@ const CategoryGridTile = () => {
             <Text>Zones</Text>
           </GridComponent>
           <Text style={styles.titleContainer}>Zones</Text>
-          <GridComponent>
-            <Text>On Duty</Text>
+          <GridComponent onPress={() => navigateToScreen("BusesRegistered")}>
+            <Text>Buses</Text>
           </GridComponent>
-          <Text style={styles.titleContainer}>On Duty</Text>
+          <Text style={styles.titleContainer}>Buses</Text>
           <GridComponent>
             <Text>Drivers</Text>
           </GridComponent>
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
     gap: 10,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 50,
+    marginTop: 20,
   },
   gridContainer: {
     gap: 10,

@@ -26,7 +26,7 @@ export default function App() {
               <Stack.Screen name="LogInScreen" component={LoginScreen} options={{ headerShown: false }} />
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerShown: false }} />
               <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
-              <Stack.Screen name="AdminHomeScreen" component={AdminHomeScreen} options={{ headerShown: false }} />
+              <Stack.Screen name="AdminHomeScreen" component={AdminHomeScreen} options={{ headerShown: true }} />
               <Stack.Screen name="BusDetailScreen" component={BusDetails} options={{ headerShown: true }} />
               <Stack.Screen name="EditProfile" component={EditProfile} options={{ headerShown: true }} />
               <Stack.Screen name="UserFeedbackScreen" component={UserFeedback} options={{ headerShown: true }} />

@@ -1,11 +1,13 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Pressable } from "react-native";
 
-const GridComponent = ({ children }) => {
+const GridComponent = ({ children, onPress }) => {
   return (
-    <View style={styles.cardGridContainer}>
-      <Text style={styles.containerTitle}>{children}</Text>
-    </View>
+    <Pressable onPress={onPress}>
+      <View style={styles.cardGridContainer}>
+        <Text style={styles.containerTitle}>{children}</Text>
+      </View>
+    </Pressable>
   );
 };
 
