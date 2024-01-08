@@ -2,11 +2,12 @@ import React from "react";
 import { Text, StyleSheet, View, Image, Platform } from "react-native";
 import Scard from "../../components/busDetails/Scard";
 import DriverDetailsCard from "../../components/cards/DriverDetailsCard";
+import SmallCardDetails from "../../components/cards/SmallCardDetails";
 const BusDetails = () => {
   return (
     <View style={styles.mainContianer}>
       <DriverDetailsCard />
-
+      <SmallCardDetails />
       <View style={styles.bigBusCardContainerMain}>
         <View style={styles.bigBusCardContainer}>
           <Text style={styles.bigBusCardContainerText}>Next Stop Zone</Text>
@@ -36,20 +37,6 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
 
-  smallBusCardContainer: {
-    padding: 20,
-    width: 150,
-    height: 100,
-    backgroundColor: "#ccc",
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  smallBusCardContainerText: {
-    fontWeight: "bold",
-    textAlign: "center",
-    fontSize: 18,
-  },
   bigBusCardContainerMain: {
     gap: 10,
   },
