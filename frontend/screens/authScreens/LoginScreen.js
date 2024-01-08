@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Text, View, StyleSheet, TextInput, Pressable, ActivityIndicator } from "react-native";
 import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
+import login from "../../core/redux/actions/authActions";
 
 const LoginScreen = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
@@ -10,10 +11,25 @@ const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const handleRegister = () => {
     navigation.navigate("RegisterScreen");
   };
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (authState.isLoggedIn) {
+      navigation.navigate("HomeScreen");
+    }
+    if (authState.error) {
+      setError(authState.error);
+    }
+  }, [authState, navigation]);
+  const handleLogin = async () => {
+    if (!email || !password) {
+      setError("All fields should be filled");
+    } else {
+      dispatch(login({ email, password }));
+    }
+  };
   // const handleLogin = async () => {
   //   try {
   //     setLoading(true);
