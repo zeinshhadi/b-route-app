@@ -13,7 +13,7 @@ import ProfileCard from "./components/cards/ProfileCard";
 import EditProfile from "./screens/userScreens/EditProfile";
 import DetailsCard from "./components/cards/DetailsCard";
 import BusesRegisteredScreen from "./screens/adminScreens/BusesRegisteredScreen";
-import BusInfoCard from "./components/cards/BusInfoCard";
+import BusInfoCard from "./components/cards/busDetails/BusInfoCard";
 import BusInformationScreen from "./screens/adminScreens/BusInformationScreen";
 
 const Stack = createNativeStackNavigator();

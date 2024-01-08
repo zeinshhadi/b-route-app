@@ -1,6 +1,5 @@
 import React from "react";
 import { Text, StyleSheet, View, Image, Platform } from "react-native";
-import Scard from "../../components/busDetails/Scard";
 import DriverDetailsCard from "../../components/cards/DriverDetailsCard";
 import SmallCardDetails from "../../components/cards/SmallCardDetails";
 const BusDetails = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import DriverDetailsCard from "./DriverDetailsCard";
+import DriverDetailsCard from "../DriverDetailsCard";
 
 const BusInfoCard = () => {
   return <View style={styles.busInformationContainer}></View>;
