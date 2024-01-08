@@ -176,17 +176,6 @@ const styles = StyleSheet.create({
     width: "90%",
     justifyContent: "center",
   },
-  registerContainer: {
-    flexDirection: "row",
-    marginTop: 10,
-  },
-  registerText: {
-    marginRight: 5,
-  },
-  registerLink: {
-    color: "blue",
-    textDecorationLine: "underline",
-  },
   titleFormScreen: {
     fontWeight: "500",
     fontSize: 24,
