@@ -24,6 +24,7 @@ const AddDriverScreen = ({ navigation }) => {
     password: "",
     phoneNumber: "",
     driverLicense: "",
+    busId: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -141,6 +142,7 @@ const AddDriverScreen = ({ navigation }) => {
               onChange={(item) => {
                 setValue(item.value);
                 setIsFocus(false);
+                handleInputChange("BusId", item.value);
               }}
             />
           </View>
