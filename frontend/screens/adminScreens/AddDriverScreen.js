@@ -154,4 +154,9 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     fontSize: 24,
   },
+  driverImage: {
+    height: 150,
+    width: 320,
+    marginLeft: 5,
+  },
 });
