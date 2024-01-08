@@ -6,16 +6,7 @@ const BusDetails = () => {
   return (
     <View style={styles.mainContianer}>
       <DriverDetailsCard />
-      <View style={styles.rowInfo}>
-        <View style={styles.smallBusCardContainer}>
-          <Text style={styles.smallBusCardContainerText}>Bus Capacity</Text>
-          <Text style={styles.smallBusCardContainerText}>30</Text>
-        </View>
-        <View style={styles.smallBusCardContainer}>
-          <Text style={styles.smallBusCardContainerText}>Available Seats</Text>
-          <Text style={styles.smallBusCardContainerText}>3</Text>
-        </View>
-      </View>
+
       <View style={styles.bigBusCardContainerMain}>
         <View style={styles.bigBusCardContainer}>
           <Text style={styles.bigBusCardContainerText}>Next Stop Zone</Text>
