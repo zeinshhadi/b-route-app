@@ -69,21 +69,16 @@ const LoginScreen = ({ navigation }) => {
       <View>
         <LogoComponent />
       </View>
-      <Text style={styles.titleFormScreen}>Log in</Text>
+      <Text style={styles.titleFormScreen}>Log In</Text>
       <View style={styles.formContainer}>
         <View>
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your email"
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-          />
+          <TextInput style={styles.inputDesign} placeholder="Enter your email" value={email} onChangeText={setEmail} />
           <TextInput
             style={styles.inputDesign}
             placeholder="Enter your password"
             secureTextEntry
             value={password}
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={setPassword}
           />
         </View>
       </View>
