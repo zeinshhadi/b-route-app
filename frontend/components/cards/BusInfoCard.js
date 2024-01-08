@@ -10,8 +10,9 @@ export default BusInfoCard;
 const styles = StyleSheet.create({
   busInformationContainer: {
     padding: 19,
-    height: "60%",
+    height: "70%",
     backgroundColor: "#D9D9D9",
     borderRadius: 10,
+    width: "85%",
   },
 });

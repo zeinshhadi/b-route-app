@@ -14,6 +14,7 @@ import EditProfile from "./screens/userScreens/EditProfile";
 import DetailsCard from "./components/cards/DetailsCard";
 import BusesRegisteredScreen from "./screens/adminScreens/BusesRegisteredScreen";
 import BusInfoCard from "./components/cards/BusInfoCard";
+import BusInformationScreen from "./screens/adminScreens/BusInformationScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -32,7 +33,7 @@ export default function App() {
             <Stack.Screen name="BusDetailScreen" component={BusDetails} options={{ headerShown: true }} />
             <Stack.Screen name="UserFeedbackScreen" component={UserFeedback} options={{ headerShown: true }} />
             <Stack.Screen name="BusesRegistered" component={BusesRegisteredScreen} options={{ headerShown: true }} />
-            <Stack.Screen name="BusInformation" component={BusInfoCard} options={{ headerShown: true }} />
+            <Stack.Screen name="BusInformation" component={BusInformationScreen} options={{ headerShown: true }} />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>

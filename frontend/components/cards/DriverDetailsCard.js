@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     width: "50%",
   },
   driverImage: {
-    width: 150,
-    height: 100,
+    width: 180,
+    height: 130,
     borderRadius: 10,
   },
   driverInfoText: {
