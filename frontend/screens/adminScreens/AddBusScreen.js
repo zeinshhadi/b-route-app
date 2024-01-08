@@ -5,10 +5,11 @@ import LogoComponent from "../../components/common/LogoComponent";
 import axios from "axios";
 const AddBusScreen = ({ navigation }) => {
   const [busInfo, setBusInfo] = useState({
-    vin: null,
+    vin: 0,
     color: "",
-    password: "",
-    phoneNumber: "",
+    plate_number: 0,
+    model: "",
+    number_of_seats: 0,
   });
 
   const [loading, setLoading] = useState(false);
@@ -22,49 +23,10 @@ const AddBusScreen = ({ navigation }) => {
 
   const handleRegister = async () => {
     console.log(busInfo);
-    // try {
-    //   if (!busInfo.firstName || !busInfo.lastName || !busInfo.plate_number || !busInfo.password || !busInfo.phoneNumber) {
-    //     console.error("Please fill in all fields");
-    //     return;
-    //   }
-
-    //   setLoading(true);
-
-    //   const registrationData = {
-    //     first_name: busInfo.firstName,
-    //     last_name: busInfo.lastName,
-    //     plate_number: busInfo.plate_number,
-    //     password: busInfo.password,
-    //     phone_number: busInfo.phoneNumber,
-    //   };
-
-    //   console.log("Registration Request Data:", registrationData);
-
-    //   const response = await axios.post("http://192.168.1.7:8000/api/register", registrationData);
-
-    //   console.log("Registration Response:", response.data);
-
-    //   if (response.data.status === "success") {
-    //     const storeToken = async (token) => {
-    //       try {
-    //         await AsyncStorage.setItem("userToken", token);
-    //       } catch (error) {
-    //         console.error("Error storing token:", error);
-    //       }
-    //     };
-    //     navigation.navigate("HomeScreen");
-    //   } else {
-    //     console.error("Registration failed");
-    //   }
-    // } catch (error) {
-    //   console.error("Error during registration:", error.message || error);
-    // } finally {
-    //   setLoading(false);
-    // }
   };
   return (
     <View style={styles.outerContainer}>
-      <Text style={styles.titleFormScreen}>Sign Up</Text>
+      <Text style={styles.titleFormScreen}>Add Bus</Text>
       <View style={styles.formContainer}>
         <View>
           <TextInput
@@ -87,28 +49,22 @@ const AddBusScreen = ({ navigation }) => {
           />
           <TextInput
             style={styles.inputDesign}
-            placeholder="Enter your password"
+            placeholder="Enter bus model"
             secureTextEntry
-            value={busInfo.password}
-            onChangeText={(text) => handleInputChange("password", text)}
+            value={busInfo.model}
+            onChangeText={(text) => handleInputChange("model", text)}
           />
           <TextInput
             style={styles.inputDesign}
-            placeholder="Enter your phone number"
-            value={busInfo.phoneNumber}
-            onChangeText={(text) => handleInputChange("phoneNumber", text)}
+            placeholder="Enter number of seats"
+            value={busInfo.number_of_seats}
+            onChangeText={(text) => handleInputChange("number_of_seats", text)}
           />
         </View>
       </View>
       <Button onPress={handleRegister} disabled={loading}>
-        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Sign Up</Text>}
+        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Bus</Text>}
       </Button>
-      <View style={styles.registerContainer}>
-        <Text style={styles.registerText}>Already have an account?</Text>
-        <Pressable onPress={() => navigation.navigate("LogInScreen")}>
-          <Text style={styles.registerLink}>Log In</Text>
-        </Pressable>
-      </View>
     </View>
   );
 };
@@ -135,17 +91,7 @@ const styles = StyleSheet.create({
     width: "80%",
     justifyContent: "center",
   },
-  registerContainer: {
-    flexDirection: "row",
-    marginTop: 10,
-  },
-  registerText: {
-    marginRight: 5,
-  },
-  registerLink: {
-    color: "blue",
-    textDecorationLine: "underline",
-  },
+
   titleFormScreen: {
     fontWeight: "500",
     fontSize: 24,
