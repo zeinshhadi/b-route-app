@@ -91,6 +91,7 @@ const RegisterScreen = ({ navigation }) => {
           <TextInput
             style={styles.inputDesign}
             placeholder="Enter your password"
+            placeholderTextColor="black"
             secureTextEntry
             value={userData.password}
             onChangeText={(text) => handleInputChange("password", text)}
@@ -98,6 +99,7 @@ const RegisterScreen = ({ navigation }) => {
           <TextInput
             style={styles.inputDesign}
             placeholder="Enter your phone number"
+            placeholderTextColor="black"
             value={userData.phoneNumber}
             onChangeText={(text) => handleInputChange("phoneNumber", text)}
           />
