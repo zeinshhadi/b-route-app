@@ -14,6 +14,7 @@ import EditProfile from "./screens/userScreens/EditProfile";
 import BusesRegisteredScreen from "./screens/adminScreens/BusesRegisteredScreen";
 import BusInformationScreen from "./screens/adminScreens/BusInformationScreen";
 import ZonesRegisteredScreen from "./screens/adminScreens/ZonesRegisteredScreen";
+import AddDriverScreen from "./screens/adminScreens/AddDriverScreen";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -23,7 +24,7 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <Provider store={store}>
           <NavigationContainer>
-            <Stack.Navigator initialRouteName="RegisterScreen">
+            <Stack.Navigator initialRouteName="AddDriverScreen">
               <Stack.Screen name="LogInScreen" component={LoginScreen} options={{ headerShown: false }} />
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerShown: false }} />
               <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
@@ -34,6 +35,7 @@ export default function App() {
               <Stack.Screen name="BusesRegistered" component={BusesRegisteredScreen} options={{ headerShown: true }} />
               <Stack.Screen name="BusInformation" component={BusInformationScreen} options={{ headerShown: true }} />
               <Stack.Screen name="ZonesRegistered" component={ZonesRegisteredScreen} options={{ headerShown: true }} />
+              <Stack.Screen name="AddDriverScreen" component={AddDriverScreen} options={{ headerShown: true }} />
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>

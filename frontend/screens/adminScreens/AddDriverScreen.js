@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, TextInput, Pressable, ActivityIndicator } from "react-native";
+import { Text, View, StyleSheet, TextInput, Pressable, ActivityIndicator, Image } from "react-native";
 import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
 import axios from "axios";
@@ -66,8 +66,6 @@ const AddDriverScreen = ({ navigation }) => {
       <View style={styles.driverImageContainer}>
         <Image style={styles.driverImage} source={require("../../assets/images/driver.jpg")} />
       </View>
-
-      <Text style={styles.titleFormScreen}>Sign Up</Text>
       <View style={styles.formContainer}>
         <View>
           <TextInput
@@ -104,14 +102,8 @@ const AddDriverScreen = ({ navigation }) => {
         </View>
       </View>
       <Button onPress={handleRegister} disabled={loading}>
-        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Sign Up</Text>}
+        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Driver</Text>}
       </Button>
-      <View style={styles.registerContainer}>
-        <Text style={styles.registerText}>Already have an account?</Text>
-        <Pressable onPress={() => navigation.navigate("LogInScreen")}>
-          <Text style={styles.registerLink}>Log In</Text>
-        </Pressable>
-      </View>
     </View>
   );
 };
@@ -135,7 +127,7 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   formContainer: {
-    width: "80%",
+    width: "90%",
     justifyContent: "center",
   },
   registerContainer: {
