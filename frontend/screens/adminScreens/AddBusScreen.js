@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, TextInput, Pressable, ActivityIndicator } from "react-native";
+import { Text, View, StyleSheet, TextInput, ScrollView, ActivityIndicator } from "react-native";
 import Button from "../../components/common/Button";
 import { Dropdown } from "react-native-element-dropdown";
 const AddBusScreen = () => {
@@ -39,61 +39,63 @@ const AddBusScreen = () => {
     <View style={styles.outerContainer}>
       <Text style={styles.titleFormScreen}>Add Bus</Text>
       <View style={styles.formContainer}>
-        <View>
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter bus vin"
-            value={busInfo.firstName}
-            onChangeText={(text) => handleInputChange("vin", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter bus color"
-            value={busInfo.lastName}
-            onChangeText={(text) => handleInputChange("color", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter bus plate number"
-            value={busInfo.plate_number}
-            onChangeText={(text) => handleInputChange("plate_number", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter bus model"
-            secureTextEntry
-            value={busInfo.model}
-            onChangeText={(text) => handleInputChange("model", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter number of seats"
-            value={busInfo.number_of_seats}
-            onChangeText={(text) => handleInputChange("number_of_seats", text)}
-          />
-          <Dropdown
-            style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={data}
-            search
-            maxHeight={300}
-            labelField="label"
-            valueField="value"
-            placeholder={!isFocus ? "Select item" : "..."}
-            searchPlaceholder="Search..."
-            value={value}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
-            onChange={(item) => {
-              setValue(item.value);
-              setIsFocus(false);
-              handleInputChange("BusId", item.value);
-            }}
-          />
-        </View>
+        <ScrollView>
+          <View>
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter bus vin"
+              value={busInfo.firstName}
+              onChangeText={(text) => handleInputChange("vin", text)}
+            />
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter bus color"
+              value={busInfo.lastName}
+              onChangeText={(text) => handleInputChange("color", text)}
+            />
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter bus plate number"
+              value={busInfo.plate_number}
+              onChangeText={(text) => handleInputChange("plate_number", text)}
+            />
+            <Dropdown
+              style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              inputSearchStyle={styles.inputSearchStyle}
+              iconStyle={styles.iconStyle}
+              data={data}
+              search
+              maxHeight={300}
+              labelField="label"
+              valueField="value"
+              placeholder={!isFocus ? "Select item" : "..."}
+              searchPlaceholder="Search..."
+              value={value}
+              onFocus={() => setIsFocus(true)}
+              onBlur={() => setIsFocus(false)}
+              onChange={(item) => {
+                setValue(item.value);
+                setIsFocus(false);
+                handleInputChange("BusId", item.value);
+              }}
+            />
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter bus model"
+              secureTextEntry
+              value={busInfo.model}
+              onChangeText={(text) => handleInputChange("model", text)}
+            />
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter number of seats"
+              value={busInfo.number_of_seats}
+              onChangeText={(text) => handleInputChange("number_of_seats", text)}
+            />
+          </View>
+        </ScrollView>
       </View>
       <Button onPress={handleRegister} disabled={loading}>
         {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Bus</Text>}
