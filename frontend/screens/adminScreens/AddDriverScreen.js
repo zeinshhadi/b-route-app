@@ -36,7 +36,7 @@ const AddDriverScreen = ({ navigation }) => {
     }));
   };
 
-  const handleRegister = async () => {
+  const handleRegisterDriver = async () => {
     console.log(userData);
     // try {
     //   if (!userData.firstName || !userData.lastName || !userData.email || !userData.password || !userData.phoneNumber) {
@@ -147,7 +147,7 @@ const AddDriverScreen = ({ navigation }) => {
             />
           </View>
         </View>
-        <Button onPress={handleRegister} disabled={loading}>
+        <Button onPress={handleRegisterDriver} disabled={loading}>
           {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Driver</Text>}
         </Button>
       </View>
