@@ -1,9 +1,14 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import DriverDetailsCard from "../DriverDetailsCard";
+import BusTextDetails from "./BusTextDetails";
 
 const BusInfoCard = () => {
-  return <View style={styles.busInformationContainer}></View>;
+  return (
+    <View style={styles.busInformationContainer}>
+      <BusTextDetails detailTitle={"bus Type"} detailInfo={"NISSAN"} />
+    </View>
+  );
 };
 
 export default BusInfoCard;
