@@ -43,10 +43,17 @@ const LoginScreen = ({ navigation }) => {
       <Text style={styles.titleFormScreen}>Log In</Text>
       <View style={styles.formContainer}>
         <View>
-          <TextInput style={styles.inputDesign} placeholder="Enter your email" value={email} onChangeText={setEmail} />
+          <TextInput
+            style={styles.inputDesign}
+            placeholder="Enter your email"
+            placeholderTextColor="black"
+            value={email}
+            onChangeText={setEmail}
+          />
           <TextInput
             style={styles.inputDesign}
             placeholder="Enter your password"
+            placeholderTextColor="black"
             secureTextEntry
             value={password}
             onChangeText={setPassword}
