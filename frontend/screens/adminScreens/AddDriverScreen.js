@@ -6,14 +6,14 @@ import axios from "axios";
 import { Dropdown } from "react-native-element-dropdown";
 const AddDriverScreen = ({ navigation }) => {
   const data = [
-    { label: "Item 1", value: "1" },
-    { label: "Item 2", value: "2" },
-    { label: "Item 3", value: "3" },
-    { label: "Item 4", value: "4" },
-    { label: "Item 5", value: "5" },
-    { label: "Item 6", value: "6" },
-    { label: "Item 7", value: "7" },
-    { label: "Item 8", value: "8" },
+    { label: "Bus 1", value: "1" },
+    { label: "Bus 2", value: "2" },
+    { label: "Bus 3", value: "3" },
+    { label: "Bus 4", value: "4" },
+    { label: "Bus 5", value: "5" },
+    { label: "Bus 6", value: "6" },
+    { label: "Bus 7", value: "7" },
+    { label: "Bus 8", value: "8" },
   ];
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
