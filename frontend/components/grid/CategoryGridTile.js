@@ -11,7 +11,7 @@ const CategoryGridTile = () => {
     <View style={styles.mainAdminScreenContainer}>
       <View style={styles.mainAdminScreenContainer}>
         <View style={styles.gridContainer}>
-          <GridComponent>
+          <GridComponent onPress={() => navigateToScreen("AddBusScreen")}>
             <Text>Add Bus</Text>
           </GridComponent>
           <Text style={styles.titleContainer}>Add Bus</Text>
