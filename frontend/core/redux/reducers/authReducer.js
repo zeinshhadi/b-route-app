@@ -5,7 +5,7 @@ const initialState = {
   error: null,
 };
 
-const authReducer = (state = initialState, action) => {
+function authReducer(state = initialState, action) {
   switch (action.type) {
     case "LogIn Success":
       return {
@@ -23,7 +23,9 @@ const authReducer = (state = initialState, action) => {
         token: null,
         error: action.payload,
       };
+    default:
+      return state;
   }
-};
+}
 
 export default authReducer;

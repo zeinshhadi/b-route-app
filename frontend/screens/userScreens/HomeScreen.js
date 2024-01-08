@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Alert, StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View, Text } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import MapView from "react-native-maps";
 import { getCurrentPositionAsync, useForegroundPermissions, PermissionStatus } from "expo-location";
