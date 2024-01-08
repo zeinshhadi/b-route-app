@@ -30,39 +30,6 @@ const LoginScreen = ({ navigation }) => {
       dispatch(Login({ email, password }));
     }
   };
-  // const handleLogin = async () => {
-  //   try {
-  //     setLoading(true);
-
-  //     const response = await axios.post("http://192.168.1.7:8000/api/login", {
-  //       email,
-  //       password,
-  //     });
-
-  //     if (response.data && response.data.status === "success") {
-  //       const token = response.data.authorization.token;
-
-  //       try {
-  //         await AsyncStorage.setItem("userToken", token);
-  //         console.log(`Token stored successfully: ${token}`);
-  //       } catch (error) {
-  //         console.error("Error storing token:", error);
-  //       }
-
-  //       if (response.data.user.role_type === "passenger") {
-  //         navigation.navigate("HomeScreen");
-  //       } else {
-  //         navigation.navigate("AdminHomeScreen");
-  //       }
-  //     } else {
-  //       console.error("Login failed");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error during login:", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
 
   return (
     <View style={styles.outerContainer}>
@@ -83,7 +50,7 @@ const LoginScreen = ({ navigation }) => {
         </View>
       </View>
       <Button onPress={handleLogin} disabled={loading}>
-        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Login</Text>}
+        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>LogIn</Text>}
       </Button>
       <View style={styles.registerContainer}>
         <Text style={styles.registerText}>Don't have an account?</Text>

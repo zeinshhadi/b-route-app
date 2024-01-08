@@ -1,15 +1,15 @@
-import React, { Children } from "react";
+import React from "react";
 import { View, Pressable, Text, StyleSheet } from "react-native";
 import Colors from "../../utils/colors";
 
 const Button = ({ children, onPress }) => {
   return (
     <>
-      <View style={styles.button}>
-        <Pressable onPress={onPress}>
+      <Pressable onPress={onPress}>
+        <View style={styles.button}>
           <Text style={styles.buttonText}>{children}</Text>
-        </Pressable>
-      </View>
+        </View>
+      </Pressable>
     </>
   );
 };
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingHorizontal: 50,
     backgroundColor: Colors.primary500,
-    width: "50%",
+    width: "80%",
     borderRadius: 8,
   },
   buttonText: {

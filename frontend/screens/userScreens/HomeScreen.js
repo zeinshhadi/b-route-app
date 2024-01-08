@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Alert, StyleSheet, View, Text } from "react-native";
+import { Alert, StyleSheet, View, Text, Pressable } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import MapView from "react-native-maps";
 import { getCurrentPositionAsync, useForegroundPermissions, PermissionStatus } from "expo-location";
-import Button from "../../components/common/Button";
+import Colors from "../../utils/colors";
 
 const HomeScreen = () => {
   const [token, setToken] = useState(null);
@@ -50,11 +50,10 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <MapView style={styles.map} />
-
       <View style={styles.buttonContainer}>
-        <Button onPress={() => getLocationHandler()}>
-          <Text>Get Location</Text>
-        </Button>
+        <Pressable onPress={() => getLocationHandler()}>
+          <Text style={styles.buttonContainerText}>Get Location</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -74,5 +73,14 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 16,
     alignSelf: "center",
+    padding: 10,
+    backgroundColor: Colors.primary500,
+    borderRadius: 30,
+    width: "50%",
+  },
+  buttonContainerText: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
