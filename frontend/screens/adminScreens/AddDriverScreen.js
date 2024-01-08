@@ -87,24 +87,28 @@ const AddDriverScreen = () => {
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter your First Name"
+              placeholderTextColor="black"
               value={userData.firstName}
               onChangeText={(text) => handleInputChange("firstName", text)}
             />
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter your Last Name"
+              placeholderTextColor="black"
               value={userData.lastName}
               onChangeText={(text) => handleInputChange("lastName", text)}
             />
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter your email"
+              placeholderTextColor="black"
               value={userData.email}
               onChangeText={(text) => handleInputChange("email", text)}
             />
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter your password"
+              placeholderTextColor="black"
               secureTextEntry
               value={userData.password}
               onChangeText={(text) => handleInputChange("password", text)}
@@ -112,12 +116,14 @@ const AddDriverScreen = () => {
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter your phone number"
+              placeholderTextColor="black"
               value={userData.phoneNumber}
               onChangeText={(text) => handleInputChange("phoneNumber", text)}
             />
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter your Driver license"
+              placeholderTextColor="black"
               value={userData.driverLicense}
               onChangeText={(text) => handleInputChange("driverLicense", text)}
             />
