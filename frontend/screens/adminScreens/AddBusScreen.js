@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 import { Text, View, StyleSheet, TextInput, Pressable, ActivityIndicator } from "react-native";
 import Button from "../../components/common/Button";
-import LogoComponent from "../../components/common/LogoComponent";
-import axios from "axios";
-const AddBusScreen = ({ navigation }) => {
+import { Dropdown } from "react-native-element-dropdown";
+const AddBusScreen = () => {
+  const data = [
+    { label: "Zone 1", value: "1" },
+    { label: "Zone 2", value: "2" },
+    { label: "Zone 3", value: "3" },
+    { label: "Zone 4", value: "4" },
+    { label: "Zone 5", value: "5" },
+    { label: "Zone 6", value: "6" },
+    { label: "Zone 7", value: "7" },
+    { label: "Zone 8", value: "8" },
+  ];
+  const [value, setValue] = useState(null);
+  const [isFocus, setIsFocus] = useState(false);
   const [busInfo, setBusInfo] = useState({
     vin: 0,
     color: "",
@@ -60,6 +71,28 @@ const AddBusScreen = ({ navigation }) => {
             value={busInfo.number_of_seats}
             onChangeText={(text) => handleInputChange("number_of_seats", text)}
           />
+          <Dropdown
+            style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={data}
+            search
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder={!isFocus ? "Select item" : "..."}
+            searchPlaceholder="Search..."
+            value={value}
+            onFocus={() => setIsFocus(true)}
+            onBlur={() => setIsFocus(false)}
+            onChange={(item) => {
+              setValue(item.value);
+              setIsFocus(false);
+              handleInputChange("BusId", item.value);
+            }}
+          />
         </View>
       </View>
       <Button onPress={handleRegister} disabled={loading}>
@@ -95,5 +128,28 @@ const styles = StyleSheet.create({
   titleFormScreen: {
     fontWeight: "500",
     fontSize: 24,
+  },
+  dropdown: {
+    height: 50,
+    borderColor: "gray",
+    borderWidth: 0.5,
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    width: "100%",
+  },
+
+  placeholderStyle: {
+    fontSize: 16,
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
   },
 });

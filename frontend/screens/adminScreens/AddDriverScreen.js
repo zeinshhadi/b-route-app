@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, View, StyleSheet, TextInput, ActivityIndicator, Image, ScrollView } from "react-native";
 import Button from "../../components/common/Button";
 import { Dropdown } from "react-native-element-dropdown";
-const AddDriverScreen = ({ navigation }) => {
+const AddDriverScreen = () => {
   const data = [
     { label: "Bus 1", value: "1" },
     { label: "Bus 2", value: "2" },
