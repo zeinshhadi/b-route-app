@@ -1,52 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Text, View, StyleSheet, TextInput, Pressable, ActivityIndicator } from "react-native";
 import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
-import axios from "axios";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginScreen = ({ navigation }) => {
+  const authState = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
   const handleRegister = () => {
     navigation.navigate("RegisterScreen");
   };
+  useEffect(() => {}, []);
+  // const handleLogin = async () => {
+  //   try {
+  //     setLoading(true);
 
-  const handleLogin = async () => {
-    try {
-      setLoading(true);
+  //     const response = await axios.post("http://192.168.1.7:8000/api/login", {
+  //       email,
+  //       password,
+  //     });
 
-      const response = await axios.post("http://192.168.1.7:8000/api/login", {
-        email,
-        password,
-      });
+  //     if (response.data && response.data.status === "success") {
+  //       const token = response.data.authorization.token;
 
-      if (response.data && response.data.status === "success") {
-        const token = response.data.authorization.token;
+  //       try {
+  //         await AsyncStorage.setItem("userToken", token);
+  //         console.log(`Token stored successfully: ${token}`);
+  //       } catch (error) {
+  //         console.error("Error storing token:", error);
+  //       }
 
-        try {
-          await AsyncStorage.setItem("userToken", token);
-          console.log(`Token stored successfully: ${token}`);
-        } catch (error) {
-          console.error("Error storing token:", error);
-        }
-
-        if (response.data.user.role_type === "passenger") {
-          navigation.navigate("HomeScreen");
-        } else {
-          navigation.navigate("AdminHomeScreen");
-        }
-      } else {
-        console.error("Login failed");
-      }
-    } catch (error) {
-      console.error("Error during login:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  //       if (response.data.user.role_type === "passenger") {
+  //         navigation.navigate("HomeScreen");
+  //       } else {
+  //         navigation.navigate("AdminHomeScreen");
+  //       }
+  //     } else {
+  //       console.error("Login failed");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error during login:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <View style={styles.outerContainer}>
