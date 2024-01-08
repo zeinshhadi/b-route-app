@@ -1,9 +1,22 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, TextInput, Pressable, ActivityIndicator, Image } from "react-native";
+import { Text, View, StyleSheet, TextInput, ActivityIndicator, Image, ScrollView } from "react-native";
 import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
 import axios from "axios";
+import { Dropdown } from "react-native-element-dropdown";
 const AddDriverScreen = ({ navigation }) => {
+  const data = [
+    { label: "Item 1", value: "1" },
+    { label: "Item 2", value: "2" },
+    { label: "Item 3", value: "3" },
+    { label: "Item 4", value: "4" },
+    { label: "Item 5", value: "5" },
+    { label: "Item 6", value: "6" },
+    { label: "Item 7", value: "7" },
+    { label: "Item 8", value: "8" },
+  ];
+  const [value, setValue] = useState(null);
+  const [isFocus, setIsFocus] = useState(false);
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
@@ -65,55 +78,78 @@ const AddDriverScreen = ({ navigation }) => {
     // }
   };
   return (
-    <View style={styles.outerContainer}>
-      <View style={styles.driverImageContainer}>
-        <Image style={styles.driverImage} source={require("../../assets/images/driver.jpg")} />
-      </View>
-      <View style={styles.formContainer}>
-        <View>
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your First Name"
-            value={userData.firstName}
-            onChangeText={(text) => handleInputChange("firstName", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your Last Name"
-            value={userData.lastName}
-            onChangeText={(text) => handleInputChange("lastName", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your email"
-            value={userData.email}
-            onChangeText={(text) => handleInputChange("email", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your password"
-            secureTextEntry
-            value={userData.password}
-            onChangeText={(text) => handleInputChange("password", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your phone number"
-            value={userData.phoneNumber}
-            onChangeText={(text) => handleInputChange("phoneNumber", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your Driver license"
-            value={userData.driverLicense}
-            onChangeText={(text) => handleInputChange("driverLicense", text)}
-          />
+    <ScrollView>
+      <View style={styles.outerContainer}>
+        <View style={styles.driverImageContainer}>
+          <Image style={styles.driverImage} source={require("../../assets/images/driver.jpg")} />
         </View>
+        <View style={styles.formContainer}>
+          <View>
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter your First Name"
+              value={userData.firstName}
+              onChangeText={(text) => handleInputChange("firstName", text)}
+            />
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter your Last Name"
+              value={userData.lastName}
+              onChangeText={(text) => handleInputChange("lastName", text)}
+            />
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter your email"
+              value={userData.email}
+              onChangeText={(text) => handleInputChange("email", text)}
+            />
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter your password"
+              secureTextEntry
+              value={userData.password}
+              onChangeText={(text) => handleInputChange("password", text)}
+            />
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter your phone number"
+              value={userData.phoneNumber}
+              onChangeText={(text) => handleInputChange("phoneNumber", text)}
+            />
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter your Driver license"
+              value={userData.driverLicense}
+              onChangeText={(text) => handleInputChange("driverLicense", text)}
+            />
+            <Dropdown
+              style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              inputSearchStyle={styles.inputSearchStyle}
+              iconStyle={styles.iconStyle}
+              data={data}
+              search
+              maxHeight={300}
+              labelField="label"
+              valueField="value"
+              placeholder={!isFocus ? "Select item" : "..."}
+              searchPlaceholder="Search..."
+              value={value}
+              onFocus={() => setIsFocus(true)}
+              onBlur={() => setIsFocus(false)}
+              onChange={(item) => {
+                setValue(item.value);
+                setIsFocus(false);
+              }}
+            />
+          </View>
+        </View>
+        <Button onPress={handleRegister} disabled={loading}>
+          {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Driver</Text>}
+        </Button>
       </View>
-      <Button onPress={handleRegister} disabled={loading}>
-        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Driver</Text>}
-      </Button>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -156,7 +192,41 @@ const styles = StyleSheet.create({
   },
   driverImage: {
     height: 150,
-    width: 320,
-    marginLeft: 5,
+    width: 220,
+    margin: 25,
+    borderRadius: 10,
+  },
+  dropdown: {
+    height: 50,
+    borderColor: "gray",
+    borderWidth: 0.5,
+    borderRadius: 8,
+    paddingHorizontal: 8,
+  },
+  icon: {
+    marginRight: 5,
+  },
+  label: {
+    position: "absolute",
+    backgroundColor: "white",
+    left: 22,
+    top: 8,
+    zIndex: 999,
+    paddingHorizontal: 8,
+    fontSize: 14,
+  },
+  placeholderStyle: {
+    fontSize: 16,
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
   },
 });
