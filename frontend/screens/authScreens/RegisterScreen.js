@@ -73,6 +73,7 @@ const RegisterScreen = ({ navigation }) => {
           <TextInput
             style={styles.inputDesign}
             placeholder="Enter your First Name"
+            placeholderTextColor="black"
             value={userData.firstName}
             onChangeText={(text) => handleInputChange("firstName", text)}
           />
@@ -85,6 +86,7 @@ const RegisterScreen = ({ navigation }) => {
           <TextInput
             style={styles.inputDesign}
             placeholder="Enter your email"
+            placeholderTextColor="black"
             value={userData.email}
             onChangeText={(text) => handleInputChange("email", text)}
           />
