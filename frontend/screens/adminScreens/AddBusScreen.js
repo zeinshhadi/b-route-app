@@ -111,20 +111,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 20,
     backgroundColor: "white",
+    paddingBottom: 10,
   },
   inputDesign: {
     borderRadius: 5,
     backgroundColor: "#D9D9D9",
     height: 50,
     width: "100%",
-    margin: 5,
+    marginVertical: 5,
     padding: 8,
   },
   formContainer: {
-    width: "80%",
+    width: "90%",
     justifyContent: "center",
   },
-
   titleFormScreen: {
     fontWeight: "500",
     fontSize: 24,
