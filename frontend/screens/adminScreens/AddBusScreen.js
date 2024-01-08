@@ -44,18 +44,21 @@ const AddBusScreen = () => {
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter bus vin"
+              placeholderTextColor="black"
               value={busInfo.firstName}
               onChangeText={(text) => handleInputChange("vin", text)}
             />
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter bus color"
+              placeholderTextColor="black"
               value={busInfo.lastName}
               onChangeText={(text) => handleInputChange("color", text)}
             />
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter bus plate number"
+              placeholderTextColor="black"
               value={busInfo.plate_number}
               onChangeText={(text) => handleInputChange("plate_number", text)}
             />
@@ -86,12 +89,14 @@ const AddBusScreen = () => {
               placeholder="Enter bus model"
               secureTextEntry
               value={busInfo.model}
+              placeholderTextColor="black"
               onChangeText={(text) => handleInputChange("model", text)}
             />
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter number of seats"
               value={busInfo.number_of_seats}
+              placeholderTextColor="black"
               onChangeText={(text) => handleInputChange("number_of_seats", text)}
             />
           </View>
