@@ -4,8 +4,8 @@ import { StyleSheet, Text, View } from "react-native";
 const BusTextDetails = ({ detailTitle, detailInfo }) => {
   return (
     <View style={styles.row}>
-      <Text>{detailTitle}</Text>
-      <Text>{detailInfo}</Text>
+      <Text style={styles.detailTextStyle}>{detailTitle}</Text>
+      <Text style={styles.detailTextStyle}>{detailInfo}</Text>
     </View>
   );
 };
@@ -17,5 +17,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  detailTextStyle: {
+    fontWeight: "bold",
+    fontSize: 18,
+    marginVertical: 10,
   },
 });
