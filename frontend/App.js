@@ -18,6 +18,7 @@ import AddDriverScreen from "./screens/adminScreens/AddDriverScreen";
 import AddBusScreen from "./screens/adminScreens/AddBusScreen";
 import ReviewScreen from "./screens/adminScreens/ReviewScreen";
 import UserBottomNavigation from "./components/common/bottomNavigation/UserBottomNavigation";
+import AdminBottomNavigation from "./components/common/bottomNavigation/AdminBottomNavigation";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -31,7 +32,7 @@ export default function App() {
               <Stack.Screen name="LogInScreen" component={LoginScreen} options={{ headerShown: false }} />
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerShown: false }} />
               <Stack.Screen name="HomeScreen" component={UserBottomNavigation} options={{ headerShown: false }} />
-              <Stack.Screen name="AdminHomeScreen" component={AdminHomeScreen} options={{ headerShown: true }} />
+              <Stack.Screen name="AdminHomeScreen" component={AdminBottomNavigation} options={{ headerShown: false }} />
               <Stack.Screen name="BusDetailScreen" component={BusDetails} options={{ headerShown: true }} />
               <Stack.Screen name="EditProfile" component={EditProfile} options={{ headerShown: true }} />
               <Stack.Screen name="UserFeedbackScreen" component={UserFeedback} options={{ headerShown: true }} />
