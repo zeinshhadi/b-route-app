@@ -16,11 +16,11 @@ const AddBusScreen = () => {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   const [busInfo, setBusInfo] = useState({
-    vin: 0,
+    vin: "",
     color: "",
-    plate_number: 0,
+    plate_number: "",
     model: "",
-    number_of_seats: 0,
+    number_of_seats: "",
   });
 
   const [loading, setLoading] = useState(false);

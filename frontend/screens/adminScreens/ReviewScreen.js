@@ -1,11 +1,13 @@
 import React from "react";
 import ReviewCard from "../../components/cards/ReviewCard";
 import { StyleSheet, View } from "react-native";
+import SearchBar from "../../components/common/SearchBar";
 
 const ReviewScreen = () => {
   return (
     <View style={styles.reviewContainer}>
       <View style={styles.reviewInnerContainer}>
+        <SearchBar />
         <ReviewCard
           cardTitle={"Zein Shhadi"}
           cardDetail={`${"****"} `}
