@@ -16,6 +16,7 @@ import BusInformationScreen from "./screens/adminScreens/BusInformationScreen";
 import ZonesRegisteredScreen from "./screens/adminScreens/ZonesRegisteredScreen";
 import AddDriverScreen from "./screens/adminScreens/AddDriverScreen";
 import AddBusScreen from "./screens/adminScreens/AddBusScreen";
+import ReviewScreen from "./screens/adminScreens/ReviewScreen";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
               <Stack.Screen name="ZonesRegistered" component={ZonesRegisteredScreen} options={{ headerShown: true }} />
               <Stack.Screen name="AddDriverScreen" component={AddDriverScreen} options={{ headerShown: true }} />
               <Stack.Screen name="AddBusScreen" component={AddBusScreen} options={{ headerShown: true }} />
+              <Stack.Screen name="ReviewScreen" component={ReviewScreen} options={{ headerShown: true }} />
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>

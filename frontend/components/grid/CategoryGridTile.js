@@ -19,7 +19,7 @@ const CategoryGridTile = () => {
             <Text>Add Driver</Text>
           </GridComponent>
           <Text style={styles.titleContainer}>Add Driver</Text>
-          <GridComponent>
+          <GridComponent onPress={() => navigateToScreen("ReviewScreen")}>
             <Text>Reviews</Text>
           </GridComponent>
           <Text style={styles.titleContainer}>Reviews</Text>
