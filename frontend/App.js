@@ -22,7 +22,7 @@ export default function App() {
       <StatusBar style="black" />
       <SafeAreaView style={styles.container}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="BusesRegistered">
+          <Stack.Navigator initialRouteName="BusDetailScreen">
             <Stack.Screen name="EditProfile" component={EditProfile} options={{ headerShown: true }} />
             <Stack.Screen name="LogInScreen" component={LoginScreen} options={{ headerShown: false }} />
             <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerShown: false }} />
