@@ -80,6 +80,7 @@ const RegisterScreen = ({ navigation }) => {
           <TextInput
             style={styles.inputDesign}
             placeholder="Enter your Last Name"
+            placeholderTextColor="black"
             value={userData.lastName}
             onChangeText={(text) => handleInputChange("lastName", text)}
           />

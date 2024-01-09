@@ -6,12 +6,13 @@ import EditProfile from "../../../screens/userScreens/EditProfile";
 import ChatScreen from "../../../screens/common/ChatScreen";
 import ReviewScreen from "../../../screens/adminScreens/ReviewScreen";
 import HomeScreen from "../../../screens/userScreens/HomeScreen";
+import Colors from "../../../utils/colors";
 
 const Tab = createBottomTabNavigator();
 
 const UserBottomNavigation = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{ tabBarActiveTintColor: Colors.primary500, tabBarInactiveTintColor: "gray" }}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Chat" component={ChatScreen} />
       <Tab.Screen name="Rides" component={ReviewScreen} />
