@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import GridComponent from "./GridComponent";
 import { useNavigation } from "@react-navigation/native";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 const CategoryGridTile = () => {
   const navigation = useNavigation();
   const navigateToScreen = (screenName) => {
@@ -12,29 +13,29 @@ const CategoryGridTile = () => {
       <View style={styles.mainAdminScreenContainer}>
         <View style={styles.gridContainer}>
           <GridComponent onPress={() => navigateToScreen("AddBusScreen")}>
-            <Text>Add Bus</Text>
+            <Ionicons name="add-circle-outline" size={100} color="black" />
           </GridComponent>
           <Text style={styles.titleContainer}>Add Bus</Text>
           <GridComponent onPress={() => navigateToScreen("AddDriverScreen")}>
-            <Text>Add Driver</Text>
+            <Ionicons name="person-add" size={100} color="black" />
           </GridComponent>
           <Text style={styles.titleContainer}>Add Driver</Text>
           <GridComponent onPress={() => navigateToScreen("ReviewScreen")}>
-            <Text>Reviews</Text>
+            <MaterialIcons name="rate-review" size={100} color="black" />
           </GridComponent>
           <Text style={styles.titleContainer}>Reviews</Text>
         </View>
         <View style={styles.gridContainer}>
           <GridComponent onPress={() => navigateToScreen("ZonesRegistered")}>
-            <Text>Zones</Text>
+            <Ionicons name="location-outline" size={100} color="black" />
           </GridComponent>
           <Text style={styles.titleContainer}>Zones</Text>
           <GridComponent onPress={() => navigateToScreen("BusesRegistered")}>
-            <Text>Buses</Text>
+            <Ionicons name="bus" size={100} color="black" />
           </GridComponent>
           <Text style={styles.titleContainer}>Buses</Text>
           <GridComponent>
-            <Text>Drivers</Text>
+            <Ionicons name="person" size={100} color="black" />
           </GridComponent>
           <Text style={styles.titleContainer}>Drivers</Text>
         </View>
