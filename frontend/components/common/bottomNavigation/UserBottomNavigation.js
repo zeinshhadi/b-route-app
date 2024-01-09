@@ -7,16 +7,36 @@ import ChatScreen from "../../../screens/common/ChatScreen";
 import ReviewScreen from "../../../screens/adminScreens/ReviewScreen";
 import HomeScreen from "../../../screens/userScreens/HomeScreen";
 import Colors from "../../../utils/colors";
-
+import { Ionicons } from "@expo/vector-icons";
 const Tab = createBottomTabNavigator();
 
 const UserBottomNavigation = () => {
   return (
     <Tab.Navigator screenOptions={{ tabBarActiveTintColor: Colors.primary500, tabBarInactiveTintColor: "gray" }}>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Chat" component={ChatScreen} />
-      <Tab.Screen name="Rides" component={ReviewScreen} />
-      <Tab.Screen name="EditProfile" component={EditProfile} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size} />,
+        }}
+      />
+      <Tab.Screen
+        name="Chat"
+        component={ChatScreen}
+        options={{ tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" color={color} size={size} /> }}
+      />
+      <Tab.Screen
+        name="Rides"
+        component={ReviewScreen}
+        options={{ tabBarIcon: ({ color, size }) => <Ionicons name="car" color={color} size={size} /> }}
+      />
+      <Tab.Screen
+        name="EditProfile"
+        component={EditProfile}
+        options={{
+          tabBarIcon: ({ color, size }) => <Ionicons name="person" color={color} size={size} />,
+        }}
+      />
     </Tab.Navigator>
   );
 };
