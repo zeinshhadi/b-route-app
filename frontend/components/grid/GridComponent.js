@@ -24,12 +24,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#D9D9D9",
     borderRadius: 10,
     justifyContent: "center",
+    shadowColor: "#B2B2B2",
+    shadowOpacity: 4,
+    shadowRadius: 10,
   },
   containerTitle: {
     textAlign: "center",
   },
   buttonPressed: {
-    elevation: 4,
     opacity: 0.5,
   },
 });
