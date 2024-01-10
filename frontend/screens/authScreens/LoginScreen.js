@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Text, View, StyleSheet, TextInput, Pressable, ActivityIndicator } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  Pressable,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  ScrollView,
+} from "react-native";
 import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
 import Login from "../../core/redux/actions/authActions";
@@ -76,6 +85,7 @@ const LoginScreen = ({ navigation }) => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
+  screenSizes: { flex: 1 },
   outerContainer: {
     flex: 1,
     justifyContent: "center",

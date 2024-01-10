@@ -166,9 +166,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    gap: 20,
+    gap: 10,
     backgroundColor: "white",
-    paddingBottom: 10,
+    paddingBottom: 15,
   },
   inputDesign: {
     borderRadius: 5,
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   driverImage: {
     height: 150,
     width: 220,
-    margin: 25,
+    margin: 10,
     borderRadius: 10,
   },
   dropdown: {

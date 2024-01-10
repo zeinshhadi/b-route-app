@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import CategoryGridTile from "../../components/grid/CategoryGridTile";
 
@@ -26,10 +26,17 @@ const AdminHomeScreen = () => {
   };
 
   return (
-    <>
+    <View style={styles.body}>
       <CategoryGridTile />
-    </>
+    </View>
   );
 };
 
 export default AdminHomeScreen;
+
+const styles = StyleSheet.create({
+  body: {
+    flex: 1,
+    backgroundColor: "white",
+  },
+});
