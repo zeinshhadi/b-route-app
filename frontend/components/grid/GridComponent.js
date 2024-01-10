@@ -3,7 +3,10 @@ import { StyleSheet, View, Text, Pressable } from "react-native";
 
 const GridComponent = ({ children, onPress }) => {
   return (
-    <Pressable onPress={onPress}>
+    <Pressable
+      onPress={onPress}
+      android_ripple={{ color: "#B2B2B2" }}
+      style={({ pressed }) => [styles.button, pressed ? styles.buttonPressed : null]}>
       <View style={styles.cardGridContainer}>
         <Text style={styles.containerTitle}>{children}</Text>
       </View>
@@ -24,5 +27,9 @@ const styles = StyleSheet.create({
   },
   containerTitle: {
     textAlign: "center",
+  },
+  buttonPressed: {
+    elevation: 4,
+    opacity: 0.5,
   },
 });

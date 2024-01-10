@@ -40,7 +40,11 @@ export default function App() {
               <Stack.Screen name="BusInformation" component={BusInformationScreen} options={{ headerShown: true }} />
               <Stack.Screen name="ZonesRegistered" component={ZonesRegisteredScreen} options={{ headerShown: true }} />
               <Stack.Screen name="AddDriverScreen" component={AddDriverScreen} options={{ headerShown: true }} />
-              <Stack.Screen name="AddBusScreen" component={AddBusScreen} options={{ headerShown: true }} />
+              <Stack.Screen
+                name="AddBusScreen"
+                component={AddBusScreen}
+                options={{ headerShown: true, headerTitle: "Add Bus Screen" }}
+              />
               <Stack.Screen name="ReviewScreen" component={ReviewScreen} options={{ headerShown: true }} />
             </Stack.Navigator>
           </NavigationContainer>
