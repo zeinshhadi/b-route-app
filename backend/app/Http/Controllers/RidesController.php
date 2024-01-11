@@ -8,10 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RidesController extends Controller
 {
-public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
+
     public function create_ride(Request $request){
       $user = Auth::user();
             $ride = Ride::create([
