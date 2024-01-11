@@ -23,6 +23,7 @@ const AddDriverScreen = () => {
     password: "",
     phoneNumber: "",
     driverLicense: "",
+    busId: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -36,45 +37,54 @@ const AddDriverScreen = () => {
 
   const handleRegisterDriver = async () => {
     console.log(userData);
-    // try {
-    //   if (!userData.firstName || !userData.lastName || !userData.email || !userData.password || !userData.phoneNumber) {
-    //     console.error("Please fill in all fields");
-    //     return;
-    //   }
+    try {
+      if (
+        !userData.firstName ||
+        !userData.lastName ||
+        !userData.email ||
+        !userData.password ||
+        !userData.phoneNumber ||
+        !userData.driverLicense
+      ) {
+        console.error("Please fill in all fields");
+        return;
+      }
 
-    //   setLoading(true);
+      setLoading(true);
 
-    //   const registrationData = {
-    //     first_name: userData.firstName,
-    //     last_name: userData.lastName,
-    //     email: userData.email,
-    //     password: userData.password,
-    //     phone_number: userData.phoneNumber,
-    //   };
+      const registrationData = {
+        first_name: userData.firstName,
+        last_name: userData.lastName,
+        email: userData.email,
+        password: userData.password,
+        phone_number: userData.phoneNumber,
+        bus_id: userData.busId,
+        driver_license: userData.driverLicense,
+      };
 
-    //   console.log("Registration Request Data:", registrationData);
+      console.log("Registration Request Data:", registrationData);
 
-    //   const response = await axios.post("http://192.168.1.7:8000/api/register", registrationData);
+      const response = await axios.post("http://192.168.1.7:8000/api/register/driver", registrationData);
 
-    //   console.log("Registration Response:", response.data);
+      console.log("Registration Response:", response.data);
 
-    //   if (response.data.status === "success") {
-    //     const storeToken = async (token) => {
-    //       try {
-    //         await AsyncStorage.setItem("userToken", token);
-    //       } catch (error) {
-    //         console.error("Error storing token:", error);
-    //       }
-    //     };
-    //     navigation.navigate("HomeScreen");
-    //   } else {
-    //     console.error("Registration failed");
-    //   }
-    // } catch (error) {
-    //   console.error("Error during registration:", error.message || error);
-    // } finally {
-    //   setLoading(false);
-    // }
+      if (response.data.status === "success") {
+        const storeToken = async (token) => {
+          try {
+            await AsyncStorage.setItem("userToken", token);
+          } catch (error) {
+            console.error("Error storing token:", error);
+          }
+        };
+        navigation.navigate("HomeScreen");
+      } else {
+        console.error("Registration failed");
+      }
+    } catch (error) {
+      console.error("Error during registration:", error.message || error);
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <ScrollView>
