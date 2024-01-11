@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('rides', function (Blueprint $table) {
             $table->id();
-            $table->float('start_location');
-            $table->float('end_location');
+            $table->float('start_longitude');
+            $table->float('start_latitude');
+            $table->float('end_longitude');
+            $table->float('end_latitude');
             $table->integer('rate');
             $table->integer('price')->default(20);
             $table->text('review');
