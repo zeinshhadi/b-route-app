@@ -13,6 +13,7 @@ import {
 import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
 import Login from "../../core/redux/actions/authActions";
+import Colors from "../../utils/colors";
 
 const LoginScreen = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
   },
   inputDesign: {
     borderRadius: 5,
-    backgroundColor: "#D9D9D9",
+    backgroundColor: Colors.cardColor,
     height: 50,
     width: "100%",
     margin: 10,

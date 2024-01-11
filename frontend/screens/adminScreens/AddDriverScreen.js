@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Text, View, StyleSheet, TextInput, ActivityIndicator, Image, ScrollView } from "react-native";
 import Button from "../../components/common/Button";
 import { Dropdown } from "react-native-element-dropdown";
+import Colors from "../../utils/colors";
 const AddDriverScreen = () => {
   const data = [
     { label: "Bus 1", value: "1" },
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
   },
   inputDesign: {
     borderRadius: 5,
-    backgroundColor: "#D9D9D9",
+    backgroundColor: Colors.cardColor,
     height: 50,
     width: "100%",
     marginVertical: 5,

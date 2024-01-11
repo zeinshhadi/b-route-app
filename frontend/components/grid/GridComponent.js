@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, Pressable } from "react-native";
+import Colors from "../../utils/colors";
 
 const GridComponent = ({ children, onPress }) => {
   return (
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     padding: 10,
     height: 150,
     width: 150,
-    backgroundColor: "#D9D9D9",
+    backgroundColor: Colors.cardColor,
     borderRadius: 10,
     justifyContent: "center",
     shadowColor: "#B2B2B2",

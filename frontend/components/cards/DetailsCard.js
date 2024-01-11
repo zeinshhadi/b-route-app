@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { Text } from "react-native";
 import { View } from "react-native";
+import Colors from "../../utils/colors";
 
 const DetailsCard = ({ cardTitle, cardDetail, status, tempText }) => {
   return (
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
   detailsCardContainer: {
     flexDirection: "row",
     height: 80,
-    backgroundColor: "#D9D9D9",
+    backgroundColor: Colors.cardColor,
     borderRadius: 10,
     marginTop: 5,
     justifyContent: "space-around",

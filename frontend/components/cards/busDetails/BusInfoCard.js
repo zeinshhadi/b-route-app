@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import DriverDetailsCard from "../DriverDetailsCard";
 import BusTextDetails from "./BusTextDetails";
+import Colors from "../../../utils/colors";
 
 const BusInfoCard = () => {
   return (
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   busInformationContainer: {
     padding: 20,
     height: "65%",
-    backgroundColor: "#D9D9D9",
+    backgroundColor: Colors.cardColor,
     borderRadius: 10,
     width: "85%",
   },

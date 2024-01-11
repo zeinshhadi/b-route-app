@@ -1,6 +1,7 @@
 import Icon from "react-native-vector-icons/FontAwesome";
 import React from "react";
 import { View, StyleSheet, Text, Pressable } from "react-native";
+import Colors from "../../utils/colors";
 
 const ProfileCard = ({ cardTitle, cardDetail }) => {
   return (
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
   profileCardContainer: {
     flexDirection: "row",
     height: 80,
-    backgroundColor: "#D9D9D9",
+    backgroundColor: Colors.cardColor,
     borderRadius: 10,
     marginTop: 5,
     justifyContent: "space-around",

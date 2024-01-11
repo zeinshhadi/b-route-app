@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Text, TextInput, View, StyleSheet } from "react-native";
+import Colors from "../../utils/colors";
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState();
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
   searchContainer: {
     padding: 10,
     borderRadius: 20,
-    backgroundColor: "#D9D9D9",
+    backgroundColor: Colors.cardColor,
     height: 40,
     marginVertical: 30,
     justifyContent: "center",

@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, TextInput, Pressable, ActivityIndicator } from 
 import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
 import axios from "axios";
+import Colors from "../../utils/colors";
 const RegisterScreen = ({ navigation }) => {
   const [userData, setUserData] = useState({
     fullName: "",
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
   },
   inputDesign: {
     borderRadius: 5,
-    backgroundColor: "#D9D9D9",
+    backgroundColor: Colors.cardColor,
     height: 50,
     width: "100%",
     margin: 5,
