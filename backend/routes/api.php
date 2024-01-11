@@ -57,5 +57,6 @@ Route::controller(DriversController::class)->group(function () {
 
 Route::controller(ZonesController::class)->group(function(){
     Route::get('/zones','all_zones');
+    Route::post('/addzone','add_zone');
 });
 })->middleware(['auth:api', 'admin']);
