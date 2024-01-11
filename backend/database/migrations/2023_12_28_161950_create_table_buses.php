@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('plate_number')->unique();
             $table->string('model');
             $table->integer('number_of_seats');
+            $table->unsignedBigInteger('zone_id');
+            $table->foreign('zone_id')->references('id')->on('zones')->onDelete('cascade');;
             $table->timestamps();
         });
     }

@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('zones', function (Blueprint $table) {
             $table->id();
             $table->string('zone_name');
-            $table->unsignedBigInteger('bus_id');
-            $table->foreign('bus_id')->references('id')->on('buses')->onDelete('cascade');;
             $table->timestamps();
         });
     }
