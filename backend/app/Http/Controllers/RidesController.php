@@ -15,8 +15,10 @@ public function __construct()
     public function create_ride(Request $request){
       $user = Auth::user();
             $ride = Ride::create([
-            'start_location' => $request->start_location,
-            'end_location'=>0,
+            'start_longitude' => $request->start_longitude,
+            'start_latitude' => $request->start_latitude,
+            'end_longitude' => 0,
+            'end_latitude'=>0,
             'rate'=>0,
             'price'=>20,
             'review'=>'NoReview',
@@ -28,7 +30,7 @@ public function __construct()
     public function end_ride(Request $request){
         $user = Auth::user();
         $ride= Ride::where('user_id',$user->id)->latest()->first();
-        $ride->update(['end_location' => $request->end_location]);
+        $ride->update(['end_latitude' => $request->end_latitude,'end_longitude'=>$request-> end_longitude]);
     }
 
     

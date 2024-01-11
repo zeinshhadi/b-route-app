@@ -25,23 +25,22 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('refresh', 'refresh');
 
 });
-
-
-
-
+Route::group(["middleware"=>['auth:api', 'passenger']], function () {
 Route::controller(RidesController::class)->group(function () {
     Route::post('add/ride', 'create_ride');
     Route::post('end/ride', 'end_ride');
     Route::post('feedback/ride', 'add_feedback');
 
 });
-Route::group(["'auth:api'" => 'admin'], function () {
+
+})->middleware(['auth:api', 'passenger']);
+
 
 Route::controller(DriversController::class)->group(function () {
     Route::get('/driver/{userId}', 'getDriverByUserId');
-
 });
 
+Route::group(["middleware" => ['auth:api', 'admin']], function () {
 Route::controller(BusesController::class)->group(function () {
     Route::post('register/bus', 'create_bus');
     Route::get('all/buses', 'getAllBuses');
@@ -55,4 +54,4 @@ Route::controller(DriversController::class)->group(function () {
 
 });
 
-});
+})->middleware(['auth:api', 'admin']);
