@@ -26,6 +26,25 @@ Route::controller(AuthController::class)->group(function () {
 
 });
 
+
+
+
+Route::controller(RidesController::class)->group(function () {
+    Route::post('add/ride', 'create_ride');
+    Route::post('end/ride', 'end_ride');
+    Route::post('feedback/ride', 'add_feedback');
+
+});
+Route::group(["'auth:api'" => 'admin'], function () {
+
+Route::controller(DriversController::class)->group(function () {
+    Route::get('/driver/{userId}', 'getDriverByUserId');
+
+});
+
+Route::controller(BusesController::class)->group(function () {
+    Route::post('register/bus', 'create_bus');
+    Route::get('all/buses', 'getAllBuses');
 Route::controller(DriversController::class)->group(function () {
     Route::post('register/driver', 'create_driver');
     Route::delete('/delete/driver/{userId}', 'deleteDriverByUserId');
@@ -34,17 +53,6 @@ Route::controller(DriversController::class)->group(function () {
 
 });
 
-
-Route::controller(BusesController::class)->group(function () {
-    Route::post('register/bus', 'create_bus');
-    Route::get('all/buses', 'getAllBuses');
-
 });
 
-Route::controller(RidesController::class)->group(function () {
-    Route::post('add/ride', 'create_ride');
-    Route::post('end/ride', 'end_ride');
-    Route::post('feedback/ride', 'add_feedback');
-
 });
-
