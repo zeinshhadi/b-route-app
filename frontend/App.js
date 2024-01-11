@@ -33,19 +33,51 @@ export default function App() {
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerShown: false }} />
               <Stack.Screen name="HomeScreen" component={UserBottomNavigation} options={{ headerShown: false }} />
               <Stack.Screen name="AdminHomeScreen" component={AdminBottomNavigation} options={{ headerShown: false }} />
-              <Stack.Screen name="BusDetailScreen" component={BusDetails} options={{ headerShown: true }} />
-              <Stack.Screen name="EditProfile" component={EditProfile} options={{ headerShown: true }} />
-              <Stack.Screen name="UserFeedbackScreen" component={UserFeedback} options={{ headerShown: true }} />
-              <Stack.Screen name="BusesRegistered" component={BusesRegisteredScreen} options={{ headerShown: true }} />
-              <Stack.Screen name="BusInformation" component={BusInformationScreen} options={{ headerShown: true }} />
-              <Stack.Screen name="ZonesRegistered" component={ZonesRegisteredScreen} options={{ headerShown: true }} />
-              <Stack.Screen name="AddDriverScreen" component={AddDriverScreen} options={{ headerShown: true }} />
+              <Stack.Screen
+                name="BusDetailScreen"
+                component={BusDetails}
+                options={{ headerShown: true, headerTitle: "Bus Details" }}
+              />
+              <Stack.Screen
+                name="EditProfile"
+                component={EditProfile}
+                options={{ headerShown: true, headerTitle: "Edit Profile" }}
+              />
+              <Stack.Screen
+                name="UserFeedbackScreen"
+                component={UserFeedback}
+                options={{ headerShown: true, headerTitle: "Feedback Screen" }}
+              />
+              <Stack.Screen
+                name="BusesRegistered"
+                component={BusesRegisteredScreen}
+                options={{ headerShown: true, headerTitle: "Buses Registered" }}
+              />
+              <Stack.Screen
+                name="BusInformation"
+                component={BusInformationScreen}
+                options={{ headerShown: true, headerTitle: "Bus Info Screen" }}
+              />
+              <Stack.Screen
+                name="ZonesRegistered"
+                component={ZonesRegisteredScreen}
+                options={{ headerShown: true, headerTitle: "Zones Screen" }}
+              />
+              <Stack.Screen
+                name="AddDriverScreen"
+                component={AddDriverScreen}
+                options={{ headerShown: true, headerTitle: "Add Driver Screen" }}
+              />
               <Stack.Screen
                 name="AddBusScreen"
                 component={AddBusScreen}
                 options={{ headerShown: true, headerTitle: "Add Bus Screen" }}
               />
-              <Stack.Screen name="ReviewScreen" component={ReviewScreen} options={{ headerShown: true }} />
+              <Stack.Screen
+                name="ReviewScreen"
+                component={ReviewScreen}
+                options={{ headerShown: true, headerTitle: "Review Screen" }}
+              />
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>
