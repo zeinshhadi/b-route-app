@@ -11,4 +11,6 @@ class ZonesController extends Controller
     $zone=Zone::all();
     return response()->json(['Zones are as follows : '=>$zone]);
   }
+
+  
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BusesController;
 use App\Http\Controllers\DriversController;
 use App\Http\Controllers\RidesController;
+use App\Http\Controllers\ZonesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,8 @@ Route::group(["middleware" => ['auth:api', 'admin']], function () {
 Route::controller(BusesController::class)->group(function () {
     Route::post('register/bus', 'create_bus');
     Route::get('all/buses', 'getAllBuses');
+
+});
 Route::controller(DriversController::class)->group(function () {
     Route::post('register/driver', 'create_driver');
     Route::delete('/delete/driver/{userId}', 'deleteDriverByUserId');
@@ -52,6 +55,7 @@ Route::controller(DriversController::class)->group(function () {
 
 });
 
+Route::controller(ZonesController::class)->group(function(){
+    Route::get('/zones','all_zones');
 });
-
 })->middleware(['auth:api', 'admin']);
