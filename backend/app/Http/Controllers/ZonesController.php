@@ -12,5 +12,10 @@ class ZonesController extends Controller
     return response()->json(['Zones are as follows : '=>$zone]);
   }
 
-  
+  public function add_zone(Request $request){
+    $zone = Zone::create([ 
+       'zone_name'=>$request->zone_name,
+      
+      ]);
+  }
 }
