@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, StyleSheet, View, Image, Platform } from "react-native";
-const DriverDetailsCard = () => {
+const DriverDetailsCard = ({ driverFirstName, driverLastName }) => {
   return (
     <View style={styles.rowInfo}>
       <View style={styles.driverImageContainer}>
@@ -8,7 +8,7 @@ const DriverDetailsCard = () => {
       </View>
       <View style={styles.driverInfoText}>
         <Text>Driver Name:</Text>
-        <Text>Zein Shhadi</Text>
+        <Text>{driverFirstName}</Text>
       </View>
     </View>
   );

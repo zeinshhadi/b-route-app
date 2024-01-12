@@ -8,9 +8,10 @@ const BusInformationScreen = () => {
   const route = useRoute();
   const item = route.params.item;
   const { id, model, plate_number, color, vin, number_of_seats, zone_id } = item;
+  console.log(item.driver.id);
   return (
     <View style={styles.BusInformationContainer}>
-      <DriverDetailsCard />
+      <DriverDetailsCard driverFirstName={item.driver.id} driverLastName={item.driver.last_name} />
       <BusInfoCard
         id={id}
         model={model}
