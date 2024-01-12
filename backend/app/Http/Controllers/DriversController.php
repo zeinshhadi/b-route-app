@@ -19,7 +19,7 @@ class DriversController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             'phone_number' => 'required|string|max:15',
-            'image' => 'required|string',
+            'image' => 'nullable|string',
             'driver_license' => 'required|string|max:255',
             'bus_id' => 'required|exists:buses,id',
         ]);
@@ -47,7 +47,7 @@ class DriversController extends Controller
         ]);
 
     
-        return response()->json(['message' => 'Driver created successfully'], 201);
+        return response()->json(['status' => 'success'], 201);
     }
      public function deleteDriverByUserId($userId)
     {    
