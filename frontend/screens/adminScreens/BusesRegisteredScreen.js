@@ -15,7 +15,7 @@ const BusesRegisteredScreen = ({ navigation }) => {
       const authToken = authState.token;
       const authorization = "Bearer " + authToken;
       try {
-        const response = await axios.get("http://192.168.0.101:8000/api/all/buses", {
+        const response = await axios.get("http://192.168.0.101:8000/api/bus", {
           headers: { Authorization: authorization },
         });
         response.data.buses.forEach((bus, index) => {
