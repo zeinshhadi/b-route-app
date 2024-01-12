@@ -1,13 +1,12 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import DriverDetailsCard from "../DriverDetailsCard";
 import BusTextDetails from "./BusTextDetails";
 import Colors from "../../../utils/colors";
 
-const BusInfoCard = () => {
+const BusInfoCard = ({ itemId }) => {
   return (
     <View style={styles.busInformationContainer}>
-      <BusTextDetails detailTitle={"Model"} detailInfo={"NISSAN"} />
+      <BusTextDetails detailTitle={"Model"} detailInfo={itemId} />
       <BusTextDetails detailTitle={"Vin"} detailInfo={"123456987365"} />
       <BusTextDetails detailTitle={"PLate Number"} detailInfo={"123456"} />
       <BusTextDetails detailTitle={"color"} detailInfo={"Black"} />
