@@ -8,31 +8,28 @@ import axios from "axios";
 const AddBusScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
-  const [data, setData] = useState([]);
-  // const data = [
-  //   { label: "Zone 1", value: 1 },
-  //   { label: "Zone 2", value: 2 },
-  //   { label: "Zone 3", value: "3" },
-  //   { label: "Zone 4", value: "4" },
-  //   { label: "Zone 5", value: "5" },
-  //   { label: "Zone 6", value: "6" },
-  //   { label: "Zone 7", value: "7" },
-  //   { label: "Zone 8", value: "8" },
-  // ];
+  const [data, setData] = useState([{ label: "", value: "" }]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://192.168.0.101:8000/api/zones", {
           headers: { Authorization: authorization },
         });
-        console.log(response.data);
+
+        const formattedData = response.data["Zones are as follows : "].map((zone) => ({
+          label: `Zone ${zone.id} - ${zone.zone_name}`,
+          value: zone.id,
+        }));
+
+        setData(formattedData);
       } catch (error) {
         console.error("Error fetching zones:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [authorization]);
 
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
