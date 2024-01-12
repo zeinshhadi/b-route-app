@@ -4,6 +4,7 @@ import Button from "../../components/common/Button";
 import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 const AddBusScreen = () => {
   const authState = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -21,11 +22,11 @@ const AddBusScreen = () => {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   const [busInfo, setBusInfo] = useState({
-    vin: "",
+    vin: 0,
     color: "",
-    plate_number: "",
+    plate_number: 0,
     model: "",
-    number_of_seats: "",
+    number_of_seats: 0,
     zone_id: 0,
   });
 
@@ -39,7 +40,6 @@ const AddBusScreen = () => {
   };
 
   const handleRegister = async () => {
-    console.log(authState.token);
     try {
       if (!busInfo.vin || !busInfo.color || !busInfo.plate_number || !busInfo.model || !busInfo.number_of_seats) {
         console.error("Please fill in all fields");
@@ -59,7 +59,7 @@ const AddBusScreen = () => {
 
       console.log("Registration Request Data:", registrationData);
 
-      const response = await axios.post("http://192.168.0.101:8000/api/register/driver", registrationData, {
+      const response = await axios.post("http://192.168.0.101:8000/api/register/bus", registrationData, {
         headers: {
           Authorization: authorization,
         },
