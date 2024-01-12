@@ -68,7 +68,7 @@ const AddBusScreen = () => {
       console.log("Registration Response:", response.data.status);
 
       if (response.data.status === "success") {
-        console.log("Driver Created successfully");
+        console.log("Bus Created successfully");
       } else {
         console.error("Registration failed");
       }
