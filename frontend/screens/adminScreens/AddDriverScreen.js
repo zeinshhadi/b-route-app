@@ -3,10 +3,17 @@ import { Text, View, StyleSheet, TextInput, ActivityIndicator, Image, ScrollView
 import Button from "../../components/common/Button";
 import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
+import axios from "axios";
+import { AsyncStorage } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
 const AddDriverScreen = () => {
+  const authState = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const authorization = "bearer " + authState.token;
+  console.log(`this is the token ${authorization}`);
   const data = [
-    { label: "Bus 1", value: "1" },
-    { label: "Bus 2", value: "2" },
+    { label: "Bus 1", value: 1 },
+    { label: "Bus 2", value: 2 },
     { label: "Bus 3", value: "3" },
     { label: "Bus 4", value: "4" },
     { label: "Bus 5", value: "5" },
@@ -23,7 +30,7 @@ const AddDriverScreen = () => {
     password: "",
     phoneNumber: "",
     driverLicense: "",
-    busId: "",
+    busId: 0,
   });
 
   const [loading, setLoading] = useState(false);
@@ -36,7 +43,7 @@ const AddDriverScreen = () => {
   };
 
   const handleRegisterDriver = async () => {
-    console.log(userData);
+    console.log(authState.token);
     try {
       if (
         !userData.firstName ||
@@ -60,23 +67,21 @@ const AddDriverScreen = () => {
         phone_number: userData.phoneNumber,
         bus_id: userData.busId,
         driver_license: userData.driverLicense,
+        image: "abcabc",
       };
 
       console.log("Registration Request Data:", registrationData);
 
-      const response = await axios.post("http://192.168.1.7:8000/api/register/driver", registrationData);
+      const response = await axios.post("http://192.168.0.101:8000/api/register/driver", registrationData, {
+        headers: {
+          Authorization: authorization,
+        },
+      });
 
       console.log("Registration Response:", response.data);
 
       if (response.data.status === "success") {
-        const storeToken = async (token) => {
-          try {
-            await AsyncStorage.setItem("userToken", token);
-          } catch (error) {
-            console.error("Error storing token:", error);
-          }
-        };
-        navigation.navigate("HomeScreen");
+        console.log("Driver Created successfully");
       } else {
         console.error("Registration failed");
       }

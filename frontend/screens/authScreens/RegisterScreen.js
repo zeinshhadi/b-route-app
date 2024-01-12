@@ -40,7 +40,7 @@ const RegisterScreen = ({ navigation }) => {
 
       console.log("Registration Request Data:", registrationData);
 
-      const response = await axios.post("http://192.168.0.100:8000/api/register", registrationData);
+      const response = await axios.post("http://192.168.0.101:8000/api/register", registrationData);
 
       console.log("Registration Response:", response.data);
 
