@@ -4,11 +4,10 @@ import Button from "../../components/common/Button";
 import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
 import axios from "axios";
-import { AsyncStorage } from "react-native";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 const AddDriverScreen = () => {
   const authState = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+
   const authorization = "bearer " + authState.token;
 
   const data = [
