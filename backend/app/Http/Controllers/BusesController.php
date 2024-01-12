@@ -11,7 +11,7 @@ class BusesController extends Controller
 
     public function create_bus(Request $req){
              $bus= Bus::create($req->all());
-             return response()->json(['Create Bus : '=>$bus],200);
+             return response()->json(['status'=>'success'],200);
 
     }
         public function getAllBuses()
