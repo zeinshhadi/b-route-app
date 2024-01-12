@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Pressable, View } from "react-native";
+import { FlatList, Pressable, View } from "react-native";
 import DetailsCard from "../../components/cards/DetailsCard";
 import SearchBar from "../../components/common/SearchBar";
 import { StyleSheet } from "react-native";
 import axios from "axios";
 import { useSelector } from "react-redux";
+
 const BusesRegisteredScreen = ({ navigation }) => {
   const [busInfo, setBusInfo] = useState([]);
   const authState = useSelector((state) => state.auth);
@@ -20,20 +21,24 @@ const BusesRegisteredScreen = ({ navigation }) => {
 
         setBusInfo(response.data);
       } catch (error) {
-        console.error("Error fetching surveys:", error);
+        console.error("Error fetching buses:", error);
       }
     };
 
     fetchData();
   }, []);
 
+  const renderItem = ({ item }) => {
+    <Pressable onPress={() => navigation.navigate("BusInformation")}>
+      <DetailsCard cardTitle={item.id} cardDetail={item.model} tempText={item.moreDetails} status={item.zone} />
+    </Pressable>;
+  };
+
   return (
     <View style={styles.BusesRegisteredContainer}>
       <View style={styles.innerContainer}>
         <SearchBar />
-        <Pressable onPress={() => navigation.navigate("BusInformation")}>
-          <DetailsCard cardTitle={"bus#"} cardDetail={"model"} tempText={"MoreDetails"} status={"status"} />
-        </Pressable>
+        <FlatList data={busInfo.buses} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
       </View>
     </View>
   );
@@ -43,11 +48,14 @@ export default BusesRegisteredScreen;
 
 const styles = StyleSheet.create({
   BusesRegisteredContainer: {
+    flex: 1,
     justifyContent: "center",
     width: "100%",
     alignItems: "center",
   },
   innerContainer: {
+    flex: 1,
     width: "90%",
+    padding: 10,
   },
 });

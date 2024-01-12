@@ -4,7 +4,7 @@ import { Text } from "react-native";
 import { View } from "react-native";
 import Colors from "../../utils/colors";
 
-const DetailsCard = ({ cardTitle, cardDetail, status, tempText }) => {
+const DetailsCard = ({ cardTitle, cardDetail, status, tempText, itemType }) => {
   return (
     <View style={styles.detailsCardContainer}>
       <View style={styles.detailsCard}>
