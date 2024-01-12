@@ -7,7 +7,6 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 const AddDriverScreen = () => {
   const authState = useSelector((state) => state.auth);
-
   const authorization = "bearer " + authState.token;
 
   const data = [
