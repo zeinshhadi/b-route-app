@@ -1,24 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, TextInput, ScrollView, ActivityIndicator } from "react-native";
 import Button from "../../components/common/Button";
 import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 const AddBusScreen = () => {
   const authState = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
   const authorization = "bearer " + authState.token;
-  const data = [
-    { label: "Zone 1", value: 1 },
-    { label: "Zone 2", value: 2 },
-    { label: "Zone 3", value: "3" },
-    { label: "Zone 4", value: "4" },
-    { label: "Zone 5", value: "5" },
-    { label: "Zone 6", value: "6" },
-    { label: "Zone 7", value: "7" },
-    { label: "Zone 8", value: "8" },
-  ];
+  const [data, setData] = useState([]);
+  // const data = [
+  //   { label: "Zone 1", value: 1 },
+  //   { label: "Zone 2", value: 2 },
+  //   { label: "Zone 3", value: "3" },
+  //   { label: "Zone 4", value: "4" },
+  //   { label: "Zone 5", value: "5" },
+  //   { label: "Zone 6", value: "6" },
+  //   { label: "Zone 7", value: "7" },
+  //   { label: "Zone 8", value: "8" },
+  // ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://192.168.0.101:8000/api/zones");
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching zones:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   const [busInfo, setBusInfo] = useState({
