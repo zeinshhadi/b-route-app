@@ -3,7 +3,11 @@ import { Text, View, StyleSheet, TextInput, ScrollView, ActivityIndicator } from
 import Button from "../../components/common/Button";
 import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
+import { useSelector, useDispatch } from "react-redux";
 const AddBusScreen = () => {
+  const authState = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const authorization = "bearer " + authState.token;
   const data = [
     { label: "Zone 1", value: 1 },
     { label: "Zone 2", value: 2 },
@@ -22,6 +26,7 @@ const AddBusScreen = () => {
     plate_number: "",
     model: "",
     number_of_seats: "",
+    zone_id: 0,
   });
 
   const [loading, setLoading] = useState(false);
@@ -36,14 +41,7 @@ const AddBusScreen = () => {
   const handleRegister = async () => {
     console.log(authState.token);
     try {
-      if (
-        !busInfo.vin ||
-        !busInfo.color ||
-        !busInfo.plate_number ||
-        !busInfo.model ||
-        !busInfo.number_of_seats ||
-        !busInfo.driverLicense
-      ) {
+      if (!busInfo.vin || !busInfo.color || !busInfo.plate_number || !busInfo.model || !busInfo.number_of_seats) {
         console.error("Please fill in all fields");
         return;
       }
@@ -51,14 +49,12 @@ const AddBusScreen = () => {
       setLoading(true);
 
       const registrationData = {
-        first_name: busInfo.vin,
-        last_name: busInfo.color,
+        vin: busInfo.vin,
+        color: busInfo.color,
         plate_number: busInfo.plate_number,
         model: busInfo.model,
-        phone_number: busInfo.number_of_seats,
-        bus_id: busInfo.busId,
-        driver_license: busInfo.driverLicense,
-        image: "abcabc",
+        number_of_seats: busInfo.number_of_seats,
+        zone_id: busInfo.zone_id,
       };
 
       console.log("Registration Request Data:", registrationData);
@@ -128,7 +124,7 @@ const AddBusScreen = () => {
               onChange={(item) => {
                 setValue(item.value);
                 setIsFocus(false);
-                handleInputChange("BusId", item.value);
+                handleInputChange("zone_id", item.value);
               }}
             />
             <TextInput
