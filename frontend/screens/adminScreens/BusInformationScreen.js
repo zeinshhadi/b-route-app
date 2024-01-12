@@ -6,11 +6,20 @@ import BusInfoCard from "../../components/cards/busDetails/BusInfoCard";
 
 const BusInformationScreen = () => {
   const route = useRoute();
-  const itemId = route.params.itemId;
+  const item = route.params.item;
+  const { id, model, plate_number, color, vin, number_of_seats, zone_id } = item;
   return (
     <View style={styles.BusInformationContainer}>
       <DriverDetailsCard />
-      <BusInfoCard itemId={itemId} />
+      <BusInfoCard
+        id={id}
+        model={model}
+        plateNumber={plate_number}
+        color={color}
+        vin={vin}
+        numberOfSeats={number_of_seats}
+        zoneId={zone_id}
+      />
     </View>
   );
 };

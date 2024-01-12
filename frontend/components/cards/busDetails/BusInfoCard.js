@@ -3,16 +3,16 @@ import { View, StyleSheet } from "react-native";
 import BusTextDetails from "./BusTextDetails";
 import Colors from "../../../utils/colors";
 
-const BusInfoCard = ({ itemId }) => {
+const BusInfoCard = ({ id, model, plateNumber, color, vin, numberOfSeats, zoneId }) => {
   return (
     <View style={styles.busInformationContainer}>
-      <BusTextDetails detailTitle={"Model"} detailInfo={itemId} />
-      <BusTextDetails detailTitle={"Vin"} detailInfo={"123456987365"} />
-      <BusTextDetails detailTitle={"PLate Number"} detailInfo={"123456"} />
-      <BusTextDetails detailTitle={"color"} detailInfo={"Black"} />
-      <BusTextDetails detailTitle={"Number of Seats"} detailInfo={"20"} />
-      <BusTextDetails detailTitle={"Added At"} detailInfo={"20/02/2021"} />
-      <BusTextDetails detailTitle={"bus id"} detailInfo={"2"} />
+      <BusTextDetails detailTitle={"Bus ID"} detailInfo={id} />
+      <BusTextDetails detailTitle={"Model"} detailInfo={model} />
+      <BusTextDetails detailTitle={"Vin"} detailInfo={vin} />
+      <BusTextDetails detailTitle={"Plate Number"} detailInfo={plateNumber} />
+      <BusTextDetails detailTitle={"Color"} detailInfo={color} />
+      <BusTextDetails detailTitle={"Number of Seats"} detailInfo={numberOfSeats.toString()} />
+      <BusTextDetails detailTitle={"Zone ID"} detailInfo={zoneId.toString()} />
     </View>
   );
 };
