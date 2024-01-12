@@ -45,6 +45,7 @@ Route::group(["middleware" => ['auth:api', 'admin']], function () {
 Route::controller(BusesController::class)->group(function () {
     Route::post('register/bus', 'create_bus');
     Route::get('all/buses', 'getAllBuses');
+    Route::get('/bus', 'getAllBusesAndDriver');
 
 });
 Route::controller(DriversController::class)->group(function () {
