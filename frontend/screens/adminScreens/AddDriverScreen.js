@@ -78,7 +78,7 @@ const AddDriverScreen = () => {
         },
       });
 
-      console.log("Registration Response:", response.data);
+      console.log("Registration Response:", response.data.status);
 
       if (response.data.status === "success") {
         console.log("Driver Created successfully");
