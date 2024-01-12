@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bus;
+use App\Models\Driver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,9 @@ class BusesController extends Controller
     }
         public function getAllBuses()
     {
-        $buses = Bus::all();
+        // $buses = Bus::all();
+
+        $buses = Bus::has('driver')->with('driver')->get();
         return response()->json(['buses' => $buses], 200);
     }
 }
