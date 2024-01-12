@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, TextInput, ActivityIndicator, Image, ScrollView } from "react-native";
 import Button from "../../components/common/Button";
 import { Dropdown } from "react-native-element-dropdown";
@@ -9,16 +9,28 @@ const AddDriverScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
 
-  const data = [
-    { label: "Bus 1", value: 1 },
-    { label: "Bus 2", value: 2 },
-    { label: "Bus 3", value: "3" },
-    { label: "Bus 4", value: "4" },
-    { label: "Bus 5", value: "5" },
-    { label: "Bus 6", value: "6" },
-    { label: "Bus 7", value: "7" },
-    { label: "Bus 8", value: "8" },
-  ];
+  const [data, setData] = useState([{ label: "", value: "" }]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://192.168.0.101:8000/api/all/buses", {
+          headers: { Authorization: authorization },
+        });
+
+        const formattedData = response.data.buses.map((bus) => ({
+          label: `Bus ${bus.id} - ${bus.model}`,
+          value: bus.id,
+        }));
+
+        setData(formattedData);
+      } catch (error) {
+        console.error("Error fetching buses:", error);
+      }
+    };
+
+    fetchData();
+  }, [authorization]);
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   const [userData, setUserData] = useState({

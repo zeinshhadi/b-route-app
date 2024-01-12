@@ -17,7 +17,12 @@ class BusesController extends Controller
     }
         public function getAllBuses()
     {
-        // $buses = Bus::all();
+        $buses = Bus::all();
+        return response()->json(['buses' => $buses], 200);
+    }
+        public function getAllBusesAndDriver()
+    {
+
 
         $buses = Bus::has('driver')->with('driver')->get();
         return response()->json(['buses' => $buses], 200);
