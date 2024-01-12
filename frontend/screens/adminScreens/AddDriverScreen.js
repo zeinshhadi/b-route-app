@@ -10,7 +10,7 @@ const AddDriverScreen = () => {
   const authState = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const authorization = "bearer " + authState.token;
-  console.log(`this is the token ${authorization}`);
+
   const data = [
     { label: "Bus 1", value: 1 },
     { label: "Bus 2", value: 2 },
@@ -43,7 +43,6 @@ const AddDriverScreen = () => {
   };
 
   const handleRegisterDriver = async () => {
-    console.log(authState.token);
     try {
       if (
         !userData.firstName ||

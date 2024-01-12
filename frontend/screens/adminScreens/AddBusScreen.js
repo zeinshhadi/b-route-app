@@ -5,8 +5,8 @@ import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
 const AddBusScreen = () => {
   const data = [
-    { label: "Zone 1", value: "1" },
-    { label: "Zone 2", value: "2" },
+    { label: "Zone 1", value: 1 },
+    { label: "Zone 2", value: 2 },
     { label: "Zone 3", value: "3" },
     { label: "Zone 4", value: "4" },
     { label: "Zone 5", value: "5" },
@@ -34,7 +34,53 @@ const AddBusScreen = () => {
   };
 
   const handleRegister = async () => {
-    console.log(busInfo);
+    console.log(authState.token);
+    try {
+      if (
+        !busInfo.vin ||
+        !busInfo.color ||
+        !busInfo.plate_number ||
+        !busInfo.model ||
+        !busInfo.number_of_seats ||
+        !busInfo.driverLicense
+      ) {
+        console.error("Please fill in all fields");
+        return;
+      }
+
+      setLoading(true);
+
+      const registrationData = {
+        first_name: busInfo.vin,
+        last_name: busInfo.color,
+        plate_number: busInfo.plate_number,
+        model: busInfo.model,
+        phone_number: busInfo.number_of_seats,
+        bus_id: busInfo.busId,
+        driver_license: busInfo.driverLicense,
+        image: "abcabc",
+      };
+
+      console.log("Registration Request Data:", registrationData);
+
+      const response = await axios.post("http://192.168.0.101:8000/api/register/driver", registrationData, {
+        headers: {
+          Authorization: authorization,
+        },
+      });
+
+      console.log("Registration Response:", response.data.status);
+
+      if (response.data.status === "success") {
+        console.log("Driver Created successfully");
+      } else {
+        console.error("Registration failed");
+      }
+    } catch (error) {
+      console.error("Error during registration:", error.message || error);
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <View style={styles.outerContainer}>
@@ -46,14 +92,14 @@ const AddBusScreen = () => {
               style={styles.inputDesign}
               placeholder="Enter bus vin"
               placeholderTextColor="black"
-              value={busInfo.firstName}
+              value={busInfo.vin}
               onChangeText={(text) => handleInputChange("vin", text)}
             />
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter bus color"
               placeholderTextColor="black"
-              value={busInfo.lastName}
+              value={busInfo.color}
               onChangeText={(text) => handleInputChange("color", text)}
             />
             <TextInput
@@ -88,7 +134,6 @@ const AddBusScreen = () => {
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter bus model"
-              secureTextEntry
               value={busInfo.model}
               placeholderTextColor="black"
               onChangeText={(text) => handleInputChange("model", text)}
