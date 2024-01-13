@@ -18,6 +18,16 @@ const QrScreen = () => {
     }
     return true;
   }
+  async function getLocationHandler() {
+    const hasPermission = await verifyPermissions();
+    if (!hasPermission) {
+      return;
+    }
+    const location = await getCurrentPositionAsync();
+    let lat = location.coords.latitude;
+    let lon = location.coords.longitude;
+    console.log(lat, lon);
+  }
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
