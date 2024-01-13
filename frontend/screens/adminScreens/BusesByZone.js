@@ -10,7 +10,7 @@ import { useRoute } from "@react-navigation/native";
 const BusesByZone = ({ navigation }) => {
   const route = useRoute();
   const item = route.params.item;
-  const zone_id = item.zone_id;
+  const zone_id = item.id;
   console.log(zone_id);
   const [busZone, setBusZone] = useState([]);
   const authState = useSelector((state) => state.auth);
