@@ -51,7 +51,7 @@ const QrScreen = () => {
         color="black"
         backgroundColor="white"
       />
-      <Button title="Get Location" onPress={getLocationHandler} />
+      <Button title="Get Location" onPress={getLocationHandler()} />
     </View>
   );
 };
