@@ -34,10 +34,10 @@ const CategoryGridTile = () => {
             <Ionicons name="bus" size={50} color="black" />
           </GridComponent>
           <Text style={styles.titleContainer}>Buses</Text>
-          <GridComponent>
+          <GridComponent onPress={() => navigateToScreen("AddZoneScreen")}>
             <Ionicons name="person" size={50} color="black" />
           </GridComponent>
-          <Text style={styles.titleContainer}>Drivers</Text>
+          <Text style={styles.titleContainer}>Add Zone</Text>
         </View>
       </View>
     </View>
