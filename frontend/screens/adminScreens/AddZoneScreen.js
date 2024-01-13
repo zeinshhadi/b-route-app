@@ -48,7 +48,7 @@ const AddZoneScreen = () => {
       console.log("Registration Response:", response.data.status);
 
       if (response.data.status === "success") {
-        console.log("Bus Created successfully");
+        console.log("Zone Created successfully");
       } else {
         console.error("Registration failed");
       }
