@@ -78,6 +78,11 @@ export default function App() {
                 component={ReviewScreen}
                 options={{ headerShown: true, headerTitle: "Review Screen" }}
               />
+              <Stack.Screen
+                name="AddZoneScreen"
+                component={AddZ}
+                options={{ headerShown: true, headerTitle: "Review Screen" }}
+              />
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>

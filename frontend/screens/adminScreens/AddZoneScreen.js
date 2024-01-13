@@ -5,7 +5,7 @@ import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import axios from "axios";
-const AddBusScreen = () => {
+const AddZoneScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
 
@@ -81,7 +81,7 @@ const AddBusScreen = () => {
   );
 };
 
-export default AddBusScreen;
+export default AddZoneScreen;
 
 const styles = StyleSheet.create({
   outerContainer: {
