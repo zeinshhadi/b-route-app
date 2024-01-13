@@ -20,8 +20,6 @@ const EditProfile = () => {
           <ProfileCard cardTitle="First Name: " cardDetail={authState.user.first_name} />
           <ProfileCard cardTitle="Last Name: " cardDetail={authState.user.last_name} />
           <ProfileCard cardTitle="Role: " cardDetail={authState.user.role_type} />
-          <Text style={styles.cardTitleStyle}>Ride History:</Text>
-          <ProfileCard cardTitle="Your rides history:" cardDetail="Last ride since 08:56 am" />
         </View>
         <Button>
           <Text>LogOut</Text>
@@ -43,6 +41,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignContent: "center",
     width: "100%",
+    padding: 5,
   },
   editProfileBody: {
     width: "90%",
