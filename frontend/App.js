@@ -20,6 +20,7 @@ import ReviewScreen from "./screens/adminScreens/ReviewScreen";
 import UserBottomNavigation from "./components/common/bottomNavigation/UserBottomNavigation";
 import AdminBottomNavigation from "./components/common/bottomNavigation/AdminBottomNavigation";
 import AddZoneScreen from "./screens/adminScreens/AddZoneScreen";
+import BusesByZone from "./screens/adminScreens/BusesByZone";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -83,6 +84,11 @@ export default function App() {
                 name="AddZoneScreen"
                 component={AddZoneScreen}
                 options={{ headerShown: true, headerTitle: "Add Zone" }}
+              />
+              <Stack.Screen
+                name="BusesByZone"
+                component={BusesByZone}
+                options={{ headerShown: true, headerTitle: "Buses in zone" }}
               />
             </Stack.Navigator>
           </NavigationContainer>
