@@ -14,7 +14,9 @@ const EditProfile = ({ navigation }) => {
     const fetchData = async () => {
       try {
         const response = await axios.post("http://192.168.0.101:8000/api/logout", {
-          headers: { authorization: authorization },
+          headers: {
+            Authorization: authorization,
+          },
         });
         console.log("helo response" + response);
       } catch (error) {
