@@ -18,9 +18,7 @@ const BusesRegisteredScreen = ({ navigation }) => {
         const response = await axios.get("http://192.168.0.101:8000/api/bus", {
           headers: { Authorization: authorization },
         });
-        response.data.buses.forEach((bus, index) => {
-          console.log(`Bus ${index + 1} details:`, bus);
-        });
+
         setBusInfo(response.data);
       } catch (error) {
         console.error("Error fetching buses:", error);

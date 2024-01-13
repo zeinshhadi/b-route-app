@@ -17,7 +17,7 @@ const AddBusScreen = () => {
           headers: { Authorization: authorization },
         });
 
-        const formattedData = response.data["Zones are as follows : "].map((zone) => ({
+        const formattedData = response.data["zones"].map((zone) => ({
           label: `Zone ${zone.id} - ${zone.zone_name}`,
           value: zone.id,
         }));

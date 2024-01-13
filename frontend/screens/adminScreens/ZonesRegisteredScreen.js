@@ -7,29 +7,32 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 
 const ZonesRegisteredScreen = () => {
-  const [zones, setZones] = useState;
+  const [zones, setZones] = useState([]);
   const authState = useSelector((state) => state.auth);
-  const authorization = "bearer" + authState.token;
+  const authorization = "bearer " + authState.token;
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://192.168.0.101:8000/api/zones", {
           headers: { Authorization: authorization },
         });
-        setZones(response.data);
+        console.log("response ", response.data.zones);
+
+        setZones(response.data.zones);
       } catch (error) {
         console.log("Error Fetching " + error);
       }
     };
+    fetchData();
   }, []);
   const renderItem = ({ item }) => {
-    <DetailsCard cardTitle={item.id} cardDetail={item.zone_name} tempText={"MoreDetails"} status={"status"} />;
+    return <DetailsCard cardTitle={item.id} cardDetail={item.zone_name} tempText={"MoreDetails"} status={"status"} />;
   };
+
   return (
     <View style={styles.BusesRegisteredContainer}>
       <View style={styles.innerContainer}>
         <SearchBar />
-
         <FlatList data={zones} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
       </View>
     </View>
