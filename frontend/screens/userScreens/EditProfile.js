@@ -13,7 +13,9 @@ const EditProfile = ({ navigation }) => {
     console.log("logged out");
     const fetchData = async () => {
       try {
-        const response = await axios.post("http://192.168.0.101:8000/api/logout");
+        const response = await axios.post("http://192.168.0.101:8000/api/logout", {
+          headers: {},
+        });
       } catch (error) {
         console.log("Logout fail for the following error ", error);
       }
