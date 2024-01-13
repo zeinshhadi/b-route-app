@@ -30,7 +30,7 @@ const ZonesRegisteredScreen = () => {
   };
 
   return (
-    <View style={styles.BusesRegisteredContainer}>
+    <View style={styles.ZonesRegisteredScreenContainer}>
       <View style={styles.innerContainer}>
         <SearchBar />
         <FlatList data={zones} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
@@ -42,12 +42,15 @@ const ZonesRegisteredScreen = () => {
 export default ZonesRegisteredScreen;
 
 const styles = StyleSheet.create({
-  BusesRegisteredContainer: {
+  ZonesRegisteredScreenContainer: {
+    flex: 1,
     justifyContent: "center",
     width: "100%",
     alignItems: "center",
   },
   innerContainer: {
     width: "90%",
+    flex: 1,
+    padding: 10,
   },
 });
