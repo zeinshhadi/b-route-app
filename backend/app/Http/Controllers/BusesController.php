@@ -25,4 +25,7 @@ class BusesController extends Controller
         $buses = Bus::has('driver')->with('driver')->get();
         return response()->json(['buses' => $buses], 200);
     }
+    public function getBusesByZone(){
+        
+    }
 }
