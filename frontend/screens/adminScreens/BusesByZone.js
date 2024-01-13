@@ -5,18 +5,23 @@ import SearchBar from "../../components/common/SearchBar";
 import { StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { useRoute } from "@react-navigation/native";
 
 const BusesByZone = ({ navigation }) => {
-  const [busZone, setBusZone] = useState();
+  const route = useRoute();
+  const item = route.params.item;
+  const zone_id = item.zone_id;
+  console.log(zone_id);
+  const [busZone, setBusZone] = useState([]);
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://192.168.0.101:8000/api/bus/zone", {
+        const response = await axios.get(`http://192.168.0.101:8000/api/bus/zone/${zone_id}`, {
           headers: { Authorization: authorization },
         });
-        console.log("response ", response.data.busZone);
+        console.log("response ", response.data);
 
         setBusZone(response.data.busZone);
       } catch (error) {

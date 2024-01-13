@@ -27,7 +27,7 @@ const ZonesRegisteredScreen = ({ navigation }) => {
   }, []);
   const renderItem = ({ item }) => {
     return (
-      <Pressable onPress={() => navigation.navigate("BusInformation", { item: item })}>
+      <Pressable onPress={() => navigation.navigate("BusesByZone", { item: item })}>
         <DetailsCard cardTitle={item.id} cardDetail={item.zone_name} tempText={"MoreDetails"} status={"status"} />
       </Pressable>
     );
