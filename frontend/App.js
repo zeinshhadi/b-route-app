@@ -94,7 +94,7 @@ export default function App() {
               <Stack.Screen
                 name="DriverHomeScreen"
                 component={QrScreen}
-                options={{ headerShown: true, headerTitle: "Buses in zone" }}
+                options={{ headerShown: false, headerTitle: "Buses in zone" }}
               />
             </Stack.Navigator>
           </NavigationContainer>
