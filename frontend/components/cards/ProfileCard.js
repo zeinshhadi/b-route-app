@@ -8,8 +8,8 @@ const ProfileCard = ({ cardTitle, cardDetail }) => {
     <Pressable>
       <View style={styles.profileCardContainer}>
         <View style={styles.leftCardProfile}>
-          <Text>{cardTitle}</Text>
-          <Text>{cardDetail}</Text>
+          <Text style={styles.cardTitleStyle}>{cardTitle}</Text>
+          <Text style={styles.cardDetailStyle}>{cardDetail}</Text>
         </View>
         <View>
           <Icon name="arrow-right" size={30} color="black" />
@@ -36,5 +36,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     height: "100%",
     width: "80%",
+  },
+  cardTitleStyle: {
+    fontWeight: "bold",
+  },
+  cardDetailStyle: {
+    fontWeight: "bold",
+    color: "grey",
   },
 });
