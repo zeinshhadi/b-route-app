@@ -9,20 +9,25 @@ const EditProfile = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   console.log(authState);
-  const handleLogout = () => {
+  const handleLogout = async () => {
     console.log("logged out");
-    const fetchData = async () => {
-      try {
-        const response = await axios.post("http://192.168.0.101:8000/api/logout", {
+
+    try {
+      const response = await axios.post(
+        "http://192.168.0.101:8000/api/logout",
+        {},
+        {
           headers: {
             Authorization: authorization,
           },
-        });
-        console.log("helo response" + response);
-      } catch (error) {
-        console.log("Logout fail for the following error ", error);
+        }
+      );
+      if (response.data.status == "success") {
+        navigation.navigate("LogInScreen");
       }
-    };
+    } catch (error) {
+      console.log("Logout fail for the following error ", error);
+    }
   };
   return (
     <ScrollView>
@@ -35,8 +40,8 @@ const EditProfile = ({ navigation }) => {
           <ProfileCard cardTitle="Last Name: " cardDetail={authState.user.last_name} />
           <ProfileCard cardTitle="Role: " cardDetail={authState.user.role_type} />
         </View>
-        <Button onPress={handleLogout} disabled={loading}>
-          {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Zone</Text>}
+        <Button onPress={handleLogout}>
+          <Text>Log Out</Text>
         </Button>
       </View>
     </ScrollView>
