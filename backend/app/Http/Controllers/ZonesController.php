@@ -9,7 +9,7 @@ class ZonesController extends Controller
 {
   public function all_zones(){
     $zone=Zone::all();
-    return response()->json(['Zones are as follows : '=>$zone]);
+    return response()->json(['zones'=>$zone]);
   }
 
   public function add_zone(Request $request){
