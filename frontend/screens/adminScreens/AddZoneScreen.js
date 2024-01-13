@@ -60,7 +60,6 @@ const AddZoneScreen = () => {
   };
   return (
     <View style={styles.outerContainer}>
-      <Text style={styles.titleFormScreen}>Add Zone</Text>
       <View style={styles.formContainer}>
         <ScrollView>
           <View>
