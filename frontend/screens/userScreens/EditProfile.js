@@ -4,6 +4,7 @@ import { Text, View, StyleSheet } from "react-native";
 import Button from "../../components/common/Button";
 import { useSelector } from "react-redux";
 import { ScrollView } from "react-native";
+import axios from "axios";
 const EditProfile = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   console.log(authState);
@@ -11,6 +12,7 @@ const EditProfile = ({ navigation }) => {
     console.log("logged out");
     const fetchData = async () => {
       try {
+        const response = await axios.post();
       } catch (error) {}
     };
   };
