@@ -3,6 +3,7 @@ import ProfileCard from "../../components/cards/ProfileCard";
 import { Text, View, StyleSheet } from "react-native";
 import Button from "../../components/common/Button";
 import { useSelector } from "react-redux";
+import { ScrollView } from "react-native";
 const EditProfile = () => {
   const authState = useSelector((state) => state.auth);
   console.log(authState);
@@ -10,19 +11,23 @@ const EditProfile = () => {
     console.log("logged out ");
   };
   return (
-    <View style={styles.editProfileScreen}>
-      <View style={styles.editProfileBody}>
-        <Text style={styles.cardTitleStyle}>User Data</Text>
-        <ProfileCard cardTitle={"Phone Number: "} cardDetail={authState.user.phone_number} />
-        <ProfileCard cardTitle="Email: " cardDetail={authState.user.email} />
-        <ProfileCard cardTitle="First Name: " cardDetail={authState.user.first_name} />
-        <Text style={styles.cardTitleStyle}>Ride History:</Text>
-        <ProfileCard cardTitle="Your rides history:" cardDetail="Last ride since 08:56 am" />
+    <ScrollView>
+      <View style={styles.editProfileScreen}>
+        <View style={styles.editProfileBody}>
+          <Text style={styles.cardTitleStyle}>User Data</Text>
+          <ProfileCard cardTitle={"Phone Number: "} cardDetail={authState.user.phone_number} />
+          <ProfileCard cardTitle="Email: " cardDetail={authState.user.email} />
+          <ProfileCard cardTitle="First Name: " cardDetail={authState.user.first_name} />
+          <ProfileCard cardTitle="Last Name: " cardDetail={authState.user.last_name} />
+          <ProfileCard cardTitle="Role: " cardDetail={authState.user.role_type} />
+          <Text style={styles.cardTitleStyle}>Ride History:</Text>
+          <ProfileCard cardTitle="Your rides history:" cardDetail="Last ride since 08:56 am" />
+        </View>
+        <Button>
+          <Text>LogOut</Text>
+        </Button>
       </View>
-      <Button>
-        <Text>LogOut</Text>
-      </Button>
-    </View>
+    </ScrollView>
   );
 };
 
