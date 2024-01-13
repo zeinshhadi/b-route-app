@@ -55,6 +55,6 @@ const styles = StyleSheet.create({
   innerContainer: {
     width: "90%",
     flex: 1,
-    padding: 10,
+    marginBottom: 5,
   },
 });
