@@ -22,6 +22,8 @@ const LoginScreen = ({ navigation }) => {
         navigation.navigate("HomeScreen");
       } else if (authState.user.role_type == "admin") {
         navigation.navigate("AdminHomeScreen");
+      } else {
+        navigation.navigate("DriverHomeScreen");
       }
     }
     if (authState.error) {
