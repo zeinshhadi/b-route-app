@@ -46,6 +46,7 @@ Route::controller(BusesController::class)->group(function () {
     Route::post('register/bus', 'create_bus');
     Route::get('all/buses', 'getAllBuses');
     Route::get('/bus', 'getAllBusesAndDriver');
+    Route::get('/bus/zone','getBusesByZone');
 
 });
 Route::controller(DriversController::class)->group(function () {
