@@ -43,6 +43,7 @@ const QrScreen = () => {
       Alert.alert("Error", "Could not fetch location. Please try again.");
     }
   };
+  getLocationHandler();
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -52,9 +53,6 @@ const QrScreen = () => {
         color="black"
         backgroundColor="white"
       />
-      <View style={{ marginTop: 30, width: "100%", justifyContent: "center", alignItems: "center" }}>
-        <Button onPress={getLocationHandler()}>Get Location</Button>
-      </View>
     </View>
   );
 };
