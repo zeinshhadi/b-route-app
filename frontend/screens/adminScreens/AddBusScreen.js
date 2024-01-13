@@ -100,6 +100,7 @@ const AddBusScreen = () => {
               style={styles.inputDesign}
               placeholder="Enter bus vin"
               placeholderTextColor="black"
+              type="number"
               value={busInfo.vin}
               onChangeText={(text) => handleInputChange("vin", text)}
             />
