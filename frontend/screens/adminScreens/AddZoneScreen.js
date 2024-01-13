@@ -103,10 +103,6 @@ const styles = StyleSheet.create({
     width: "90%",
     justifyContent: "center",
   },
-  titleFormScreen: {
-    fontWeight: "500",
-    fontSize: 24,
-  },
   dropdown: {
     height: 50,
     borderColor: "gray",
