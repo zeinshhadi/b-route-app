@@ -4,6 +4,7 @@ import { Text, View, StyleSheet } from "react-native";
 import Button from "../../components/common/Button";
 
 const EditProfile = () => {
+  const useSelector = useSelector((state) => state.auth);
   handleLogin = () => {
     console.log("logged out ");
   };
