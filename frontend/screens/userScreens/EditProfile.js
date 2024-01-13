@@ -14,8 +14,8 @@ const EditProfile = () => {
       <View style={styles.editProfileBody}>
         <Text style={styles.cardTitleStyle}>User Data</Text>
         <ProfileCard cardTitle={"Phone Number: "} cardDetail={authState.user.phone_number} />
-        <ProfileCard cardTitle="Email: " cardDetail="zeinshhadi@gmail.com" />
-        <ProfileCard cardTitle="Name: " cardDetail="zeinShhadi" />
+        <ProfileCard cardTitle="Email: " cardDetail={authState.user.email} />
+        <ProfileCard cardTitle="First Name: " cardDetail={authState.user.first_name} />
         <Text style={styles.cardTitleStyle}>Ride History:</Text>
         <ProfileCard cardTitle="Your rides history:" cardDetail="Last ride since 08:56 am" />
       </View>
