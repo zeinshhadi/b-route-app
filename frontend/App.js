@@ -21,6 +21,7 @@ import UserBottomNavigation from "./components/common/bottomNavigation/UserBotto
 import AdminBottomNavigation from "./components/common/bottomNavigation/AdminBottomNavigation";
 import AddZoneScreen from "./screens/adminScreens/AddZoneScreen";
 import BusesByZone from "./screens/adminScreens/BusesByZone";
+import QrScreen from "./screens/driverScreens/QrScreen";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -92,7 +93,7 @@ export default function App() {
               />
               <Stack.Screen
                 name="DriverHomeScreen"
-                component={BusesByZone}
+                component={QrScreen}
                 options={{ headerShown: true, headerTitle: "Buses in zone" }}
               />
             </Stack.Navigator>
