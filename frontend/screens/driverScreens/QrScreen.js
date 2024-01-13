@@ -1,11 +1,13 @@
 import React from "react";
-import { Text } from "react-native";
 import { View } from "react-native";
+import QRCode from "react-native-qrcode-svg";
 
 const QrScreen = () => {
+  const dataToEncode = "YourDataHere";
+
   return (
-    <View>
-      <Text>Driver qr</Text>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <QRCode value={dataToEncode} size={200} color="black" backgroundColor="white" />
     </View>
   );
 };
