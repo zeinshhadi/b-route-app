@@ -1,8 +1,10 @@
 import React from "react";
 import { View } from "react-native";
 import QRCode from "react-native-qrcode-svg";
-
+import { useSelector } from "react-redux";
 const QrScreen = () => {
+  const authState = useSelector((state) => state.auth);
+  driver_id = authState.user.id;
   const dataToEncode = "YourDataHere";
 
   return (
