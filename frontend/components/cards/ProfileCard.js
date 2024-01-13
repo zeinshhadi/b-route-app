@@ -44,5 +44,6 @@ const styles = StyleSheet.create({
   cardDetailStyle: {
     fontWeight: "bold",
     color: "grey",
+    fontSize: 15,
   },
 });
