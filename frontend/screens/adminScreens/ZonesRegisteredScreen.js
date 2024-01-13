@@ -22,15 +22,15 @@ const ZonesRegisteredScreen = () => {
       }
     };
   }, []);
-  const renderItem = () => {
-    <DetailsCard cardTitle={"Zone#"} cardDetail={"zoneName"} tempText={"MoreDetails"} status={"status"} />;
+  const renderItem = ({ item }) => {
+    <DetailsCard cardTitle={item.id} cardDetail={item.zone_name} tempText={"MoreDetails"} status={"status"} />;
   };
   return (
     <View style={styles.BusesRegisteredContainer}>
       <View style={styles.innerContainer}>
         <SearchBar />
 
-        <FlatList data={zones} renderItem={renderItem} />
+        <FlatList data={zones} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
       </View>
     </View>
   );
