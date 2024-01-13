@@ -75,7 +75,7 @@ const AddZoneScreen = () => {
         </ScrollView>
       </View>
       <Button onPress={handleRegister} disabled={loading}>
-        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Bus</Text>}
+        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Zone</Text>}
       </Button>
     </View>
   );
