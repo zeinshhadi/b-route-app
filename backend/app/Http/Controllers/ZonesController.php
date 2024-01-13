@@ -17,5 +17,6 @@ class ZonesController extends Controller
        'zone_name'=>$request->zone_name,
       
       ]);
+     return response()->json(['status' => 'success'], 201);
   }
 }
