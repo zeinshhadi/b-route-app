@@ -7,6 +7,7 @@ import { ScrollView } from "react-native";
 import axios from "axios";
 const EditProfile = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
+  const authorization = "bearer " + authState.token;
   console.log(authState);
   handleLogout = () => {
     console.log("logged out");
