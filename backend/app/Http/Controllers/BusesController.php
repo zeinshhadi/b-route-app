@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class BusesController extends Controller
 {
 
-    public function create_bus(Request $req){
-             $bus= Bus::create($req->all());
+    public function create_bus(Request $request){
+             $bus= Bus::create($request->all());
              return response()->json(['status'=>'success'],200);
 
     }
@@ -25,7 +25,8 @@ class BusesController extends Controller
         $buses = Bus::has('driver')->with('driver')->get();
         return response()->json(['buses' => $buses], 200);
     }
-    public function getBusesByZone(){
-        
+    public function getBusesByZone(Request $request){
+        $bus = Bus::where('zone_id',$request->zone_id)->get();
+         return response()->json(['bus' => $bus], 200);
     }
 }
