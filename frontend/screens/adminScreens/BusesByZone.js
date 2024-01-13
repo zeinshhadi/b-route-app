@@ -12,7 +12,7 @@ const BusesByZone = ({ navigation }) => {
   const item = route.params.item;
   const zone_id = item.id;
   console.log(zone_id);
-  const [busZone, setBusZone] = useState([]);
+  const [busZone, setBusZone] = useState();
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   useEffect(() => {
@@ -21,9 +21,8 @@ const BusesByZone = ({ navigation }) => {
         const response = await axios.get(`http://192.168.0.101:8000/api/bus/zone/${zone_id}`, {
           headers: { Authorization: authorization },
         });
-        console.log("response ", response.data);
 
-        setBusZone(response.data.busZone);
+        setBusZone(response.data.bus);
       } catch (error) {
         console.log("Error Fetching " + error);
       }
