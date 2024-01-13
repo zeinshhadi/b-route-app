@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { View, Alert, Button } from "react-native";
+import { View, Alert } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { useSelector } from "react-redux";
 import { requestForegroundPermissionsAsync, getCurrentPositionAsync, PermissionStatus } from "expo-location";
+import Button from "../../components/common/Button";
 
 const QrScreen = () => {
   const authState = useSelector((state) => state.auth);
@@ -51,7 +52,9 @@ const QrScreen = () => {
         color="black"
         backgroundColor="white"
       />
-      <Button title="Get Location" onPress={getLocationHandler()} />
+      <View style={{ marginTop: 30, width: "100%", justifyContent: "center", alignItems: "center" }}>
+        <Button onPress={getLocationHandler()}>Get Location</Button>
+      </View>
     </View>
   );
 };
