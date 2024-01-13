@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, Pressable, View } from "react-native";
 import DetailsCard from "../../components/cards/DetailsCard";
 import SearchBar from "../../components/common/SearchBar";
 import { StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-const ZonesRegisteredScreen = () => {
-  const [zones, setZones] = useState([]);
+const ZonesRegisteredScreen = ({ navigation }) => {
+  const [zones, setZones] = useState();
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   useEffect(() => {
@@ -26,7 +26,11 @@ const ZonesRegisteredScreen = () => {
     fetchData();
   }, []);
   const renderItem = ({ item }) => {
-    return <DetailsCard cardTitle={item.id} cardDetail={item.zone_name} tempText={"MoreDetails"} status={"status"} />;
+    return (
+      <Pressable onPress={() => navigation.navigate("BusInformation", { item: item })}>
+        <DetailsCard cardTitle={item.id} cardDetail={item.zone_name} tempText={"MoreDetails"} status={"status"} />
+      </Pressable>
+    );
   };
 
   return (
