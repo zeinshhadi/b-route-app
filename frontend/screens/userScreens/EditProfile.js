@@ -2,9 +2,10 @@ import React from "react";
 import ProfileCard from "../../components/cards/ProfileCard";
 import { Text, View, StyleSheet } from "react-native";
 import Button from "../../components/common/Button";
-
+import { useSelector } from "react-redux";
 const EditProfile = () => {
-  const useSelector = useSelector((state) => state.auth);
+  const authState = useSelector((state) => state.auth);
+  console.log(authState);
   handleLogin = () => {
     console.log("logged out ");
   };
@@ -12,7 +13,7 @@ const EditProfile = () => {
     <View style={styles.editProfileScreen}>
       <View style={styles.editProfileBody}>
         <Text style={styles.cardTitleStyle}>User Data</Text>
-        <ProfileCard cardTitle="Phone Number: " cardDetail="+961503760" />
+        <ProfileCard cardTitle={"Phone Number: "} cardDetail={authState.user.phone_number} />
         <ProfileCard cardTitle="Email: " cardDetail="zeinshhadi@gmail.com" />
         <ProfileCard cardTitle="Name: " cardDetail="zeinShhadi" />
         <Text style={styles.cardTitleStyle}>Ride History:</Text>
