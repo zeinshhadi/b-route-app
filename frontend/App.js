@@ -90,6 +90,11 @@ export default function App() {
                 component={BusesByZone}
                 options={{ headerShown: true, headerTitle: "Buses in zone" }}
               />
+              <Stack.Screen
+                name="DriverHomeScreen"
+                component={BusesByZone}
+                options={{ headerShown: true, headerTitle: "Buses in zone" }}
+              />
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>
