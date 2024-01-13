@@ -92,7 +92,6 @@ const AddBusScreen = () => {
   };
   return (
     <View style={styles.outerContainer}>
-      <Text style={styles.titleFormScreen}>Add Bus</Text>
       <View style={styles.formContainer}>
         <ScrollView>
           <View>
