@@ -1,37 +1,48 @@
-import React from "react";
-import { View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Alert, Button } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { useSelector } from "react-redux";
+import { requestForegroundPermissionsAsync, getCurrentPositionAsync, PermissionStatus } from "expo-location";
+
 const QrScreen = () => {
   const authState = useSelector((state) => state.auth);
-  driver_id = authState.user.id;
-  const dataToEncode = "YourDataHere";
+  const driver_id = authState.user.id;
+  const [locationPermission, setLocationPermission] = useState(null);
+  const [location, setLocation] = useState(null);
 
-  async function verifyPermissions() {
-    if (locationPermissionInformation.status === PermissionStatus.UNDETERMINED) {
-      const permissionResponse = await requestPermission();
-      return permissionResponse.granted;
+  useEffect(() => {
+    requestLocationPermission();
+  }, []);
+
+  const requestLocationPermission = async () => {
+    const { status } = await requestForegroundPermissionsAsync();
+    setLocationPermission(status);
+  };
+
+  const getLocationHandler = async () => {
+    try {
+      if (locationPermission !== PermissionStatus.GRANTED) {
+        await requestLocationPermission();
+        return;
+      }
+
+      const locationData = await getCurrentPositionAsync({});
+      const lat = locationData.coords.latitude;
+      const lon = locationData.coords.longitude;
+      setLocation({ lat, lon });
+
+      const dataToEncode = JSON.stringify({ lat, lon, driver_id });
+      console.log(dataToEncode);
+    } catch (error) {
+      console.error("Error getting location:", error);
+      Alert.alert("Error", "Could not fetch location. Please try again.");
     }
-    if (locationPermissionInformation.status === PermissionStatus.DENIED) {
-      Alert.alert("Insufficient Permissions!", "You need to grant location permissions to use this app.");
-      return false;
-    }
-    return true;
-  }
-  async function getLocationHandler() {
-    const hasPermission = await verifyPermissions();
-    if (!hasPermission) {
-      return;
-    }
-    const location = await getCurrentPositionAsync();
-    let lat = location.coords.latitude;
-    let lon = location.coords.longitude;
-    console.log(lat, lon);
-  }
+  };
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <QRCode value={dataToEncode} size={200} color="black" backgroundColor="white" />
+      <QRCode value={JSON.stringify(location)} size={200} color="black" backgroundColor="white" />
+      <Button title="Get Location" onPress={getLocationHandler} />
     </View>
   );
 };
