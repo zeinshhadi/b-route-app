@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
   },
   cardTitleStyle: {
     fontWeight: "bold",
+    fontSize: 18,
   },
   cardDetailStyle: {
     fontWeight: "bold",
