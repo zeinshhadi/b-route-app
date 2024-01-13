@@ -4,7 +4,7 @@ import { Text, View, StyleSheet } from "react-native";
 import Button from "../../components/common/Button";
 import { useSelector } from "react-redux";
 import { ScrollView } from "react-native";
-const EditProfile = () => {
+const EditProfile = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   console.log(authState);
   handleLogout = () => {
