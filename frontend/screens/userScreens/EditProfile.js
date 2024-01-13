@@ -7,8 +7,8 @@ import { ScrollView } from "react-native";
 const EditProfile = () => {
   const authState = useSelector((state) => state.auth);
   console.log(authState);
-  handleLogin = () => {
-    console.log("logged out ");
+  handleLogout = () => {
+    console.log("logged out");
   };
   return (
     <ScrollView>
@@ -21,7 +21,7 @@ const EditProfile = () => {
           <ProfileCard cardTitle="Last Name: " cardDetail={authState.user.last_name} />
           <ProfileCard cardTitle="Role: " cardDetail={authState.user.role_type} />
         </View>
-        <Button>
+        <Button onPress={handleLogout}>
           <Text>LogOut</Text>
         </Button>
       </View>
