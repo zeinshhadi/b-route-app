@@ -115,6 +115,7 @@ const AddBusScreen = () => {
               style={styles.inputDesign}
               placeholder="Enter bus plate number"
               placeholderTextColor="black"
+              type="number"
               value={busInfo.plate_number}
               onChangeText={(text) => handleInputChange("plate_number", text)}
             />
@@ -151,6 +152,7 @@ const AddBusScreen = () => {
               style={styles.inputDesign}
               placeholder="Enter number of seats"
               value={busInfo.number_of_seats}
+              type="number"
               placeholderTextColor="black"
               onChangeText={(text) => handleInputChange("number_of_seats", text)}
             />
