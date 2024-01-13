@@ -9,6 +9,10 @@ const EditProfile = () => {
   console.log(authState);
   handleLogout = () => {
     console.log("logged out");
+    const fetchData = async () => {
+      try {
+      } catch (error) {}
+    };
   };
   return (
     <ScrollView>
