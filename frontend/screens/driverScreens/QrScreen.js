@@ -14,6 +14,13 @@ const QrScreen = () => {
     requestLocationPermission();
   }, []);
 
+  useEffect(() => {
+    if (location) {
+      const dataToEncode = JSON.stringify({ lat: location.lat, lon: location.lon, driver_id });
+      console.log(dataToEncode);
+    }
+  }, [location, driver_id]);
+
   const requestLocationPermission = async () => {
     const { status } = await requestForegroundPermissionsAsync();
     setLocationPermission(status);
@@ -30,9 +37,6 @@ const QrScreen = () => {
       const lat = locationData.coords.latitude;
       const lon = locationData.coords.longitude;
       setLocation({ lat, lon });
-
-      const dataToEncode = JSON.stringify({ lat, lon, driver_id });
-      console.log(dataToEncode);
     } catch (error) {
       console.error("Error getting location:", error);
       Alert.alert("Error", "Could not fetch location. Please try again.");
@@ -41,7 +45,12 @@ const QrScreen = () => {
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <QRCode value={JSON.stringify(location)} size={200} color="black" backgroundColor="white" />
+      <QRCode
+        value={JSON.stringify({ lat: location?.lat, lon: location?.lon, driver_id })}
+        size={200}
+        color="black"
+        backgroundColor="white"
+      />
       <Button title="Get Location" onPress={getLocationHandler} />
     </View>
   );
