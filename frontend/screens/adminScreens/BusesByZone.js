@@ -30,6 +30,7 @@ const BusesByZone = ({ navigation }) => {
     fetchData();
   }, []);
   const renderItem = ({ item }) => {
+    console.log("this is item " + item);
     return (
       <Pressable onPress={() => navigation.navigate("BusInformation", { item: item })}>
         <DetailsCard cardTitle={item.id} cardDetail={item.model} tempText={"MoreDetails"} status={"status"} />
