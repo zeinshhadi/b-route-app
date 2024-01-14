@@ -10,10 +10,41 @@ const DriverHomeScreen = () => {
   const driver_id = authState.user.id;
   const [locationPermission, setLocationPermission] = useState(null);
   const [location, setLocation] = useState(null);
+  const [initialFetchComplete, setInitialFetchComplete] = useState(false);
 
   useEffect(() => {
-    requestLocationPermission();
-  }, []);
+    const getLocation = async () => {
+      try {
+        if (locationPermission !== PermissionStatus.GRANTED) {
+          await requestLocationPermission();
+          return;
+        }
+
+        const locationData = await getCurrentPositionAsync({});
+        const lat = locationData.coords.latitude;
+        const lon = locationData.coords.longitude;
+        setLocation({ lat, lon });
+        setInitialFetchComplete(true); // Set the flag after the initial fetch
+      } catch (error) {
+        console.error("Error getting location:", error);
+        Alert.alert("Error", "Could not fetch location. Please try again.");
+      }
+    };
+
+    // Fetch location initially
+    getLocation();
+
+    // Set up interval for subsequent refreshes only if the initial fetch is complete
+    if (initialFetchComplete) {
+      const intervalId = setInterval(getLocation, 10000); // Refresh every 10 seconds
+      return () => clearInterval(intervalId); // Cleanup interval on unmount
+    }
+  }, [locationPermission, initialFetchComplete]);
+
+  const requestLocationPermission = async () => {
+    const { status } = await requestForegroundPermissionsAsync();
+    setLocationPermission(status);
+  };
 
   useEffect(() => {
     if (location) {
@@ -22,28 +53,14 @@ const DriverHomeScreen = () => {
     }
   }, [location, driver_id]);
 
-  const requestLocationPermission = async () => {
-    const { status } = await requestForegroundPermissionsAsync();
-    setLocationPermission(status);
-  };
-
   const getLocationHandler = async () => {
     try {
-      if (locationPermission !== PermissionStatus.GRANTED) {
-        await requestLocationPermission();
-        return;
-      }
-
-      const locationData = await getCurrentPositionAsync({});
-      const lat = locationData.coords.latitude;
-      const lon = locationData.coords.longitude;
-      setLocation({ lat, lon });
+      await getLocation();
     } catch (error) {
       console.error("Error getting location:", error);
       Alert.alert("Error", "Could not fetch location. Please try again.");
     }
   };
-  getLocationHandler();
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -54,7 +71,7 @@ const DriverHomeScreen = () => {
         backgroundColor="white"
       />
       <View style={{ marginTop: 30, width: "100%", justifyContent: "center", alignItems: "center" }}>
-        <Button onPress={getLocationHandler()}>Get Location</Button>
+        <Button onPress={getLocationHandler}>Get Location</Button>
       </View>
     </View>
   );
