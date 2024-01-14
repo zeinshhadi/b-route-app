@@ -39,12 +39,3 @@ const UserRideScreen = () => {
 
 export default UserRideScreen;
 const styles = StyleSheet.create({ container: { flex: 1 } });
-// import React from "react";
-// import { Alert, Text, View } from "react-native";
-// import QRCodeScanner from "react-native-qrcode-scanner";
-// import { RNCamera } from "react-native-camera";
-// const UserRideScreen = () => {
-//   return <QRCodeScanner onRead={(data) => Alert(data)} flashMode={RNCamera.Constants.FlashMode.torch} />;
-// };
-
-// export default UserRideScreen;
