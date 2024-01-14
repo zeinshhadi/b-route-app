@@ -99,14 +99,9 @@ const AddBusScreen = () => {
               style={styles.inputDesign}
               placeholder="Enter bus vin"
               placeholderTextColor="black"
-              type="integer"
+              type="number"
               value={busInfo.vin}
-              onChangeText={(text) => {
-                const numericValue = parseInt(text, 10);
-                if (!isNaN(numericValue)) {
-                  handleInputChange("vin", numericValue);
-                }
-              }}
+              onChangeText={(text) => handleInputChange("vin", text)}
             />
             <TextInput
               style={styles.inputDesign}
@@ -121,12 +116,7 @@ const AddBusScreen = () => {
               placeholderTextColor="black"
               type="number"
               value={busInfo.plate_number}
-              onChangeText={(text) => {
-                const numericValue = parseInt(text, 10);
-                if (!isNaN(numericValue)) {
-                  handleInputChange("plate_number", numericValue);
-                }
-              }}
+              onChangeText={(text) => handleInputChange("plate_number", text)}
             />
             <Dropdown
               style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
@@ -163,12 +153,7 @@ const AddBusScreen = () => {
               value={busInfo.number_of_seats}
               type="number"
               placeholderTextColor="black"
-              onChangeText={(text) => {
-                const numericValue = parseInt(text, 10);
-                if (!isNaN(numericValue)) {
-                  handleInputChange("number_of_seats", numericValue);
-                }
-              }}
+              onChangeText={(text) => handleInputChange("number_of_seats", text)}
             />
           </View>
         </ScrollView>
