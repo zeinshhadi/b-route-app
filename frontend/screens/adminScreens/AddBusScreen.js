@@ -121,7 +121,12 @@ const AddBusScreen = () => {
               placeholderTextColor="black"
               type="number"
               value={busInfo.plate_number}
-              onChangeText={(text) => handleInputChange("plate_number", text)}
+              onChangeText={(text) => {
+                const numericValue = parseInt(text, 10);
+                if (!isNaN(numericValue)) {
+                  handleInputChange("plate_number", numericValue);
+                }
+              }}
             />
             <Dropdown
               style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
