@@ -31,13 +31,11 @@ const DriverHomeScreen = () => {
       }
     };
 
-    // Fetch location initially
     getLocation();
 
-    // Set up interval for subsequent refreshes only if the initial fetch is complete
     if (initialFetchComplete) {
-      const intervalId = setInterval(getLocation, 10000); // Refresh every 10 seconds
-      return () => clearInterval(intervalId); // Cleanup interval on unmount
+      const intervalId = setInterval(getLocation, 10000);
+      return () => clearInterval(intervalId);
     }
   }, [locationPermission, initialFetchComplete]);
 

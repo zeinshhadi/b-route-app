@@ -99,9 +99,14 @@ const AddBusScreen = () => {
               style={styles.inputDesign}
               placeholder="Enter bus vin"
               placeholderTextColor="black"
-              type="number"
+              type="integer"
               value={busInfo.vin}
-              onChangeText={(text) => handleInputChange("vin", text)}
+              onChangeText={(text) => {
+                const numericValue = parseInt(text, 10);
+                if (!isNaN(numericValue)) {
+                  handleInputChange("vin", numericValue);
+                }
+              }}
             />
             <TextInput
               style={styles.inputDesign}
