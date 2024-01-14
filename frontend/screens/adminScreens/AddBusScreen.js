@@ -93,8 +93,8 @@ const AddBusScreen = () => {
   return (
     <View style={styles.outerContainer}>
       <View style={styles.formContainer}>
-        <ScrollView>
-          <View>
+        <ScrollView style={styles.scrollViewFull}>
+          <View style={styles.innerContainerAddBus}>
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter bus vin"
@@ -210,5 +210,11 @@ const styles = StyleSheet.create({
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
+  },
+  scrollViewFull: {
+    marginTop: 30,
+  },
+  innerContainerAddBus: {
+    flex: 1,
   },
 });
