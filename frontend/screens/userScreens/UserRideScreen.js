@@ -16,6 +16,13 @@ const UserRideScreen = () => {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
+    try {
+      const decodedData = JSON.parse(data);
+      console.log("Decoded Data:", decodedData);
+      alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    } catch (error) {
+      console.error("Error parsing barcode data:", error);
+    }
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   };
 
