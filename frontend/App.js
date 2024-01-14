@@ -6,8 +6,6 @@ import LoginScreen from "./screens/authScreens/LoginScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import RegisterScreen from "./screens/authScreens/RegisterScreen";
-import HomeScreen from "./screens/userScreens/HomeScreen";
-import AdminHomeScreen from "./screens/adminScreens/AdminHomeScreen";
 import BusDetails from "./screens/userScreens/BusDetails";
 import UserFeedback from "./screens/userScreens/UserFeedback";
 import EditProfile from "./screens/userScreens/EditProfile";
@@ -21,7 +19,6 @@ import UserBottomNavigation from "./components/common/bottomNavigation/UserBotto
 import AdminBottomNavigation from "./components/common/bottomNavigation/AdminBottomNavigation";
 import AddZoneScreen from "./screens/adminScreens/AddZoneScreen";
 import BusesByZone from "./screens/adminScreens/BusesByZone";
-import QrScreen from "./screens/driverScreens/QrScreen";
 import DriverBottomNavigation from "./components/common/bottomNavigation/DriverBottomNavigation";
 const Stack = createNativeStackNavigator();
 
