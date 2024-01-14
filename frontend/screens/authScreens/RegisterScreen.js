@@ -52,7 +52,6 @@ const RegisterScreen = ({ navigation }) => {
             console.error("Error storing token:", error);
           }
         };
-        navigation.navigate("HomeScreen");
       } else {
         console.error("Registration failed");
       }
