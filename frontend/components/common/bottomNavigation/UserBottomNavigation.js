@@ -8,6 +8,7 @@ import ReviewScreen from "../../../screens/adminScreens/ReviewScreen";
 import HomeScreen from "../../../screens/userScreens/HomeScreen";
 import Colors from "../../../utils/colors";
 import { Ionicons } from "@expo/vector-icons";
+import UserRideScreen from "../../../screens/userScreens/UserRideScreen";
 const Tab = createBottomTabNavigator();
 
 const UserBottomNavigation = () => {
@@ -27,7 +28,7 @@ const UserBottomNavigation = () => {
       />
       <Tab.Screen
         name="Rides"
-        component={ReviewScreen}
+        component={UserRideScreen}
         options={{ tabBarIcon: ({ color, size }) => <Ionicons name="car" color={color} size={size} /> }}
       />
       <Tab.Screen
