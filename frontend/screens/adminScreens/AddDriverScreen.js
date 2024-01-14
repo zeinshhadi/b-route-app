@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, TextInput, ActivityIndicator, Image, ScrollView } from "react-native";
+import { Text, View, StyleSheet, TextInput, ActivityIndicator, Image, ScrollView, Alert } from "react-native";
 import Button from "../../components/common/Button";
 import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
@@ -91,6 +91,7 @@ const AddDriverScreen = () => {
 
       if (response.data.status === "success") {
         console.log("Driver Created successfully");
+        Alert.alert("Driver Created successfully");
       } else {
         console.error("Registration failed");
       }
