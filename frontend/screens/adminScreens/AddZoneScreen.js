@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, TextInput, ScrollView, ActivityIndicator } from "react-native";
+import { Text, View, StyleSheet, TextInput, ScrollView, ActivityIndicator, Alert } from "react-native";
 import Button from "../../components/common/Button";
 import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
@@ -49,6 +49,7 @@ const AddZoneScreen = () => {
 
       if (response.data.status === "success") {
         console.log("Zone Created successfully");
+        Alert.alert("Zone Created successfully");
       } else {
         console.error("Registration failed");
       }
