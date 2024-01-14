@@ -1,10 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-import AdminHomeScreen from "../../../screens/adminScreens/AdminHomeScreen";
 import EditProfile from "../../../screens/userScreens/EditProfile";
 import ChatScreen from "../../../screens/common/ChatScreen";
-import ReviewScreen from "../../../screens/adminScreens/ReviewScreen";
 import HomeScreen from "../../../screens/userScreens/HomeScreen";
 import Colors from "../../../utils/colors";
 import { Ionicons } from "@expo/vector-icons";
