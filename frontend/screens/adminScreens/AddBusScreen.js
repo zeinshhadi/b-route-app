@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, TextInput, ScrollView, ActivityIndicator } from "react-native";
+import { Text, View, StyleSheet, TextInput, ScrollView, ActivityIndicator, Alert } from "react-native";
 import Button from "../../components/common/Button";
 import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
@@ -80,7 +80,7 @@ const AddBusScreen = () => {
       console.log("Registration Response:", response.data.status);
 
       if (response.data.status === "success") {
-        console.log("Bus Created successfully");
+        Alert.alert("Bus Created successfully");
       } else {
         console.error("Registration failed");
       }
@@ -93,8 +93,8 @@ const AddBusScreen = () => {
   return (
     <View style={styles.outerContainer}>
       <View style={styles.formContainer}>
-        <ScrollView style={styles.scrollViewFull}>
-          <View style={styles.innerContainerAddBus}>
+        <ScrollView>
+          <View>
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter bus vin"
@@ -210,11 +210,5 @@ const styles = StyleSheet.create({
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
-  },
-  scrollViewFull: {
-    marginTop: 30,
-  },
-  innerContainerAddBus: {
-    flex: 1,
   },
 });
