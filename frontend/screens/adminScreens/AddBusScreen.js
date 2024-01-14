@@ -158,7 +158,12 @@ const AddBusScreen = () => {
               value={busInfo.number_of_seats}
               type="number"
               placeholderTextColor="black"
-              onChangeText={(text) => handleInputChange("number_of_seats", text)}
+              onChangeText={(text) => {
+                const numericValue = parseInt(text, 10);
+                if (!isNaN(numericValue)) {
+                  handleInputChange("number_of_seats", numericValue);
+                }
+              }}
             />
           </View>
         </ScrollView>
