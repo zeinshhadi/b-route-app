@@ -48,7 +48,6 @@ const AddZoneScreen = () => {
       console.log("Registration Response:", response.data.status);
 
       if (response.data.status === "success") {
-        console.log("Zone Created successfully");
         Alert.alert("Zone Created successfully");
       } else {
         console.error("Registration failed");
