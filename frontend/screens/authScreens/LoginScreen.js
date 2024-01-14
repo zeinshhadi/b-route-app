@@ -16,8 +16,10 @@ const LoginScreen = ({ navigation }) => {
   const handleRegister = () => {
     navigation.navigate("RegisterScreen");
   };
+
   useEffect(() => {
     if (authState.isLoggedIn) {
+      setLoading(false);
       if (authState.user.role_type == "passenger") {
         navigation.navigate("HomeScreen");
       } else if (authState.user.role_type == "admin") {
@@ -31,6 +33,7 @@ const LoginScreen = ({ navigation }) => {
     }
   }, [authState, navigation]);
   const handleLogin = async () => {
+    setLoading(true);
     if (!email || !password) {
       setError("All fields should be filled");
     } else {
