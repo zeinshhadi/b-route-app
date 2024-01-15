@@ -3,13 +3,15 @@ import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import axios from "axios";
 const UserRideScreen = () => {
+  const authState = useSelector((state) => state.auth);
+  const authorization = "bearer " + authState.token;
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [rideStatus, setRideStatus] = useState(false);
-  const [startLongitude, setStartLongitude] = useState();
-  const [startLatitude, setStartLatitude] = useState();
-  const [endLongitude, setEndLongitude] = useState();
-  const [endLatitude, setEndLatitude] = useState();
+  const [startLongitude, setStartLongitude] = useState(0);
+  const [startLatitude, setStartLatitude] = useState(0);
+  const [endLongitude, setEndLongitude] = useState(0);
+  const [endLatitude, setEndLatitude] = useState(0);
 
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
@@ -31,7 +33,7 @@ const UserRideScreen = () => {
           start_Latitude: startLatitude,
         };
         const response = await axios.post("http://192.168.0.101:8000/api/start/ride", rideDetails, {
-          headers: { Authorization },
+          headers: { Authorization: authorization },
         });
         console.log(response.data);
       } else {
