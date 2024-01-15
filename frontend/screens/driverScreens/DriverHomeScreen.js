@@ -3,7 +3,6 @@ import { View, Alert } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { useSelector } from "react-redux";
 import { requestForegroundPermissionsAsync, getCurrentPositionAsync, PermissionStatus } from "expo-location";
-import Button from "../../components/common/Button";
 
 const DriverHomeScreen = () => {
   const authState = useSelector((state) => state.auth);
