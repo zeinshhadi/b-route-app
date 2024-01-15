@@ -45,6 +45,12 @@ public function create_ride(Request $request){
     public function add_feedback(Request $request){
         $user = Auth::user();
         $ride= Ride::where('user_id',$user->id)->latest()->first();
+        if($ride){
         $ride->update(["rate"=>$request->input('rate'),"review"=>$request->input('review')]);
+        return response()->json(['ride ',$ride]);
+        }else{
+            return response()->json(['ride not found']);
+        }
+        
     }
 }
