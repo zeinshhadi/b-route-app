@@ -15,7 +15,11 @@ const UserFeedback = () => {
     console.log("Review:", review);
     console.log("Rating:", rating);
     try {
-      const response = await axios.post();
+      const response = await axios.post(
+        "http://192.168.0.101:8000/api/feedback/ride",
+        { review, rating },
+        { headers: { Authorization } }
+      );
     } catch (error) {}
   };
 
