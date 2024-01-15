@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import axios from "axios";
 import { useSelector } from "react-redux";
-const UserRideScreen = () => {
+const UserRideScreen = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   const [hasPermission, setHasPermission] = useState(null);
@@ -23,7 +23,6 @@ const UserRideScreen = () => {
     setScanned(true);
     try {
       if (rideStatus === false) {
-        console.log("you are here status at false" + rideStatus);
         const decodedData = JSON.parse(data);
         const user_id = decodedData.driver_id;
         const response = await axios.post(
@@ -40,7 +39,6 @@ const UserRideScreen = () => {
         console.log(response.data);
         setRideStatus(true);
       } else {
-        console.log("you are here status " + rideStatus);
         const decodedData = JSON.parse(data);
         const user_id = decodedData.driver_id;
         const response = await axios.post(
@@ -56,6 +54,7 @@ const UserRideScreen = () => {
         );
         console.log(response.data);
         setRideStatus(false);
+        navigation.navigate("UserFeedbackScreen");
       }
     } catch (error) {
       console.error("error", error);
