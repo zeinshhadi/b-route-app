@@ -24,7 +24,7 @@ const DriverHomeScreen = () => {
         const lat = locationData.coords.latitude;
         const lon = locationData.coords.longitude;
         setLocation({ lat, lon });
-        setInitialFetchComplete(true); // Set the flag after the initial fetch
+        setInitialFetchComplete(true);
       } catch (error) {
         console.error("Error getting location:", error);
         Alert.alert("Error", "Could not fetch location. Please try again.");
