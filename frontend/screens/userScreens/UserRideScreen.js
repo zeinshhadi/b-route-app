@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
-import { Axios } from "axios";
+import axios from "axios";
 const UserRideScreen = () => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
@@ -26,9 +26,14 @@ const UserRideScreen = () => {
         const decodedData = JSON.parse(data);
         console.log("Decoded Data:", decodedData);
         console.log(decodedData.lon);
-        rideDetials = {};
-        // const response = await Axios.post("http://192.168.0.101:8000/api/start/ride");
-        // console.log(response.data);
+        rideDetails = {
+          start_longitude: startLongitude,
+          start_Latitude: startLatitude,
+        };
+        const response = await axios.post("http://192.168.0.101:8000/api/start/ride", rideDetails, {
+          headers: { Authorization },
+        });
+        console.log(response.data);
       } else {
         const decodedData = JSON.parse(data);
         console.log("Decoded Data:", decodedData);
