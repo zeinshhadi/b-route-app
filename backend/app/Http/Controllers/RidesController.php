@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Driver;
 use App\Models\Ride;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,9 +16,11 @@ public function create_ride(Request $request){
     $request->validate([
         'start_longitude' => 'required',
         'start_latitude' => 'required',
-        'driver_id' => 'required',
+        'user_id' => 'required',
     ]);
+    $driver = Driver::where('user_id', $request->user_id)->first();
 
+  
     $ride = Ride::create([
         'start_longitude' => $request->start_longitude,
         'start_latitude' => $request->start_latitude,
@@ -27,8 +30,9 @@ public function create_ride(Request $request){
         'price' => 20,
         'review' => 'NoReview',
         'user_id' => $user->id,
-        'driver_id' => $request->driver_id,
+        'driver_id' => $driver->id,
     ]);
+    return response()->json(["response from create ride ",$driver]);
 }
 
     public function end_ride(Request $request){
