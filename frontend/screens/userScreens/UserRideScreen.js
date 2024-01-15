@@ -24,20 +24,22 @@ const UserRideScreen = () => {
   }, []);
 
   const handleBarCodeScanned = async ({ type, data }) => {
+    setScanned(true);
     try {
       if (rideStatus === false) {
         const decodedData = JSON.parse(data);
         console.log("Decoded Data:", decodedData);
-        setStartLatitude(decodedData.lan);
+        setStartLatitude(decodedData.lat);
         setStartLongitude(decodedData.lon);
-        console.log("lon " + startLongitude + "lan " + startLatitude);
-        const start_longitude = startLongitude;
-        const start_latitude = startLatitude;
-        const driver_id = decodedData.driver_id;
-        console.log("lon" + start_latitude + "lan" + start_longitude);
+        const user_id = decodedData.driver_id;
+        console.log(decodedData.lat);
         const response = await axios.post(
-          "http://192.168.0.101:8000/api/start/ride",
-          { start_latitude, start_longitude, driver_id },
+          "http://192.168.0.101:8000/api/add/ride",
+          {
+            start_latitude: decodedData.lat,
+            start_longitude: decodedData.lon,
+            user_id,
+          },
           {
             headers: { Authorization: authorization },
           }
@@ -46,10 +48,10 @@ const UserRideScreen = () => {
       } else {
         const decodedData = JSON.parse(data);
         console.log("Decoded Data:", decodedData);
-        console.log(decodedData.lon);
+        console.log("else entered status ride is true");
       }
     } catch (error) {
-      console.error("Error parsing barcode data:", error);
+      console.error("error", error);
     }
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   };
