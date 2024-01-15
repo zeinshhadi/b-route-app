@@ -28,7 +28,7 @@ Route::controller(AuthController::class)->group(function () {
 });
 Route::group(["middleware"=>['auth:api', 'passenger']], function () {
 Route::controller(RidesController::class)->group(function () {
-    Route::post('start/ride', 'create_ride');
+    Route::post('add/ride', 'create_ride');
     Route::post('end/ride', 'end_ride');
     Route::post('feedback/ride', 'add_feedback');
 
