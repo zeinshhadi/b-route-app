@@ -21,13 +21,19 @@ const UserRideScreen = () => {
   }, []);
 
   const handleBarCodeScanned = async ({ type, data }) => {
-    setScanned(true);
     try {
-      const decodedData = JSON.parse(data);
-      console.log("Decoded Data:", decodedData);
-      alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-      const response = await Axios.post("http://192.168.0.101:8000/api/start/ride");
-      console.log(response.data);
+      if (rideStatus == false) {
+        const decodedData = JSON.parse(data);
+        console.log("Decoded Data:", decodedData);
+        console.log(decodedData.lon);
+        rideDetials = {};
+        // const response = await Axios.post("http://192.168.0.101:8000/api/start/ride");
+        // console.log(response.data);
+      } else {
+        const decodedData = JSON.parse(data);
+        console.log("Decoded Data:", decodedData);
+        console.log(decodedData.lon);
+      }
     } catch (error) {
       console.error("Error parsing barcode data:", error);
     }
