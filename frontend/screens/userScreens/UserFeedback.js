@@ -4,26 +4,29 @@ import { Rating } from "react-native-ratings";
 import Colors from "../../utils/colors";
 import axios from "axios";
 import { useSelector } from "react-redux";
-const UserFeedback = () => {
+const UserFeedback = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   const [review, setReview] = useState("");
-  const [rating, setRating] = useState();
+  const [rate, setRate] = useState();
 
   const handleRating = (rating) => {
-    setRating(rating);
+    setRate(rating);
   };
 
   const submitFeedback = async () => {
     console.log("Review:", review);
-    console.log("Rating:", rating);
+    console.log("Rating:", rate);
     try {
       const response = await axios.post(
         "http://192.168.0.101:8000/api/feedback/ride",
-        { review, rating },
+        { review, rate },
         { headers: { Authorization: authorization } }
       );
-    } catch (error) {}
+      navigation.navigate("HomeScreen");
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   return (
