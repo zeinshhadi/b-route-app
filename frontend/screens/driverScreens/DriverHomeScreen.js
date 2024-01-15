@@ -68,9 +68,6 @@ const DriverHomeScreen = () => {
         color="black"
         backgroundColor="white"
       />
-      <View style={{ marginTop: 30, width: "100%", justifyContent: "center", alignItems: "center" }}>
-        <Button onPress={getLocationHandler}>Get Location</Button>
-      </View>
     </View>
   );
 };
