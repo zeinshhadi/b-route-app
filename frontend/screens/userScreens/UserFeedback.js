@@ -3,7 +3,10 @@ import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
 import { Rating } from "react-native-ratings";
 import Colors from "../../utils/colors";
 import axios from "axios";
+import { useSelector } from "react-redux";
 const UserFeedback = () => {
+  const authState = useSelector((state) => state.auth);
+  const authorization = "bearer " + authState.token;
   const [review, setReview] = useState("");
   const [rating, setRating] = useState();
 
@@ -18,7 +21,7 @@ const UserFeedback = () => {
       const response = await axios.post(
         "http://192.168.0.101:8000/api/feedback/ride",
         { review, rating },
-        { headers: { Authorization } }
+        { headers: { Authorization: authorization } }
       );
     } catch (error) {}
   };
