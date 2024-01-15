@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
 import { Rating } from "react-native-ratings";
 import Colors from "../../utils/colors";
+import axios from "axios";
 const UserFeedback = () => {
   const [review, setReview] = useState("");
   const [rating, setRating] = useState();
@@ -10,9 +11,12 @@ const UserFeedback = () => {
     setRating(rating);
   };
 
-  const submitFeedback = () => {
+  const submitFeedback = async () => {
     console.log("Review:", review);
     console.log("Rating:", rating);
+    try {
+      const response = await axios.post();
+    } catch (error) {}
   };
 
   return (
