@@ -9,10 +9,6 @@ const UserRideScreen = () => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [rideStatus, setRideStatus] = useState(false);
-  const [startLongitude, setStartLongitude] = useState(0);
-  const [startLatitude, setStartLatitude] = useState(0);
-  const [endLongitude, setEndLongitude] = useState(0);
-  const [endLatitude, setEndLatitude] = useState(0);
 
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
@@ -27,12 +23,9 @@ const UserRideScreen = () => {
     setScanned(true);
     try {
       if (rideStatus === false) {
+        console.log("you are here status at false" + rideStatus);
         const decodedData = JSON.parse(data);
-        console.log("Decoded Data:", decodedData);
-        setStartLatitude(decodedData.lat);
-        setStartLongitude(decodedData.lon);
         const user_id = decodedData.driver_id;
-        console.log(decodedData.lat);
         const response = await axios.post(
           "http://192.168.0.101:8000/api/add/ride",
           {
@@ -45,10 +38,24 @@ const UserRideScreen = () => {
           }
         );
         console.log(response.data);
+        setRideStatus(true);
       } else {
+        console.log("you are here status " + rideStatus);
         const decodedData = JSON.parse(data);
-        console.log("Decoded Data:", decodedData);
-        console.log("else entered status ride is true");
+        const user_id = decodedData.driver_id;
+        const response = await axios.post(
+          "http://192.168.0.101:8000/api/end/ride",
+          {
+            end_latitude: decodedData.lat,
+            end_longitude: decodedData.lon,
+            user_id,
+          },
+          {
+            headers: { Authorization: authorization },
+          }
+        );
+        console.log(response.data);
+        setRideStatus(false);
       }
     } catch (error) {
       console.error("error", error);
