@@ -5,6 +5,11 @@ import { Axios } from "axios";
 const UserRideScreen = () => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
+  const [rideStatus, setRideStatus] = useState(false);
+  const [startLongitude, setStartLongitude] = useState();
+  const [startLatitude, setStartLatitude] = useState();
+  const [endLongitude, setEndLongitude] = useState();
+  const [endLatitude, setEndLatitude] = useState();
 
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
@@ -21,7 +26,8 @@ const UserRideScreen = () => {
       const decodedData = JSON.parse(data);
       console.log("Decoded Data:", decodedData);
       alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-      const response = await Axios.post("http://192.168.0.101:8000/api/logout");
+      const response = await Axios.post("http://192.168.0.101:8000/api/start/ride");
+      console.log(response.data);
     } catch (error) {
       console.error("Error parsing barcode data:", error);
     }
