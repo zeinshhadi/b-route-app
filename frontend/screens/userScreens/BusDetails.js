@@ -4,7 +4,7 @@ import DriverDetailsCard from "../../components/cards/DriverDetailsCard";
 import SmallCardDetails from "../../components/cards/SmallCardDetails";
 const BusDetails = () => {
   return (
-    <View style={styles.mainContianer}>
+    <View style={styles.mainContainer}>
       <DriverDetailsCard />
       <SmallCardDetails />
       <View style={styles.bigBusCardContainerMain}>
@@ -24,7 +24,7 @@ const BusDetails = () => {
 export default BusDetails;
 
 const styles = StyleSheet.create({
-  mainContianer: {
+  mainContainer: {
     flex: 1,
     justifyContent: "center",
     gap: 20,
