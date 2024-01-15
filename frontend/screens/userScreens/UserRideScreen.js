@@ -25,17 +25,23 @@ const UserRideScreen = () => {
 
   const handleBarCodeScanned = async ({ type, data }) => {
     try {
-      if (rideStatus == false) {
+      if (rideStatus === false) {
         const decodedData = JSON.parse(data);
         console.log("Decoded Data:", decodedData);
-        console.log(decodedData.lon);
-        rideDetails = {
-          start_longitude: startLongitude,
-          start_Latitude: startLatitude,
-        };
-        const response = await axios.post("http://192.168.0.101:8000/api/start/ride", rideDetails, {
-          headers: { Authorization: authorization },
-        });
+        setStartLatitude(decodedData.lan);
+        setStartLongitude(decodedData.lon);
+        console.log("lon " + startLongitude + "lan " + startLatitude);
+        const start_longitude = startLongitude;
+        const start_latitude = startLatitude;
+        const driver_id = decodedData.driver_id;
+        console.log("lon" + start_latitude + "lan" + start_longitude);
+        const response = await axios.post(
+          "http://192.168.0.101:8000/api/start/ride",
+          { start_latitude, start_longitude, driver_id },
+          {
+            headers: { Authorization: authorization },
+          }
+        );
         console.log(response.data);
       } else {
         const decodedData = JSON.parse(data);
