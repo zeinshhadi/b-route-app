@@ -53,7 +53,7 @@ export default function App() {
               <Stack.Screen
                 name="UserFeedbackScreen"
                 component={UserFeedback}
-                options={{ headerShown: true, headerTitle: "Feedback Screen" }}
+                options={{ headerShown: false, headerTitle: "Feedback Screen" }}
               />
               <Stack.Screen
                 name="BusesRegistered"
