@@ -6,11 +6,18 @@ import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
 const ReviewScreen = () => {
   const [data, setData] = useState();
-  useEffect(async () => {
-    try {
-      const response = await axios.get("");
-    } catch (error) {}
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://192.168.0.101:8000/api/feedback");
+        console.log(response);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    fetchData();
   }, []);
+
   return (
     <View style={styles.reviewContainer}>
       <View style={styles.reviewInnerContainer}>
@@ -19,6 +26,7 @@ const ReviewScreen = () => {
           cardTitle={"Zein Shhadi"}
           cardDetail={
             <View style={styles.starContainer}>
+              <Ionicons name="star" />
               <Ionicons name="star" />
               <Ionicons name="star" />
               <Ionicons name="star" />
