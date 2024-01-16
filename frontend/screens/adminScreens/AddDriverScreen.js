@@ -14,7 +14,7 @@ const AddDriverScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://192.168.0.101:8000/api/all/buses", {
+        const response = await axios.get("http://192.168.0.101:8000/api/free/buses", {
           headers: { Authorization: authorization },
         });
 
@@ -30,7 +30,7 @@ const AddDriverScreen = () => {
     };
 
     fetchData();
-  }, [authorization]);
+  }, [authorization, handleRegisterDriver]);
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   const [userData, setUserData] = useState({
