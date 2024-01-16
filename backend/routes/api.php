@@ -47,7 +47,7 @@ Route::controller(BusesController::class)->group(function () {
     Route::get('all/buses', 'getAllBuses');
     Route::get('/bus', 'getAllBusesAndDriver');
     Route::get('/bus/zone/{id}','getBusesByZone');
-    Route::get('/free/bus','getFreeBuses');
+    Route::get('/free/buses','getFreeBuses');
 
 });
 Route::controller(DriversController::class)->group(function () {
