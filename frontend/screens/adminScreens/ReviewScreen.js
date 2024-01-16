@@ -22,18 +22,12 @@ const ReviewScreen = () => {
     };
     fetchData();
   }, []);
-  const renderItem = () => {
+  const renderItem = ({ item }) => {
+    const stars = Array.from({ length: item.rate }, (_, index) => <Ionicons key={index} name="star" />);
     return (
       <ReviewCard
-        cardTitle={"Zein Shhadi"}
-        cardDetail={
-          <View style={styles.starContainer}>
-            <Ionicons name="star" />
-            <Ionicons name="star" />
-            <Ionicons name="star" />
-            <Ionicons name="star" />
-          </View>
-        }
+        cardTitle={item.user_id}
+        cardDetail={<View style={styles.starContainer}>{stars}</View>}
         reviewText={"What A Ride ! Just what we needed to arrive on time !"}
       />
     );
@@ -42,7 +36,6 @@ const ReviewScreen = () => {
     <View style={styles.reviewContainer}>
       <View style={styles.reviewInnerContainer}>
         <SearchBar />
-
         <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id} />
       </View>
     </View>
