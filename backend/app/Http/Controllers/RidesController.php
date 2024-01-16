@@ -54,7 +54,14 @@ public function create_ride(Request $request){
         
     }
     public function get_feedback(){
-        $review = Ride::whereHas(['rate'])->orWhereHas['review']->get();
-        return response()->json(['review',$review]);
+        
+        $reviews = Ride::where(function ($query) {
+        $query->whereNotNull('rate')->orWhereNotNull('review');
+                          
+        })->get();
+    
+        return response()->json(['reviews' => $reviews]);
     }
+
+
 }

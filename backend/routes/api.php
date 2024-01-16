@@ -62,4 +62,6 @@ Route::controller(ZonesController::class)->group(function(){
     Route::get('/zones','all_zones');
     Route::post('/addzone','add_zone');
 });
+
+Route::get('/feedback',[RidesController::class,'get_feedback']);
 })->middleware(['auth:api', 'admin']);
