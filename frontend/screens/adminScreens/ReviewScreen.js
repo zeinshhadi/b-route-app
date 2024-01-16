@@ -36,7 +36,7 @@ const ReviewScreen = () => {
     <View style={styles.reviewContainer}>
       <View style={styles.reviewInnerContainer}>
         <SearchBar />
-        <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id} />
+        <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id} style={styles.reviewList} />
       </View>
     </View>
   );
@@ -55,5 +55,8 @@ const styles = StyleSheet.create({
   },
   starContainer: {
     flexDirection: "row",
+  },
+  reviewList: {
+    marginBottom: 90,
   },
 });
