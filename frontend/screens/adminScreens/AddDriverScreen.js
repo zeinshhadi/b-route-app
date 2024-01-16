@@ -90,7 +90,16 @@ const AddDriverScreen = () => {
       console.log("Registration Response:", response.data.status);
 
       if (response.data.status === "success") {
-        console.log("Driver Created successfully");
+        setUserData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+          phoneNumber: "",
+          driverLicense: "",
+          busId: 0,
+        });
+        setValue(null);
         Alert.alert("Driver Created successfully");
       } else {
         console.error("Registration failed");
