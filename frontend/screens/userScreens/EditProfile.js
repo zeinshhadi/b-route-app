@@ -38,7 +38,6 @@ const EditProfile = ({ navigation }) => {
           <ProfileCard cardTitle="Last Name " cardDetail={authState.user.last_name} />
           <ProfileCard cardTitle="Email " cardDetail={authState.user.email} />
           <ProfileCard cardTitle={"Phone Number "} cardDetail={authState.user.phone_number} />
-          <ProfileCard cardTitle="Role " cardDetail={authState.user.role_type} />
         </View>
         <Button onPress={handleLogout}>
           <Text>Log Out</Text>
