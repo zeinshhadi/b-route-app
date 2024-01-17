@@ -17,7 +17,7 @@ const DriverBottomNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Edit Profile"
+        name="Profile"
         component={EditProfile}
         options={{
           headerShown: true,
