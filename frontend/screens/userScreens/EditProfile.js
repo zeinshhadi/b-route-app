@@ -34,7 +34,6 @@ const EditProfile = ({ navigation }) => {
     <ScrollView>
       <View style={styles.editProfileScreen}>
         <View style={styles.editProfileBody}>
-          <Text style={styles.cardTitleStyle}>User Data</Text>
           <ProfileCard cardTitle={"Phone Number: "} cardDetail={authState.user.phone_number} />
           <ProfileCard cardTitle="Email: " cardDetail={authState.user.email} />
           <ProfileCard cardTitle="First Name: " cardDetail={authState.user.first_name} />
