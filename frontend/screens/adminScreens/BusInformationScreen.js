@@ -29,6 +29,7 @@ export default BusInformationScreen;
 
 const styles = StyleSheet.create({
   BusInformationContainer: {
+    flex: 1,
     marginTop: 50,
     justifyContent: "space-around",
     alignItems: "center",
