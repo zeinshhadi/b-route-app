@@ -4,6 +4,7 @@ import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
 import axios from "axios";
 import Colors from "../../utils/colors";
+import { Url } from "../../core/redux/helper/Url";
 const RegisterScreen = ({ navigation }) => {
   const [userData, setUserData] = useState({
     fullName: "",
@@ -40,7 +41,7 @@ const RegisterScreen = ({ navigation }) => {
 
       console.log("Registration Request Data:", registrationData);
 
-      const response = await axios.post("http://192.168.0.100:8000/api/register", registrationData);
+      const response = await axios.post(`${Url}/api/register`, registrationData);
 
       console.log("Registration Response:", response.data);
 

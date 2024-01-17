@@ -5,6 +5,7 @@ import SearchBar from "../../components/common/SearchBar";
 import { StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { Url } from "../../core/redux/helper/Url";
 
 const ZonesRegisteredScreen = ({ navigation }) => {
   const [zones, setZones] = useState();
@@ -13,7 +14,7 @@ const ZonesRegisteredScreen = ({ navigation }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://192.168.0.100:8000/api/zones", {
+        const response = await axios.get(`${Url}/api/zones`, {
           headers: { Authorization: authorization },
         });
         console.log("response ", response.data.zones);

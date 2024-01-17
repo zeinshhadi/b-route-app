@@ -4,6 +4,7 @@ import { Rating } from "react-native-ratings";
 import Colors from "../../utils/colors";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { Url } from "../../core/redux/helper/Url";
 const UserFeedback = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
@@ -19,7 +20,7 @@ const UserFeedback = ({ navigation }) => {
     console.log("Rating:", rate);
     try {
       const response = await axios.post(
-        "http://192.168.0.100:8000/api/feedback/ride",
+        `${Url}/api/feedback/ride`,
         { review, rate },
         { headers: { Authorization: authorization } }
       );

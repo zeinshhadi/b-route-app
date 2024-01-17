@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { Url } from "../../core/redux/helper/Url";
 const UserRideScreen = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
@@ -26,7 +27,7 @@ const UserRideScreen = ({ navigation }) => {
         const decodedData = JSON.parse(data);
         const user_id = decodedData.driver_id;
         const response = await axios.post(
-          "http://192.168.0.100:8000/api/add/ride",
+          `${Url}/api/add/ride`,
           {
             start_latitude: decodedData.lat,
             start_longitude: decodedData.lon,
@@ -42,7 +43,7 @@ const UserRideScreen = ({ navigation }) => {
         const decodedData = JSON.parse(data);
         const user_id = decodedData.driver_id;
         const response = await axios.post(
-          "http://192.168.0.100:8000/api/end/ride",
+          `${Url}/api/end/ride`,
           {
             end_latitude: decodedData.lat,
             end_longitude: decodedData.lon,

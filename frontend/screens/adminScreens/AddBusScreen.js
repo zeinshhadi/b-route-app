@@ -72,7 +72,7 @@ const AddBusScreen = () => {
 
       console.log("Registration Request Data:", registrationData);
 
-      const response = await axios.post("http://192.168.0.100:8000/api/register/bus", registrationData, {
+      const response = await axios.post(`${Url}/api/register/bus`, registrationData, {
         headers: {
           Authorization: authorization,
         },

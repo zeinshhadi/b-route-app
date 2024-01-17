@@ -5,6 +5,7 @@ import SearchBar from "../../components/common/SearchBar";
 import { StyleSheet } from "react-native";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { Url } from "../../core/redux/helper/Url";
 
 const BusesRegisteredScreen = ({ navigation }) => {
   const [busInfo, setBusInfo] = useState([]);
@@ -15,7 +16,7 @@ const BusesRegisteredScreen = ({ navigation }) => {
       const authToken = authState.token;
       const authorization = "Bearer " + authToken;
       try {
-        const response = await axios.get("http://192.168.0.100:8000/api/bus", {
+        const response = await axios.get(`${Url}/api/bus`, {
           headers: { Authorization: authorization },
         });
         setBusInfo(response.data);

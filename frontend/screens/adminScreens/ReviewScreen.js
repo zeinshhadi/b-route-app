@@ -5,6 +5,7 @@ import SearchBar from "../../components/common/SearchBar";
 import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { Url } from "../../core/redux/helper/Url";
 const ReviewScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
@@ -12,7 +13,7 @@ const ReviewScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://192.168.0.100:8000/api/feedback", {
+        const response = await axios.get(`${Url}/api/feedback`, {
           headers: { Authorization: authorization },
         });
         setData(response.data.reviews);

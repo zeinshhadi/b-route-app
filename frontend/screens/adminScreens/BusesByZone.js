@@ -6,6 +6,7 @@ import { StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useRoute } from "@react-navigation/native";
+import { Url } from "../../core/redux/helper/Url";
 
 const BusesByZone = ({ navigation }) => {
   const route = useRoute();
@@ -18,7 +19,7 @@ const BusesByZone = ({ navigation }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://192.168.0.100:8000/api/bus/zone/${zone_id}`, {
+        const response = await axios.get(`${Url}/api/bus/zone/${zone_id}`, {
           headers: { Authorization: authorization },
         });
 

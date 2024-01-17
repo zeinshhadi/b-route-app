@@ -5,6 +5,7 @@ import Button from "../../components/common/Button";
 import { useSelector } from "react-redux";
 import { ScrollView } from "react-native";
 import axios from "axios";
+import { Url } from "../../core/redux/helper/Url";
 const EditProfile = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
@@ -14,7 +15,7 @@ const EditProfile = ({ navigation }) => {
 
     try {
       const response = await axios.post(
-        "http://192.168.0.100:8000/api/logout",
+        `${Url}/api/logout`,
         {},
         {
           headers: {
