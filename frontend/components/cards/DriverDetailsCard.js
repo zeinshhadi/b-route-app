@@ -7,8 +7,8 @@ const DriverDetailsCard = ({ driverFirstName, driverLastName }) => {
         <Image style={styles.driverImage} source={require("../../assets/images/driver.jpg")} />
       </View>
       <View style={styles.driverInfoText}>
-        <Text style={styles.driverInfoTextDetails}>Driver Name:</Text>
-        <Text>
+        <Text style={styles.driverInfoTextTitle}>Driver Name:</Text>
+        <Text style={styles.driverInfoTextDetails}>
           {driverFirstName} {driverLastName}
         </Text>
       </View>
@@ -36,6 +36,10 @@ const styles = StyleSheet.create({
     width: "33%",
   },
   driverInfoTextDetails: {
+    fontWeight: "500",
+    fontSize: 15,
+  },
+  driverInfoTextTitle: {
     fontWeight: "bold",
     fontSize: 18,
   },
