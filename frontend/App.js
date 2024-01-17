@@ -48,7 +48,7 @@ export default function App() {
               <Stack.Screen
                 name="EditProfile"
                 component={EditProfile}
-                options={{ headerShown: true, headerTitle: "Edit Profile" }}
+                options={{ headerShown: true, headerTitle: "Profile" }}
               />
               <Stack.Screen
                 name="UserFeedbackScreen"
