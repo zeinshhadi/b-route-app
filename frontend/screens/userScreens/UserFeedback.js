@@ -46,7 +46,7 @@ const UserFeedback = ({ navigation }) => {
         multiline
         onChangeText={(text) => setReview(text)}
       />
-      <Rating onFinishRating={handleRating} startingValue={0} />
+      <Rating onFinishRating={handleRating} startingValue={0} ratingBackgroundColor="white" />
       <Pressable style={styles.submitButton} onPress={submitFeedback}>
         <Text style={styles.submitButtonText}>Submit Feedback</Text>
       </Pressable>
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     padding: 20,
+    backgroundColor: "white",
   },
   title: {
     fontSize: 24,
