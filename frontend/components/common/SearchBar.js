@@ -10,6 +10,7 @@ const SearchBar = () => {
         style={styles.inputSearchDesign}
         placeholder="Search"
         value={searchText}
+        placeholderTextColor={Colors.primary500}
         onChangeText={(text) => setSearchText(text)}
       />
     </View>
@@ -21,7 +22,8 @@ const styles = StyleSheet.create({
   searchContainer: {
     padding: 10,
     borderRadius: 20,
-    backgroundColor: Colors.cardColor,
+    borderWidth: 2,
+    borderColor: Colors.primary500,
     height: 40,
     marginVertical: 10,
     justifyContent: "center",
