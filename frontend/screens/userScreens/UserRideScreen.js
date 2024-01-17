@@ -73,7 +73,7 @@ const UserRideScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.container}>
+      <View style={styles.innerContainer}>
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           style={StyleSheet.absoluteFillObject}
@@ -88,7 +88,15 @@ const UserRideScreen = ({ navigation }) => {
 
 export default UserRideScreen;
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "white" },
+  container: {
+    flex: 1,
+    backgroundColor: "white",
+    height: "50%",
+  },
+  innerContainer: {
+    flex: 1,
+    height: "50%",
+  },
   buttonPosition: {
     height: "20%",
     width: "100%",
