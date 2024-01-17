@@ -11,9 +11,6 @@ const ProfileCard = ({ cardTitle, cardDetail }) => {
           <Text style={styles.cardTitleStyle}>{cardTitle}</Text>
           <Text style={styles.cardDetailStyle}>{cardDetail}</Text>
         </View>
-        <View>
-          <Icon name="arrow-right" size={30} color="black" />
-        </View>
       </View>
     </Pressable>
   );
