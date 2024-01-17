@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
   logoutButton: {
     padding: 10,
     paddingHorizontal: 50,
-    backgroundColor: Colors.primary500,
     width: "80%",
     borderRadius: 8,
     borderWidth: 2,
