@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Url } from "../../core/redux/helper/Url";
+import Button from "../../components/common/Button";
 const UserRideScreen = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
@@ -76,7 +77,7 @@ const UserRideScreen = ({ navigation }) => {
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
       />
-      {scanned && <Button title={"Tap to Scan Again"} onPress={() => setScanned(false)} />}
+      {scanned && <Button onPress={() => setScanned(false)}>Scan to end your ride </Button>}
     </View>
   );
 };
