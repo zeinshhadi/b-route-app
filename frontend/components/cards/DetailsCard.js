@@ -8,7 +8,7 @@ const DetailsCard = ({ cardTitle, cardDetail, status, tempText, itemType }) => {
   return (
     <View style={styles.detailsCardContainer}>
       <View style={styles.detailsCard}>
-        <Text>{cardTitle}</Text>
+        <Text style={styles.cardTitleCss}>{cardTitle}</Text>
         <Text>{cardDetail}</Text>
       </View>
       <View style={styles.detailsCard}>
@@ -35,5 +35,8 @@ const styles = StyleSheet.create({
   detailsCard: {
     height: "100%",
     justifyContent: "space-around",
+  },
+  cardTitleCss: {
+    fontWeight: "bold",
   },
 });
