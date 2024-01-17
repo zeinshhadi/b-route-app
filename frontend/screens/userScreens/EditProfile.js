@@ -39,7 +39,7 @@ const EditProfile = ({ navigation }) => {
           <ProfileCard cardTitle="Email " cardDetail={authState.user.email} />
           <ProfileCard cardTitle={"Phone Number "} cardDetail={authState.user.phone_number} />
         </View>
-        <Button onPress={handleLogout}>
+        <Button onPress={handleLogout} style={styles.logout}>
           <Text>Log Out</Text>
         </Button>
       </View>
@@ -69,5 +69,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginVertical: 10,
   },
-  cardLogoutButton: {},
 });
