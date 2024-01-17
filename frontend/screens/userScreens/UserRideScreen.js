@@ -73,14 +73,21 @@ const UserRideScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        style={StyleSheet.absoluteFillObject}
-      />
-      {scanned && <Button onPress={() => setScanned(false)}>Scan to end your ride </Button>}
+      <View style={styles.container}>
+        <BarCodeScanner
+          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+          style={StyleSheet.absoluteFillObject}
+        />
+        <View style={styles.buttonPosition}>
+          {scanned && <Button onPress={() => setScanned(false)}>Scan to end your ride </Button>}
+        </View>
+      </View>
     </View>
   );
 };
 
 export default UserRideScreen;
-const styles = StyleSheet.create({ container: { flex: 1 } });
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+  buttonPosition: { width: "100%", justifyContent: "center", alignItems: "center" },
+});
