@@ -34,11 +34,11 @@ const EditProfile = ({ navigation }) => {
     <ScrollView>
       <View style={styles.editProfileScreen}>
         <View style={styles.editProfileBody}>
-          <ProfileCard cardTitle={"Phone Number: "} cardDetail={authState.user.phone_number} />
-          <ProfileCard cardTitle="Email: " cardDetail={authState.user.email} />
-          <ProfileCard cardTitle="First Name: " cardDetail={authState.user.first_name} />
-          <ProfileCard cardTitle="Last Name: " cardDetail={authState.user.last_name} />
-          <ProfileCard cardTitle="Role: " cardDetail={authState.user.role_type} />
+          <ProfileCard cardTitle={"Phone Number "} cardDetail={authState.user.phone_number} />
+          <ProfileCard cardTitle="Email " cardDetail={authState.user.email} />
+          <ProfileCard cardTitle="First Name " cardDetail={authState.user.first_name} />
+          <ProfileCard cardTitle="Last Name " cardDetail={authState.user.last_name} />
+          <ProfileCard cardTitle="Role " cardDetail={authState.user.role_type} />
         </View>
         <Button onPress={handleLogout}>
           <Text>Log Out</Text>
