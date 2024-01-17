@@ -22,7 +22,7 @@ class BusesController extends Controller
     }
         public function getAllBusesAndDriver()
     {
-        $buses = Bus::has('driver')->with('driver')->get();
+        $buses = Bus::has('driver')->with(['driver.user'])->get();
         return response()->json(['buses' => $buses], 200);
     }
     public function getBusesByZone($zone_id){
