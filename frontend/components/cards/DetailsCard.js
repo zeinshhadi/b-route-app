@@ -12,14 +12,14 @@ const DetailsCard = ({ cardTitle, cardDetail, status, tempText, itemType }) => {
           {itemType}
           {cardTitle}
         </Text>
-        <Text>{cardDetail}</Text>
+        <Text style={styles.boldText}>{cardDetail}</Text>
       </View>
       <View style={styles.detailsCard}>
         <View style={styles.cardMoreDetails}>
-          <Text>{tempText}</Text>
+          <Text style={styles.boldText}>{tempText}</Text>
           <Text style={styles.cardMoreDetailsForward}>{">"}</Text>
         </View>
-        <Text>{status}</Text>
+        <Text style={styles.boldText}>{status}</Text>
       </View>
     </View>
   );
@@ -47,12 +47,15 @@ const styles = StyleSheet.create({
   },
   cardMoreDetails: {
     flexDirection: "row",
-    gap: 10,
+    gap: 3,
     justifyContent: "center",
     alignItems: "center",
   },
   cardMoreDetailsForward: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: "500",
+  },
+  boldText: {
+    fontWeight: "500",
   },
 });
