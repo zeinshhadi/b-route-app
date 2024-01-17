@@ -29,7 +29,7 @@ const UserBottomNavigation = () => {
         options={{ tabBarIcon: ({ color, size }) => <Ionicons name="car" color={color} size={size} /> }}
       />
       <Tab.Screen
-        name="EditProfile"
+        name="Profile"
         component={EditProfile}
         options={{
           tabBarIcon: ({ color, size }) => <Ionicons name="person" color={color} size={size} />,
