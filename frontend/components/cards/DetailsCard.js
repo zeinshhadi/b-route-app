@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { Text } from "react-native";
 import { View } from "react-native";
 import Colors from "../../utils/colors";
-
+import { Ionicons } from "@expo/vector-icons";
 const DetailsCard = ({ cardTitle, cardDetail, status, tempText, itemType }) => {
   return (
     <View style={styles.detailsCardContainer}>
@@ -15,7 +15,10 @@ const DetailsCard = ({ cardTitle, cardDetail, status, tempText, itemType }) => {
         <Text>{cardDetail}</Text>
       </View>
       <View style={styles.detailsCard}>
-        <Text>{tempText}</Text>
+        <View style={styles.cardMoreDetails}>
+          <Text>{tempText}</Text>
+          <Text style={styles.cardMoreDetailsForward}>{">"}</Text>
+        </View>
         <Text>{status}</Text>
       </View>
     </View>
@@ -40,6 +43,16 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   cardTitleCss: {
+    fontWeight: "bold",
+  },
+  cardMoreDetails: {
+    flexDirection: "row",
+    gap: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  cardMoreDetailsForward: {
+    fontSize: 20,
     fontWeight: "bold",
   },
 });
