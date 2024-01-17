@@ -6,6 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Url } from "../../core/redux/helper/Url";
+import Colors from "../../utils/colors";
 const ReviewScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
@@ -24,7 +25,9 @@ const ReviewScreen = () => {
     fetchData();
   }, []);
   const renderItem = ({ item }) => {
-    const stars = Array.from({ length: item.rate }, (_, index) => <Ionicons key={index} name="star" />);
+    const stars = Array.from({ length: item.rate }, (_, index) => (
+      <Ionicons key={index} name="star" color={Colors.primary500} />
+    ));
     return (
       <ReviewCard
         cardTitle={item.user_id}
