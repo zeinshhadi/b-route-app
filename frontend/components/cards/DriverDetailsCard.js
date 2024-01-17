@@ -8,7 +8,9 @@ const DriverDetailsCard = ({ driverFirstName, driverLastName }) => {
       </View>
       <View style={styles.driverInfoText}>
         <Text>Driver Name:</Text>
-        <Text>{driverFirstName}</Text>
+        <Text>
+          {driverFirstName} {driverLastName}
+        </Text>
       </View>
     </View>
   );

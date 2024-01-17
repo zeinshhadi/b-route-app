@@ -11,7 +11,7 @@ const BusInformationScreen = () => {
   console.log(item);
   return (
     <View style={styles.BusInformationContainer}>
-      <DriverDetailsCard driverFirstName={"item.driver.id"} driverLastName={"item.driver.last_name"} />
+      <DriverDetailsCard driverFirstName={item.driver.user.first_name} driverLastName={item.driver.user.last_name} />
       <BusInfoCard
         id={id}
         model={model}
