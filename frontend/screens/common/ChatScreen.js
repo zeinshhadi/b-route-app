@@ -13,6 +13,7 @@ export default ChatScreen;
 
 const styles = StyleSheet.create({
   chatScreenContainer: {
+    flex: 1,
     backgroundColor: "white",
   },
 });
