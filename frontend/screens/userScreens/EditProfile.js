@@ -32,7 +32,7 @@ const EditProfile = ({ navigation }) => {
     }
   };
   return (
-    <ScrollView>
+    <ScrollView style={styles.scrollViewScreen}>
       <View style={styles.editProfileScreen}>
         <View style={styles.editProfileBody}>
           <ProfileCard cardTitle="First Name " cardDetail={authState.user.first_name} />
@@ -51,6 +51,9 @@ const EditProfile = ({ navigation }) => {
 export default EditProfile;
 
 const styles = StyleSheet.create({
+  scrollViewScreen: {
+    backgroundColor: "white",
+  },
   editProfileScreen: {
     flex: 1,
     marginTop: 20,
@@ -61,6 +64,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     width: "100%",
     padding: 5,
+    backgroundColor: "white",
   },
   editProfileBody: {
     width: "90%",
