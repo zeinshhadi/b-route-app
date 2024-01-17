@@ -113,7 +113,7 @@ const AddDriverScreen = () => {
     }
   };
   return (
-    <ScrollView>
+    <ScrollView style={styles.scrollContainer}>
       <View style={styles.outerContainer}>
         <View style={styles.driverImageContainer}>
           <Image style={styles.driverImage} source={require("../../assets/images/driver.jpg")} />
@@ -198,6 +198,9 @@ const AddDriverScreen = () => {
 export default AddDriverScreen;
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    backgroundColor: "white",
+  },
   outerContainer: {
     flex: 1,
     justifyContent: "center",
