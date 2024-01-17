@@ -25,5 +25,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.cardColor,
     borderRadius: 10,
     width: "85%",
+    gap: 10,
   },
 });
