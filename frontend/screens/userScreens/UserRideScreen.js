@@ -88,6 +88,11 @@ const UserRideScreen = ({ navigation }) => {
 
 export default UserRideScreen;
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  buttonPosition: { height: "20%", width: "100%", justifyContent: "center", alignItems: "center" },
+  container: { flex: 1, backgroundColor: "white" },
+  buttonPosition: {
+    height: "20%",
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
