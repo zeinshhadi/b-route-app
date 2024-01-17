@@ -5,6 +5,7 @@ import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { Url } from "../../core/redux/helper/Url";
 const AddBusScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
@@ -13,7 +14,7 @@ const AddBusScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://192.168.0.100:8000/api/zones", {
+        const response = await axios.get(`${Url}/api/zones`, {
           headers: { Authorization: authorization },
         });
 

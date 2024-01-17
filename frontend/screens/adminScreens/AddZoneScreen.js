@@ -5,6 +5,7 @@ import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { Url } from "../../core/redux/helper/Url";
 const AddZoneScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
@@ -39,7 +40,7 @@ const AddZoneScreen = () => {
 
       console.log("Registration Request Data:", registrationData);
 
-      const response = await axios.post("http://192.168.0.100:8000/api/addzone", registrationData, {
+      const response = await axios.post(`${Url}/api/addzone`, registrationData, {
         headers: {
           Authorization: authorization,
         },
