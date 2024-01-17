@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Alert } from "react-native";
+import { View, Alert, StyleSheet } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { useSelector } from "react-redux";
 import { requestForegroundPermissionsAsync, getCurrentPositionAsync, PermissionStatus } from "expo-location";
@@ -60,7 +60,7 @@ const DriverHomeScreen = () => {
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View style={styles.driverHomeScreenContainer}>
       <QRCode
         value={JSON.stringify({ lat: location?.lat, lon: location?.lon, driver_id })}
         size={200}
@@ -72,3 +72,12 @@ const DriverHomeScreen = () => {
 };
 
 export default DriverHomeScreen;
+
+const styles = StyleSheet.create({
+  driverHomeScreenContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white",
+  },
+});
