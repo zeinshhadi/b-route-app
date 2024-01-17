@@ -26,7 +26,7 @@ const UserRideScreen = ({ navigation }) => {
         const decodedData = JSON.parse(data);
         const user_id = decodedData.driver_id;
         const response = await axios.post(
-          "http://192.168.0.101:8000/api/add/ride",
+          "http://192.168.0.100:8000/api/add/ride",
           {
             start_latitude: decodedData.lat,
             start_longitude: decodedData.lon,
@@ -42,7 +42,7 @@ const UserRideScreen = ({ navigation }) => {
         const decodedData = JSON.parse(data);
         const user_id = decodedData.driver_id;
         const response = await axios.post(
-          "http://192.168.0.101:8000/api/end/ride",
+          "http://192.168.0.100:8000/api/end/ride",
           {
             end_latitude: decodedData.lat,
             end_longitude: decodedData.lon,

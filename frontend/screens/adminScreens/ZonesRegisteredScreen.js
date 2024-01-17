@@ -13,7 +13,7 @@ const ZonesRegisteredScreen = ({ navigation }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://192.168.0.101:8000/api/zones", {
+        const response = await axios.get("http://192.168.0.100:8000/api/zones", {
           headers: { Authorization: authorization },
         });
         console.log("response ", response.data.zones);

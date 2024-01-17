@@ -18,7 +18,7 @@ const BusesByZone = ({ navigation }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://192.168.0.101:8000/api/bus/zone/${zone_id}`, {
+        const response = await axios.get(`http://192.168.0.100:8000/api/bus/zone/${zone_id}`, {
           headers: { Authorization: authorization },
         });
 

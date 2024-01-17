@@ -39,7 +39,7 @@ const AddZoneScreen = () => {
 
       console.log("Registration Request Data:", registrationData);
 
-      const response = await axios.post("http://192.168.0.101:8000/api/addzone", registrationData, {
+      const response = await axios.post("http://192.168.0.100:8000/api/addzone", registrationData, {
         headers: {
           Authorization: authorization,
         },

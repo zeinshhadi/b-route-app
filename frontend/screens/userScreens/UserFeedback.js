@@ -19,7 +19,7 @@ const UserFeedback = ({ navigation }) => {
     console.log("Rating:", rate);
     try {
       const response = await axios.post(
-        "http://192.168.0.101:8000/api/feedback/ride",
+        "http://192.168.0.100:8000/api/feedback/ride",
         { review, rate },
         { headers: { Authorization: authorization } }
       );

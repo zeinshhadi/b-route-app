@@ -14,7 +14,7 @@ const AddDriverScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://192.168.0.101:8000/api/free/buses", {
+        const response = await axios.get("http://192.168.0.100:8000/api/free/buses", {
           headers: { Authorization: authorization },
         });
 
@@ -81,7 +81,7 @@ const AddDriverScreen = () => {
 
       console.log("Registration Request Data:", registrationData);
 
-      const response = await axios.post("http://192.168.0.101:8000/api/register/driver", registrationData, {
+      const response = await axios.post("http://192.168.0.100:8000/api/register/driver", registrationData, {
         headers: {
           Authorization: authorization,
         },

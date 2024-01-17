@@ -13,7 +13,7 @@ const AddBusScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://192.168.0.101:8000/api/zones", {
+        const response = await axios.get("http://192.168.0.100:8000/api/zones", {
           headers: { Authorization: authorization },
         });
 
@@ -71,7 +71,7 @@ const AddBusScreen = () => {
 
       console.log("Registration Request Data:", registrationData);
 
-      const response = await axios.post("http://192.168.0.101:8000/api/register/bus", registrationData, {
+      const response = await axios.post("http://192.168.0.100:8000/api/register/bus", registrationData, {
         headers: {
           Authorization: authorization,
         },

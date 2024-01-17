@@ -12,7 +12,7 @@ const ReviewScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://192.168.0.101:8000/api/feedback", {
+        const response = await axios.get("http://192.168.0.100:8000/api/feedback", {
           headers: { Authorization: authorization },
         });
         setData(response.data.reviews);
