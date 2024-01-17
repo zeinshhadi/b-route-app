@@ -31,7 +31,13 @@ const BusesRegisteredScreen = ({ navigation }) => {
   const renderItem = ({ item }) => {
     return (
       <Pressable onPress={() => navigation.navigate("BusInformation", { item: item })}>
-        <DetailsCard cardTitle={item.id} cardDetail={item.model} tempText={"More Details"} status={"Active"} />
+        <DetailsCard
+          itemType={"Bus#"}
+          cardTitle={item.id}
+          cardDetail={item.model}
+          tempText={"More Details"}
+          status={"Active"}
+        />
       </Pressable>
     );
   };

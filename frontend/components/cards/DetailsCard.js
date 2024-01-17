@@ -8,7 +8,10 @@ const DetailsCard = ({ cardTitle, cardDetail, status, tempText, itemType }) => {
   return (
     <View style={styles.detailsCardContainer}>
       <View style={styles.detailsCard}>
-        <Text style={styles.cardTitleCss}>{cardTitle}</Text>
+        <Text style={styles.cardTitleCss}>
+          {itemType}
+          {cardTitle}
+        </Text>
         <Text>{cardDetail}</Text>
       </View>
       <View style={styles.detailsCard}>
