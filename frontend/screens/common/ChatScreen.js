@@ -1,12 +1,18 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 const ChatScreen = () => {
   return (
-    <View>
+    <View style={styles.chatScreenContainer}>
       <Text>Chat Screen</Text>
     </View>
   );
 };
 
 export default ChatScreen;
+
+const styles = StyleSheet.create({
+  chatScreenContainer: {
+    backgroundColor: "white",
+  },
+});
