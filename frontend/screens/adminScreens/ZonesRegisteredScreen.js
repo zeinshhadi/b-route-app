@@ -29,7 +29,13 @@ const ZonesRegisteredScreen = ({ navigation }) => {
   const renderItem = ({ item }) => {
     return (
       <Pressable onPress={() => navigation.navigate("BusesByZone", { item: item })}>
-        <DetailsCard cardTitle={item.id} cardDetail={item.zone_name} tempText={"MoreDetails"} status={"status"} />
+        <DetailsCard
+          itemType={"Zone#"}
+          cardTitle={item.id}
+          cardDetail={item.zone_name}
+          tempText={"MoreDetails"}
+          status={"status"}
+        />
       </Pressable>
     );
   };
