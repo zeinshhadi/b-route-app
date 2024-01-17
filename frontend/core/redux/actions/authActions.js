@@ -1,9 +1,10 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Url } from "../helper/Url";
 export const Login = ({ email, password }) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post("http://192.168.0.100:8000/api/login", {
+      const response = await axios.post(`${Url}/api/login`, {
         email,
         password,
       });
