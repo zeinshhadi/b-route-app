@@ -52,12 +52,14 @@ const styles = StyleSheet.create({
     gap: 10,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 20,
+    marginTop: 10,
   },
   gridContainer: {
     gap: 10,
   },
   titleContainer: {
     textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 18,
   },
 });
