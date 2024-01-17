@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     alignItems: "center",
+    backgroundColor: "white",
   },
   reviewInnerContainer: {
     width: "90%",
