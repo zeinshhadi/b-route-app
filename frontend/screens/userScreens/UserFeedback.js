@@ -24,7 +24,7 @@ const UserFeedback = ({ navigation }) => {
         { review, rate },
         { headers: { Authorization: authorization } }
       );
-      navigation.navigate("HomeScreen");
+      navigation.navigate("Home");
     } catch (error) {
       console.log("error", error);
     }
