@@ -25,7 +25,7 @@ const AdminBottomNavigation = () => {
         options={{ tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" color={color} size={size} /> }}
       />
       <Tab.Screen
-        name="Rides"
+        name="Review"
         component={ReviewScreen}
         options={{ tabBarIcon: ({ color, size }) => <Ionicons name="car" color={color} size={size} /> }}
       />
