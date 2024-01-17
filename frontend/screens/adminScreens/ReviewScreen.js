@@ -32,7 +32,7 @@ const ReviewScreen = () => {
       <ReviewCard
         cardTitle={item.user_id}
         cardDetail={<View style={styles.starContainer}>{stars}</View>}
-        reviewText={"What A Ride ! Just what we needed to arrive on time !"}
+        reviewText={item.review}
       />
     );
   };
