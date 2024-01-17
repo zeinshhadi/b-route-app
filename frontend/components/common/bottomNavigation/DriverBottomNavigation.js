@@ -10,11 +10,11 @@ const DriverBottomNavigation = () => {
   return (
     <Tab.Navigator screenOptions={{ tabBarActiveTintColor: Colors.primary500, tabBarInactiveTintColor: "gray" }}>
       <Tab.Screen
-        name="Home Screen"
+        name="Qr Code Screen"
         component={DriverHomeScreen}
         options={{
           headerShown: true,
-          tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => <Ionicons name="barcode" color={color} size={size} />,
         }}
       />
       <Tab.Screen
