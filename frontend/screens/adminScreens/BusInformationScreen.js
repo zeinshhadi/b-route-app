@@ -30,10 +30,9 @@ export default BusInformationScreen;
 const styles = StyleSheet.create({
   BusInformationContainer: {
     flex: 1,
-    marginTop: 50,
-    justifyContent: "space-around",
+    justifyContent: "center",
     alignItems: "center",
-    gap: 30,
     backgroundColor: "white",
+    gap: 30,
   },
 });
