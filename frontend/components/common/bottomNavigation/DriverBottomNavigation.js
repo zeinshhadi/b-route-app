@@ -4,6 +4,7 @@ import Colors from "../../../utils/colors";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import DriverHomeScreen from "../../../screens/driverScreens/DriverHomeScreen";
 import EditProfile from "../../../screens/userScreens/EditProfile";
+import ChatScreen from "../../../screens/common/ChatScreen";
 const Tab = createBottomTabNavigator();
 const DriverBottomNavigation = () => {
   return (
@@ -15,6 +16,11 @@ const DriverBottomNavigation = () => {
           headerShown: true,
           tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size} />,
         }}
+      />
+      <Tab.Screen
+        name="Chat"
+        component={ChatScreen}
+        options={{ tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" color={color} size={size} /> }}
       />
       <Tab.Screen
         name="Profile"
