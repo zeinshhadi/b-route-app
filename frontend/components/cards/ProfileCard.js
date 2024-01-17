@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   leftCardProfile: {
     justifyContent: "space-around",
-    alignItems: "center",
+    alignItems: "flex-start",
     height: "100%",
     width: "80%",
   },
