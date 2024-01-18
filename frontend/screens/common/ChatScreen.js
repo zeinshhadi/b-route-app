@@ -11,7 +11,6 @@ const ChatScreen = () => {
   const [messages, setMessages] = useState([]);
   const username = authState.user.first_name;
   useEffect(() => {
-    // Read messages in real-time
     const db = getDatabase(firebaseApp);
     const messagesRef = ref(db, "chat-messages");
 
@@ -23,7 +22,6 @@ const ChatScreen = () => {
 
     onValue(messagesRef, handleData);
 
-    // Clean up when component unmounts
     return () => off(messagesRef, "value", handleData);
   }, []);
 
@@ -34,7 +32,6 @@ const ChatScreen = () => {
 
     const username = authState.user.first_name;
 
-    // Write a message to the database
     const messagesRef = ref(getDatabase(firebaseApp), "chat-messages");
     push(messagesRef, {
       username,
@@ -42,7 +39,6 @@ const ChatScreen = () => {
       timestamp: serverTimestamp(),
     });
 
-    // Clear the input field
     setMessage("");
   };
 
