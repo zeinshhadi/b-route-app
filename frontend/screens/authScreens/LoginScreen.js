@@ -27,8 +27,8 @@ const LoginScreen = ({ navigation }) => {
       } else {
         navigation.navigate("DriverHomeScreen");
       }
-    }
-    if (authState.error) {
+    } else if (authState.error) {
+      setLoading(false);
       setError(authState.error);
     }
   }, [authState, navigation]);

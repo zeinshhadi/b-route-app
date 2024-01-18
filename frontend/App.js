@@ -21,6 +21,7 @@ import AddZoneScreen from "./screens/adminScreens/AddZoneScreen";
 import BusesByZone from "./screens/adminScreens/BusesByZone";
 import DriverBottomNavigation from "./components/common/bottomNavigation/DriverBottomNavigation";
 import UserRideScreen from "./screens/userScreens/UserRideScreen";
+import ChatScreen from "./screens/common/ChatScreen";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -99,6 +100,11 @@ export default function App() {
                 name="UserRideScreen"
                 component={UserRideScreen}
                 options={{ headerShown: true, headerTitle: "Buses in zone" }}
+              />
+              <Stack.Screen
+                name="ChatScreen"
+                component={ChatScreen}
+                options={{ headerShown: true, headerTitle: "Chat Screen" }}
               />
             </Stack.Navigator>
           </NavigationContainer>
