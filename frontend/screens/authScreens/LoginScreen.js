@@ -48,26 +48,24 @@ const LoginScreen = ({ navigation }) => {
       </View>
       <Text style={styles.titleFormScreen}>Log In</Text>
       <View style={styles.formContainer}>
-        <View>
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your email"
-            placeholderTextColor="black"
-            value={email}
-            onChangeText={setEmail}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your password"
-            placeholderTextColor="black"
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-          />
-        </View>
+        <TextInput
+          style={styles.inputDesign}
+          placeholder="Email"
+          placeholderTextColor="grey"
+          value={email}
+          onChangeText={setEmail}
+        />
+        <TextInput
+          style={styles.inputDesign}
+          placeholder="Password"
+          placeholderTextColor="grey"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+        />
       </View>
       <Button onPress={handleLogin} disabled={loading}>
-        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>LogIn</Text>}
+        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Login</Text>}
       </Button>
       <View style={styles.registerContainer}>
         <Text style={styles.registerText}>Don't have an account?</Text>
@@ -92,15 +90,17 @@ const styles = StyleSheet.create({
   },
   inputDesign: {
     borderRadius: 5,
-    backgroundColor: Colors.cardColor,
+    backgroundColor: "white",
     height: 50,
     width: "100%",
-    margin: 10,
     padding: 8,
+    borderWidth: 1,
+    borderColor: "grey",
   },
   formContainer: {
-    width: "80%",
+    width: "90%",
     justifyContent: "center",
+    gap: 10,
   },
   registerContainer: {
     flexDirection: "row",

@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: 80,
     backgroundColor: Colors.cardColor,
-    borderRadius: 10,
+    borderRadius: 50,
     marginTop: 5,
     justifyContent: "space-around",
     alignItems: "center",

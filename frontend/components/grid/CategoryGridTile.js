@@ -14,29 +14,29 @@ const CategoryGridTile = () => {
       <View style={styles.mainAdminScreenContainer}>
         <View style={styles.gridContainer}>
           <GridComponent onPress={() => navigateToScreen("AddBusScreen")}>
-            <Ionicons name="add-circle-outline" size={50} color={Colors.primary600} />
+            <Ionicons name="add-circle-outline" size={50} color={Colors.primary500} />
           </GridComponent>
           <Text style={styles.titleContainer}>Add Bus</Text>
           <GridComponent onPress={() => navigateToScreen("AddDriverScreen")}>
-            <Ionicons name="person-add" size={50} color={Colors.primary600} />
+            <Ionicons name="person-add" size={50} color={Colors.primary500} />
           </GridComponent>
           <Text style={styles.titleContainer}>Add Driver</Text>
           <GridComponent onPress={() => navigateToScreen("ReviewScreen")}>
-            <MaterialIcons name="rate-review" size={50} color={Colors.primary600} />
+            <MaterialIcons name="rate-review" size={50} color={Colors.primary500} />
           </GridComponent>
           <Text style={styles.titleContainer}>Reviews</Text>
         </View>
         <View style={styles.gridContainer}>
           <GridComponent onPress={() => navigateToScreen("ZonesRegistered")}>
-            <Ionicons name="location-outline" size={50} color={Colors.primary600} />
+            <Ionicons name="location-outline" size={50} color={Colors.primary500} />
           </GridComponent>
           <Text style={styles.titleContainer}>Zones</Text>
           <GridComponent onPress={() => navigateToScreen("BusesRegistered")}>
-            <Ionicons name="bus" size={50} color={Colors.primary600} />
+            <Ionicons name="bus" size={50} color={Colors.primary500} />
           </GridComponent>
           <Text style={styles.titleContainer}>Buses</Text>
           <GridComponent onPress={() => navigateToScreen("AddZoneScreen")}>
-            <Ionicons name="add-circle-outline" size={50} color={Colors.primary600} />
+            <Ionicons name="add-circle-outline" size={50} color={Colors.primary500} />
           </GridComponent>
           <Text style={styles.titleContainer}>Add Zone</Text>
         </View>

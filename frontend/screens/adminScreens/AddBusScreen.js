@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, TextInput, ScrollView, ActivityIndicator, Alert } from "react-native";
+import { Text, View, StyleSheet, TextInput, ScrollView, ActivityIndicator, Alert, Image } from "react-native";
 import Button from "../../components/common/Button";
 import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
@@ -94,6 +94,7 @@ const AddBusScreen = () => {
   return (
     <View style={styles.outerContainer}>
       <View style={styles.formContainer}>
+        {/* <Image style={styles.addBusImage} source={require("../../assets/images/logo.png")} />; */}
         <ScrollView>
           <View>
             <TextInput
@@ -211,5 +212,9 @@ const styles = StyleSheet.create({
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
+  },
+  addBusImage: {
+    width: 100,
+    height: 100,
   },
 });

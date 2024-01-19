@@ -227,9 +227,9 @@ const styles = StyleSheet.create({
   },
   driverImage: {
     height: 150,
-    width: 220,
+    width: 150,
     margin: 10,
-    borderRadius: 10,
+    borderRadius: 150,
   },
   dropdown: {
     height: 50,

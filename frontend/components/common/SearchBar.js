@@ -6,12 +6,12 @@ const SearchBar = () => {
   const [searchText, setSearchText] = useState();
   return (
     <View style={styles.searchContainer}>
-      <Ionicons style={styles.inputSearchIcon} name="search" size={15} color={Colors.primary600} />
+      <Ionicons style={styles.inputSearchIcon} name="search" size={15} color="grey" />
       <TextInput
         style={styles.inputSearchDesign}
         placeholder="Search"
         value={searchText}
-        placeholderTextColor={Colors.primary500}
+        placeholderTextColor="grey"
         onChangeText={(text) => setSearchText(text)}
       />
     </View>
@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 10,
     borderRadius: 20,
-    borderWidth: 2,
-    borderColor: Colors.primary500,
+    borderWidth: 1,
+    borderColor: Colors.primary600,
     height: 40,
     marginVertical: 10,
     justifyContent: "flex-start",
