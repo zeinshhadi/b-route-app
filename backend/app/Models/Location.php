@@ -10,6 +10,8 @@ class Location extends Model
     use HasFactory;
 protected $fillable=["driver_id","longitude","latitude"];
 
-
+public function driver(){
+    return $this->belongsTo(Driver::class);
+}
 
 }
