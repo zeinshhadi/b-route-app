@@ -6,19 +6,8 @@ import { getCurrentPositionAsync, useForegroundPermissions, PermissionStatus } f
 import Colors from "../../utils/colors";
 
 const HomeScreen = () => {
-  const [token, setToken] = useState(null);
   const [locationPermissionInformation, requestPermission] = useForegroundPermissions();
   const [region, setRegion] = useState(null);
-
-  const retrieveToken = async () => {
-    try {
-      const token = await AsyncStorage.getItem("userToken");
-      return token;
-    } catch (error) {
-      console.error("Error retrieving token:", error);
-      return null;
-    }
-  };
 
   async function verifyPermissions() {
     if (locationPermissionInformation.status === PermissionStatus.UNDETERMINED) {
