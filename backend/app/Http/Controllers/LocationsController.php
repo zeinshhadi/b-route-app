@@ -45,7 +45,7 @@ public function delete_driver_location(){
         $driver_id = Driver::where('user_id', $user->id)->first();
         $driver_id= $driver_id->id;
 
-        $location = Location::where('driver_id',$driver_id);
+        $location = Location::where('driver_id',$driver_id)->get()->first();
         $location->delete();
 }
 }
