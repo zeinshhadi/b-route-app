@@ -15,7 +15,6 @@ const DriverHomeScreen = () => {
   const [fetchLocation, setFetchLocation] = useState(false);
 
   useEffect(() => {
-    console.log("entered this use");
     const getLocation = async () => {
       try {
         if (locationPermission !== PermissionStatus.GRANTED) {
@@ -68,8 +67,29 @@ const DriverHomeScreen = () => {
 
   useEffect(() => {
     if (location) {
-      const dataToEncode = JSON.stringify({ lat: location.lat, lon: location.lon, driver_id });
-      console.log(dataToEncode);
+      let lat = location.lat;
+      let lon = location.lon;
+
+      console.log("Before API Call - Lat:", lat, "Lon:", lon);
+
+      const update_driver_location = async (lat, lon) => {
+        try {
+          const response = await axios.post(
+            `${Url}/api/update/location`,
+            { lat, lon },
+            {
+              headers: {
+                Authorization: authorization,
+              },
+            }
+          );
+          console.log("API Response:", response.data);
+        } catch (error) {
+          console.error("Error updating driver location:", error.message);
+        }
+      };
+
+      update_driver_location(lat, lon);
     }
   }, [location, driver_id]);
 
