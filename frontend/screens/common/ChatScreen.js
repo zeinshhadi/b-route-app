@@ -7,13 +7,13 @@ const ChatScreen = () => {
   const authState = useSelector((state) => state.auth);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const username = authState.user.first_name;
+  const userId = authState.user.id;
   const userType = authState.user.role_type;
   const navigation = useNavigation();
 
   useEffect(() => {
     const db = getDatabase();
-    const messagesRef = ref(db, `chat-messages/${userType}/${username}`);
+    const messagesRef = ref(db, `chat-messages/${userType}s/${userId}/admin`);
 
     const handleData = (snapshot) => {
       console.log("Handling data in ChatScreen:", snapshot.val());
@@ -25,7 +25,7 @@ const ChatScreen = () => {
     onValue(messagesRef, handleData);
 
     return () => off(messagesRef, "value", handleData);
-  }, [userType, username]);
+  }, [userType, userId]);
 
   const sendMessage = () => {
     console.log("Sending message...");
@@ -35,24 +35,13 @@ const ChatScreen = () => {
       return;
     }
 
-    const userType = authState.user.role_type;
-
-    if (userType === "passenger" || userType === "driver") {
-      console.log("Sending message to admin...");
-      const adminMessagesRef = ref(getDatabase(), `admin-messages/${userType}`);
-      push(adminMessagesRef, {
-        username: "admin", // Assuming admin's username is "admin"
-        message,
-        userType,
-        timestamp: serverTimestamp(),
-      });
-    }
-
-    const userMessagesRef = ref(getDatabase(), `chat-messages/${userType}/${username}`);
+    const userMessagesRef = ref(getDatabase(), `admin-messages/${userType}s/admin`);
     push(userMessagesRef, {
-      username,
+      username: "admin",
       message,
+      userType,
       timestamp: serverTimestamp(),
+      userId,
     });
 
     setMessage("");
