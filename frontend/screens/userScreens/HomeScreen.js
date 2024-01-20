@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Alert, StyleSheet, View, Text, Pressable } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import MapView, { Marker } from "react-native-maps";
 import { getCurrentPositionAsync, useForegroundPermissions, PermissionStatus } from "expo-location";
 import Colors from "../../utils/colors";
@@ -29,11 +28,34 @@ const HomeScreen = () => {
     }
   };
 
+  const updateUserLocation = async () => {
+    const hasPermission = await verifyPermissions();
+    if (!hasPermission) {
+      return;
+    }
+
+    try {
+      const location = await getCurrentPositionAsync();
+      let lat = location.coords.latitude;
+      let lon = location.coords.longitude;
+      const newRegion = {
+        latitude: lat,
+        longitude: lon,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      };
+      setRegion(newRegion);
+    } catch (error) {
+      console.error("Error getting user location:", error.message);
+    }
+  };
+
   useEffect(() => {
     getDriversLocation();
 
     const intervalId = setInterval(() => {
       getDriversLocation();
+      updateUserLocation();
     }, 10000);
 
     return () => clearInterval(intervalId);
@@ -77,7 +99,6 @@ const HomeScreen = () => {
             coordinate={{ latitude: location.latitude, longitude: location.longitude }}
             title={`Driver ${location.driver_id}`}
             image={BusMarkerImage}
-            style={{ width: 2, height: 2 }}
           />
         ))}
       </MapView>
