@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LocationsController extends Controller
 {
-    public function get_driver_location(Request $request){
+    public function create_driver_location(Request $request){
 
         $user =Auth::user();
         $driver_id = Driver::where('user_id', $user->id)->first();
@@ -56,4 +56,18 @@ public function delete_driver_location(){
         $location = Location::where('driver_id',$driver_id)->get()->first();
         $location->delete();
 }
+
+public function get_driver_locations(){
+    
+    $drivers = Driver::all();   
+    $allLocations = [];
+   
+    foreach ($drivers as $driver) {
+        
+        $locations = $driver->locations;      
+        $allLocations = array_merge($allLocations, $locations->toArray());
+    }
+    return response()->json(['locations' => $allLocations]);
+}
+
 }
