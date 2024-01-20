@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Alert, StyleSheet, View, Text, Pressable } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import MapView from "react-native-maps";
@@ -8,14 +8,7 @@ import Colors from "../../utils/colors";
 const HomeScreen = () => {
   const [token, setToken] = useState(null);
   const [locationPermissionInformation, requestPermission] = useForegroundPermissions();
-  useEffect(() => {
-    const fetchToken = async () => {
-      const retrievedToken = await retrieveToken();
-      setToken(retrievedToken);
-    };
-
-    fetchToken();
-  }, []);
+  const [region, setRegion] = useState(null);
 
   const retrieveToken = async () => {
     try {
@@ -26,6 +19,7 @@ const HomeScreen = () => {
       return null;
     }
   };
+
   async function verifyPermissions() {
     if (locationPermissionInformation.status === PermissionStatus.UNDETERMINED) {
       const permissionResponse = await requestPermission();
@@ -37,6 +31,7 @@ const HomeScreen = () => {
     }
     return true;
   }
+
   async function getLocationHandler() {
     const hasPermission = await verifyPermissions();
     if (!hasPermission) {
@@ -45,21 +40,26 @@ const HomeScreen = () => {
     const location = await getCurrentPositionAsync();
     let lat = location.coords.latitude;
     let lon = location.coords.longitude;
-    console.log(lat, lon);
+    const newRegion = {
+      latitude: lat,
+      longitude: lon,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    };
+    setRegion(newRegion);
   }
+
   return (
     <View style={styles.container}>
-      <MapView style={styles.map} />
+      <MapView style={styles.map} region={region} showsUserLocation={true} followsUserLocation={true} />
       <View style={styles.buttonContainer}>
         <Pressable onPress={() => getLocationHandler()}>
-          <Text style={styles.buttonContainerText}>Get Location</Text>
+          <Text style={styles.buttonText}>Get Location</Text>
         </Pressable>
       </View>
     </View>
   );
 };
-
-export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -76,11 +76,13 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: Colors.primary500,
     borderRadius: 30,
-    width: "50%",
+    width: "65%",
   },
-  buttonContainerText: {
+  buttonText: {
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
   },
 });
+
+export default HomeScreen;
