@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TextInput, Button, FlatList } from "react-nativ
 import { useSelector } from "react-redux";
 import { getDatabase, ref, push, serverTimestamp, onValue, off } from "firebase/database";
 import { useNavigation } from "@react-navigation/native";
+
 const ChatScreen = () => {
   const authState = useSelector((state) => state.auth);
   const [message, setMessage] = useState("");
@@ -49,6 +50,7 @@ const ChatScreen = () => {
     setMessage("");
     console.log("Message sent!");
   };
+
   return (
     <View style={styles.chatScreenContainer}>
       <FlatList
@@ -56,7 +58,7 @@ const ChatScreen = () => {
         keyExtractor={(item) => item.timestamp.toString()}
         renderItem={({ item }) => (
           <View style={styles.messageContainer}>
-            <Text style={styles.username}>{item.userType === "admin" ? "Admin" : "User"}:</Text>
+            <Text style={styles.username}>{item.username}:</Text>
             <Text style={styles.messageText}>{item.message}</Text>
           </View>
         )}

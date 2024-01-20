@@ -11,7 +11,7 @@ const AdminChatScreen = () => {
 
   useEffect(() => {
     const db = getDatabase();
-    const adminMessagesRef = ref(db, `admin-messages/admin`);
+    const chatMessagesRef = ref(db, "chat-messages");
 
     const handleData = (snapshot) => {
       console.log("Handling data in AdminChatScreen:", snapshot.val());
@@ -21,37 +21,36 @@ const AdminChatScreen = () => {
         console.log("Data from Firebase:", data);
 
         const userList = Object.keys(data).flatMap((userType) => {
-          const userChat = data[userType];
+          const users = data[userType]["admin"];
+          if (!users) return null;
 
-          if (typeof userChat === "object") {
-            return Object.keys(userChat).map((userId) => {
-              const messages = userChat[userId];
-              const lastMessageKey = Object.keys(messages)[Object.keys(messages).length - 1];
-              const lastMessage = messages[lastMessageKey];
+          return Object.keys(users).flatMap((userId) => {
+            const messages = users[userId];
+            if (!messages) return null;
 
-              return {
-                userId,
-                userType,
-                username: lastMessage.username,
-                lastMessage: lastMessage.message,
-              };
-            });
-          }
+            const lastMessageKey = Object.keys(messages)[Object.keys(messages).length - 1];
+            const lastMessage = messages[lastMessageKey];
 
-          return [];
+            return {
+              userId,
+              userType,
+              username: lastMessage.username,
+              lastMessage: lastMessage.message,
+            };
+          });
         });
 
         console.log("User List:", userList);
 
-        setUsers(userList);
+        setUsers(userList.filter(Boolean));
       } else {
         setUsers([]);
       }
     };
 
-    onValue(adminMessagesRef, handleData);
+    onValue(chatMessagesRef, handleData);
 
-    return () => off(adminMessagesRef, "value", handleData);
+    return () => off(chatMessagesRef, "value", handleData);
   }, []);
 
   const navigateToChat = (userId, userType) => {
