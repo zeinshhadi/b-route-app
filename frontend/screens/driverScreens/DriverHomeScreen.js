@@ -3,7 +3,8 @@ import { View, Alert, StyleSheet } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { useSelector } from "react-redux";
 import { requestForegroundPermissionsAsync, getCurrentPositionAsync, PermissionStatus } from "expo-location";
-
+import { Url } from "../../core/redux/helper/Url";
+import axios from "axios";
 const DriverHomeScreen = () => {
   const authState = useSelector((state) => state.auth);
   const driver_id = authState.user.id;
@@ -12,6 +13,7 @@ const DriverHomeScreen = () => {
   const [initialFetchComplete, setInitialFetchComplete] = useState(false);
 
   useEffect(() => {
+    console.log("entered this use");
     const getLocation = async () => {
       try {
         if (locationPermission !== PermissionStatus.GRANTED) {
@@ -24,6 +26,15 @@ const DriverHomeScreen = () => {
         const lon = locationData.coords.longitude;
         setLocation({ lat, lon });
         setInitialFetchComplete(true);
+        const get_location_driver = async (lat, lon) => {
+          try {
+            const response = await axios.post(
+              `${Url}/api/driver/location`,
+              { lat, lon },
+              { headers: { Authorization } }
+            );
+          } catch (error) {}
+        };
       } catch (error) {
         console.error("Error getting location:", error);
         Alert.alert("Error", "Could not fetch location. Please try again.");
@@ -49,15 +60,6 @@ const DriverHomeScreen = () => {
       console.log(dataToEncode);
     }
   }, [location, driver_id]);
-
-  const getLocationHandler = async () => {
-    try {
-      await getLocation();
-    } catch (error) {
-      console.error("Error getting location:", error);
-      Alert.alert("Error", "Could not fetch location. Please try again.");
-    }
-  };
 
   return (
     <View style={styles.driverHomeScreenContainer}>
