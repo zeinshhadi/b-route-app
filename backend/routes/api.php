@@ -36,7 +36,9 @@ Route::controller(RidesController::class)->group(function () {
 });
 
 })->middleware(['auth:api', 'passenger']);
-Route::get('driver/location',[LocationsController::class,'get_driver_location']);
+
+
+Route::post('driver/location',[LocationsController::class,'get_driver_location']);
 
 Route::controller(DriversController::class)->group(function () {
     Route::get('/driver/{userId}', 'getDriverByUserId');
