@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BusesController;
 use App\Http\Controllers\DriversController;
+use App\Http\Controllers\LocationsController;
 use App\Http\Controllers\RidesController;
 use App\Http\Controllers\ZonesController;
 use Illuminate\Http\Request;
@@ -35,7 +36,7 @@ Route::controller(RidesController::class)->group(function () {
 });
 
 })->middleware(['auth:api', 'passenger']);
-
+Route::get('driver/location',[LocationsController::class,'get_driver_location']);
 
 Route::controller(DriversController::class)->group(function () {
     Route::get('/driver/{userId}', 'getDriverByUserId');
