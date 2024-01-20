@@ -12,6 +12,7 @@ const DriverHomeScreen = () => {
   const [locationPermission, setLocationPermission] = useState(null);
   const [location, setLocation] = useState(null);
   const [initialFetchComplete, setInitialFetchComplete] = useState(false);
+  const [fetchLocation, setFetchLocation] = useState(false);
 
   useEffect(() => {
     console.log("entered this use");
@@ -27,15 +28,25 @@ const DriverHomeScreen = () => {
         const lon = locationData.coords.longitude;
         setLocation({ lat, lon });
         setInitialFetchComplete(true);
-        const get_location_driver = async (lat, lon) => {
-          try {
-            const response = await axios.post(
-              `${Url}/api/driver/location`,
-              { lat, lon },
-              { headers: { Authorization } }
-            );
-          } catch (error) {}
-        };
+        if (fetchLocation === false) {
+          const get_location_driver = async ({ lat, lon }) => {
+            try {
+              const response = await axios.post(
+                `${Url}/api/driver/location`,
+                { lat, lon },
+                { headers: { Authorization: authorization } }
+              );
+              if (response.location) {
+                console.log(`location is ${response.location}`);
+              }
+            } catch (error) {
+              console.log(`error creating driver location ${error}`);
+            }
+          };
+
+          get_location_driver({ lat, lon });
+          setFetchLocation(true);
+        }
       } catch (error) {
         console.error("Error getting location:", error);
         Alert.alert("Error", "Could not fetch location. Please try again.");
