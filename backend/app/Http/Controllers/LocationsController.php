@@ -30,8 +30,9 @@ class LocationsController extends Controller
 
     public function update_driver_location(Request $request){
 
-        $driver =Auth::user();
-        $driver_id = $driver->id;
+        $user =Auth::user();
+        $driver_id = Driver::where('user_id', $user->id)->first();
+        $driver_id= $driver_id->id;
 
         $location = Location::where('driver_id',$driver_id)->update([
             'longitude'=>$request->longitude,
