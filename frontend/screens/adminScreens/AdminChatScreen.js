@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, Pressable } from "react-native";
 import { useSelector } from "react-redux";
 import { getDatabase, ref, onValue, off } from "firebase/database";
-import { useNavigation } from "@react-navigation/native";
 
-const AdminChatScreen = () => {
+const AdminChatScreen = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const [users, setUsers] = useState([]);
-  const navigation = useNavigation();
 
   useEffect(() => {
     const db = getDatabase();
@@ -54,7 +52,7 @@ const AdminChatScreen = () => {
   }, []);
 
   const navigateToChat = (userId, userType) => {
-    navigation.navigate("Chat", { userId, userType });
+    navigation.navigate("IndividualChatScreen", { userId, userType });
   };
 
   return (
