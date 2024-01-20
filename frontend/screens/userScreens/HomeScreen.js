@@ -4,11 +4,23 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import MapView from "react-native-maps";
 import { getCurrentPositionAsync, useForegroundPermissions, PermissionStatus } from "expo-location";
 import Colors from "../../utils/colors";
+import axios from "axios";
+import { Url } from "../../core/redux/helper/Url";
 
 const HomeScreen = () => {
   const [locationPermissionInformation, requestPermission] = useForegroundPermissions();
   const [region, setRegion] = useState(null);
+  const [driverLocation, setDriverLocation] = useState(null);
 
+  const getDriversLocation = async () => {
+    try {
+      const response = await axios.post(`${Url}/api/get/driver/location`);
+      console.log(response.data);
+    } catch (error) {
+      console.log(`error ${error}`);
+    }
+  };
+  getDriversLocation();
   async function verifyPermissions() {
     if (locationPermissionInformation.status === PermissionStatus.UNDETERMINED) {
       const permissionResponse = await requestPermission();
