@@ -83,7 +83,7 @@ const DriverHomeScreen = () => {
               },
             }
           );
-          console.log("API Response:", response.data);
+          console.log("Response:", response.data);
         } catch (error) {
           console.error("Error updating driver location:", error.message);
         }
