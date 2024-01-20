@@ -1,47 +1,51 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, Pressable } from "react-native";
 import { useSelector } from "react-redux";
-import { StyleSheet } from "react-native";
 import { getDatabase, ref, onValue, off } from "firebase/database";
 import { useNavigation } from "@react-navigation/native";
 
 const AdminChatScreen = () => {
   const authState = useSelector((state) => state.auth);
-  const [chats, setChats] = useState([]);
+  const [users, setUsers] = useState([]);
   const navigation = useNavigation();
 
   useEffect(() => {
     const db = getDatabase();
-    const adminMessagesRef = ref(db, `admin-messages`);
+    const adminMessagesRef = ref(db, `admin-messages/admin`);
 
     const handleData = (snapshot) => {
+      console.log("Handling data in AdminChatScreen:", snapshot.val());
+
       if (snapshot.exists()) {
         const data = snapshot.val();
+        console.log("Data from Firebase:", data);
 
-        // Extract chat data from the object
-        const chatList = Object.keys(data).map((userType) => {
+        const userList = Object.keys(data).flatMap((userType) => {
           const userChat = data[userType];
 
           if (typeof userChat === "object") {
-            // Get the last message key for each user
-            const lastMessageKey = Object.keys(userChat)[Object.keys(userChat).length - 1];
+            return Object.keys(userChat).map((userId) => {
+              const messages = userChat[userId];
+              const lastMessageKey = Object.keys(messages)[Object.keys(messages).length - 1];
+              const lastMessage = messages[lastMessageKey];
 
-            // Extract the last message
-            const lastMessage = userChat[lastMessageKey];
-
-            // Return the formatted chat object
-            return {
-              ...lastMessage,
-              userType,
-            };
+              return {
+                userId,
+                userType,
+                username: lastMessage.username,
+                lastMessage: lastMessage.message,
+              };
+            });
           }
 
-          return null; // Skip non-object entries
+          return [];
         });
 
-        setChats(chatList);
+        console.log("User List:", userList);
+
+        setUsers(userList);
       } else {
-        setChats([]);
+        setUsers([]);
       }
     };
 
@@ -54,28 +58,18 @@ const AdminChatScreen = () => {
     navigation.navigate("Chat", { userId, userType });
   };
 
-  const getChatTitle = (userType) => {
-    if (userType === "driver") {
-      return "Driver";
-    } else if (userType === "passenger") {
-      return "Passenger";
-    } else {
-      return "Unknown";
-    }
-  };
-
   return (
     <View style={styles.adminChatScreenContainer}>
       <FlatList
-        data={chats}
-        keyExtractor={(item) => `${item.timestamp}_${item.userType}`}
+        data={users}
+        keyExtractor={(item, index) => `${item.userId}_${item.userType}_${index}`}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => navigateToChat(item.userId, item.userType)}>
-            <View style={styles.chatContainer}>
-              <Text style={styles.username}>{getChatTitle(item.userType)}:</Text>
-              <Text style={styles.messageText}>{item.message}</Text>
+          <Pressable onPress={() => navigateToChat(item.userId, item.userType)}>
+            <View style={styles.userCard}>
+              <Text style={styles.username}>{item.username}</Text>
+              <Text style={styles.lastMessage}>{item.lastMessage}</Text>
             </View>
-          </TouchableOpacity>
+          </Pressable>
         )}
       />
     </View>
@@ -87,16 +81,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
   },
-  chatContainer: {
-    flexDirection: "row",
-    padding: 10,
+  userCard: {
+    flexDirection: "column",
+    padding: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
   },
   username: {
     fontWeight: "bold",
-    marginRight: 5,
+    fontSize: 16,
   },
-  messageText: {
-    flex: 1,
+  lastMessage: {
+    marginTop: 5,
+    color: "black",
   },
 });
 

@@ -18,7 +18,6 @@ const ChatScreen = () => {
     const handleData = (snapshot) => {
       console.log("Handling data in ChatScreen:", snapshot.val());
       if (snapshot.val()) {
-        // Extracting messages from the object
         const messagesList = Object.values(snapshot.val());
 
         setMessages(messagesList);
@@ -40,7 +39,7 @@ const ChatScreen = () => {
 
     const userMessagesRef = ref(getDatabase(), `chat-messages/${userType}s/admin/${userId}`);
     push(userMessagesRef, {
-      username: "admin",
+      username: authState.user.first_name,
       message,
       userType,
       timestamp: serverTimestamp(),
@@ -50,7 +49,6 @@ const ChatScreen = () => {
     setMessage("");
     console.log("Message sent!");
   };
-
   return (
     <View style={styles.chatScreenContainer}>
       <FlatList
