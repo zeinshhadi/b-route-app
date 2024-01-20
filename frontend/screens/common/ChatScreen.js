@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button, FlatList } from "react-native";
 import { useSelector } from "react-redux";
-import { firebaseApp } from "../../config/firebase";
-import { getDatabase, ref, push, serverTimestamp } from "firebase/database";
-import { onValue, off } from "firebase/database";
-
+import { getDatabase, ref, push, serverTimestamp, onValue, off } from "firebase/database";
+import { useNavigation } from "@react-navigation/native";
 const ChatScreen = () => {
   const authState = useSelector((state) => state.auth);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const username = authState.user.first_name;
+  const userType = authState.user.role_type;
+  const navigation = useNavigation();
+
   useEffect(() => {
-    const db = getDatabase(firebaseApp);
-    const messagesRef = ref(db, "chat-messages");
+    const db = getDatabase();
+    const messagesRef = ref(db, `chat-messages/${userType}/${username}`);
 
     const handleData = (snapshot) => {
+      console.log("Handling data in ChatScreen:", snapshot.val());
       if (snapshot.val()) {
         setMessages(Object.values(snapshot.val()));
       }
@@ -23,25 +25,39 @@ const ChatScreen = () => {
     onValue(messagesRef, handleData);
 
     return () => off(messagesRef, "value", handleData);
-  }, []);
+  }, [userType, username]);
 
   const sendMessage = () => {
+    console.log("Sending message...");
+
     if (message.trim() === "") {
+      console.log("Message is empty");
       return;
     }
 
-    const username = authState.user.first_name;
+    const userType = authState.user.role_type;
 
-    const messagesRef = ref(getDatabase(firebaseApp), "chat-messages");
-    push(messagesRef, {
+    if (userType === "passenger" || userType === "driver") {
+      console.log("Sending message to admin...");
+      const adminMessagesRef = ref(getDatabase(), `admin-messages/${userType}`);
+      push(adminMessagesRef, {
+        username: "admin", // Assuming admin's username is "admin"
+        message,
+        userType,
+        timestamp: serverTimestamp(),
+      });
+    }
+
+    const userMessagesRef = ref(getDatabase(), `chat-messages/${userType}/${username}`);
+    push(userMessagesRef, {
       username,
       message,
       timestamp: serverTimestamp(),
     });
 
     setMessage("");
+    console.log("Message sent!");
   };
-
   return (
     <View style={styles.chatScreenContainer}>
       <FlatList

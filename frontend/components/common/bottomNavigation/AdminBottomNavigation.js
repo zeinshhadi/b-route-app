@@ -6,6 +6,7 @@ import ChatScreen from "../../../screens/common/ChatScreen";
 import ReviewScreen from "../../../screens/adminScreens/ReviewScreen";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../../utils/colors";
+import AdminChatScreen from "../../../screens/adminScreens/AdminChatScreen";
 const Tab = createBottomTabNavigator();
 
 const AdminBottomNavigation = () => {
@@ -21,7 +22,7 @@ const AdminBottomNavigation = () => {
       />
       <Tab.Screen
         name="Chat"
-        component={ChatScreen}
+        component={AdminChatScreen}
         options={{ tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" color={color} size={size} /> }}
       />
       <Tab.Screen
