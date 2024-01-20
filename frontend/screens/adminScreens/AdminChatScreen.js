@@ -11,45 +11,36 @@ const AdminChatScreen = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    console.log("AdminChatScreen rendering...");
-    console.log("Role Type:", authState.user.role_type);
-
     const db = getDatabase();
     const adminMessagesRef = ref(db, `admin-messages`);
 
     const handleData = (snapshot) => {
-      console.log("Handling data in AdminChatScreen:", snapshot.val());
-      console.log(snapshot.exists());
-
       if (snapshot.exists()) {
         const data = snapshot.val();
 
         // Extract chat data from the object
-        const chatList = Object.keys(data)
-          .map((userType) => {
-            const userChat = data[userType];
+        const chatList = Object.keys(data).map((userType) => {
+          const userChat = data[userType];
 
-            if (typeof userChat === "object") {
-              // Get the last message key for each user
-              const lastMessageKey = Object.keys(userChat)[Object.keys(userChat).length - 1];
+          if (typeof userChat === "object") {
+            // Get the last message key for each user
+            const lastMessageKey = Object.keys(userChat)[Object.keys(userChat).length - 1];
 
-              // Extract the last message
-              const lastMessage = userChat[lastMessageKey];
+            // Extract the last message
+            const lastMessage = userChat[lastMessageKey];
 
-              // Return the formatted chat object
-              return {
-                ...lastMessage,
-                userType,
-              };
-            }
+            // Return the formatted chat object
+            return {
+              ...lastMessage,
+              userType,
+            };
+          }
 
-            return null; // Skip non-object entries
-          })
-          .filter(Boolean); // Remove null entries
+          return null; // Skip non-object entries
+        });
 
         setChats(chatList);
       } else {
-        console.log("No admin messages found.");
         setChats([]);
       }
     };
@@ -57,7 +48,7 @@ const AdminChatScreen = () => {
     onValue(adminMessagesRef, handleData);
 
     return () => off(adminMessagesRef, "value", handleData);
-  }, [authState.user.role_type]);
+  }, []);
 
   const navigateToChat = (userId, userType) => {
     navigation.navigate("Chat", { userId, userType });

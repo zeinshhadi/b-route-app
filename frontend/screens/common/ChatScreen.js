@@ -13,12 +13,15 @@ const ChatScreen = () => {
 
   useEffect(() => {
     const db = getDatabase();
-    const messagesRef = ref(db, `chat-messages/${userType}s/${userId}/admin`);
+    const messagesRef = ref(db, `chat-messages/${userType}s/admin/${userId}`);
 
     const handleData = (snapshot) => {
       console.log("Handling data in ChatScreen:", snapshot.val());
       if (snapshot.val()) {
-        setMessages(Object.values(snapshot.val()));
+        // Extracting messages from the object
+        const messagesList = Object.values(snapshot.val());
+
+        setMessages(messagesList);
       }
     };
 
@@ -35,7 +38,7 @@ const ChatScreen = () => {
       return;
     }
 
-    const userMessagesRef = ref(getDatabase(), `admin-messages/${userType}s/admin`);
+    const userMessagesRef = ref(getDatabase(), `chat-messages/${userType}s/admin/${userId}`);
     push(userMessagesRef, {
       username: "admin",
       message,
@@ -47,6 +50,7 @@ const ChatScreen = () => {
     setMessage("");
     console.log("Message sent!");
   };
+
   return (
     <View style={styles.chatScreenContainer}>
       <FlatList
@@ -54,11 +58,12 @@ const ChatScreen = () => {
         keyExtractor={(item) => item.timestamp.toString()}
         renderItem={({ item }) => (
           <View style={styles.messageContainer}>
-            <Text style={styles.username}>{item.username}:</Text>
+            <Text style={styles.username}>{item.userType === "admin" ? "Admin" : "User"}:</Text>
             <Text style={styles.messageText}>{item.message}</Text>
           </View>
         )}
       />
+
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
