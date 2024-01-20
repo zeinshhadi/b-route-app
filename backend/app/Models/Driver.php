@@ -22,13 +22,17 @@ class Driver extends Model
         'user_id',
     'role_type'];
 
-public function user()
-{
-    return $this->belongsTo(User::class);
-}
-
-public function bus()
-{
-    return $this->belongsTo(Bus::class);
-}
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
+    public function bus()
+    {
+        return $this->belongsTo(Bus::class);
+    }
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
 }
