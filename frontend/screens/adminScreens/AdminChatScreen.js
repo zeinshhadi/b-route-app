@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, Pressable } from "react-native";
+import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
 import { useSelector } from "react-redux";
 import { getDatabase, ref, onValue, off } from "firebase/database";
-
+import { firebaseApp } from "../../config/firebase";
 const AdminChatScreen = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const db = getDatabase();
+    const db = getDatabase(firebaseApp);
     const chatMessagesRef = ref(db, "chat-messages");
 
     const handleData = (snapshot) => {

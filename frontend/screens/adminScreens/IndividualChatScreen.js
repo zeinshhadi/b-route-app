@@ -1,49 +1,55 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, TextInput, Button, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
-import { getDatabase, ref, push, serverTimestamp, onValue, off } from "firebase/database";
-
+import { getDatabase, ref, push, onValue, off, serverTimestamp } from "firebase/database";
+import { firebaseApp } from "../../config/firebase";
 const IndividualChatScreen = ({ route }) => {
   const authState = useSelector((state) => state.auth);
-  const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
   const { userId, userType } = route.params;
 
+  const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState("");
+
   useEffect(() => {
-    const db = getDatabase();
-    const messagesRef = ref(db, `chat-messages/${userType}s/admin/${userId}`);
+    const db = getDatabase(firebaseApp);
+    const chatMessagesRef = ref(db, `chat-messages/${userType}/admin/${userId}`);
 
     const handleData = (snapshot) => {
+      console.log("Handling data in IndividualChatScreen:", snapshot.val());
       if (snapshot.val()) {
         const messagesList = Object.values(snapshot.val());
         setMessages(messagesList);
       }
     };
 
-    onValue(messagesRef, handleData);
+    onValue(chatMessagesRef, handleData);
 
-    return () => off(messagesRef, "value", handleData);
-  }, [userType, userId]);
+    return () => off(chatMessagesRef, "value", handleData);
+  }, [userId, userType]);
 
   const sendMessage = () => {
+    console.log("Sending message...");
+
     if (message.trim() === "") {
+      console.log("Message is empty");
       return;
     }
 
-    const userMessagesRef = ref(getDatabase(), `chat-messages/${userType}s/admin/${userId}`);
+    const userMessagesRef = ref(getDatabase(), `chat-messages/${userType}/admin/${userId}`);
     push(userMessagesRef, {
       username: authState.user.first_name,
       message,
-      userType,
+      userType: "admin",
       timestamp: serverTimestamp(),
-      userId,
+      userId: authState.user.id,
     });
 
     setMessage("");
+    console.log("Message sent!");
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.individualChatScreenContainer}>
       <FlatList
         data={messages}
         keyExtractor={(item) => item.timestamp.toString()}
@@ -60,7 +66,7 @@ const IndividualChatScreen = ({ route }) => {
           style={styles.input}
           value={message}
           onChangeText={(text) => setMessage(text)}
-          placeholder="Type your message..."
+          placeholder="Type your reply..."
         />
         <Button title="Send" onPress={sendMessage} />
       </View>
@@ -69,7 +75,7 @@ const IndividualChatScreen = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  individualChatScreenContainer: {
     flex: 1,
     backgroundColor: "white",
   },

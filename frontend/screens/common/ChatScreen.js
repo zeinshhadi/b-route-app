@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, Button, FlatList } from "react-nativ
 import { useSelector } from "react-redux";
 import { getDatabase, ref, push, serverTimestamp, onValue, off } from "firebase/database";
 import { useNavigation } from "@react-navigation/native";
-
+import { firebaseApp } from "../../config/firebase";
 const ChatScreen = () => {
   const authState = useSelector((state) => state.auth);
   const [message, setMessage] = useState("");
@@ -13,7 +13,7 @@ const ChatScreen = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    const db = getDatabase();
+    const db = getDatabase(firebaseApp);
     const messagesRef = ref(db, `chat-messages/${userType}s/admin/${userId}`);
 
     const handleData = (snapshot) => {
