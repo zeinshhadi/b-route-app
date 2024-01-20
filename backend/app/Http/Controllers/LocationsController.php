@@ -39,11 +39,13 @@ class LocationsController extends Controller
         $user =Auth::user();
         $driver_id = Driver::where('user_id', $user->id)->first();
         $driver_id= $driver_id->id;
-
-        $location = Location::where('driver_id',$driver_id)->update([
-            'longitude'=>$request->longitude,
-            'latitude'=>$request->latitude]);
-                return response()->json([$location]);
+       
+         $location = Location::where('driver_id',$driver_id)->first();
+      
+        $location->update([
+            'longitude'=>$request->lon,
+            'latitude'=>$request->lat]);
+                return response()->json(['location updated',$location]);
     }
 
 public function delete_driver_location(){
