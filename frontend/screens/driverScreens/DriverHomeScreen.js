@@ -8,6 +8,7 @@ import axios from "axios";
 const DriverHomeScreen = () => {
   const authState = useSelector((state) => state.auth);
   const driver_id = authState.user.id;
+  const authorization = "bearer " + authState.token;
   const [locationPermission, setLocationPermission] = useState(null);
   const [location, setLocation] = useState(null);
   const [initialFetchComplete, setInitialFetchComplete] = useState(false);
