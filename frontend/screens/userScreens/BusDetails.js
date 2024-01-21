@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, StyleSheet, View, Image, Platform } from "react-native";
+import { Text, StyleSheet, View, Image, Platform, Pressable } from "react-native";
 import DriverDetailsCard from "../../components/cards/DriverDetailsCard";
 import { useRoute } from "@react-navigation/native";
 import axios from "axios";
@@ -7,7 +7,8 @@ import { Url } from "../../core/redux/helper/Url";
 import { useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import Colors from "../../utils/colors";
-const BusDetails = () => {
+import Button from "../../components/common/Button";
+const BusDetails = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   const route = useRoute();
@@ -48,7 +49,7 @@ const BusDetails = () => {
   const renderSeats = () => {
     const seats = [];
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 12; i++) {
       seats.push(
         <View key={i} style={styles.seatContainer}>
           <MaterialIcons name="event-seat" size={34} color={Colors.primary500} />
@@ -57,6 +58,10 @@ const BusDetails = () => {
     }
 
     return seats;
+  };
+
+  const handleStartRide = () => {
+    navigation.navigate("UserRideScreen");
   };
 
   return (
@@ -68,8 +73,12 @@ const BusDetails = () => {
       </View>
       <View style={styles.seatBusCardContainerMain}>
         <View style={styles.seatRow}>{renderSeats().slice(0, 4)}</View>
-        <View style={styles.seatRow}>{renderSeats().slice(4)}</View>
+        <View style={styles.seatRow}>{renderSeats().slice(4, 8)}</View>
+        <View style={styles.seatRow}>{renderSeats().slice(8, 12)}</View>
       </View>
+      <Pressable onPress={() => handleStartRide()}>
+        <View style={styles.buttonStyle}>{<Text style={styles.buttonTextStyle}>Start your ride</Text>}</View>
+      </Pressable>
     </View>
   );
 };
@@ -113,7 +122,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "black",
     gap: 20,
-    width: "90%",
+    width: "85%",
     alignSelf: "center",
     borderRadius: 10,
   },
@@ -123,5 +132,18 @@ const styles = StyleSheet.create({
   },
   seatContainer: {
     marginBottom: 10,
+  },
+  buttonStyle: {
+    alignSelf: "center",
+    backgroundColor: Colors.primary500,
+    padding: 10,
+    width: "85%",
+    borderRadius: 10,
+  },
+  buttonTextStyle: {
+    textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 18,
   },
 });
