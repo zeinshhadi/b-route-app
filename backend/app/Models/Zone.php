@@ -9,4 +9,8 @@ class Zone extends Model
 {
     use HasFactory;
    protected $fillable = ['zone_name'];
+
+   public function driver(){
+   return $this->hasMany(Driver::class);
+   }
 }
