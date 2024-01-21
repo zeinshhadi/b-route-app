@@ -60,7 +60,7 @@ const AddZoneScreen = () => {
       <View style={styles.formContainer}>
         <ScrollView>
           <Image style={styles.image} source={require("../../assets/addzoneimg.png")} />
-          <View>
+          <View style={styles.innerFormContainer}>
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter zone name"
@@ -68,12 +68,12 @@ const AddZoneScreen = () => {
               value={zoneInfo.color}
               onChangeText={(text) => handleInputChange("zone_name", text)}
             />
+            <Button onPress={handleRegister} disabled={loading}>
+              {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Zone</Text>}
+            </Button>
           </View>
         </ScrollView>
       </View>
-      <Button onPress={handleRegister} disabled={loading}>
-        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Zone</Text>}
-      </Button>
     </View>
   );
 };
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   formContainer: {
     flex: 1,
     width: "90%",
-    justifyContent: "center",
+    justifyContent: "space-around",
     marginTop: 15,
   },
   dropdown: {
@@ -130,5 +130,10 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     alignSelf: "center",
+  },
+  innerFormContainer: {
+    flex: 1,
+    gap: 140,
+    marginTop: 100,
   },
 });
