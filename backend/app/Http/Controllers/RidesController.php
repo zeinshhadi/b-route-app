@@ -22,8 +22,10 @@ public function create_ride(Request $request){
     $driver = Driver::where('user_id', $request->user_id)->first();
 
     $bus_id=$driver->bus_id;
-
-    $ride = Ride::create([
+     $bus = Bus::find($bus_id);
+     $num_of_seats = $bus->number_of_seats;
+    if($num_of_seats>=1){
+            $ride = Ride::create([
         'start_longitude' => $request->start_longitude,
         'start_latitude' => $request->start_latitude,
         'end_longitude' => 0,
@@ -38,6 +40,10 @@ public function create_ride(Request $request){
     $bus->decrement('number_of_seats');
 
     return response()->json(["response from create ride ",$driver]);
+    }else{
+        return response()->json(["Bus is in full capacity"]);
+    }
+
 }
 
     public function end_ride(Request $request){
