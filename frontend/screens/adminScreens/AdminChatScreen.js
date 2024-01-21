@@ -3,6 +3,8 @@ import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
 import { useSelector } from "react-redux";
 import { getDatabase, ref, onValue, off } from "firebase/database";
 import { firebaseApp } from "../../config/firebase";
+import Colors from "../../utils/colors";
+
 const AdminChatScreen = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const [users, setUsers] = useState([]);
@@ -34,13 +36,16 @@ const AdminChatScreen = ({ navigation }) => {
               userType,
               username: lastMessage.username,
               lastMessage: lastMessage.message,
+              timestamp: lastMessage.timestamp,
             };
           });
         });
 
-        console.log("User List:", userList);
+        const sortedUsers = userList.filter(Boolean).sort((a, b) => b.timestamp - a.timestamp);
 
-        setUsers(userList.filter(Boolean));
+        console.log("User List:", sortedUsers);
+
+        setUsers(sortedUsers);
       } else {
         setUsers([]);
       }
@@ -73,25 +78,34 @@ const AdminChatScreen = ({ navigation }) => {
   );
 };
 
+export default AdminChatScreen;
+
 const styles = StyleSheet.create({
   adminChatScreenContainer: {
     flex: 1,
     backgroundColor: "white",
+    alignContent: "center",
   },
   userCard: {
+    marginTop: 5,
     flexDirection: "column",
     padding: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
+    marginBottom: 10,
+    borderRadius: 10,
+    backgroundColor: Colors.cardColor,
+    elevation: 2,
+    width: "90%",
+    alignSelf: "center",
   },
   username: {
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: 18,
+    color: "black",
+    marginBottom: 5,
   },
   lastMessage: {
-    marginTop: 5,
-    color: "black",
+    fontSize: 14,
+    color: "grey",
+    fontWeight: "500",
   },
 });
-
-export default AdminChatScreen;
