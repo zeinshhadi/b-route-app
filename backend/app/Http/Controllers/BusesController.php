@@ -28,18 +28,26 @@ public function getAllBuses()
         return response()->json(['buses' => $buses], 200);
     }
 
-public function getBusAndDriver(Request $request)
+public function getBusAndDriver($driver_id)
+{
+    $driver = Driver::find($driver_id);
 
-
-    {   
-        $driver_id = $request->driver_id;
-
-
-        $buses = Bus::has('driver')->with(['driver.user'])->where('id',$driver_id)->get();
-
-
-        return response()->json(['buses' => $buses], 200);
+    
+    if (!$driver) {
+        return response()->json(['message' => 'Driver not found for the provided driver_id'], 404);
     }
+    
+    $bus = Bus::where('id', $driver->bus_id)
+        ->with(['driver.user'])
+        ->first();
+
+    
+    if ($bus) {
+        return response()->json(['bus' => $bus], 200);
+    } else {
+        return response()->json(['message' => 'Bus not found for the provided driver_id'], 404);
+    }
+}
 
 
 

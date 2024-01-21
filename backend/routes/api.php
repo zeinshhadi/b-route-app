@@ -43,6 +43,10 @@ Route::post('update/location',[LocationsController::class,'update_driver_locatio
 Route::delete('delete/location',[LocationsController::class,'delete_driver_location']);
 Route::get('get/driver/location',[LocationsController::class,'get_driver_locations']);
 
+
+Route::get('/driver/bus/{driver_id}',[BusesController::class,'getBusAndDriver']);
+
+
 Route::controller(DriversController::class)->group(function () {
     Route::get('/driver/{userId}', 'getDriverByUserId');
 });
