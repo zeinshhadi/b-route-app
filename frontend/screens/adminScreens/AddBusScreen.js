@@ -220,6 +220,6 @@ const styles = StyleSheet.create({
     height: 100,
   },
   innerFormContainer: {
-    gap: 10,
+    gap: 5,
   },
 });

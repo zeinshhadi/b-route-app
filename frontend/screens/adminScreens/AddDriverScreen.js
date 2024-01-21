@@ -119,73 +119,71 @@ const AddDriverScreen = () => {
           <Image style={styles.driverImage} source={require("../../assets/images/driver.jpg")} />
         </View>
         <View style={styles.formContainer}>
-          <View>
-            <TextInput
-              style={styles.inputDesign}
-              placeholder="Enter your First Name"
-              placeholderTextColor="black"
-              value={userData.firstName}
-              onChangeText={(text) => handleInputChange("firstName", text)}
-            />
-            <TextInput
-              style={styles.inputDesign}
-              placeholder="Enter your Last Name"
-              placeholderTextColor="black"
-              value={userData.lastName}
-              onChangeText={(text) => handleInputChange("lastName", text)}
-            />
-            <TextInput
-              style={styles.inputDesign}
-              placeholder="Enter your email"
-              placeholderTextColor="black"
-              value={userData.email}
-              onChangeText={(text) => handleInputChange("email", text)}
-            />
-            <TextInput
-              style={styles.inputDesign}
-              placeholder="Enter your password"
-              placeholderTextColor="black"
-              secureTextEntry
-              value={userData.password}
-              onChangeText={(text) => handleInputChange("password", text)}
-            />
-            <TextInput
-              style={styles.inputDesign}
-              placeholder="Enter your phone number"
-              placeholderTextColor="black"
-              value={userData.phoneNumber}
-              onChangeText={(text) => handleInputChange("phoneNumber", text)}
-            />
-            <TextInput
-              style={styles.inputDesign}
-              placeholder="Enter your Driver license"
-              placeholderTextColor="black"
-              value={userData.driverLicense}
-              onChangeText={(text) => handleInputChange("driverLicense", text)}
-            />
-            <Dropdown
-              style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
-              placeholderStyle={styles.placeholderStyle}
-              selectedTextStyle={styles.selectedTextStyle}
-              inputSearchStyle={styles.inputSearchStyle}
-              iconStyle={styles.iconStyle}
-              data={data}
-              search
-              maxHeight={300}
-              labelField="label"
-              valueField="value"
-              placeholder={!isFocus ? "Select Bus" : "..."}
-              searchPlaceholder="Search..."
-              value={value}
-              onFocus={() => setIsFocus(true)}
-              onBlur={() => setIsFocus(false)}
-              onChange={(item) => {
-                setValue(item.value);
-                setIsFocus(false);
-                handleInputChange("busId", item.value);
-              }}
-            />
-          </View>
+          <TextInput
+            style={styles.inputDesign}
+            placeholder="Enter your First Name"
+            placeholderTextColor="black"
+            value={userData.firstName}
+            onChangeText={(text) => handleInputChange("firstName", text)}
+          />
+          <TextInput
+            style={styles.inputDesign}
+            placeholder="Enter your Last Name"
+            placeholderTextColor="black"
+            value={userData.lastName}
+            onChangeText={(text) => handleInputChange("lastName", text)}
+          />
+          <TextInput
+            style={styles.inputDesign}
+            placeholder="Enter your email"
+            placeholderTextColor="black"
+            value={userData.email}
+            onChangeText={(text) => handleInputChange("email", text)}
+          />
+          <TextInput
+            style={styles.inputDesign}
+            placeholder="Enter your password"
+            placeholderTextColor="black"
+            secureTextEntry
+            value={userData.password}
+            onChangeText={(text) => handleInputChange("password", text)}
+          />
+          <TextInput
+            style={styles.inputDesign}
+            placeholder="Enter your phone number"
+            placeholderTextColor="black"
+            value={userData.phoneNumber}
+            onChangeText={(text) => handleInputChange("phoneNumber", text)}
+          />
+          <TextInput
+            style={styles.inputDesign}
+            placeholder="Enter your Driver license"
+            placeholderTextColor="black"
+            value={userData.driverLicense}
+            onChangeText={(text) => handleInputChange("driverLicense", text)}
+          />
+          <Dropdown
+            style={[styles.dropdown, isFocus && { borderColor: Colors.primary500 }]}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={data}
+            search
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder={!isFocus ? "Select Bus" : "..."}
+            searchPlaceholder="Search..."
+            value={value}
+            onFocus={() => setIsFocus(true)}
+            onBlur={() => setIsFocus(false)}
+            onChange={(item) => {
+              setValue(item.value);
+              setIsFocus(false);
+              handleInputChange("busId", item.value);
+            }}
+          />
         </View>
         <Button onPress={handleRegisterDriver} disabled={loading}>
           {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Driver</Text>}
@@ -205,21 +203,24 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    gap: 10,
+    gap: 20,
     backgroundColor: "white",
-    paddingBottom: 15,
   },
   inputDesign: {
     borderRadius: 5,
-    backgroundColor: Colors.cardColor,
+    backgroundColor: "white",
     height: 50,
     width: "100%",
-    marginVertical: 5,
     padding: 8,
+    borderWidth: 1,
+    borderColor: "grey",
   },
   formContainer: {
+    flex: 1,
     width: "90%",
     justifyContent: "center",
+    marginTop: 15,
+    gap: 5,
   },
   titleFormScreen: {
     fontWeight: "500",
@@ -238,6 +239,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 8,
     width: "100%",
+    backgroundColor: Colors.cardColor,
   },
 
   placeholderStyle: {
