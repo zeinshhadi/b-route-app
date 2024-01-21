@@ -13,7 +13,7 @@ const BusDetails = () => {
       <SmallCardDetails />
       <View style={styles.bigBusCardContainerMain}>
         <View style={styles.bigBusCardContainer}>
-          <Text style={styles.bigBusCardContainerText}>{driver_id}</Text>
+          <Text style={styles.bigBusCardContainerText}>Next Zone</Text>
           <Text style={styles.bigBusCardContainerText}>6</Text>
         </View>
         <View style={styles.bigBusCardContainer}>
