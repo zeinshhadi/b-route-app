@@ -6,6 +6,7 @@ import axios from "axios";
 import { Url } from "../../core/redux/helper/Url";
 import { useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
+import Colors from "../../utils/colors";
 const BusDetails = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
@@ -43,6 +44,21 @@ const BusDetails = () => {
     fetchBusData();
   }, [driver_id]);
   console.log("busInformation:", busInformation);
+
+  const renderSeats = () => {
+    const seats = [];
+
+    for (let i = 0; i < 8; i++) {
+      seats.push(
+        <View key={i} style={styles.seatContainer}>
+          <MaterialIcons name="event-seat" size={34} color={Colors.primary500} />
+        </View>
+      );
+    }
+
+    return seats;
+  };
+
   return (
     <View style={styles.mainContainer}>
       <DriverDetailsCard driverFirstName={driverFirstName} driverLastName={driverLastName} />
@@ -50,11 +66,9 @@ const BusDetails = () => {
         <Text style={styles.bigBusCardContainerText}>Available Seats</Text>
         <Text style={styles.bigBusCardContainerText}>{numberOfSeats}</Text>
       </View>
-      <View style={styles.bigBusCardContainerMain}>
-        <View style={styles.bigBusCardContainer}>
-          <Text style={styles.bigBusCardContainerText}>Next Stop Arrival</Text>
-          <MaterialIcons name="event-seat" size={24} color="black" />
-        </View>
+      <View style={styles.seatBusCardContainerMain}>
+        <View style={styles.seatRow}>{renderSeats().slice(0, 4)}</View>
+        <View style={styles.seatRow}>{renderSeats().slice(4)}</View>
       </View>
     </View>
   );
@@ -89,5 +103,24 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     fontSize: 18,
+  },
+
+  seatBusCardContainerMain: {
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+    padding: 20,
+    borderWidth: 1,
+    borderColor: "black",
+    gap: 20,
+    width: "90%",
+    alignSelf: "center",
+    borderRadius: 10,
+  },
+  seatRow: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+  },
+  seatContainer: {
+    marginBottom: 10,
   },
 });
