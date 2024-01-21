@@ -22,9 +22,14 @@ const HomeScreen = () => {
         {},
         { headers: { Authorization: authorization } }
       );
-      setDriverLocations(response.data.locations);
+
+      if (response.data && response.data.locations) {
+        setDriverLocations(response.data.locations);
+      } else {
+        console.log("Invalid response structure:", response.data);
+      }
     } catch (error) {
-      console.log(`error ${error}`);
+      console.log(`Error fetching driver locations: ${error.message}`);
     }
   };
 
@@ -62,14 +67,18 @@ const HomeScreen = () => {
   }, []);
 
   async function verifyPermissions() {
-    if (locationPermissionInformation.status === PermissionStatus.UNDETERMINED) {
+    const { status = PermissionStatus.UNDETERMINED } = locationPermissionInformation || {};
+
+    if (status === PermissionStatus.UNDETERMINED) {
       const permissionResponse = await requestPermission();
       return permissionResponse.granted;
     }
-    if (locationPermissionInformation.status === PermissionStatus.DENIED) {
+
+    if (status === PermissionStatus.DENIED) {
       Alert.alert("Insufficient Permissions!", "You need to grant location permissions to use this app.");
       return false;
     }
+
     return true;
   }
 
