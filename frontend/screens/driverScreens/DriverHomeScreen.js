@@ -27,7 +27,7 @@ const DriverHomeScreen = () => {
         const lon = locationData.coords.longitude;
         setLocation({ lat, lon });
         setInitialFetchComplete(true);
-        if (fetchLocation === false) {
+        if (fetchLocation == false) {
           const get_location_driver = async ({ lat, lon }) => {
             try {
               const response = await axios.post(
