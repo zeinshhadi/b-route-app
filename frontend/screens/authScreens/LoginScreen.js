@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   registerLink: {
-    color: "blue",
+    color: Colors.primary500,
     textDecorationLine: "underline",
   },
   titleFormScreen: {

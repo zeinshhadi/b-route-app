@@ -70,44 +70,42 @@ const RegisterScreen = ({ navigation }) => {
 
       <Text style={styles.titleFormScreen}>Sign Up</Text>
       <View style={styles.formContainer}>
-        <View>
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your First Name"
-            placeholderTextColor="black"
-            value={userData.firstName}
-            onChangeText={(text) => handleInputChange("firstName", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your Last Name"
-            placeholderTextColor="black"
-            value={userData.lastName}
-            onChangeText={(text) => handleInputChange("lastName", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your email"
-            placeholderTextColor="black"
-            value={userData.email}
-            onChangeText={(text) => handleInputChange("email", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your password"
-            placeholderTextColor="black"
-            secureTextEntry
-            value={userData.password}
-            onChangeText={(text) => handleInputChange("password", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your phone number"
-            placeholderTextColor="black"
-            value={userData.phoneNumber}
-            onChangeText={(text) => handleInputChange("phoneNumber", text)}
-          />
-        </View>
+        <TextInput
+          style={styles.inputDesign}
+          placeholder="Enter your First Name"
+          placeholderTextColor="black"
+          value={userData.firstName}
+          onChangeText={(text) => handleInputChange("firstName", text)}
+        />
+        <TextInput
+          style={styles.inputDesign}
+          placeholder="Enter your Last Name"
+          placeholderTextColor="black"
+          value={userData.lastName}
+          onChangeText={(text) => handleInputChange("lastName", text)}
+        />
+        <TextInput
+          style={styles.inputDesign}
+          placeholder="Enter your email"
+          placeholderTextColor="black"
+          value={userData.email}
+          onChangeText={(text) => handleInputChange("email", text)}
+        />
+        <TextInput
+          style={styles.inputDesign}
+          placeholder="Enter your password"
+          placeholderTextColor="black"
+          secureTextEntry
+          value={userData.password}
+          onChangeText={(text) => handleInputChange("password", text)}
+        />
+        <TextInput
+          style={styles.inputDesign}
+          placeholder="Enter your phone number"
+          placeholderTextColor="black"
+          value={userData.phoneNumber}
+          onChangeText={(text) => handleInputChange("phoneNumber", text)}
+        />
       </View>
       <Button onPress={handleRegister} disabled={loading}>
         {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Sign Up</Text>}
@@ -134,15 +132,17 @@ const styles = StyleSheet.create({
   },
   inputDesign: {
     borderRadius: 5,
-    backgroundColor: Colors.cardColor,
+    backgroundColor: "white",
     height: 50,
     width: "100%",
-    margin: 5,
     padding: 8,
+    borderWidth: 1,
+    borderColor: "grey",
   },
   formContainer: {
-    width: "80%",
+    width: "90%",
     justifyContent: "center",
+    gap: 10,
   },
   registerContainer: {
     flexDirection: "row",
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   registerLink: {
-    color: "blue",
+    color: Colors.primary500,
     textDecorationLine: "underline",
   },
   titleFormScreen: {
