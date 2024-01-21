@@ -7,6 +7,7 @@ import { ScrollView } from "react-native";
 import axios from "axios";
 import { Url } from "../../core/redux/helper/Url";
 import LogoutButton from "../../components/common/logoutButton";
+import LogoComponent from "../../components/common/LogoComponent";
 const EditProfile = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
@@ -33,6 +34,7 @@ const EditProfile = ({ navigation }) => {
   };
   return (
     <ScrollView style={styles.scrollViewScreen}>
+      <LogoComponent />
       <View style={styles.editProfileScreen}>
         <View style={styles.editProfileBody}>
           <ProfileCard cardTitle="First Name " cardDetail={authState.user.first_name} />
