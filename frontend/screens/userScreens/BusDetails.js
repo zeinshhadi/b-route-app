@@ -45,7 +45,7 @@ const BusDetails = () => {
   console.log("busInformation:", busInformation);
   return (
     <View style={styles.mainContainer}>
-      <DriverDetailsCard />
+      <DriverDetailsCard driverFirstName={driverFirstName} driverLastName={driverLastName} />
       <SmallCardDetails numberOfSeats={numberOfSeats} />
       <View style={styles.bigBusCardContainerMain}>
         <View style={styles.bigBusCardContainer}>
