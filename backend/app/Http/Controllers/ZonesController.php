@@ -19,4 +19,8 @@ class ZonesController extends Controller
       ]);
      return response()->json(['status' => 'success'], 201);
   }
+
+  public function buses_in_zone(Request $request){
+
+  }
 }

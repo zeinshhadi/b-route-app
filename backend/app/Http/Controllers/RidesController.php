@@ -74,8 +74,8 @@ public function create_ride(Request $request){
         $reviews = Ride::where(function ($query) {
         $query->whereNotNull('rate')->orWhereNotNull('review');
                           
-        })->get();
-    
+    })->get();
+    // $reviews=$reviews->user_id;
         return response()->json(['reviews' => $reviews]);
     }
 
