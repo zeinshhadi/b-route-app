@@ -94,9 +94,8 @@ const AddBusScreen = () => {
   return (
     <View style={styles.outerContainer}>
       <View style={styles.formContainer}>
-        {/* <Image style={styles.addBusImage} source={require("../../assets/images/logo.png")} />; */}
         <ScrollView>
-          <View>
+          <View style={styles.innerFormContainer}>
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter bus vin"
@@ -121,7 +120,7 @@ const AddBusScreen = () => {
               onChangeText={(text) => handleInputChange("plate_number", text)}
             />
             <Dropdown
-              style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
+              style={[styles.dropdown, isFocus && { borderColor: Colors.primary500 }]}
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
               inputSearchStyle={styles.inputSearchStyle}
@@ -176,19 +175,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 20,
     backgroundColor: "white",
-    paddingBottom: 10,
   },
   inputDesign: {
     borderRadius: 5,
-    backgroundColor: Colors.cardColor,
+    backgroundColor: "white",
     height: 50,
     width: "100%",
-    marginVertical: 5,
     padding: 8,
+    borderWidth: 1,
+    borderColor: "grey",
   },
   formContainer: {
+    flex: 1,
     width: "90%",
     justifyContent: "center",
+    marginTop: 15,
   },
   dropdown: {
     height: 50,
@@ -197,6 +198,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 8,
     width: "100%",
+    backgroundColor: Colors.cardColor,
   },
 
   placeholderStyle: {
@@ -216,5 +218,8 @@ const styles = StyleSheet.create({
   addBusImage: {
     width: 100,
     height: 100,
+  },
+  innerFormContainer: {
+    gap: 10,
   },
 });
