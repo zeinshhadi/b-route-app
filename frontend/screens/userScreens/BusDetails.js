@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, StyleSheet, View, Image, Platform } from "react-native";
 import DriverDetailsCard from "../../components/cards/DriverDetailsCard";
 import SmallCardDetails from "../../components/cards/SmallCardDetails";
 import { useRoute } from "@react-navigation/native";
+import axios from "axios";
+import { Url } from "../../core/redux/helper/Url";
 const BusDetails = () => {
   const route = useRoute();
   const driver_id = route.params;
-  console.log(driver_id);
+
+  useEffect(() => {
+    const fetchBusData = async () => {
+      const response = await axios.get(`${Url}/api/driver/bus/${driver_id}`, {
+        headers: { Authorization: authorization },
+      });
+    };
+  }, []);
+
   return (
     <View style={styles.mainContainer}>
       <DriverDetailsCard />
