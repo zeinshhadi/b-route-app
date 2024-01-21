@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { Text } from "react-native";
 import { View } from "react-native";
 import Colors from "../../utils/colors";
-import { Ionicons } from "@expo/vector-icons";
+
 const DetailsCard = ({ cardTitle, cardDetail, status, tempText, itemType }) => {
   return (
     <View style={styles.detailsCardContainer}>

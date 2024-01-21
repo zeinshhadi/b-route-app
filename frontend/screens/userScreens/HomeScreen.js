@@ -114,11 +114,11 @@ const HomeScreen = ({ navigation }) => {
           />
         ))}
       </MapView>
-      <View style={styles.buttonContainer}>
-        <Pressable onPress={() => getLocationHandler()}>
+      <Pressable onPress={() => getLocationHandler()}>
+        <View style={styles.buttonContainer}>
           <Text style={styles.buttonText}>Get Location</Text>
-        </Pressable>
-      </View>
+        </View>
+      </Pressable>
     </View>
   );
 };
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 16,
     alignSelf: "center",
-    padding: 10,
+    padding: 18,
     backgroundColor: Colors.primary500,
     borderRadius: 30,
     width: "50%",
