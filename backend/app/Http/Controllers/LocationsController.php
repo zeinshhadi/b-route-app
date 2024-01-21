@@ -15,6 +15,7 @@ class LocationsController extends Controller
         $driver_id = Driver::where('user_id', $user->id)->first();
         $driver_id= $driver_id->id;
         $location_found = Location::where('driver_id', $driver_id)->first();
+         
         if(!$location_found){
                     if (!$user) {
             return response()->json(['no driver',$driver_id]);
@@ -48,6 +49,7 @@ class LocationsController extends Controller
             'latitude'=>$request->lat]);
                 return response()->json(['location updated',$location]);
             }else{
+
         return response()->json(['no location till now']);
 
     }
