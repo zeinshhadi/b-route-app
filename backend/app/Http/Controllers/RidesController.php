@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bus;
 use App\Models\Driver;
 use App\Models\Ride;
 use Illuminate\Http\Request;
@@ -20,7 +21,10 @@ public function create_ride(Request $request){
     ]);
     $driver = Driver::where('user_id', $request->user_id)->first();
 
-  
+    $bus_id=$driver->bus_id;
+    $bus = Bus::find($bus_id);
+    $bus->decrement('number_of_seats');
+    return response()->json(["response from create ride ",$bus]);
     $ride = Ride::create([
         'start_longitude' => $request->start_longitude,
         'start_latitude' => $request->start_latitude,
@@ -32,6 +36,8 @@ public function create_ride(Request $request){
         'user_id' => $user->id,
         'driver_id' => $driver->id,
     ]);
+
+
     return response()->json(["response from create ride ",$driver]);
 }
 
