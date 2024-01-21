@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, View, Image, Platform } from "react-native";
 import DriverDetailsCard from "../../components/cards/DriverDetailsCard";
 import SmallCardDetails from "../../components/cards/SmallCardDetails";
@@ -11,7 +11,7 @@ const BusDetails = () => {
   const authorization = "bearer " + authState.token;
   const route = useRoute();
   const driver_id = route.params;
-
+  const [busInformation, setBusInformaition] = useState();
   useEffect(() => {
     const fetchBusData = async () => {
       try {
