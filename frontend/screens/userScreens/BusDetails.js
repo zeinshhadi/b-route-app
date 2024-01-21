@@ -14,10 +14,16 @@ const BusDetails = () => {
 
   useEffect(() => {
     const fetchBusData = async () => {
-      const response = await axios.get(`${Url}/api/driver/bus/${driver_id}`, {
-        headers: { Authorization: authorization },
-      });
+      try {
+        const response = await axios.get(`${Url}/api/driver/bus/${driver_id}`, {
+          headers: { Authorization: authorization },
+        });
+        console.log(response.data.bus);
+      } catch (error) {
+        console.log(`error ${error}`);
+      }
     };
+    fetchBusData();
   }, []);
 
   return (
