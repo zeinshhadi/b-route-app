@@ -5,7 +5,10 @@ import SmallCardDetails from "../../components/cards/SmallCardDetails";
 import { useRoute } from "@react-navigation/native";
 import axios from "axios";
 import { Url } from "../../core/redux/helper/Url";
+import { useSelector } from "react-redux";
 const BusDetails = () => {
+  const authState = useSelector((state) => state.auth);
+  const authorization = "bearer " + authState.token;
   const route = useRoute();
   const driver_id = route.params;
 
