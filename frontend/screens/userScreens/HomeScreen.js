@@ -8,7 +8,7 @@ import { Url } from "../../core/redux/helper/Url";
 import { useSelector } from "react-redux";
 import BusMarkerImage from "../../assets/bus-station.png";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   const [locationPermissionInformation, requestPermission] = useForegroundPermissions();
@@ -98,7 +98,9 @@ const HomeScreen = () => {
     };
     setRegion(newRegion);
   }
-
+  const handleMarker = (driverId) => {
+    navigation.navigate("BusDetailScreen", { driverId });
+  };
   return (
     <View style={styles.container}>
       <MapView style={styles.map} region={region} showsUserLocation={true} followsUserLocation={true}>
@@ -108,6 +110,7 @@ const HomeScreen = () => {
             coordinate={{ latitude: location.latitude, longitude: location.longitude }}
             title={`Driver ${location.driver_id}`}
             image={BusMarkerImage}
+            onPress={() => handleMarker(location.driver_id)}
           />
         ))}
       </MapView>
