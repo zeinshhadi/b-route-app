@@ -6,6 +6,8 @@ import Colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { Url } from "../../core/redux/helper/Url";
+import LogoComponent from "../../components/common/LogoComponent";
+
 const AddBusScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
@@ -95,6 +97,7 @@ const AddBusScreen = () => {
     <View style={styles.outerContainer}>
       <View style={styles.formContainer}>
         <ScrollView>
+          <Image style={styles.image} source={require("../../assets/images/addbusimg.png")} />
           <View style={styles.innerFormContainer}>
             <TextInput
               style={styles.inputDesign}
@@ -157,11 +160,11 @@ const AddBusScreen = () => {
               onChangeText={(text) => handleInputChange("number_of_seats", text)}
             />
           </View>
+          <Button onPress={handleRegister} disabled={loading}>
+            {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Bus</Text>}
+          </Button>
         </ScrollView>
       </View>
-      <Button onPress={handleRegister} disabled={loading}>
-        {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Bus</Text>}
-      </Button>
     </View>
   );
 };
@@ -221,5 +224,11 @@ const styles = StyleSheet.create({
   },
   innerFormContainer: {
     gap: 5,
+    marginVertical: 10,
+  },
+  image: {
+    width: 200,
+    height: 200,
+    alignSelf: "center",
   },
 });

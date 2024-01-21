@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary500,
     width: "80%",
     borderRadius: 8,
+    alignSelf: "center",
   },
   buttonText: {
     color: "white",
