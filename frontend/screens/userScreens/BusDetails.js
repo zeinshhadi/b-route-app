@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, View, Image, Platform } from "react-native";
 import DriverDetailsCard from "../../components/cards/DriverDetailsCard";
-import SmallCardDetails from "../../components/cards/SmallCardDetails";
 import { useRoute } from "@react-navigation/native";
 import axios from "axios";
 import { Url } from "../../core/redux/helper/Url";
 import { useSelector } from "react-redux";
+import { MaterialIcons } from "@expo/vector-icons";
 const BusDetails = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
@@ -46,15 +46,14 @@ const BusDetails = () => {
   return (
     <View style={styles.mainContainer}>
       <DriverDetailsCard driverFirstName={driverFirstName} driverLastName={driverLastName} />
-      <SmallCardDetails numberOfSeats={numberOfSeats} />
+      <View style={styles.bigBusCardContainer}>
+        <Text style={styles.bigBusCardContainerText}>Available Seats</Text>
+        <Text style={styles.bigBusCardContainerText}>{numberOfSeats}</Text>
+      </View>
       <View style={styles.bigBusCardContainerMain}>
         <View style={styles.bigBusCardContainer}>
-          <Text style={styles.bigBusCardContainerText}>Next Zone</Text>
-          <Text style={styles.bigBusCardContainerText}>3</Text>
-        </View>
-        <View style={styles.bigBusCardContainer}>
           <Text style={styles.bigBusCardContainerText}>Next Stop Arrival</Text>
-          <Text style={styles.bigBusCardContainerText}>8:30 am</Text>
+          <MaterialIcons name="event-seat" size={24} color="black" />
         </View>
       </View>
     </View>
