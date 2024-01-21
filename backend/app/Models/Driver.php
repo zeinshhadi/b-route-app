@@ -35,4 +35,7 @@ class Driver extends Model
     {
         return $this->hasMany(Location::class);
     }
+    public function zone(){
+        return $this->belongsTo(Zone::class);
+    }
 }
