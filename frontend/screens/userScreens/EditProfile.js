@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { ScrollView } from "react-native";
 import axios from "axios";
 import { Url } from "../../core/redux/helper/Url";
-import LogoutButton from "../../components/common/logoutButton";
 import LogoComponent from "../../components/common/LogoComponent";
 const EditProfile = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
@@ -42,9 +41,9 @@ const EditProfile = ({ navigation }) => {
           <ProfileCard cardTitle="Email " cardDetail={authState.user.email} />
           <ProfileCard cardTitle={"Phone Number "} cardDetail={authState.user.phone_number} />
         </View>
-        <LogoutButton onPress={handleLogout} style={styles.logout}>
+        <Button onPress={handleLogout} style={styles.logout}>
           <Text>Log Out</Text>
-        </LogoutButton>
+        </Button>
       </View>
     </ScrollView>
   );
