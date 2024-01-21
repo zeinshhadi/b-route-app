@@ -22,9 +22,7 @@ public function create_ride(Request $request){
     $driver = Driver::where('user_id', $request->user_id)->first();
 
     $bus_id=$driver->bus_id;
-    $bus = Bus::find($bus_id);
-    $bus->decrement('number_of_seats');
-    return response()->json(["response from create ride ",$bus]);
+
     $ride = Ride::create([
         'start_longitude' => $request->start_longitude,
         'start_latitude' => $request->start_latitude,
@@ -36,7 +34,8 @@ public function create_ride(Request $request){
         'user_id' => $user->id,
         'driver_id' => $driver->id,
     ]);
-
+    $bus = Bus::find($bus_id);
+    $bus->decrement('number_of_seats');
 
     return response()->json(["response from create ride ",$driver]);
 }
@@ -45,6 +44,11 @@ public function create_ride(Request $request){
         $user = Auth::user();
         $ride= Ride::where('user_id',$user->id)->latest()->first();
         $ride->update(['end_latitude' => $request->end_latitude,'end_longitude'=>$request-> end_longitude]);
+        $driver = Driver::where('user_id', $request->user_id)->first();
+        $bus_id=$driver->bus_id;
+        $bus = Bus::find($bus_id);
+        $bus->increment('number_of_seats');
+
     }
 
     
