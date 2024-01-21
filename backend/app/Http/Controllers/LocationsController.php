@@ -41,11 +41,16 @@ class LocationsController extends Controller
         $driver_id= $driver_id->id;
        
          $location = Location::where('driver_id',$driver_id)->first();
-      
-        $location->update([
+     
+      if($location){       
+         $location->update([
             'longitude'=>$request->lon,
             'latitude'=>$request->lat]);
                 return response()->json(['location updated',$location]);
+            }else{
+        return response()->json(['no location till now']);
+
+    }
     }
 
 public function delete_driver_location(){
