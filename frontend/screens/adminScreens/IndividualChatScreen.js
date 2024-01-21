@@ -90,14 +90,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
   },
   messageContainer: {
-    paddingVertical: 10,
+    paddingVertical: 5,
     paddingHorizontal: 8,
     marginBottom: 5,
     borderRadius: 10,
+    minWidth: "30%",
     maxWidth: "80%",
     alignSelf: "flex-end",
     backgroundColor: Colors.primary600,
-    marginHorizontal: 10,
+    margin: 10,
   },
   receivedMessageContainer: {
     alignSelf: "flex-start",
