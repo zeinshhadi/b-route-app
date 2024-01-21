@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   bigBusCardContainer: {
-    backgroundColor: "#ccc",
+    backgroundColor: Colors.cardColor,
     borderRadius: 10,
     marginHorizontal: 25,
     gap: 10,
