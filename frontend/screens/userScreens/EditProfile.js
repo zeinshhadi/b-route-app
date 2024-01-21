@@ -58,9 +58,9 @@ const styles = StyleSheet.create({
   },
   editProfileScreen: {
     flex: 1,
-    marginTop: 20,
+    marginTop: 5,
     marginHorizontal: 0,
-    gap: 20,
+    gap: 15,
     justifyContent: "center",
     alignItems: "center",
     alignContent: "center",
