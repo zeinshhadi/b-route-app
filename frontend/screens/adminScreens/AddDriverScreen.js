@@ -113,83 +113,83 @@ const AddDriverScreen = () => {
     }
   };
   return (
-    <ScrollView style={styles.scrollContainer}>
-      <View style={styles.outerContainer}>
-        <View style={styles.driverImageContainer}>
+    <View style={styles.outerContainer}>
+      <View style={styles.formContainer}>
+        <ScrollView>
           <Image style={styles.driverImage} source={require("../../assets/images/driver.jpg")} />
-        </View>
-        <View style={styles.formContainer}>
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your First Name"
-            placeholderTextColor="black"
-            value={userData.firstName}
-            onChangeText={(text) => handleInputChange("firstName", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your Last Name"
-            placeholderTextColor="black"
-            value={userData.lastName}
-            onChangeText={(text) => handleInputChange("lastName", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your email"
-            placeholderTextColor="black"
-            value={userData.email}
-            onChangeText={(text) => handleInputChange("email", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your password"
-            placeholderTextColor="black"
-            secureTextEntry
-            value={userData.password}
-            onChangeText={(text) => handleInputChange("password", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your phone number"
-            placeholderTextColor="black"
-            value={userData.phoneNumber}
-            onChangeText={(text) => handleInputChange("phoneNumber", text)}
-          />
-          <TextInput
-            style={styles.inputDesign}
-            placeholder="Enter your Driver license"
-            placeholderTextColor="black"
-            value={userData.driverLicense}
-            onChangeText={(text) => handleInputChange("driverLicense", text)}
-          />
-          <Dropdown
-            style={[styles.dropdown, isFocus && { borderColor: Colors.primary500 }]}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={data}
-            search
-            maxHeight={300}
-            labelField="label"
-            valueField="value"
-            placeholder={!isFocus ? "Select Bus" : "..."}
-            searchPlaceholder="Search..."
-            value={value}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
-            onChange={(item) => {
-              setValue(item.value);
-              setIsFocus(false);
-              handleInputChange("busId", item.value);
-            }}
-          />
-        </View>
-        <Button onPress={handleRegisterDriver} disabled={loading}>
-          {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Driver</Text>}
-        </Button>
+          <View style={styles.innerFormContainer}>
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter your First Name"
+              placeholderTextColor="black"
+              value={userData.firstName}
+              onChangeText={(text) => handleInputChange("firstName", text)}
+            />
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter your Last Name"
+              placeholderTextColor="black"
+              value={userData.lastName}
+              onChangeText={(text) => handleInputChange("lastName", text)}
+            />
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter your email"
+              placeholderTextColor="black"
+              value={userData.email}
+              onChangeText={(text) => handleInputChange("email", text)}
+            />
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter your password"
+              placeholderTextColor="black"
+              secureTextEntry
+              value={userData.password}
+              onChangeText={(text) => handleInputChange("password", text)}
+            />
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter your phone number"
+              placeholderTextColor="black"
+              value={userData.phoneNumber}
+              onChangeText={(text) => handleInputChange("phoneNumber", text)}
+            />
+            <TextInput
+              style={styles.inputDesign}
+              placeholder="Enter your Driver license"
+              placeholderTextColor="black"
+              value={userData.driverLicense}
+              onChangeText={(text) => handleInputChange("driverLicense", text)}
+            />
+            <Dropdown
+              style={[styles.dropdown, isFocus && { borderColor: Colors.primary500 }]}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              inputSearchStyle={styles.inputSearchStyle}
+              iconStyle={styles.iconStyle}
+              data={data}
+              search
+              maxHeight={300}
+              labelField="label"
+              valueField="value"
+              placeholder={!isFocus ? "Select Bus" : "..."}
+              searchPlaceholder="Search..."
+              value={value}
+              onFocus={() => setIsFocus(true)}
+              onBlur={() => setIsFocus(false)}
+              onChange={(item) => {
+                setValue(item.value);
+                setIsFocus(false);
+                handleInputChange("busId", item.value);
+              }}
+            />
+          </View>
+          <Button onPress={handleRegisterDriver} disabled={loading}>
+            {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Add Driver</Text>}
+          </Button>
+        </ScrollView>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
@@ -202,7 +202,6 @@ const styles = StyleSheet.create({
   outerContainer: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
     gap: 20,
     backgroundColor: "white",
   },
@@ -219,6 +218,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "90%",
     justifyContent: "center",
+    alignSelf: "center",
     marginTop: 15,
     gap: 5,
   },
@@ -231,6 +231,7 @@ const styles = StyleSheet.create({
     width: 150,
     margin: 10,
     borderRadius: 150,
+    alignSelf: "center",
   },
   dropdown: {
     height: 50,
@@ -255,5 +256,9 @@ const styles = StyleSheet.create({
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
+  },
+  innerFormContainer: {
+    gap: 5,
+    marginVertical: 10,
   },
 });
