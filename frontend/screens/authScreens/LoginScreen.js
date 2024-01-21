@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Text, View, StyleSheet, TextInput, Pressable, ActivityIndicator } from "react-native";
+import { Text, View, StyleSheet, TextInput, Pressable, ActivityIndicator, Alert } from "react-native";
 import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
 import Login from "../../core/redux/actions/authActions";
@@ -30,12 +30,15 @@ const LoginScreen = ({ navigation }) => {
     } else if (authState.error) {
       setLoading(false);
       setError(authState.error);
+      return Alert.alert(error);
     }
   }, [authState, navigation]);
   const handleLogin = async () => {
     setLoading(true);
     if (!email || !password) {
       setError("All fields should be filled");
+      setLoading(false);
+      return Alert.alert("All fields should be filled");
     } else {
       dispatch(Login({ email, password }));
     }
