@@ -16,7 +16,6 @@ const IndividualChatScreen = ({ route }) => {
     const chatMessagesRef = ref(db, `chat-messages/${userType}/admin/${userId}`);
 
     const handleData = (snapshot) => {
-      console.log("Handling data in IndividualChatScreen:", snapshot.val());
       if (snapshot.val()) {
         const messagesList = Object.values(snapshot.val());
         setMessages(messagesList);
