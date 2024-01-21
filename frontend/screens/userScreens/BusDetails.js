@@ -11,29 +11,46 @@ const BusDetails = () => {
   const authorization = "bearer " + authState.token;
   const route = useRoute();
   const driver_id = route.params;
-  const [busInformation, setBusInformaition] = useState();
+  const [busInformation, setBusInformation] = useState(null);
+  const [driverFirstName, setDriverFirstName] = useState("");
+  const [driverLastName, setDriverLastName] = useState("");
+  const [numberOfSeats, setNumberOfSeats] = useState();
+
   useEffect(() => {
     const fetchBusData = async () => {
       try {
         const response = await axios.get(`${Url}/api/driver/bus/${driver_id}`, {
           headers: { Authorization: authorization },
         });
-        console.log(response.data.bus);
+
+        const busData = response.data.bus;
+
+        setBusInformation(busData);
+
+        const numberOfSeats = busData.number_of_seats;
+        console.log(numberOfSeats);
+        setNumberOfSeats(numberOfSeats);
+        const { driver } = busData;
+        if (driver && driver.user) {
+          setDriverFirstName(driver.user.first_name);
+          setDriverLastName(driver.user.last_name);
+        }
       } catch (error) {
         console.log(`error ${error}`);
       }
     };
-    fetchBusData();
-  }, []);
 
+    fetchBusData();
+  }, [driver_id]);
+  console.log("busInformation:", busInformation);
   return (
     <View style={styles.mainContainer}>
       <DriverDetailsCard />
-      <SmallCardDetails />
+      <SmallCardDetails numberOfSeats={numberOfSeats} />
       <View style={styles.bigBusCardContainerMain}>
         <View style={styles.bigBusCardContainer}>
           <Text style={styles.bigBusCardContainerText}>Next Zone</Text>
-          <Text style={styles.bigBusCardContainerText}>6</Text>
+          <Text style={styles.bigBusCardContainerText}>3</Text>
         </View>
         <View style={styles.bigBusCardContainer}>
           <Text style={styles.bigBusCardContainerText}>Next Stop Arrival</Text>

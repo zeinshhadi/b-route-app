@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, StyleSheet, View } from "react-native";
 
-const SmallCardDetails = () => {
+const SmallCardDetails = ({ numberOfSeats }) => {
   return (
     <View style={styles.rowInfo}>
       <View style={styles.smallBusCardContainer}>
@@ -10,7 +10,7 @@ const SmallCardDetails = () => {
       </View>
       <View style={styles.smallBusCardContainer}>
         <Text style={styles.smallBusCardContainerText}>Available Seats</Text>
-        <Text style={styles.smallBusCardContainerText}>3</Text>
+        <Text style={styles.smallBusCardContainerText}>{numberOfSeats}</Text>
       </View>
     </View>
   );
