@@ -20,6 +20,7 @@ const BusesRegisteredScreen = ({ navigation }) => {
           headers: { Authorization: authorization },
         });
         setBusInfo(response.data);
+        console.log(busInfo);
       } catch (error) {
         console.error("Error fetching buses:", error);
       }
@@ -36,7 +37,8 @@ const BusesRegisteredScreen = ({ navigation }) => {
           cardTitle={item.id}
           cardDetail={item.model}
           tempText={"More Details"}
-          status={"Active"}
+          tempType={"Zone#"}
+          status={item.zone_id}
         />
       </Pressable>
     );

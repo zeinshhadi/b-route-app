@@ -4,7 +4,7 @@ import { Text } from "react-native";
 import { View } from "react-native";
 import Colors from "../../utils/colors";
 
-const DetailsCard = ({ cardTitle, cardDetail, status, tempText, itemType }) => {
+const DetailsCard = ({ cardTitle, cardDetail, status, tempText, itemType, tempType }) => {
   return (
     <View style={styles.detailsCardContainer}>
       <View style={styles.detailsCard}>
@@ -19,7 +19,10 @@ const DetailsCard = ({ cardTitle, cardDetail, status, tempText, itemType }) => {
           <Text style={styles.boldText}>{tempText}</Text>
           <Text style={styles.cardMoreDetailsForward}>{">"}</Text>
         </View>
-        <Text style={styles.boldText}>{status}</Text>
+        <Text style={styles.boldText}>
+          {tempType}
+          {status}
+        </Text>
       </View>
     </View>
   );
