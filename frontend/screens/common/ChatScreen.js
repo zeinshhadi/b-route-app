@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button, FlatList } from "react-native";
+import { StyleSheet, Text, View, TextInput, FlatList, Pressable, Button } from "react-native";
 import { useSelector } from "react-redux";
 import { getDatabase, ref, push, serverTimestamp, onValue, off } from "firebase/database";
 import { useNavigation } from "@react-navigation/native";
 import { firebaseApp } from "../../config/firebase";
+import Colors from "../../utils/colors";
+
 const ChatScreen = () => {
   const authState = useSelector((state) => state.auth);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const userId = authState.user.id;
   const userType = authState.user.role_type;
-  const navigation = useNavigation();
 
   useEffect(() => {
     const db = getDatabase(firebaseApp);
@@ -57,9 +58,17 @@ const ChatScreen = () => {
         data={messages}
         keyExtractor={(item) => item.timestamp.toString()}
         renderItem={({ item }) => (
-          <View style={styles.messageContainer}>
-            <Text style={styles.username}>{item.username}:</Text>
-            <Text style={styles.messageText}>{item.message}</Text>
+          <View
+            style={[
+              styles.messageContainer,
+              item.userId === authState.user.id ? null : styles.receivedMessageContainer,
+            ]}>
+            <Text style={item.userId === authState.user.id ? styles.username : styles.receivedUsername}>
+              {item.username}:
+            </Text>
+            <Text style={item.userId === authState.user.id ? styles.messageText : styles.receivedMessageText}>
+              {item.message}
+            </Text>
           </View>
         )}
       />
@@ -71,7 +80,7 @@ const ChatScreen = () => {
           onChangeText={(text) => setMessage(text)}
           placeholder="Type your message..."
         />
-        <Button title="Send" onPress={sendMessage} />
+        <Button color={Colors.primary500} title="Send" onPress={sendMessage} />
       </View>
     </View>
   );
@@ -82,31 +91,65 @@ export default ChatScreen;
 const styles = StyleSheet.create({
   chatScreenContainer: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#f5f5f5",
   },
   messageContainer: {
-    flexDirection: "row",
-    padding: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 8,
+    marginBottom: 5,
+    borderRadius: 10,
+    maxWidth: "80%",
+    alignSelf: "flex-end",
+    backgroundColor: Colors.primary600,
+    marginHorizontal: 10,
+  },
+  receivedMessageContainer: {
+    alignSelf: "flex-start",
+    backgroundColor: Colors.cardColor,
+    marginHorizontal: 10,
   },
   username: {
     fontWeight: "bold",
     marginRight: 5,
+    color: "white",
+  },
+  receivedUsername: {
+    fontWeight: "bold",
+    marginRight: 5,
+    color: "black",
   },
   messageText: {
-    flex: 1,
+    color: "white",
+    fontSize: 15,
+  },
+  receivedMessageText: {
+    color: "black",
+    fontSize: 15,
   },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    borderTopWidth: 1,
-    borderTopColor: "#ccc",
     padding: 10,
+    backgroundColor: "white",
   },
   input: {
     flex: 1,
     marginRight: 10,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#e0e0e0",
+    borderRadius: 25,
     padding: 8,
+    backgroundColor: "white",
+    color: "black",
+  },
+  sendButton: {
+    padding: 10,
+    borderRadius: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors.primary500,
+  },
+  sendButtonText: {
+    color: "white",
   },
 });

@@ -91,7 +91,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
   },
   messageContainer: {
-    padding: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 8,
     marginBottom: 5,
     borderRadius: 10,
     maxWidth: "80%",
