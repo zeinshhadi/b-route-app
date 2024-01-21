@@ -98,8 +98,8 @@ const HomeScreen = ({ navigation }) => {
     };
     setRegion(newRegion);
   }
-  const handleMarker = (driverId) => {
-    navigation.navigate("BusDetailScreen", { driverId });
+  const handleMarker = (driver_id) => {
+    navigation.navigate("BusDetailScreen", driver_id);
   };
   return (
     <View style={styles.container}>

@@ -2,14 +2,18 @@ import React from "react";
 import { Text, StyleSheet, View, Image, Platform } from "react-native";
 import DriverDetailsCard from "../../components/cards/DriverDetailsCard";
 import SmallCardDetails from "../../components/cards/SmallCardDetails";
+import { useRoute } from "@react-navigation/native";
 const BusDetails = () => {
+  const route = useRoute();
+  const driver_id = route.params;
+  console.log(driver_id);
   return (
     <View style={styles.mainContainer}>
       <DriverDetailsCard />
       <SmallCardDetails />
       <View style={styles.bigBusCardContainerMain}>
         <View style={styles.bigBusCardContainer}>
-          <Text style={styles.bigBusCardContainerText}>Next Stop Zone</Text>
+          <Text style={styles.bigBusCardContainerText}>{driver_id}</Text>
           <Text style={styles.bigBusCardContainerText}>6</Text>
         </View>
         <View style={styles.bigBusCardContainer}>
