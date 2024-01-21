@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, TextInput, ScrollView, ActivityIndicator, Alert } from "react-native";
+import { useState } from "react";
+import { Text, View, StyleSheet, TextInput, ScrollView, ActivityIndicator, Alert, Image } from "react-native";
 import Button from "../../components/common/Button";
-import { Dropdown } from "react-native-element-dropdown";
-import Colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { Url } from "../../core/redux/helper/Url";
@@ -10,8 +8,6 @@ const AddZoneScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
 
-  const [value, setValue] = useState(null);
-  const [isFocus, setIsFocus] = useState(false);
   const [zoneInfo, setZoneInfo] = useState({
     zone_name: "",
   });
@@ -63,6 +59,7 @@ const AddZoneScreen = () => {
     <View style={styles.outerContainer}>
       <View style={styles.formContainer}>
         <ScrollView>
+          <Image style={styles.image} source={require("../../assets/addzoneimg.png")} />
           <View>
             <TextInput
               style={styles.inputDesign}
@@ -128,5 +125,10 @@ const styles = StyleSheet.create({
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
+  },
+  image: {
+    width: 200,
+    height: 200,
+    alignSelf: "center",
   },
 });
