@@ -6,7 +6,6 @@ import Colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { Url } from "../../core/redux/helper/Url";
-import LogoComponent from "../../components/common/LogoComponent";
 
 const AddBusScreen = () => {
   const authState = useSelector((state) => state.auth);
@@ -37,12 +36,12 @@ const AddBusScreen = () => {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   const [busInfo, setBusInfo] = useState({
-    vin: 0,
+    vin: "",
     color: "",
-    plate_number: 0,
+    plate_number: "",
     model: "",
-    number_of_seats: 0,
-    zone_id: 0,
+    number_of_seats: "",
+    zone_id: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -103,7 +102,6 @@ const AddBusScreen = () => {
               style={styles.inputDesign}
               placeholder="Enter bus vin"
               placeholderTextColor="black"
-              type="number"
               value={busInfo.vin}
               onChangeText={(text) => handleInputChange("vin", text)}
             />
@@ -118,7 +116,6 @@ const AddBusScreen = () => {
               style={styles.inputDesign}
               placeholder="Enter bus plate number"
               placeholderTextColor="black"
-              type="number"
               value={busInfo.plate_number}
               onChangeText={(text) => handleInputChange("plate_number", text)}
             />
@@ -155,7 +152,6 @@ const AddBusScreen = () => {
               style={styles.inputDesign}
               placeholder="Enter number of seats"
               value={busInfo.number_of_seats}
-              type="number"
               placeholderTextColor="black"
               onChangeText={(text) => handleInputChange("number_of_seats", text)}
             />
