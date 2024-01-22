@@ -22,6 +22,9 @@ const UserBottomNavigation = () => {
         headerPressColor: "black",
         freezeOnBlur: true,
         headerTintColor: "white",
+        headerTitleContainerStyle: {
+          marginLeft: 25,
+        },
       }}>
       <Tab.Screen
         name="Home"

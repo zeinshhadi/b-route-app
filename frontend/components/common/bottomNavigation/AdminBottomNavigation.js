@@ -11,19 +11,38 @@ const Tab = createBottomTabNavigator();
 
 const AdminBottomNavigation = () => {
   return (
-    <Tab.Navigator screenOptions={{ tabBarActiveTintColor: Colors.primary500, tabBarInactiveTintColor: "gray" }}>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: Colors.primary500,
+        tabBarInactiveTintColor: "gray",
+        headerStyle: {
+          backgroundColor: Colors.primary500,
+        },
+        headerShadowVisible: true,
+        tabBarHideOnKeyboard: true,
+        headerPressColor: "black",
+        freezeOnBlur: true,
+        headerTintColor: "white",
+        headerTitleContainerStyle: {
+          marginLeft: 25,
+        },
+      }}>
       <Tab.Screen
-        name="Home Screen"
+        name="Admin Screen"
         component={AdminHomeScreen}
         options={{
           headerShown: true,
           tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size} />,
+
+          headerTitleAlign: "center",
         }}
       />
       <Tab.Screen
         name="Chat"
         component={AdminChatScreen}
-        options={{ tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" color={color} size={size} /> }}
+        options={{
+          tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" color={color} size={size} />,
+        }}
       />
       <Tab.Screen
         name="Review"
