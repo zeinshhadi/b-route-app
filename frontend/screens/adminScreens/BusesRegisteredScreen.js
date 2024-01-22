@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Pressable, View } from "react-native";
+import { FlatList, Pressable, View, ActivityIndicator } from "react-native";
 import DetailsCard from "../../components/cards/DetailsCard";
 import SearchBar from "../../components/common/SearchBar";
 import { StyleSheet } from "react-native";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Url } from "../../core/helper/Url";
+import Colors from "../../utils/colors";
 
 const BusesRegisteredScreen = ({ navigation }) => {
   const [busInfo, setBusInfo] = useState([]);
   const authState = useSelector((state) => state.auth);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
       const authToken = authState.token;
       const authorization = "Bearer " + authToken;
@@ -21,7 +23,9 @@ const BusesRegisteredScreen = ({ navigation }) => {
         });
         setBusInfo(response.data);
         console.log(busInfo);
+        setLoading(false);
       } catch (error) {
+        setLoading(false);
         console.error("Error fetching buses:", error);
       }
     };
@@ -48,7 +52,18 @@ const BusesRegisteredScreen = ({ navigation }) => {
     <View style={styles.BusesRegisteredContainer}>
       <View style={styles.innerContainer}>
         <SearchBar />
-        <FlatList data={busInfo.buses} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+        {loading ? (
+          <ActivityIndicator
+            size={"large"}
+            color={Colors.primary500}
+            style={{
+              alignSelf: "center",
+              flex: 1,
+            }}
+          />
+        ) : (
+          <FlatList data={busInfo.buses} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+        )}
       </View>
     </View>
   );
