@@ -5,12 +5,14 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { Url } from "../../core/helper/Url";
 import Button from "../../components/common/Button";
+
 const UserRideScreen = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [rideStatus, setRideStatus] = useState(false);
+  const [scannerKey, setScannerKey] = useState(Date.now());
 
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
@@ -59,9 +61,15 @@ const UserRideScreen = ({ navigation }) => {
         navigation.navigate("UserFeedbackScreen");
       }
     } catch (error) {
+      setScanned(false);
       console.error("error", error);
     }
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+  };
+
+  const handleScanButtonPress = () => {
+    setScanned(false);
+    setScannerKey(Date.now());
   };
 
   if (hasPermission === null) {
@@ -75,18 +83,20 @@ const UserRideScreen = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.innerContainer}>
         <BarCodeScanner
+          key={scannerKey}
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           style={StyleSheet.absoluteFillObject}
         />
       </View>
       <View style={styles.buttonPosition}>
-        {scanned && <Button onPress={() => setScanned(false)}>Scan to end your ride </Button>}
+        <Button onPress={handleScanButtonPress}>Scan your ride</Button>
       </View>
     </View>
   );
 };
 
 export default UserRideScreen;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
