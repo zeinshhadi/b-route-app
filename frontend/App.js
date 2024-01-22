@@ -50,6 +50,7 @@ export default function App() {
                   headerShown: true,
                   headerTitle: "Bus Details",
                   headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
                 }}
               />
               <Stack.Screen
@@ -59,6 +60,7 @@ export default function App() {
                   headerShown: true,
                   headerTitle: "Profile",
                   headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
                 }}
               />
               <Stack.Screen
@@ -73,6 +75,7 @@ export default function App() {
                   headerShown: true,
                   headerTitle: "Buses Registered",
                   headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
                 }}
               />
               <Stack.Screen
@@ -82,6 +85,7 @@ export default function App() {
                   headerShown: true,
                   headerTitle: "Bus Info Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
                 }}
               />
               <Stack.Screen
@@ -91,6 +95,7 @@ export default function App() {
                   headerShown: true,
                   headerTitle: "Zones Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
                 }}
               />
               <Stack.Screen
@@ -100,6 +105,7 @@ export default function App() {
                   headerShown: true,
                   headerTitle: "Add Driver Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
                 }}
               />
               <Stack.Screen
@@ -109,6 +115,7 @@ export default function App() {
                   headerShown: true,
                   headerTitle: "Add Bus Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
                 }}
               />
               <Stack.Screen
@@ -118,6 +125,7 @@ export default function App() {
                   headerShown: true,
                   headerTitle: "Review Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
                 }}
               />
               <Stack.Screen
@@ -127,6 +135,7 @@ export default function App() {
                   headerShown: true,
                   headerTitle: "Add Zone",
                   headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
                 }}
               />
               <Stack.Screen
@@ -136,6 +145,7 @@ export default function App() {
                   headerShown: true,
                   headerTitle: "Buses in zone",
                   headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
                 }}
               />
               <Stack.Screen
@@ -154,6 +164,7 @@ export default function App() {
                   headerShown: true,
                   headerTitle: "Chat Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
                 }}
               />
               <Stack.Screen
@@ -163,6 +174,7 @@ export default function App() {
                   headerShown: true,
                   headerTitle: "Chat Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
                 }}
               />
               <Stack.Screen
@@ -172,6 +184,7 @@ export default function App() {
                   headerShown: true,
                   headerTitle: "Chat Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
                 }}
               />
             </Stack.Navigator>
