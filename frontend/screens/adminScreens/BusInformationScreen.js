@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
-    gap: 30,
+    gap: 20,
   },
 });

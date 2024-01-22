@@ -3,9 +3,8 @@ import { Text, StyleSheet, View, Image, Platform } from "react-native";
 const DriverDetailsCard = ({ driverFirstName, driverLastName }) => {
   return (
     <View style={styles.rowInfo}>
-      <View style={styles.driverImageContainer}>
-        <Image style={styles.driverImage} source={require("../../assets/images/driver.jpg")} />
-      </View>
+      <Image style={styles.driverImage} source={require("../../assets/images/driver.jpg")} />
+
       <View style={styles.driverInfoText}>
         <Text style={styles.driverInfoTextTitle}>Driver Name:</Text>
         <Text style={styles.driverInfoTextDetails}>
@@ -19,18 +18,16 @@ const DriverDetailsCard = ({ driverFirstName, driverLastName }) => {
 export default DriverDetailsCard;
 const styles = StyleSheet.create({
   rowInfo: {
-    flexDirection: "row",
     gap: 10,
     justifyContent: "center",
-    alignItems: "flex-start",
+    alignItems: "center",
   },
-  driverImageContainer: {
-    width: "50%",
-  },
+
   driverImage: {
-    width: 180,
-    height: 130,
-    borderRadius: 10,
+    height: 150,
+    width: 150,
+    borderRadius: 250,
+    alignSelf: "center",
   },
   driverInfoText: {
     width: "33%",
