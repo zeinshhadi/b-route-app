@@ -5,7 +5,7 @@ import SearchBar from "../../components/common/SearchBar";
 import { StyleSheet } from "react-native";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { Url } from "../../core/redux/helper/Url";
+import { Url } from "../../core/helper/Url";
 
 const BusesRegisteredScreen = ({ navigation }) => {
   const [busInfo, setBusInfo] = useState([]);

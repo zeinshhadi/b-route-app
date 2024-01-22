@@ -4,7 +4,7 @@ import MapView, { Marker } from "react-native-maps";
 import { getCurrentPositionAsync, useForegroundPermissions, PermissionStatus } from "expo-location";
 import Colors from "../../utils/colors";
 import axios from "axios";
-import { Url } from "../../core/redux/helper/Url";
+import { Url } from "../../core/helper/Url";
 import { useSelector } from "react-redux";
 import BusMarkerImage from "../../assets/bus-station.png";
 

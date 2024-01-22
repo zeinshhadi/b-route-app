@@ -3,7 +3,7 @@ import { View, Alert, StyleSheet } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { useSelector } from "react-redux";
 import { requestForegroundPermissionsAsync, getCurrentPositionAsync, PermissionStatus } from "expo-location";
-import { Url } from "../../core/redux/helper/Url";
+import { Url } from "../../core/helper/Url";
 import axios from "axios";
 
 const DriverHomeScreen = () => {

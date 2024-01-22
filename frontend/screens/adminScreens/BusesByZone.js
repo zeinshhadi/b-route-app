@@ -6,7 +6,7 @@ import { StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useRoute } from "@react-navigation/native";
-import { Url } from "../../core/redux/helper/Url";
+import { Url } from "../../core/helper/Url";
 
 const BusesByZone = ({ navigation }) => {
   const route = useRoute();
