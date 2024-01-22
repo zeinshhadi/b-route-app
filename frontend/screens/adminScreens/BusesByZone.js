@@ -34,7 +34,14 @@ const BusesByZone = ({ navigation }) => {
     console.log("this is item " + item);
     return (
       <Pressable onPress={() => navigation.navigate("BusInformation", { item: item })}>
-        <DetailsCard cardTitle={item.id} cardDetail={item.model} tempText={"MoreDetails"} status={"status"} />
+        <DetailsCard
+          itemType={"Bus#"}
+          cardTitle={item.id}
+          cardDetail={item.model}
+          tempText={"MoreDetails"}
+          tempType={"Zone#"}
+          status={item.zone_id}
+        />
       </Pressable>
     );
   };
