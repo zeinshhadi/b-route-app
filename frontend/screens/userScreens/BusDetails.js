@@ -52,7 +52,7 @@ const BusDetails = ({ navigation }) => {
   const renderSeats = () => {
     const seats = [];
 
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 9; i++) {
       seats.push(
         <View key={i} style={styles.seatContainer}>
           <MaterialIcons name="event-seat" size={34} color="grey" />
@@ -75,9 +75,9 @@ const BusDetails = ({ navigation }) => {
         <Text style={styles.bigBusCardContainerText}>{numberOfSeats}</Text>
       </View>
       <View style={styles.seatBusCardContainerMain}>
-        <View style={styles.seatRow}>{renderSeats().slice(0, 4)}</View>
-        <View style={styles.seatRow}>{renderSeats().slice(4, 8)}</View>
-        <View style={styles.seatRow}>{renderSeats().slice(8, 12)}</View>
+        <View style={styles.seatRow}>{renderSeats().slice(0, 3)}</View>
+        <View style={styles.seatRow}>{renderSeats().slice(3, 6)}</View>
+        <View style={styles.seatRow}>{renderSeats().slice(6, 9)}</View>
       </View>
       <Pressable onPress={() => handleStartRide()}>
         <View style={styles.buttonStyle}>{<Text style={styles.buttonTextStyle}>Start your ride</Text>}</View>
