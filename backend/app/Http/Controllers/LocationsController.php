@@ -9,56 +9,47 @@ use Illuminate\Support\Facades\Auth;
 
 class LocationsController extends Controller
 {
-public function createDriverLocation(Request $request)
-{
-    try {
-        $user = Auth::user();
-        $driver = Driver::findOrFail($user->id);
+    public function create_driver_location(Request $request){
 
-        $request->validate([
-            'lon' => 'required',
-            'lat' => 'required',
-        ]);
+        $user =Auth::user();
+        $driver_id = Driver::where('user_id', $user->id)->first();
+        $driver_id= $driver_id->id;
+        $location_found = Location::where('driver_id', $driver_id)->first();
 
+        if(!$location_found){
+                    if (!$user) {
+            return response()->json(['no driver',$driver_id]);
+        }
         $location = Location::create([
-            'driver_id' => $driver->id,
-            'longitude' => $request->lon,
-            'latitude' => $request->lat,
+            'driver_id'=>$driver_id,
+            'longitude'=>$request->lon,
+            'latitude'=>$request->lat
         ]);
-
-        return response()->json(['location' => $location, 'message' => 'Location created successfully'], 201);
-    } catch (\Exception $e) {
-        return response()->json(['error' => 'Failed to create location', 'message' => $e->getMessage()], 500);
-    }
-}
-
-public function updateDriverLocation(Request $request)
-{
-    try {
-        $user = Auth::user();
-        $driver = Driver::findOrFail($user->id);
-
-        $request->validate([
-            'lon' => 'required',
-            'lat' => 'required',
-        ]);
-
-        $location = Location::where('driver_id', $driver->id)->first();
-
         if (!$location) {
-            return response()->json(['error' => 'Location not found'], 404);
+           return response()->json(['fail']);
+        }
+            return response()->json(['location',$location]);
+        }else{
+             return response()->json(['fail',$location_found]);
         }
 
-        $location->update([
-            'longitude' => $request->lon,
-            'latitude' => $request->lat,
-        ]);
+        }
 
-        return response()->json(['location' => $location, 'message' => 'Location updated successfully']);
-    } catch (\Exception $e) {
-        return response()->json(['error' => 'Failed to update location', 'message' => $e->getMessage()], 500);
-    }
-}
+    public function update_driver_location(Request $request){
+
+        $user =Auth::user();
+
+        $driver_id = Driver::where('user_id', $user->id)->first();
+        $driver_id= $driver_id->id;
+       
+         $location = Location::where('driver_id',$driver_id)->first();
+     
+         $location->update([
+            'longitude'=>$request->lon,
+            'latitude'=>$request->lat]);
+                return response()->json(['location updated',$location]);
+            }
+
 
 
 public function delete_driver_location(){
