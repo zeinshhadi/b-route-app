@@ -61,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
     const intervalId = setInterval(() => {
       getDriversLocation();
       updateUserLocation();
-    }, 10000);
+    }, 5000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -75,7 +75,16 @@ const HomeScreen = ({ navigation }) => {
     }
 
     if (status === PermissionStatus.DENIED) {
-      Alert.alert("Insufficient Permissions!", "You need to grant location permissions to use this app.");
+      Alert.alert("Insufficient Permissions!", "You need to grant location permissions to use this app.", [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Go to Settings",
+          onPress: () => Linking.openSettings(),
+        },
+      ]);
       return false;
     }
 
@@ -103,7 +112,7 @@ const HomeScreen = ({ navigation }) => {
   };
   return (
     <View style={styles.container}>
-      <MapView style={styles.map} region={region} showsUserLocation={true} followsUserLocation={true}>
+      <MapView style={styles.map} showsUserLocation={true} followsUserLocation={true}>
         {driverLocations.map((location) => (
           <Marker
             key={location.id}
@@ -134,7 +143,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 16,
     alignSelf: "center",
-    padding: 10,
+    padding: 18,
     backgroundColor: Colors.primary500,
     borderRadius: 30,
     width: "50%",

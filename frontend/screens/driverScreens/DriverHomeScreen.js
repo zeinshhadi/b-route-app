@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { requestForegroundPermissionsAsync, getCurrentPositionAsync, PermissionStatus } from "expo-location";
 import { Url } from "../../core/redux/helper/Url";
 import axios from "axios";
+
 const DriverHomeScreen = () => {
   const authState = useSelector((state) => state.auth);
   const driver_id = authState.user.id;
@@ -27,7 +28,7 @@ const DriverHomeScreen = () => {
         const lon = locationData.coords.longitude;
         setLocation({ lat, lon });
         setInitialFetchComplete(true);
-        if (fetchLocation == false) {
+        if (!fetchLocation) {
           const get_location_driver = async ({ lat, lon }) => {
             try {
               const response = await axios.post(
@@ -59,6 +60,10 @@ const DriverHomeScreen = () => {
       return () => clearInterval(intervalId);
     }
   }, [locationPermission, initialFetchComplete]);
+
+  useEffect(() => {
+    setInitialFetchComplete(false);
+  }, [authState.user]);
 
   const requestLocationPermission = async () => {
     const { status } = await requestForegroundPermissionsAsync();
