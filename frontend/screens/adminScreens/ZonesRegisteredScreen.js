@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Pressable, View } from "react-native";
+import { FlatList, Pressable, View, ActivityIndicator } from "react-native";
 import DetailsCard from "../../components/cards/DetailsCard";
 import SearchBar from "../../components/common/SearchBar";
 import { StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { Url } from "../../core/helper/Url";
+import Colors from "../../utils/colors";
 
 const ZonesRegisteredScreen = ({ navigation }) => {
   const [zones, setZones] = useState();
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(`${Url}/api/zones`, {
           headers: { Authorization: authorization },
@@ -21,8 +24,10 @@ const ZonesRegisteredScreen = ({ navigation }) => {
 
         setZones(response.data.zones);
       } catch (error) {
+        setLoading(false);
         console.log("Error Fetching " + error);
       }
+      setLoading(false);
     };
     fetchData();
   }, []);
@@ -44,7 +49,18 @@ const ZonesRegisteredScreen = ({ navigation }) => {
     <View style={styles.ZonesRegisteredScreenContainer}>
       <View style={styles.innerContainer}>
         <SearchBar />
-        <FlatList data={zones} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+        {loading ? (
+          <ActivityIndicator
+            size={"large"}
+            color={Colors.primary500}
+            style={{
+              alignSelf: "center",
+              flex: 1,
+            }}
+          />
+        ) : (
+          <FlatList data={zones} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+        )}
       </View>
     </View>
   );
