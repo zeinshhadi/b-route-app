@@ -6,7 +6,7 @@ const DriverDetailsCard = ({ driverFirstName, driverLastName }) => {
       <Image style={styles.driverImage} source={require("../../assets/images/driver.jpg")} />
 
       <View style={styles.driverInfoText}>
-        <Text style={styles.driverInfoTextTitle}>Driver Name:</Text>
+        <Text style={styles.driverInfoTextTitle}>Driver Name</Text>
         <Text style={styles.driverInfoTextDetails}>
           {driverFirstName} {driverLastName}
         </Text>

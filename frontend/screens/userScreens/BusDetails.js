@@ -17,6 +17,7 @@ const BusDetails = ({ navigation }) => {
   const [driverFirstName, setDriverFirstName] = useState("");
   const [driverLastName, setDriverLastName] = useState("");
   const [numberOfSeats, setNumberOfSeats] = useState();
+  const [driverImageUri, setDriverImageUri] = useState(null);
 
   useEffect(() => {
     const fetchBusData = async () => {
@@ -30,12 +31,15 @@ const BusDetails = ({ navigation }) => {
         setBusInformation(busData);
 
         const numberOfSeats = busData.number_of_seats;
-        console.log(numberOfSeats);
+        console.log(busData);
         setNumberOfSeats(numberOfSeats);
         const { driver } = busData;
         if (driver && driver.user) {
           setDriverFirstName(driver.user.first_name);
           setDriverLastName(driver.user.last_name);
+          const fullImageUrl = `${Url}/${busData.driver.image}`;
+          setDriverImageUri(fullImageUrl);
+          console.log(fullImageUrl);
         }
       } catch (error) {
         console.log(`error ${error}`);
@@ -44,7 +48,6 @@ const BusDetails = ({ navigation }) => {
 
     fetchBusData();
   }, [driver_id]);
-  console.log("busInformation:", busInformation);
 
   const renderSeats = () => {
     const seats = [];

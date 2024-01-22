@@ -22,9 +22,9 @@ const AddDriverScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   const [data, setData] = useState([{ label: "", value: "" }]);
-
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const [imageType, setImageType] = useState(null);
+  const [fileName, setFileName] = useState(null);
   const pickImage = async () => {
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
@@ -32,15 +32,23 @@ const AddDriverScreen = () => {
         allowsEditing: true,
         aspect: [4, 3],
         quality: 1,
-        base64: true,
       });
+      if (!result.canceled) {
+        setSelectedImage(result.assets);
+      } else {
+        setSelectedImage(null);
+      }
 
-      setSelectedImage(result.assets[0].uri);
+      const type = result.assets[0].type;
+
+      const originalFileName = result.assets[0].fileName;
+
+      setImageType(type);
+      setFileName(originalFileName || `image_${Date.now()}.${type.split("/")[1]}`);
     } catch (error) {
-      Alert.alert("no Image selected");
+      Alert.alert("No image selected");
     }
   };
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -83,6 +91,8 @@ const AddDriverScreen = () => {
   };
 
   const handleRegisterDriver = async () => {
+    console.log(`here is image sss ${selectedImage[0].uri}`);
+    const image = selectedImage[0].uri;
     try {
       if (
         !userData.firstName ||
@@ -106,9 +116,9 @@ const AddDriverScreen = () => {
         phone_number: userData.phoneNumber,
         bus_id: userData.busId,
         driver_license: userData.driverLicense,
-        image: result.base64,
+        image: image,
       };
-
+      console.log(`here is image ${image}`);
       console.log("Registration Request Data:", registrationData);
 
       const response = await axios.post(`${Url}/api/register/driver`, registrationData, {
@@ -127,6 +137,7 @@ const AddDriverScreen = () => {
           password: "",
           phoneNumber: "",
           driverLicense: "",
+          image: null,
           busId: 0,
         });
         setValue(null);
@@ -146,7 +157,7 @@ const AddDriverScreen = () => {
         <ScrollView>
           <Pressable onPress={pickImage}>
             {selectedImage ? (
-              <Image source={{ uri: selectedImage }} style={styles.driverImage} />
+              <Image source={{ uri: selectedImage[0].uri }} style={styles.driverImage} />
             ) : (
               <Image source={require("../../assets/images/profiledef.jpg")} style={styles.driverImage} />
             )}
