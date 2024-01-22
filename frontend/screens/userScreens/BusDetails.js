@@ -55,7 +55,7 @@ const BusDetails = ({ navigation }) => {
     for (let i = 0; i < 9; i++) {
       seats.push(
         <View key={i} style={styles.seatContainer}>
-          <MaterialIcons name="event-seat" size={34} color="grey" />
+          <MaterialIcons name="event-seat" size={44} color="grey" />
         </View>
       );
     }
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   seatBusCardContainerMain: {
     flexDirection: "column",
     justifyContent: "space-evenly",
-    padding: 20,
+    padding: 10,
     borderWidth: 1,
     borderColor: "black",
     gap: 20,
