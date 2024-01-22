@@ -24,6 +24,7 @@ import UserRideScreen from "./screens/userScreens/UserRideScreen";
 import ChatScreen from "./screens/common/ChatScreen";
 import AdminChatScreen from "./screens/adminScreens/AdminChatScreen";
 import IndividualChatScreen from "./screens/adminScreens/IndividualChatScreen";
+import Colors from "./utils/colors";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -45,12 +46,20 @@ export default function App() {
               <Stack.Screen
                 name="BusDetailScreen"
                 component={BusDetails}
-                options={{ headerShown: true, headerTitle: "Bus Details" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Bus Details",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                }}
               />
               <Stack.Screen
                 name="EditProfile"
                 component={EditProfile}
-                options={{ headerShown: true, headerTitle: "Profile" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Profile",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                }}
               />
               <Stack.Screen
                 name="UserFeedbackScreen"
@@ -60,62 +69,110 @@ export default function App() {
               <Stack.Screen
                 name="BusesRegistered"
                 component={BusesRegisteredScreen}
-                options={{ headerShown: true, headerTitle: "Buses Registered" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Buses Registered",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                }}
               />
               <Stack.Screen
                 name="BusInformation"
                 component={BusInformationScreen}
-                options={{ headerShown: true, headerTitle: "Bus Info Screen" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Bus Info Screen",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                }}
               />
               <Stack.Screen
                 name="ZonesRegistered"
                 component={ZonesRegisteredScreen}
-                options={{ headerShown: true, headerTitle: "Zones Screen" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Zones Screen",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                }}
               />
               <Stack.Screen
                 name="AddDriverScreen"
                 component={AddDriverScreen}
-                options={{ headerShown: true, headerTitle: "Add Driver Screen" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Add Driver Screen",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                }}
               />
               <Stack.Screen
                 name="AddBusScreen"
                 component={AddBusScreen}
-                options={{ headerShown: true, headerTitle: "Add Bus Screen" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Add Bus Screen",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                }}
               />
               <Stack.Screen
                 name="ReviewScreen"
                 component={ReviewScreen}
-                options={{ headerShown: true, headerTitle: "Review Screen" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Review Screen",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                }}
               />
               <Stack.Screen
                 name="AddZoneScreen"
                 component={AddZoneScreen}
-                options={{ headerShown: true, headerTitle: "Add Zone" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Add Zone",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                }}
               />
               <Stack.Screen
                 name="BusesByZone"
                 component={BusesByZone}
-                options={{ headerShown: true, headerTitle: "Buses in zone" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Buses in zone",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                }}
               />
               <Stack.Screen
                 name="UserRideScreen"
                 component={UserRideScreen}
-                options={{ headerShown: true, headerTitle: "Buses in zone" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Buses in zone",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                }}
               />
               <Stack.Screen
                 name="ChatScreen"
                 component={ChatScreen}
-                options={{ headerShown: true, headerTitle: "Chat Screen" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Chat Screen",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                }}
               />
               <Stack.Screen
                 name="AdminChatScreen"
                 component={AdminChatScreen}
-                options={{ headerShown: true, headerTitle: "Chat Screen" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Chat Screen",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                }}
               />
               <Stack.Screen
                 name="IndividualChatScreen"
                 component={IndividualChatScreen}
-                options={{ headerShown: true, headerTitle: "Chat Screen" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Chat Screen",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                }}
               />
             </Stack.Navigator>
           </NavigationContainer>
