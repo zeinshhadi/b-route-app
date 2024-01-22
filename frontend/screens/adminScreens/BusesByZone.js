@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { FlatList, Pressable, View } from "react-native";
+import { useEffect, useState } from "react";
+import { FlatList, Pressable, View, ActivityIndicator } from "react-native";
 import DetailsCard from "../../components/cards/DetailsCard";
 import SearchBar from "../../components/common/SearchBar";
 import { StyleSheet } from "react-native";
@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useRoute } from "@react-navigation/native";
 import { Url } from "../../core/helper/Url";
+import Colors from "../../utils/colors";
 
 const BusesByZone = ({ navigation }) => {
   const route = useRoute();
@@ -16,8 +17,10 @@ const BusesByZone = ({ navigation }) => {
   const [busZone, setBusZone] = useState();
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(`${Url}/api/bus/zone/${zone_id}`, {
           headers: { Authorization: authorization },
@@ -25,8 +28,10 @@ const BusesByZone = ({ navigation }) => {
 
         setBusZone(response.data.bus);
       } catch (error) {
+        setLoading(false);
         console.log("Error Fetching " + error);
       }
+      setLoading(false);
     };
     fetchData();
   }, []);
@@ -50,7 +55,18 @@ const BusesByZone = ({ navigation }) => {
     <View style={styles.BusesByZoneContainer}>
       <View style={styles.innerContainer}>
         <SearchBar />
-        <FlatList data={busZone} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+        {loading ? (
+          <ActivityIndicator
+            size={"large"}
+            color={Colors.primary500}
+            style={{
+              alignSelf: "center",
+              flex: 1,
+            }}
+          />
+        ) : (
+          <FlatList data={busZone} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+        )}
       </View>
     </View>
   );
