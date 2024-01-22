@@ -1,5 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, TextInput, ActivityIndicator, Image, ScrollView, Alert } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  ActivityIndicator,
+  Image,
+  ScrollView,
+  Alert,
+  Pressable,
+} from "react-native";
 import Button from "../../components/common/Button";
 import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
@@ -22,13 +32,12 @@ const AddDriverScreen = () => {
         allowsEditing: true,
         aspect: [4, 3],
         quality: 1,
+        base64: true,
       });
 
-      if (!result.cancelled) {
-        setSelectedImage(result.uri);
-      }
+      setSelectedImage(result.assets[0].uri);
     } catch (error) {
-      console.error("Error picking an image:", error);
+      Alert.alert("no Image selected");
     }
   };
 
@@ -97,7 +106,7 @@ const AddDriverScreen = () => {
         phone_number: userData.phoneNumber,
         bus_id: userData.busId,
         driver_license: userData.driverLicense,
-        image: "abcabc",
+        image: result.base64,
       };
 
       console.log("Registration Request Data:", registrationData);
@@ -135,11 +144,14 @@ const AddDriverScreen = () => {
     <View style={styles.outerContainer}>
       <View style={styles.formContainer}>
         <ScrollView>
-          {selectedImage && <Image source={{ uri: selectedImage }} style={styles.selectedImage} />}
+          <Pressable onPress={pickImage}>
+            {selectedImage ? (
+              <Image source={{ uri: selectedImage }} style={styles.driverImage} />
+            ) : (
+              <Image source={require("../../assets/images/profiledef.jpg")} style={styles.driverImage} />
+            )}
+          </Pressable>
 
-          <Button onPress={pickImage}>
-            <Text>Select Image</Text>
-          </Button>
           <View style={styles.innerFormContainer}>
             <TextInput
               style={styles.inputDesign}
