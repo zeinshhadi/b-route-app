@@ -5,7 +5,7 @@ import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { Url } from "../../core/redux/helper/Url";
+import { Url } from "../../core/helper/Url";
 
 const AddBusScreen = () => {
   const authState = useSelector((state) => state.auth);

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Text, StyleSheet, View, Image, Platform, Pressable } from "react-native";
+import { Text, StyleSheet, View, Pressable } from "react-native";
 import DriverDetailsCard from "../../components/cards/DriverDetailsCard";
 import { useRoute } from "@react-navigation/native";
 import axios from "axios";
-import { Url } from "../../core/redux/helper/Url";
+import { Url } from "../../core/helper/Url";
 import { useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import Colors from "../../utils/colors";
-import Button from "../../components/common/Button";
+
 const BusDetails = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;

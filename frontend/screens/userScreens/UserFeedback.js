@@ -4,7 +4,7 @@ import { Rating } from "react-native-ratings";
 import Colors from "../../utils/colors";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { Url } from "../../core/redux/helper/Url";
+import { Url } from "../../core/helper/Url";
 const UserFeedback = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;

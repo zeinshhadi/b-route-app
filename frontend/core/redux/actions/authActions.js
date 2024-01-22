@@ -1,6 +1,6 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Url } from "../helper/Url";
+import { Url } from "../../helper/Url";
 export const Login = ({ email, password }) => {
   return async (dispatch) => {
     try {

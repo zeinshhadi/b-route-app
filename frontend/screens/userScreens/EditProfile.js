@@ -5,7 +5,7 @@ import Button from "../../components/common/Button";
 import { useSelector } from "react-redux";
 import { ScrollView } from "react-native";
 import axios from "axios";
-import { Url } from "../../core/redux/helper/Url";
+import { Url } from "../../core/helper/Url";
 import LogoComponent from "../../components/common/LogoComponent";
 const EditProfile = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);

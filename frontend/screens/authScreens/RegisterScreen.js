@@ -4,7 +4,7 @@ import Button from "../../components/common/Button";
 import LogoComponent from "../../components/common/LogoComponent";
 import axios from "axios";
 import Colors from "../../utils/colors";
-import { Url } from "../../core/redux/helper/Url";
+import { Url } from "../../core/helper/Url";
 const RegisterScreen = ({ navigation }) => {
   const [userData, setUserData] = useState({
     fullName: "",
