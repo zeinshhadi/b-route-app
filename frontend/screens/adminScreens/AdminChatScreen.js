@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
+import { View, Text, FlatList, StyleSheet, Pressable, ActivityIndicator } from "react-native";
 import { useSelector } from "react-redux";
 import { getDatabase, ref, onValue, off } from "firebase/database";
 import { firebaseApp } from "../../config/firebase";
@@ -8,8 +8,9 @@ import Colors from "../../utils/colors";
 const AdminChatScreen = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const [users, setUsers] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     const db = getDatabase(firebaseApp);
     const chatMessagesRef = ref(db, "chat-messages");
 
@@ -46,13 +47,15 @@ const AdminChatScreen = ({ navigation }) => {
         console.log("User List:", sortedUsers);
 
         setUsers(sortedUsers);
+        setLoading(false);
       } else {
+        setLoading(false);
         setUsers([]);
       }
     };
 
     onValue(chatMessagesRef, handleData);
-
+    setLoading(false);
     return () => off(chatMessagesRef, "value", handleData);
   }, []);
 
@@ -62,18 +65,29 @@ const AdminChatScreen = ({ navigation }) => {
 
   return (
     <View style={styles.adminChatScreenContainer}>
-      <FlatList
-        data={users}
-        keyExtractor={(item, index) => `${item.userId}_${item.userType}_${index}`}
-        renderItem={({ item }) => (
-          <Pressable onPress={() => navigateToChat(item.userId, item.userType)}>
-            <View style={styles.userCard}>
-              <Text style={styles.username}>{item.username}</Text>
-              <Text style={styles.lastMessage}>{item.lastMessage}</Text>
-            </View>
-          </Pressable>
-        )}
-      />
+      {loading ? (
+        <ActivityIndicator
+          size={"large"}
+          color={Colors.primary500}
+          style={{
+            alignSelf: "center",
+            flex: 1,
+          }}
+        />
+      ) : (
+        <FlatList
+          data={users}
+          keyExtractor={(item, index) => `${item.userId}_${item.userType}_${index}`}
+          renderItem={({ item }) => (
+            <Pressable onPress={() => navigateToChat(item.userId, item.userType)}>
+              <View style={styles.userCard}>
+                <Text style={styles.username}>{item.username}</Text>
+                <Text style={styles.lastMessage}>{item.lastMessage}</Text>
+              </View>
+            </Pressable>
+          )}
+        />
+      )}
     </View>
   );
 };

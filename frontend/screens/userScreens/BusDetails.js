@@ -55,7 +55,7 @@ const BusDetails = ({ navigation }) => {
     for (let i = 0; i < 12; i++) {
       seats.push(
         <View key={i} style={styles.seatContainer}>
-          <MaterialIcons name="event-seat" size={34} color={Colors.primary500} />
+          <MaterialIcons name="event-seat" size={34} color="grey" />
         </View>
       );
     }

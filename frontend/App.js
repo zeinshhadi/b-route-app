@@ -29,7 +29,6 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <>
-      <StatusBar style="black" />
       <SafeAreaView style={styles.container}>
         <Provider store={store}>
           <NavigationContainer>
