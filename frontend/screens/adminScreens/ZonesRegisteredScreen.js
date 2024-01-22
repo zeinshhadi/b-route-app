@@ -5,7 +5,7 @@ import SearchBar from "../../components/common/SearchBar";
 import { StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { Url } from "../../core/redux/helper/Url";
+import { Url } from "../../core/helper/Url";
 
 const ZonesRegisteredScreen = ({ navigation }) => {
   const [zones, setZones] = useState();

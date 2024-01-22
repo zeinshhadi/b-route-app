@@ -5,7 +5,7 @@ import { Dropdown } from "react-native-element-dropdown";
 import Colors from "../../utils/colors";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { Url } from "../../core/redux/helper/Url";
+import { Url } from "../../core/helper/Url";
 
 const AddDriverScreen = () => {
   const authState = useSelector((state) => state.auth);

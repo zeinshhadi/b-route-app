@@ -5,8 +5,9 @@ import SearchBar from "../../components/common/SearchBar";
 import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { Url } from "../../core/redux/helper/Url";
+
 import Colors from "../../utils/colors";
+import { Url } from "../../core/helper/Url";
 const ReviewScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;

@@ -3,7 +3,8 @@ import { Text, View, StyleSheet, TextInput, ScrollView, ActivityIndicator, Alert
 import Button from "../../components/common/Button";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { Url } from "../../core/redux/helper/Url";
+import { Url } from "../../core/helper/Url";
+
 const AddZoneScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
