@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "black",
     gap: 20,
-    width: "85%",
+    width: "87%",
     alignSelf: "center",
     borderRadius: 10,
   },

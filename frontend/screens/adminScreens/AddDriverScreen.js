@@ -6,12 +6,31 @@ import Colors from "../../utils/colors";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Url } from "../../core/helper/Url";
+import * as ImagePicker from "expo-image-picker";
 
 const AddDriverScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
-
   const [data, setData] = useState([{ label: "", value: "" }]);
+
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const pickImage = async () => {
+    try {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+
+      if (!result.cancelled) {
+        setSelectedImage(result.uri);
+      }
+    } catch (error) {
+      console.error("Error picking an image:", error);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -116,7 +135,11 @@ const AddDriverScreen = () => {
     <View style={styles.outerContainer}>
       <View style={styles.formContainer}>
         <ScrollView>
-          <Image style={styles.driverImage} source={require("../../assets/images/driver.jpg")} />
+          {selectedImage && <Image source={{ uri: selectedImage }} style={styles.selectedImage} />}
+
+          <Button onPress={pickImage}>
+            <Text>Select Image</Text>
+          </Button>
           <View style={styles.innerFormContainer}>
             <TextInput
               style={styles.inputDesign}
