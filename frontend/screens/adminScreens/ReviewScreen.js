@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReviewCard from "../../components/cards/ReviewCard";
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, View, ActivityIndicator } from "react-native";
 import SearchBar from "../../components/common/SearchBar";
 import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
@@ -10,17 +10,21 @@ import { Url } from "../../core/helper/Url";
 const ReviewScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState();
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(`${Url}/api/feedback`, {
           headers: { Authorization: authorization },
         });
         setData(response.data.reviews);
       } catch (error) {
+        setLoading(false);
         console.log("error", error);
       }
+      setLoading(false);
     };
     fetchData();
   }, []);
@@ -40,7 +44,18 @@ const ReviewScreen = () => {
     <View style={styles.reviewContainer}>
       <View style={styles.reviewInnerContainer}>
         <SearchBar />
-        <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id} style={styles.reviewList} />
+        {loading ? (
+          <ActivityIndicator
+            size={"large"}
+            color={Colors.primary500}
+            style={{
+              alignSelf: "center",
+              flex: 1,
+            }}
+          />
+        ) : (
+          <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id} style={styles.reviewList} />
+        )}
       </View>
     </View>
   );
@@ -54,10 +69,12 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     backgroundColor: "white",
+    flex: 1,
   },
   reviewInnerContainer: {
     width: "90%",
     marginVertical: 30,
+    flex: 1,
   },
   starContainer: {
     flexDirection: "row",
