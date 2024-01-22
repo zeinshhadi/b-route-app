@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   inputSearchDesign: {
+    flex: 1,
     alignSelf: "flex-start",
     marginLeft: 10,
   },
