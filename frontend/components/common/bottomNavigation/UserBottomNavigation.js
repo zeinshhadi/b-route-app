@@ -10,12 +10,25 @@ const Tab = createBottomTabNavigator();
 
 const UserBottomNavigation = () => {
   return (
-    <Tab.Navigator screenOptions={{ tabBarActiveTintColor: Colors.primary500, tabBarInactiveTintColor: "gray" }}>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: Colors.primary500,
+        tabBarInactiveTintColor: "gray",
+        headerStyle: {
+          backgroundColor: Colors.primary500,
+        },
+        headerShadowVisible: true,
+        tabBarHideOnKeyboard: true,
+        headerPressColor: "black",
+        freezeOnBlur: true,
+        headerTintColor: "white",
+      }}>
       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size} />,
+          headerShown: false,
         }}
       />
       <Tab.Screen
