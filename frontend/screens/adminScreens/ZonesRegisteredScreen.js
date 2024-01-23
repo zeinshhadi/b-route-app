@@ -33,17 +33,20 @@ const ZonesRegisteredScreen = ({ navigation }) => {
   }, []);
   const renderItem = ({ item }) => {
     return (
-      <Pressable
-        onPress={() => navigation.navigate("BusesByZone", { item: item })}
-        android_ripple={{ color: Colors.primary500, foreground: true }}>
-        <DetailsCard
-          itemType={"Zone#"}
-          cardTitle={item.id}
-          cardDetail={item.zone_name}
-          tempText={"MoreDetails"}
-          status={"status"}
-        />
-      </Pressable>
+      <View style={styles.listContainer}>
+        <Pressable
+          onPress={() => navigation.navigate("BusesByZone", { item: item })}
+          android_ripple={{ color: Colors.primary500, foreground: true }}
+          style={({ pressed }) => [styles.button, pressed ? styles.buttonPressed : null]}>
+          <DetailsCard
+            itemType={"Zone#"}
+            cardTitle={item.id}
+            cardDetail={item.zone_name}
+            tempText={"MoreDetails"}
+            status={"status"}
+          />
+        </Pressable>
+      </View>
     );
   };
 
@@ -61,7 +64,12 @@ const ZonesRegisteredScreen = ({ navigation }) => {
             }}
           />
         ) : (
-          <FlatList data={zones} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+          <FlatList
+            data={zones}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id.toString()}
+            style={styles.listContainer}
+          />
         )}
       </View>
     </View>
@@ -77,10 +85,22 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     backgroundColor: "white",
+    overflow: "hidden",
   },
   innerContainer: {
     width: "90%",
     flex: 1,
     marginBottom: 5,
+    overflow: "hidden",
+  },
+  listContainer: {
+    overflow: "hidden",
+    borderRadius: 10,
+    marginBottom: 5,
+    height: 80,
+  },
+  buttonPressed: {
+    opacity: 0.5,
+    overflow: "hidden",
   },
 });
