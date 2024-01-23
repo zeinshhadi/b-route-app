@@ -5,6 +5,7 @@ use App\Http\Controllers\BusesController;
 use App\Http\Controllers\DriversController;
 use App\Http\Controllers\LocationsController;
 use App\Http\Controllers\RidesController;
+use App\Http\Controllers\SeatsController;
 use App\Http\Controllers\ZonesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -37,7 +38,7 @@ Route::controller(RidesController::class)->group(function () {
 
 })->middleware(['auth:api', 'passenger']);
 
-
+Route::post('update/seat',[SeatsController::class,'updateStatus']);
 Route::post('driver/location',[LocationsController::class,'create_driver_location']);
 Route::post('update/location',[LocationsController::class,'update_driver_location']);
 Route::delete('delete/location',[LocationsController::class,'delete_driver_location']);
