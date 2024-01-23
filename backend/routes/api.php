@@ -39,6 +39,7 @@ Route::controller(RidesController::class)->group(function () {
 })->middleware(['auth:api', 'passenger']);
 
 Route::post('update/seat',[SeatsController::class,'updateStatus']);
+Route::get('get/seat',[SeatsController::class,'get_seats']);
 Route::post('driver/location',[LocationsController::class,'create_driver_location']);
 Route::post('update/location',[LocationsController::class,'update_driver_location']);
 Route::delete('delete/location',[LocationsController::class,'delete_driver_location']);

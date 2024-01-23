@@ -75,8 +75,6 @@ const DriverHomeScreen = () => {
       let lat = location.lat;
       let lon = location.lon;
 
-      console.log("Before API Call - Lat:", lat, "Lon:", lon);
-
       const update_driver_location = async (lat, lon) => {
         try {
           const response = await axios.post(
@@ -89,9 +87,7 @@ const DriverHomeScreen = () => {
             }
           );
           console.log("Response:", response.data);
-        } catch (error) {
-          console.error("Error updating driver location:", error.message);
-        }
+        } catch (error) {}
       };
 
       update_driver_location(lat, lon);
