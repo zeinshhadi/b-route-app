@@ -27,7 +27,13 @@ public function updateStatus(Request $request)
 }
 
 public function get_seats(){
-    
+                $seats = Seat::all();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Seats retrieved successfully',
+                'seats' => $seats,
+            ]);
 }
 
 }
