@@ -33,7 +33,9 @@ const ZonesRegisteredScreen = ({ navigation }) => {
   }, []);
   const renderItem = ({ item }) => {
     return (
-      <Pressable onPress={() => navigation.navigate("BusesByZone", { item: item })}>
+      <Pressable
+        onPress={() => navigation.navigate("BusesByZone", { item: item })}
+        android_ripple={{ color: Colors.primary500, foreground: true }}>
         <DetailsCard
           itemType={"Zone#"}
           cardTitle={item.id}
