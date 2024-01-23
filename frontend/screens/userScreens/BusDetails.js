@@ -13,7 +13,6 @@ const BusDetails = ({ navigation }) => {
   const authorization = "bearer " + authState.token;
   const route = useRoute();
   const driver_id = route.params;
-  const [busInformation, setBusInformation] = useState(null);
   const [driverFirstName, setDriverFirstName] = useState("");
   const [driverLastName, setDriverLastName] = useState("");
   const [numberOfSeats, setNumberOfSeats] = useState();
@@ -28,9 +27,6 @@ const BusDetails = ({ navigation }) => {
         });
 
         const busData = response.data.bus;
-
-        setBusInformation(busData);
-
         const numberOfSeats = busData.number_of_seats;
 
         setNumberOfSeats(numberOfSeats);
