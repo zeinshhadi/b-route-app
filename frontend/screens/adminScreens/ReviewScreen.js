@@ -73,13 +73,13 @@ const styles = StyleSheet.create({
   },
   reviewInnerContainer: {
     width: "90%",
-    marginVertical: 30,
+    marginTop: 30,
     flex: 1,
   },
   starContainer: {
     flexDirection: "row",
   },
   reviewList: {
-    marginBottom: 35,
+    marginBottom: 2,
   },
 });
