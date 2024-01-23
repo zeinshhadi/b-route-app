@@ -18,6 +18,7 @@ const BusDetails = ({ navigation }) => {
   const [driverLastName, setDriverLastName] = useState("");
   const [numberOfSeats, setNumberOfSeats] = useState();
   const [driverImageUri, setDriverImageUri] = useState(null);
+  const [seatColors, setSeatColors] = useState(Array(10).fill("grey"));
 
   useEffect(() => {
     const fetchBusData = async () => {
@@ -31,7 +32,7 @@ const BusDetails = ({ navigation }) => {
         setBusInformation(busData);
 
         const numberOfSeats = busData.number_of_seats;
-        console.log(busData);
+
         setNumberOfSeats(numberOfSeats);
         const { driver } = busData;
         if (driver && driver.user) {
@@ -39,7 +40,6 @@ const BusDetails = ({ navigation }) => {
           setDriverLastName(driver.user.last_name);
           const fullImageUrl = `${Url}/${busData.driver.image}`;
           setDriverImageUri(fullImageUrl);
-          console.log(fullImageUrl);
         }
       } catch (error) {
         console.log(`error ${error}`);
@@ -49,13 +49,32 @@ const BusDetails = ({ navigation }) => {
     fetchBusData();
   }, [driver_id]);
 
+  useEffect(() => {
+    const fetchSeatData = async () => {
+      try {
+        const response = await axios.get(`${Url}/api/get/seat`);
+
+        const newSeatColors = response.data.seats.map((seat) => (seat.status === 1 ? "green" : "grey"));
+        setSeatColors(newSeatColors);
+      } catch (error) {
+        console.log(`error ${error}`);
+      }
+    };
+
+    fetchSeatData();
+
+    const intervalId = setInterval(fetchSeatData, 3000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   const renderSeats = () => {
     const seats = [];
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i <= 10; i++) {
       seats.push(
-        <View key={i} style={styles.seatContainer}>
-          <MaterialIcons name="event-seat" size={44} color="grey" />
+        <View style={[styles.seatContainer]} key={i}>
+          <MaterialIcons name="event-seat" size={44} color={seatColors[i - 1]} />
         </View>
       );
     }
@@ -75,9 +94,9 @@ const BusDetails = ({ navigation }) => {
         <Text style={styles.bigBusCardContainerText}>{numberOfSeats}</Text>
       </View>
       <View style={styles.seatBusCardContainerMain}>
-        <View style={styles.seatRow}>{renderSeats().slice(0, 3)}</View>
-        <View style={styles.seatRow}>{renderSeats().slice(3, 6)}</View>
-        <View style={styles.seatRow}>{renderSeats().slice(6, 9)}</View>
+        <View style={styles.seatRow}>{renderSeats().slice(1, 4)}</View>
+        <View style={styles.seatRow}>{renderSeats().slice(4, 7)}</View>
+        <View style={styles.seatRow}>{renderSeats().slice(7, 10)}</View>
       </View>
       <Pressable onPress={() => handleStartRide()}>
         <View style={styles.buttonStyle}>{<Text style={styles.buttonTextStyle}>Start your ride</Text>}</View>
