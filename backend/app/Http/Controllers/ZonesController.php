@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 
 class ZonesController extends Controller
 {
-  public function all_zones(){
-    $zone=Zone::all();
-    return response()->json(['zones'=>$zone]);
-  }
+public function all_zones(){
+    $zones = Zone::withCount('bus')->get();
+    return response()->json(['zones' => $zones]);
+}
+
 
   public function add_zone(Request $request){
     $zone = Zone::create([ 

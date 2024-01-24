@@ -13,4 +13,8 @@ public function driver()
 {
     return $this->hasOne(Driver::class);
 }
+public function zone()
+{
+    return $this->hasOne(Zone::class);
+}
 }

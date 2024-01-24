@@ -13,4 +13,7 @@ class Zone extends Model
    public function driver(){
    return $this->hasMany(Driver::class);
    }
+   public function bus(){
+   return $this->hasMany(Bus::class);
+   }
 }
