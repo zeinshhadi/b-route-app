@@ -20,7 +20,6 @@ const ZonesRegisteredScreen = ({ navigation }) => {
         const response = await axios.get(`${Url}/api/zones`, {
           headers: { Authorization: authorization },
         });
-        console.log("response ", response.data.zones);
 
         setZones(response.data.zones);
       } catch (error) {
@@ -42,8 +41,8 @@ const ZonesRegisteredScreen = ({ navigation }) => {
             itemType={"Zone#"}
             cardTitle={item.id}
             cardDetail={item.zone_name}
-            tempText={"MoreDetails"}
-            status={"status"}
+            tempText={`Details`}
+            status={`Buses: ${item.bus_count}`}
           />
         </Pressable>
       </View>
