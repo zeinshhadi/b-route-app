@@ -88,14 +88,14 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   innerContainer: {
-    width: "90%",
+    width: "95%",
     flex: 1,
     padding: 10,
   },
   listContainer: {
     overflow: "hidden",
     borderRadius: 10,
-    marginBottom: 5,
+    marginBottom: 7,
     height: 80,
   },
   buttonPressed: {

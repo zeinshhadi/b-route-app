@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   listContainer: {
     overflow: "hidden",
     borderRadius: 10,
-    marginBottom: 5,
+    marginBottom: 7,
     height: 80,
   },
   buttonPressed: {
