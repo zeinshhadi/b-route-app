@@ -35,7 +35,7 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <Provider store={store}>
           <NavigationContainer>
-            <Stack.Navigator initialRouteName="UserFeedbackScreen">
+            <Stack.Navigator initialRouteName="LogInScreen">
               <Stack.Screen name="LogInScreen" component={LoginScreen} options={{ headerShown: false }} />
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerShown: false }} />
               <Stack.Screen name="HomeScreen" component={UserBottomNavigation} options={{ headerShown: false }} />
