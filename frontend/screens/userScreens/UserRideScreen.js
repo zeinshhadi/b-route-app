@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Alert } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -58,7 +58,7 @@ const UserRideScreen = ({ navigation }) => {
         setEndLat(decodedData.lat);
         setEndLon(decodedData.lon);
         const user_id = decodedData.driver_id;
-        const response = await axios.post(
+        await axios.post(
           `${Url}/api/end/ride`,
           {
             end_latitude: decodedData.lat,
@@ -69,12 +69,12 @@ const UserRideScreen = ({ navigation }) => {
             headers: { Authorization: authorization },
           }
         );
-        // console.log(response.data);
+
         setRideStatus(false);
 
         const final_distance = distance(startLat, endLat, startLon, endLon);
         navigation.navigate("UserFeedbackScreen");
-        Alert.alert(`end ride type ${final_distance} and in ${minutes} minutes!`);
+        alert(`end ride type ${final_distance} and in ${minutes} minutes!`);
       }
     } catch (error) {
       setScanned(false);
