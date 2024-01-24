@@ -16,8 +16,7 @@ const DetailsCard = ({ cardTitle, cardDetail, status, tempText, itemType, tempTy
       </View>
       <View style={styles.detailsCard}>
         <View style={styles.cardMoreDetails}>
-          <Text style={styles.boldText}>{tempText}</Text>
-          <Text style={styles.cardMoreDetailsForward}>{">"}</Text>
+          <Text style={styles.detailStyle}>{tempText}</Text>
         </View>
         <Text style={styles.boldText}>
           {tempType}
@@ -47,17 +46,14 @@ const styles = StyleSheet.create({
   cardTitleCss: {
     fontWeight: "bold",
   },
-  cardMoreDetails: {
-    flexDirection: "row",
-    gap: 3,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  cardMoreDetailsForward: {
-    fontSize: 20,
-    fontWeight: "500",
-  },
+
   boldText: {
     fontWeight: "500",
+  },
+  detailStyle: {
+    textDecorationLine: "underline",
+    textDecorationColor: Colors.primary500,
+    color: Colors.primary500,
+    fontWeight: "bold",
   },
 });
