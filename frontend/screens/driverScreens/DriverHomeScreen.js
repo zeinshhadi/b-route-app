@@ -86,7 +86,6 @@ const DriverHomeScreen = () => {
               },
             }
           );
-          console.log("Response:", response.data);
         } catch (error) {}
       };
 

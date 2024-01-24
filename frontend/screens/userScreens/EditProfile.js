@@ -11,9 +11,8 @@ const EditProfile = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
-  console.log(authState);
+
   const handleLogout = async () => {
-    console.log("logged out");
     setLoading(true);
     try {
       const response = await axios.post(

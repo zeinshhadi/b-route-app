@@ -13,6 +13,10 @@ const UserRideScreen = ({ navigation }) => {
   const [scanned, setScanned] = useState(false);
   const [rideStatus, setRideStatus] = useState(false);
   const [scannerKey, setScannerKey] = useState(Date.now());
+  const [startLat, setStartLat] = useState(null);
+  const [startLon, setStartLon] = useState(null);
+  const [endLat, setEndLat] = useState(null);
+  const [endLon, setEndLon] = useState(null);
 
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
@@ -28,6 +32,8 @@ const UserRideScreen = ({ navigation }) => {
     try {
       if (rideStatus === false) {
         const decodedData = JSON.parse(data);
+        setStartLat(decodedData.lat);
+        setStartLon(decodedData.lon);
         const user_id = decodedData.driver_id;
         const response = await axios.post(
           `${Url}/api/add/ride`,
@@ -42,8 +48,11 @@ const UserRideScreen = ({ navigation }) => {
         );
         console.log(response.data);
         setRideStatus(true);
+        alert(`Enjoy your ride !`);
       } else {
         const decodedData = JSON.parse(data);
+        setEndLat(decodedData.lat);
+        setEndLon(decodedData.lon);
         const user_id = decodedData.driver_id;
         const response = await axios.post(
           `${Url}/api/end/ride`,
@@ -56,15 +65,16 @@ const UserRideScreen = ({ navigation }) => {
             headers: { Authorization: authorization },
           }
         );
-        console.log(response.data);
+        // console.log(response.data);
         setRideStatus(false);
+        const final_distance = distance(startLat, endLat, startLon, endLon);
         navigation.navigate("UserFeedbackScreen");
+        alert(`end ride type ${final_distance} and data ${data} has been scanned!`);
       }
     } catch (error) {
       setScanned(false);
       console.error("error", error);
     }
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   };
 
   const handleScanButtonPress = () => {
@@ -77,6 +87,22 @@ const UserRideScreen = ({ navigation }) => {
   }
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
+  }
+  function distance(startLat, endLat, startLon, endLon) {
+    startLon = (startLon * Math.PI) / 180;
+    endLon = (endLon * Math.PI) / 180;
+    startLat = (startLat * Math.PI) / 180;
+    endLat = (endLat * Math.PI) / 180;
+
+    let dlon = endLon - startLon;
+    let dlat = endLat - startLat;
+    let a = Math.pow(Math.sin(dlat / 2), 2) + Math.cos(startLat) * Math.cos(endLat) * Math.pow(Math.sin(dlon / 2), 2);
+
+    let c = 2 * Math.asin(Math.sqrt(a));
+
+    let r = 6371;
+
+    return c * r;
   }
 
   return (
