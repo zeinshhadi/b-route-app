@@ -35,7 +35,7 @@ export default function App() {
         <Provider store={store}>
           <NavigationContainer>
             <Stack.Navigator initialRouteName="LogInScreen">
-              <Stack.Screen name="LogInScreen" component={UserFeedback} options={{ headerShown: false }} />
+              <Stack.Screen name="LogInScreen" component={LoginScreen} options={{ headerShown: false }} />
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerShown: false }} />
               <Stack.Screen name="HomeScreen" component={UserBottomNavigation} options={{ headerShown: false }} />
               <Stack.Screen name="AdminHomeScreen" component={AdminBottomNavigation} options={{ headerShown: false }} />
@@ -67,7 +67,12 @@ export default function App() {
               <Stack.Screen
                 name="UserFeedbackScreen"
                 component={UserFeedback}
-                options={{ headerShown: true, headerTitle: "Feedback Screen" }}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Feedback Screen",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
+                }}
               />
               <Stack.Screen
                 name="BusesRegistered"

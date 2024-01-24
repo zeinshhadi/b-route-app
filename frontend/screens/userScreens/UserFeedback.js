@@ -64,15 +64,17 @@ export default UserFeedback;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-around",
     alignItems: "center",
     backgroundColor: "white",
-    gap: 20,
+    gap: 10,
+    paddingBottom: 30,
   },
 
   infoContainer: {
     alignItems: "center",
     width: "90%",
+    gap: 20,
   },
   reviewInput: {
     height: 150,
@@ -95,7 +97,7 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 18,
-    marginVertical: 10,
+    marginVertical: 2,
     textAlign: "center",
   },
   arriveText: {
