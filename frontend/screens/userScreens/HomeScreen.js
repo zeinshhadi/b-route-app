@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Alert, StyleSheet, View, Text, Pressable } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { getCurrentPositionAsync, useForegroundPermissions, PermissionStatus } from "expo-location";
@@ -14,6 +14,7 @@ const HomeScreen = ({ navigation }) => {
   const [locationPermissionInformation, requestPermission] = useForegroundPermissions();
   const [region, setRegion] = useState(null);
   const [driverLocations, setDriverLocations] = useState([]);
+  const mapViewRef = useRef(null);
 
   const getDriversLocation = async () => {
     try {
@@ -96,23 +97,31 @@ const HomeScreen = ({ navigation }) => {
     if (!hasPermission) {
       return;
     }
-    const location = await getCurrentPositionAsync();
-    let lat = location.coords.latitude;
-    let lon = location.coords.longitude;
-    const newRegion = {
-      latitude: lat,
-      longitude: lon,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    };
-    setRegion(newRegion);
+
+    try {
+      const location = await getCurrentPositionAsync();
+      let lat = location.coords.latitude;
+      let lon = location.coords.longitude;
+      const newRegion = {
+        latitude: lat,
+        longitude: lon,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      };
+
+      setRegion(newRegion);
+      mapViewRef.current.animateToRegion(newRegion, 1000);
+    } catch (error) {
+      console.error("Error getting user location:", error.message);
+    }
   }
   const handleMarker = (driver_id) => {
     navigation.navigate("BusDetailScreen", driver_id);
   };
+
   return (
     <View style={styles.container}>
-      <MapView style={styles.map} showsUserLocation={true} followsUserLocation={true}>
+      <MapView style={styles.map} showsUserLocation={true} followsUserLocation={true} ref={mapViewRef}>
         {driverLocations.map((location) => (
           <Marker
             key={location.id}
@@ -123,7 +132,7 @@ const HomeScreen = ({ navigation }) => {
           />
         ))}
       </MapView>
-      <Pressable onPress={() => getLocationHandler()}>
+      <Pressable onPress={getLocationHandler()}>
         <View style={styles.buttonContainer}>
           <Text style={styles.buttonText}>Get Location</Text>
         </View>
