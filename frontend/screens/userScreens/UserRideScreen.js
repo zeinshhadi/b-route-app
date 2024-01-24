@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Alert } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -17,7 +17,7 @@ const UserRideScreen = ({ navigation }) => {
   const [startLon, setStartLon] = useState(null);
   const [endLat, setEndLat] = useState(null);
   const [endLon, setEndLon] = useState(null);
-
+  const [startTime, setStartTime] = useState(null);
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
@@ -46,10 +46,14 @@ const UserRideScreen = ({ navigation }) => {
             headers: { Authorization: authorization },
           }
         );
+        setStartTime(new Date());
         console.log(response.data);
         setRideStatus(true);
         alert(`Enjoy your ride !`);
       } else {
+        const endTime = new Date();
+        const timeDifference = (endTime - startTime) / 1000;
+        const minutes = Math.floor(timeDifference / 60);
         const decodedData = JSON.parse(data);
         setEndLat(decodedData.lat);
         setEndLon(decodedData.lon);
@@ -67,9 +71,10 @@ const UserRideScreen = ({ navigation }) => {
         );
         // console.log(response.data);
         setRideStatus(false);
+
         const final_distance = distance(startLat, endLat, startLon, endLon);
         navigation.navigate("UserFeedbackScreen");
-        alert(`end ride type ${final_distance} and data ${data} has been scanned!`);
+        Alert.alert(`end ride type ${final_distance} and in ${minutes} minutes!`);
       }
     } catch (error) {
       setScanned(false);
