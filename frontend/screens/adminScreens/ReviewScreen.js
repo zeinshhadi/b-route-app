@@ -34,7 +34,7 @@ const ReviewScreen = () => {
     ));
     return (
       <ReviewCard
-        cardTitle={item.user_id}
+        cardTitle={item.user.first_name}
         cardDetail={<View style={styles.starContainer}>{stars}</View>}
         reviewText={item.review}
       />
