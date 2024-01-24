@@ -215,10 +215,6 @@ const styles = StyleSheet.create({
     height: 40,
     fontSize: 16,
   },
-  addBusImage: {
-    width: 100,
-    height: 100,
-  },
   innerFormContainer: {
     gap: 5,
     marginVertical: 10,

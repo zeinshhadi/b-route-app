@@ -128,13 +128,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   image: {
-    width: 200,
-    height: 200,
+    width: 180,
+    height: 180,
     alignSelf: "center",
   },
   innerFormContainer: {
     flex: 1,
-    gap: 140,
+    gap: 10,
     marginTop: 100,
   },
 });
