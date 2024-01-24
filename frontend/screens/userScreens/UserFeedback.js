@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
+import { View, Text, TextInput, Pressable, StyleSheet, ActivityIndicator } from "react-native";
 import { Rating } from "react-native-ratings";
 import Colors from "../../utils/colors";
 import axios from "axios";
@@ -10,34 +10,37 @@ const UserFeedback = ({ navigation }) => {
   const authorization = "bearer " + authState.token;
   const [review, setReview] = useState("");
   const [rate, setRate] = useState();
-
+  const [loading, setLoading] = useState(false);
   const handleRating = (rating) => {
     setRate(rating);
   };
 
   const submitFeedback = async () => {
-    console.log("Review:", review);
-    console.log("Rating:", rate);
     try {
+      setLoading(true);
       const response = await axios.post(
         `${Url}/api/feedback/ride`,
         { review, rate },
         { headers: { Authorization: authorization } }
       );
+      setLoading(false);
       navigation.navigate("Home");
     } catch (error) {
+      setLoading(false);
       console.log("error", error);
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Feedback</Text>
-
       <View style={styles.infoContainer}>
-        <Text>You Arrived!</Text>
-        <Text>Been a pleasure having you on board.</Text>
-        <Text>Your rate and review are important to us.</Text>
+        <Text style={styles.arriveText}>You Arrived!</Text>
+
+        <Text style={styles.infoText}>
+          Been a pleasure having you on board.
+          {"\n"}
+          Your rate and review are important to us.
+        </Text>
       </View>
 
       <TextInput
@@ -48,7 +51,9 @@ const UserFeedback = ({ navigation }) => {
       />
       <Rating onFinishRating={handleRating} startingValue={0} ratingBackgroundColor="white" />
       <Pressable style={styles.submitButton} onPress={submitFeedback}>
-        <Text style={styles.submitButtonText}>Submit Feedback</Text>
+        <Text style={styles.submitButtonText}>
+          {loading ? <ActivityIndicator size={"small"} color={"white"} /> : "Submit Feedback"}
+        </Text>
       </Pressable>
     </View>
   );
@@ -58,36 +63,43 @@ export default UserFeedback;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-around",
+    justifyContent: "center",
     alignItems: "center",
-    padding: 20,
     backgroundColor: "white",
+    gap: 20,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
-  },
+
   infoContainer: {
-    marginBottom: 20,
+    marginBottom: 10,
+    alignItems: "center",
+    width: "90%",
   },
   reviewInput: {
-    height: 100,
+    height: 150,
     borderColor: "gray",
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,
-    marginBottom: 20,
-    textAlignVertical: "top",
+    width: "90%",
   },
   submitButton: {
     backgroundColor: Colors.primary500,
     padding: 10,
     borderRadius: 5,
+    width: 200,
   },
   submitButtonText: {
     color: "white",
     textAlign: "center",
+    fontWeight: "bold",
+  },
+  infoText: {
+    fontSize: 18,
+    marginVertical: 10,
+    textAlign: "center",
+  },
+  arriveText: {
+    fontSize: 30,
     fontWeight: "bold",
   },
 });
