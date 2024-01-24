@@ -47,7 +47,7 @@ const BusesByZone = ({ navigation }) => {
             itemType={"Bus#"}
             cardTitle={item.id}
             cardDetail={item.model}
-            tempText={"MoreDetails"}
+            tempText={"Details"}
             tempType={"Zone#"}
             status={item.zone_id}
           />
