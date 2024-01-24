@@ -93,6 +93,7 @@ const HomeScreen = ({ navigation }) => {
   }
 
   async function getLocationHandler() {
+    console.log(`button pressed`);
     const hasPermission = await verifyPermissions();
     if (!hasPermission) {
       return;
@@ -132,11 +133,11 @@ const HomeScreen = ({ navigation }) => {
           />
         ))}
       </MapView>
-      <Pressable onPress={getLocationHandler()}>
-        <View style={styles.buttonContainer}>
+      <View style={styles.buttonContainer}>
+        <Pressable onPress={() => getLocationHandler()}>
           <Text style={styles.buttonText}>Get Location</Text>
-        </View>
-      </Pressable>
+        </Pressable>
+      </View>
     </View>
   );
 };
