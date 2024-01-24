@@ -38,16 +38,21 @@ const BusesByZone = ({ navigation }) => {
   const renderItem = ({ item }) => {
     console.log("this is item " + item);
     return (
-      <Pressable onPress={() => navigation.navigate("BusInformation", { item: item })}>
-        <DetailsCard
-          itemType={"Bus#"}
-          cardTitle={item.id}
-          cardDetail={item.model}
-          tempText={"MoreDetails"}
-          tempType={"Zone#"}
-          status={item.zone_id}
-        />
-      </Pressable>
+      <View style={styles.listContainer}>
+        <Pressable
+          onPress={() => navigation.navigate("BusInformation", { item: item })}
+          android_ripple={{ color: Colors.primary500 }}
+          style={({ pressed }) => [styles.button, pressed ? styles.buttonPressed : null]}>
+          <DetailsCard
+            itemType={"Bus#"}
+            cardTitle={item.id}
+            cardDetail={item.model}
+            tempText={"MoreDetails"}
+            tempType={"Zone#"}
+            status={item.zone_id}
+          />
+        </Pressable>
+      </View>
     );
   };
 
@@ -86,5 +91,15 @@ const styles = StyleSheet.create({
     width: "90%",
     flex: 1,
     padding: 10,
+  },
+  listContainer: {
+    overflow: "hidden",
+    borderRadius: 10,
+    marginBottom: 5,
+    height: 80,
+  },
+  buttonPressed: {
+    opacity: 0.5,
+    overflow: "hidden",
   },
 });
