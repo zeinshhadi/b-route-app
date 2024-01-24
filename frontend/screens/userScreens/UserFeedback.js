@@ -33,7 +33,7 @@ const UserFeedback = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image source={require("../../assets/8.png")} style={styles.OnboardingImage} />
+      <Image source={require("../../assets/1.png")} style={styles.OnboardingImage} />
       <View style={styles.infoContainer}>
         <Text style={styles.arriveText}>You Arrived!</Text>
 
@@ -50,7 +50,7 @@ const UserFeedback = ({ navigation }) => {
         multiline
         onChangeText={(text) => setReview(text)}
       />
-      <Rating onFinishRating={handleRating} startingValue={0} ratingBackgroundColor="white" />
+      <Rating onFinishRating={handleRating} startingValue={0} ratingBackgroundColor="white" imageSize={30} />
       <Pressable style={styles.submitButton} onPress={submitFeedback}>
         <Text style={styles.submitButtonText}>
           {loading ? <ActivityIndicator size={"small"} color={"white"} /> : "Submit Feedback"}
@@ -83,6 +83,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     width: "90%",
+    justifyContent: "flex-start",
+    alignContent: "flex-start",
   },
   submitButton: {
     backgroundColor: Colors.primary500,
@@ -105,7 +107,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   OnboardingImage: {
-    width: 400,
+    width: 250,
     height: 200,
   },
 });

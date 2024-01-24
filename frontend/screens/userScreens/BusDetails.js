@@ -50,7 +50,7 @@ const BusDetails = ({ navigation }) => {
       try {
         const response = await axios.get(`${Url}/api/get/seat`);
 
-        const newSeatColors = response.data.seats.map((seat) => (seat.status === 1 ? "green" : "grey"));
+        const newSeatColors = response.data.seats.map((seat) => (seat.status === 1 ? "grey" : Colors.primary500));
         setSeatColors(newSeatColors);
       } catch (error) {
         console.log(`error ${error}`);

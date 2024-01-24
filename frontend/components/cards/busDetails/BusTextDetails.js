@@ -6,7 +6,7 @@ const BusTextDetails = ({ detailTitle, detailInfo }) => {
   return (
     <View style={styles.row}>
       <Text style={styles.detailTextStyle}>{detailTitle}</Text>
-      <Text style={styles.detailTextStyle}>{detailInfo}</Text>
+      <Text style={styles.detailDetailStyle}>{detailInfo}</Text>
     </View>
   );
 };
@@ -18,16 +18,22 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    borderBottomWidth: 2,
+    borderBottomWidth: 1,
     borderBottomColor: Colors.primary500,
     backgroundColor: "white",
     padding: 5,
     paddingHorizontal: 10,
   },
   detailTextStyle: {
-    fontWeight: "bold",
     fontSize: 18,
     marginVertical: 8,
     height: "100%",
+    fontWeight: "500",
+  },
+  detailDetailStyle: {
+    fontSize: 18,
+    marginVertical: 8,
+    height: "100%",
+    fontWeight: "300",
   },
 });
