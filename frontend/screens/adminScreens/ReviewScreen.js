@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
   reviewInnerContainer: {
     width: "90%",
-    marginTop: 30,
+    marginTop: 5,
     flex: 1,
   },
   starContainer: {
