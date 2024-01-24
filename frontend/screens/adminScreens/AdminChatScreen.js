@@ -62,7 +62,21 @@ const AdminChatScreen = ({ navigation }) => {
   const navigateToChat = (userId, userType) => {
     navigation.navigate("IndividualChatScreen", { userId, userType });
   };
-
+  const renderItem = ({ item }) => {
+    return (
+      <View style={styles.listContainer}>
+        <Pressable
+          onPress={() => navigateToChat(item.userId, item.userType)}
+          android_ripple={{ color: Colors.primary500 }}
+          style={({ pressed }) => [styles.button, pressed ? styles.buttonPressed : null]}>
+          <View style={styles.userCard}>
+            <Text style={styles.username}>{item.username}</Text>
+            <Text style={styles.lastMessage}>{item.lastMessage}</Text>
+          </View>
+        </Pressable>
+      </View>
+    );
+  };
   return (
     <View style={styles.adminChatScreenContainer}>
       {loading ? (
@@ -78,14 +92,7 @@ const AdminChatScreen = ({ navigation }) => {
         <FlatList
           data={users}
           keyExtractor={(item, index) => `${item.userId}_${item.userType}_${index}`}
-          renderItem={({ item }) => (
-            <Pressable onPress={() => navigateToChat(item.userId, item.userType)}>
-              <View style={styles.userCard}>
-                <Text style={styles.username}>{item.username}</Text>
-                <Text style={styles.lastMessage}>{item.lastMessage}</Text>
-              </View>
-            </Pressable>
-          )}
+          renderItem={renderItem}
         />
       )}
     </View>
@@ -107,7 +114,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 10,
     backgroundColor: Colors.cardColor,
-    elevation: 2,
     width: "90%",
     alignSelf: "center",
   },
@@ -121,5 +127,19 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "grey",
     fontWeight: "500",
+  },
+  listContainer: {
+    overflow: "hidden",
+    borderRadius: 10,
+    marginBottom: 5,
+    height: 80,
+    width: "100%",
+    alignSelf: "center",
+    borderRadius: 10,
+    overflow: "hidden",
+  },
+  buttonPressed: {
+    opacity: 0.5,
+    overflow: "hidden",
   },
 });
