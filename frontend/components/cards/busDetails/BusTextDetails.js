@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import Colors from "../../../utils/colors";
 
 const BusTextDetails = ({ detailTitle, detailInfo }) => {
   return (
@@ -17,10 +18,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    borderBottomWidth: 2,
+    borderBottomColor: Colors.primary500,
+    backgroundColor: "white",
+    padding: 5,
+    paddingHorizontal: 10,
   },
   detailTextStyle: {
     fontWeight: "bold",
     fontSize: 18,
-    marginVertical: 10,
+    marginVertical: 8,
+    height: "100%",
   },
 });
