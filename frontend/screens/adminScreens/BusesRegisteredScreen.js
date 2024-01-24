@@ -35,16 +35,21 @@ const BusesRegisteredScreen = ({ navigation }) => {
 
   const renderItem = ({ item }) => {
     return (
-      <Pressable onPress={() => navigation.navigate("BusInformation", { item: item })}>
-        <DetailsCard
-          itemType={"Bus#"}
-          cardTitle={item.id}
-          cardDetail={item.model}
-          tempText={"More Details"}
-          tempType={"Zone#"}
-          status={item.zone_id}
-        />
-      </Pressable>
+      <View style={styles.listContainer}>
+        <Pressable
+          onPress={() => navigation.navigate("BusInformation", { item: item })}
+          android_ripple={{ color: Colors.primary500 }}
+          style={({ pressed }) => [styles.button, pressed ? styles.buttonPressed : null]}>
+          <DetailsCard
+            itemType={"Bus#"}
+            cardTitle={item.id}
+            cardDetail={item.model}
+            tempText={"More Details"}
+            tempType={"Zone#"}
+            status={item.zone_id}
+          />
+        </Pressable>
+      </View>
     );
   };
 
@@ -83,5 +88,15 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "90%",
     marginBottom: 5,
+  },
+  listContainer: {
+    overflow: "hidden",
+    borderRadius: 10,
+    marginBottom: 5,
+    height: 80,
+  },
+  buttonPressed: {
+    opacity: 0.5,
+    overflow: "hidden",
   },
 });
