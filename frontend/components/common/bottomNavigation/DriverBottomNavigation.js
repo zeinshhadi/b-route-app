@@ -8,7 +8,22 @@ import ChatScreen from "../../../screens/common/ChatScreen";
 const Tab = createBottomTabNavigator();
 const DriverBottomNavigation = () => {
   return (
-    <Tab.Navigator screenOptions={{ tabBarActiveTintColor: Colors.primary500, tabBarInactiveTintColor: "gray" }}>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: Colors.primary500,
+        tabBarInactiveTintColor: "gray",
+        headerStyle: {
+          backgroundColor: Colors.primary500,
+        },
+        headerShadowVisible: true,
+        tabBarHideOnKeyboard: true,
+        headerPressColor: "black",
+        freezeOnBlur: true,
+        headerTintColor: "white",
+        headerTitleContainerStyle: {
+          marginLeft: 25,
+        },
+      }}>
       <Tab.Screen
         name="Qr Code Screen"
         component={DriverHomeScreen}
