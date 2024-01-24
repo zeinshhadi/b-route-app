@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     alignContent: "center",
-    paddingTop: 10,
   },
   userCard: {
     flexDirection: "column",
@@ -131,7 +130,7 @@ const styles = StyleSheet.create({
     flex: 1,
     overflow: "hidden",
     borderRadius: 10,
-    marginBottom: 5,
+    marginVertical: 5,
     height: "100%",
     width: "90%",
     alignSelf: "center",
