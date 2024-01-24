@@ -22,7 +22,6 @@ const BusesRegisteredScreen = ({ navigation }) => {
           headers: { Authorization: authorization },
         });
         setBusInfo(response.data);
-        console.log(busInfo);
         setLoading(false);
       } catch (error) {
         setLoading(false);

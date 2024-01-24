@@ -13,6 +13,7 @@ const ZonesRegisteredScreen = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   const [loading, setLoading] = useState(false);
+  const [busCount, setBusCount] = useState();
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -20,7 +21,7 @@ const ZonesRegisteredScreen = ({ navigation }) => {
         const response = await axios.get(`${Url}/api/zones`, {
           headers: { Authorization: authorization },
         });
-
+        console.log(response.data.zones);
         setZones(response.data.zones);
       } catch (error) {
         setLoading(false);
@@ -33,10 +34,20 @@ const ZonesRegisteredScreen = ({ navigation }) => {
   const renderItem = ({ item }) => {
     return (
       <View style={styles.listContainer}>
-        <Pressable
-          onPress={() => navigation.navigate("BusesByZone", { item: item })}
-          android_ripple={{ color: Colors.primary500, foreground: true }}
-          style={({ pressed }) => [styles.button, pressed ? styles.buttonPressed : null]}>
+        {item.bus_count ? (
+          <Pressable
+            onPress={() => navigation.navigate("BusesByZone", { item: item })}
+            android_ripple={{ color: Colors.primary500, foreground: true }}
+            style={({ pressed }) => [styles.button, pressed ? styles.buttonPressed : null]}>
+            <DetailsCard
+              itemType={"Zone#"}
+              cardTitle={item.id}
+              cardDetail={item.zone_name}
+              tempText={`Details`}
+              status={`Buses: ${item.bus_count}`}
+            />
+          </Pressable>
+        ) : (
           <DetailsCard
             itemType={"Zone#"}
             cardTitle={item.id}
@@ -44,7 +55,7 @@ const ZonesRegisteredScreen = ({ navigation }) => {
             tempText={`Details`}
             status={`Buses: ${item.bus_count}`}
           />
-        </Pressable>
+        )}
       </View>
     );
   };

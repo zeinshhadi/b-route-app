@@ -29,14 +29,13 @@ const BusesByZone = ({ navigation }) => {
         setBusZone(response.data.bus);
       } catch (error) {
         setLoading(false);
-        console.log("Error Fetching " + error);
       }
       setLoading(false);
     };
     fetchData();
   }, []);
   const renderItem = ({ item }) => {
-    console.log("this is item " + item);
+    console.log("this is item " + item.model);
     return (
       <View style={styles.listContainer}>
         <Pressable
