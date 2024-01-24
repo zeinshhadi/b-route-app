@@ -64,4 +64,8 @@ public function driver()
 {
     return $this->hasOne(Driver::class);
 }
+public function ride()
+{
+    return $this->hasMany(Ride::class);
+}
 }

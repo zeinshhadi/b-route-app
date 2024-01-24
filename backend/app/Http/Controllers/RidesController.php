@@ -69,15 +69,22 @@ public function create_ride(Request $request){
         }
         
     }
-    public function get_feedback(){
-        
-        $reviews = Ride::where(function ($query) {
-        $query->whereNotNull('rate')->orWhereNotNull('review');
-                          
-    })->get();
-    // $reviews=$reviews->user_id;
-        return response()->json(['reviews' => $reviews]);
-    }
+public function get_feedback() {
+    $reviews = Ride::whereHas('user', function ($query) {
+            $query->where('first_name', '!=', '')
+                  ->where('last_name', '!=', '');
+        })
+        ->where('rate', '!=', 0)
+        ->where('review', '!=', 'NoReview')
+        ->with(['user' => function ($query) {
+            $query->select('id', 'first_name', 'last_name');
+        }])
+        ->select('user_id', 'rate', 'review')
+        ->get();
+
+    return response()->json(['reviews' => $reviews]);
+}
+
 
 
 }

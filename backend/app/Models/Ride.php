@@ -19,4 +19,5 @@ class Ride extends Model
     {
         return $this->belongsTo(Driver::class, 'driver_id');
     }
+
 }
