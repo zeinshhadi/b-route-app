@@ -56,7 +56,12 @@ const ReviewScreen = () => {
             }}
           />
         ) : (
-          <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id} style={styles.reviewList} />
+          <FlatList
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => item.id || index.toString()}
+            style={styles.reviewList}
+          />
         )}
       </View>
     </View>
