@@ -13,7 +13,7 @@ public function updateStatus(Request $request)
 
     try {
         $seat = Seat::findOrFail($seatNumber); 
-        $seat->status = !$seat->status; // Toggle the status
+        $seat->status = !$seat->status;
         $seat->save();
 
         return response()->json([
