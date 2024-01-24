@@ -30,8 +30,9 @@ const ReviewScreen = () => {
   }, []);
   const renderItem = ({ item }) => {
     const stars = Array.from({ length: item.rate }, (_, index) => (
-      <Ionicons key={index} name="star" color={Colors.primary500} />
+      <Ionicons key={`${item.rate}_${index}`} name="star" size={20} color={Colors.primary500} />
     ));
+
     return (
       <ReviewCard
         cardTitle={item.user.first_name}
@@ -40,6 +41,7 @@ const ReviewScreen = () => {
       />
     );
   };
+
   return (
     <View style={styles.reviewContainer}>
       <View style={styles.reviewInnerContainer}>
@@ -78,6 +80,7 @@ const styles = StyleSheet.create({
   },
   starContainer: {
     flexDirection: "row",
+    gap: 4,
   },
   reviewList: {
     marginBottom: 2,
