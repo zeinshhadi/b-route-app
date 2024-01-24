@@ -38,7 +38,7 @@ const AdminBottomNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Chat"
+        name="Recent Chats"
         component={AdminChatScreen}
         options={{
           tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" color={color} size={size} />,

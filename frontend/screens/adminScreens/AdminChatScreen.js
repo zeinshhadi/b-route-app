@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     alignContent: "center",
-    marginTop: 5,
+    paddingTop: 10,
   },
   userCard: {
     flexDirection: "column",
@@ -114,13 +114,13 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.cardColor,
     width: "100%",
     alignSelf: "center",
-    padding: 10,
+    padding: 15,
+    gap: 15,
   },
   username: {
     fontWeight: "bold",
     fontSize: 18,
     color: "black",
-    marginBottom: 5,
   },
   lastMessage: {
     fontSize: 14,
