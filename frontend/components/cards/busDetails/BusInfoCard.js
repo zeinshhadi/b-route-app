@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.cardColor,
     borderRadius: 10,
     width: "85%",
+    elevation: 4,
   },
   busInformationInnerContainer: {
     borderRadius: 10,
