@@ -25,6 +25,7 @@ import ChatScreen from "./screens/common/ChatScreen";
 import AdminChatScreen from "./screens/adminScreens/AdminChatScreen";
 import IndividualChatScreen from "./screens/adminScreens/IndividualChatScreen";
 import Colors from "./utils/colors";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {

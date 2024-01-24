@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, Pressable, StyleSheet, ActivityIndicator } from "react-native";
+import { useState } from "react";
+import { View, Text, TextInput, Pressable, StyleSheet, ActivityIndicator, Image } from "react-native";
 import { Rating } from "react-native-ratings";
 import Colors from "../../utils/colors";
 import axios from "axios";
@@ -33,6 +33,7 @@ const UserFeedback = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Image source={require("../../assets/8.png")} style={styles.OnboardingImage} />
       <View style={styles.infoContainer}>
         <Text style={styles.arriveText}>You Arrived!</Text>
 
@@ -70,7 +71,6 @@ const styles = StyleSheet.create({
   },
 
   infoContainer: {
-    marginBottom: 10,
     alignItems: "center",
     width: "90%",
   },
@@ -101,5 +101,9 @@ const styles = StyleSheet.create({
   arriveText: {
     fontSize: 30,
     fontWeight: "bold",
+  },
+  OnboardingImage: {
+    width: 400,
+    height: 200,
   },
 });
