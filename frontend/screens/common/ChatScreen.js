@@ -50,27 +50,22 @@ const ChatScreen = () => {
     setMessage("");
     console.log("Message sent!");
   };
-
+  const renderItem = ({ item }) => {
+    return (
+      <View
+        style={[styles.messageContainer, item.userId === authState.user.id ? null : styles.receivedMessageContainer]}>
+        <Text style={item.userId === authState.user.id ? styles.username : styles.receivedUsername}>
+          {item.username}:
+        </Text>
+        <Text style={item.userId === authState.user.id ? styles.messageText : styles.receivedMessageText}>
+          {item.message}
+        </Text>
+      </View>
+    );
+  };
   return (
     <View style={styles.chatScreenContainer}>
-      <FlatList
-        data={messages}
-        keyExtractor={(item) => item.timestamp.toString()}
-        renderItem={({ item }) => (
-          <View
-            style={[
-              styles.messageContainer,
-              item.userId === authState.user.id ? null : styles.receivedMessageContainer,
-            ]}>
-            <Text style={item.userId === authState.user.id ? styles.username : styles.receivedUsername}>
-              {item.username}:
-            </Text>
-            <Text style={item.userId === authState.user.id ? styles.messageText : styles.receivedMessageText}>
-              {item.message}
-            </Text>
-          </View>
-        )}
-      />
+      <FlatList data={messages} keyExtractor={(item) => item.timestamp.toString()} renderItem={renderItem} />
 
       <View style={styles.inputContainer}>
         <TextInput

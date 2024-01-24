@@ -47,7 +47,6 @@ const UserRideScreen = ({ navigation }) => {
           }
         );
         setStartTime(new Date());
-        console.log(response.data);
         setRideStatus(true);
         alert(`Enjoy your ride !`);
       } else {
