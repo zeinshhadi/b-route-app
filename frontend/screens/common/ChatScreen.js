@@ -17,7 +17,6 @@ const ChatScreen = () => {
     const messagesRef = ref(db, `chat-messages/${userType}s/admin/${userId}`);
 
     const handleData = (snapshot) => {
-      console.log("Handling data in ChatScreen:", snapshot.val());
       if (snapshot.val()) {
         const messagesList = Object.values(snapshot.val());
 
@@ -31,10 +30,7 @@ const ChatScreen = () => {
   }, [userType, userId]);
 
   const sendMessage = () => {
-    console.log("Sending message...");
-
     if (message.trim() === "") {
-      console.log("Message is empty");
       return;
     }
 
