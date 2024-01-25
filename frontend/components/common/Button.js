@@ -19,9 +19,9 @@ export default Button;
 const styles = StyleSheet.create({
   button: {
     padding: 10,
-    paddingHorizontal: 50,
+
     backgroundColor: Colors.primary500,
-    width: "80%",
+    width: 150,
     borderRadius: 8,
     alignSelf: "center",
   },
@@ -29,6 +29,6 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 15,
   },
 });

@@ -116,7 +116,7 @@ const AddDriverScreen = () => {
         phone_number: userData.phoneNumber,
         bus_id: userData.busId,
         driver_license: userData.driverLicense,
-        image: image,
+        image: null,
       };
       console.log(`here is image ${image}`);
       console.log("Registration Request Data:", registrationData);

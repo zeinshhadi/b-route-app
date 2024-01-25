@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Url } from "../../core/helper/Url";
 import Button from "../../components/common/Button";
+import Toast from "react-native-toast-message";
+import Modal from "react-native-modal";
+import Colors from "../../utils/colors";
 
 const UserRideScreen = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
@@ -18,6 +21,9 @@ const UserRideScreen = ({ navigation }) => {
   const [endLat, setEndLat] = useState(null);
   const [endLon, setEndLon] = useState(null);
   const [startTime, setStartTime] = useState(null);
+  const [isAlertVisible, setAlertVisible] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
@@ -48,7 +54,7 @@ const UserRideScreen = ({ navigation }) => {
         );
         setStartTime(new Date());
         setRideStatus(true);
-        alert(`Enjoy your ride !`);
+        showAlert("Enjoy your ride !");
       } else {
         const endTime = new Date();
         const timeDifference = (endTime - startTime) / 1000;
@@ -72,8 +78,7 @@ const UserRideScreen = ({ navigation }) => {
         setRideStatus(false);
 
         const final_distance = distance(startLat, endLat, startLon, endLon);
-        navigation.navigate("UserFeedbackScreen");
-        alert(`end ride type ${final_distance} and in ${minutes} minutes!`);
+        showAlert(`End ride type ${final_distance} and in ${minutes} minutes!`);
       }
     } catch (error) {
       setScanned(false);
@@ -85,28 +90,34 @@ const UserRideScreen = ({ navigation }) => {
     setScannerKey(Date.now());
   };
 
+  const showAlert = (message) => {
+    setAlertMessage(message);
+    setAlertVisible(true);
+  };
+
+  const hideAlert = () => {
+    setAlertVisible(false);
+  };
+
+  const showToast = (message) => {
+    Toast.show({
+      type: "success",
+      position: "bottom",
+      text1: "Success",
+      text2: message,
+      visibilityTime: 2000,
+      autoHide: true,
+    });
+  };
+
   if (hasPermission === null) {
     return <Text>Requesting for camera permission</Text>;
   }
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
   }
-  function distance(startLat, endLat, startLon, endLon) {
-    startLon = (startLon * Math.PI) / 180;
-    endLon = (endLon * Math.PI) / 180;
-    startLat = (startLat * Math.PI) / 180;
-    endLat = (endLat * Math.PI) / 180;
 
-    let dlon = endLon - startLon;
-    let dlat = endLat - startLat;
-    let a = Math.pow(Math.sin(dlat / 2), 2) + Math.cos(startLat) * Math.cos(endLat) * Math.pow(Math.sin(dlon / 2), 2);
-
-    let c = 2 * Math.asin(Math.sqrt(a));
-
-    let r = 6371;
-
-    return c * r;
-  }
+  function distance(startLat, endLat, startLon, endLon) {}
 
   return (
     <View style={styles.container}>
@@ -120,6 +131,15 @@ const UserRideScreen = ({ navigation }) => {
       <View style={styles.buttonPosition}>
         <Button onPress={handleScanButtonPress}>Scan your ride</Button>
       </View>
+
+      <Modal isVisible={isAlertVisible} onBackdropPress={hideAlert}>
+        <View style={styles.alertContainer}>
+          <Text style={styles.alertMessage}>{alertMessage}</Text>
+          <TouchableOpacity style={styles.alertButton} onPress={hideAlert}>
+            <Text style={styles.alertButtonText}>OK</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -141,5 +161,28 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  alertContainer: {
+    backgroundColor: "white",
+    padding: 20,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  alertMessage: {
+    fontSize: 16,
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  alertButton: {
+    backgroundColor: Colors.primary500,
+    padding: 15,
+    borderRadius: 8,
+    minWidth: 100,
+  },
+  alertButtonText: {
+    color: "white",
+    fontSize: 16,
+    textAlign: "center",
   },
 });

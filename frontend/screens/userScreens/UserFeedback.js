@@ -1,16 +1,29 @@
-import { useState } from "react";
-import { View, Text, TextInput, Pressable, StyleSheet, ActivityIndicator, Image } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  StyleSheet,
+  ActivityIndicator,
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+} from "react-native";
 import { Rating } from "react-native-ratings";
 import Colors from "../../utils/colors";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Url } from "../../core/helper/Url";
+
 const UserFeedback = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   const [review, setReview] = useState("");
-  const [rate, setRate] = useState();
+  const [rate, setRate] = useState(0);
   const [loading, setLoading] = useState(false);
+
   const handleRating = (rating) => {
     setRate(rating);
   };
@@ -31,49 +44,65 @@ const UserFeedback = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Image source={require("../../assets/1.png")} style={styles.OnboardingImage} />
-      <View style={styles.infoContainer}>
-        <Text style={styles.arriveText}>You Arrived!</Text>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 0 : -500}
+      style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+        <View style={styles.innerContainer}>
+          <Image source={require("../../assets/1.png")} style={styles.reviewImage} />
+          <View style={styles.infoContainer}>
+            <Text style={styles.arriveText}>You Arrived!</Text>
+            <Text style={styles.infoText}>
+              Been a pleasure having you on board.
+              {"\n"}
+              Your rate and review are important to us.
+            </Text>
+          </View>
 
-        <Text style={styles.infoText}>
-          Been a pleasure having you on board.
-          {"\n"}
-          Your rate and review are important to us.
-        </Text>
-      </View>
+          <TextInput
+            style={styles.reviewInput}
+            placeholder="Feel free to share your feedback"
+            multiline
+            textAlignVertical="top"
+            onChangeText={(text) => setReview(text)}
+          />
 
-      <TextInput
-        style={styles.reviewInput}
-        placeholder="Feel free to share your feedback"
-        multiline
-        onChangeText={(text) => setReview(text)}
-      />
-      <Rating onFinishRating={handleRating} startingValue={0} ratingBackgroundColor="white" imageSize={30} />
-      <Pressable style={styles.submitButton} onPress={submitFeedback}>
-        <Text style={styles.submitButtonText}>
-          {loading ? <ActivityIndicator size={"small"} color={"white"} /> : "Submit Feedback"}
-        </Text>
-      </Pressable>
-    </View>
+          <Rating onFinishRating={handleRating} startingValue={rate} ratingBackgroundColor="white" imageSize={30} />
+
+          <Pressable style={styles.submitButton} onPress={submitFeedback}>
+            <Text style={styles.submitButtonText}>
+              {loading ? <ActivityIndicator size="small" color="white" /> : "Submit Feedback"}
+            </Text>
+          </Pressable>
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
+
 export default UserFeedback;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "white",
+  },
+  innerContainer: {
+    flex: 1,
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: "white",
-    gap: 10,
     paddingBottom: 30,
+    paddingHorizontal: 20,
   },
-
+  scrollViewContainer: {
+    flexGrow: 1,
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
   infoContainer: {
     alignItems: "center",
-    width: "90%",
-    gap: 20,
+    width: "100%",
   },
   reviewInput: {
     height: 150,
@@ -81,15 +110,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,
-    width: "90%",
-    justifyContent: "flex-start",
-    alignContent: "flex-start",
+    width: "100%",
   },
   submitButton: {
     backgroundColor: Colors.primary500,
-    padding: 10,
+    padding: 15,
     borderRadius: 5,
-    width: 200,
+    width: 150,
   },
   submitButtonText: {
     color: "white",
@@ -98,15 +125,17 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 18,
-    marginVertical: 2,
+    marginBottom: 10,
     textAlign: "center",
   },
   arriveText: {
     fontSize: 30,
     fontWeight: "bold",
   },
-  OnboardingImage: {
-    width: 250,
+  reviewImage: {
+    width: 350,
     height: 200,
+    resizeMode: "contain",
+    marginBottom: 20,
   },
 });
