@@ -102,4 +102,13 @@ Storage::put('public/' . $imageName, $imageContent);
 
         return response()->json(['error' => 'Driver not found'], 404);
     }
+
+public function delete_driver(Request $request){
+    $driver_id=$request->driver_id;
+    $user_id=$request->user_id;
+    $driver = Driver::where('user_id',$user_id)->where('id',$driver_id)->first();
+    $driver->delete();
+    return response()->json(['deleted successfully']);
+
+}
 }
