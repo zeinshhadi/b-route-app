@@ -9,11 +9,12 @@ import { Url } from "../../core/helper/Url";
 import Colors from "../../utils/colors";
 
 const ZonesRegisteredScreen = ({ navigation }) => {
-  const [zones, setZones] = useState();
+  const [zones, setZones] = useState([]);
+  const [filteredZones, setFilteredZones] = useState([]);
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   const [loading, setLoading] = useState(false);
-  const [busCount, setBusCount] = useState();
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -21,8 +22,8 @@ const ZonesRegisteredScreen = ({ navigation }) => {
         const response = await axios.get(`${Url}/api/zones`, {
           headers: { Authorization: authorization },
         });
-        console.log(response.data.zones);
         setZones(response.data.zones);
+        setFilteredZones(response.data.zones);
       } catch (error) {
         setLoading(false);
         console.log("Error Fetching " + error);
@@ -30,7 +31,17 @@ const ZonesRegisteredScreen = ({ navigation }) => {
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [authorization]);
+
+  const handleSearch = (searchText) => {
+    const lowerCaseSearchText = searchText.toLowerCase();
+    const filteredData = zones.filter(
+      (zone) =>
+        zone.id.toString().includes(lowerCaseSearchText) || zone.zone_name.toLowerCase().includes(lowerCaseSearchText)
+    );
+    setFilteredZones(filteredData);
+  };
+
   const renderItem = ({ item }) => {
     return (
       <View style={styles.listContainer}>
@@ -63,7 +74,7 @@ const ZonesRegisteredScreen = ({ navigation }) => {
   return (
     <View style={styles.ZonesRegisteredScreenContainer}>
       <View style={styles.innerContainer}>
-        <SearchBar />
+        <SearchBar onSearchChange={handleSearch} />
         {loading ? (
           <ActivityIndicator
             size={"large"}
@@ -75,7 +86,7 @@ const ZonesRegisteredScreen = ({ navigation }) => {
           />
         ) : (
           <FlatList
-            data={zones}
+            data={filteredZones}
             renderItem={renderItem}
             keyExtractor={(item) => item.id.toString()}
             style={styles.listContainer}
