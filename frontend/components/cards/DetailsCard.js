@@ -54,6 +54,6 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline",
     textDecorationColor: Colors.primary500,
     color: Colors.primary500,
-    fontWeight: "bold",
+    fontWeight: "300",
   },
 });
