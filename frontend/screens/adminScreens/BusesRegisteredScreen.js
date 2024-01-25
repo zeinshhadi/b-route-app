@@ -10,8 +10,10 @@ import Colors from "../../utils/colors";
 
 const BusesRegisteredScreen = ({ navigation }) => {
   const [busInfo, setBusInfo] = useState([]);
+  const [filteredBusInfo, setFilteredBusInfo] = useState([]);
   const authState = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
@@ -22,6 +24,7 @@ const BusesRegisteredScreen = ({ navigation }) => {
           headers: { Authorization: authorization },
         });
         setBusInfo(response.data);
+        setFilteredBusInfo(response.data.buses);
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -30,7 +33,18 @@ const BusesRegisteredScreen = ({ navigation }) => {
     };
 
     fetchData();
-  }, []);
+  }, [authState.token]);
+
+  const handleSearch = (searchText) => {
+    const lowerCaseSearchText = searchText.toLowerCase();
+    const filteredData = busInfo.buses.filter(
+      (bus) =>
+        bus.id.toString().includes(lowerCaseSearchText) ||
+        bus.model.toLowerCase().includes(lowerCaseSearchText) ||
+        bus.zone_id.toString().includes(lowerCaseSearchText)
+    );
+    setFilteredBusInfo(filteredData);
+  };
 
   const renderItem = ({ item }) => {
     return (
@@ -55,7 +69,7 @@ const BusesRegisteredScreen = ({ navigation }) => {
   return (
     <View style={styles.BusesRegisteredContainer}>
       <View style={styles.innerContainer}>
-        <SearchBar />
+        <SearchBar onSearchChange={handleSearch} />
         {loading ? (
           <ActivityIndicator
             size={"large"}
@@ -66,7 +80,7 @@ const BusesRegisteredScreen = ({ navigation }) => {
             }}
           />
         ) : (
-          <FlatList data={busInfo.buses} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+          <FlatList data={filteredBusInfo} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
         )}
       </View>
     </View>
