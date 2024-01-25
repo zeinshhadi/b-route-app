@@ -13,21 +13,7 @@ const BusInformationScreen = ({ navigation }) => {
 
   const [showDelete, setShowDelete] = useState(false);
 
-  const handleDelete = () => {
-    Alert.alert("Confirm Deletion", "Are you sure you want to delete this driver?", [
-      {
-        text: "Cancel",
-        style: "cancel",
-      },
-      {
-        text: "Delete",
-        onPress: () => {
-          navigation.goBack();
-        },
-        style: "destructive",
-      },
-    ]);
-  };
+  const handleDelete = () => {};
 
   return (
     <View style={styles.BusInformationContainer}>
@@ -65,7 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
-    gap: 20,
+    gap: 10,
   },
   buttonPosition: {
     position: "absolute",
@@ -77,7 +63,7 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline",
   },
   deleteButton: {
-    backgroundColor: "red",
+    backgroundColor: Colors.primary500,
     padding: 10,
     borderRadius: 5,
     marginBottom: 5,
