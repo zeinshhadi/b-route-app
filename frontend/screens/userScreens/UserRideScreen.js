@@ -77,7 +77,6 @@ const UserRideScreen = ({ navigation }) => {
       }
     } catch (error) {
       setScanned(false);
-      console.error("error", error);
     }
   };
 

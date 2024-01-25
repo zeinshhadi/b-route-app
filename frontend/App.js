@@ -25,21 +25,38 @@ import ChatScreen from "./screens/common/ChatScreen";
 import AdminChatScreen from "./screens/adminScreens/AdminChatScreen";
 import IndividualChatScreen from "./screens/adminScreens/IndividualChatScreen";
 import Colors from "./utils/colors";
+import DeleteButton from "./components/common/DeleteButton";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <>
-      <StatusBar style="black" />
       <SafeAreaView style={styles.container}>
+        <StatusBar backgroundColor="black" />
         <Provider store={store}>
           <NavigationContainer>
             <Stack.Navigator initialRouteName="LogInScreen">
-              <Stack.Screen name="LogInScreen" component={LoginScreen} options={{ headerShown: false }} />
-              <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerShown: false }} />
-              <Stack.Screen name="HomeScreen" component={UserBottomNavigation} options={{ headerShown: false }} />
-              <Stack.Screen name="AdminHomeScreen" component={AdminBottomNavigation} options={{ headerShown: false }} />
+              <Stack.Screen
+                name="LogInScreen"
+                component={LoginScreen}
+                options={{ headerShown: false, statusBarColor: "black" }}
+              />
+              <Stack.Screen
+                name="RegisterScreen"
+                component={RegisterScreen}
+                options={{ headerShown: false, statusBarColor: "black" }}
+              />
+              <Stack.Screen
+                name="HomeScreen"
+                component={UserBottomNavigation}
+                options={{ headerShown: false, statusBarColor: "black" }}
+              />
+              <Stack.Screen
+                name="AdminHomeScreen"
+                component={AdminBottomNavigation}
+                options={{ headerShown: false, statusBarColor: "black" }}
+              />
               <Stack.Screen
                 name="DriverHomeScreen"
                 component={DriverBottomNavigation}
@@ -73,6 +90,7 @@ export default function App() {
                   headerTitle: "Feedback Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
+                  statusBarColor: "black",
                 }}
               />
               <Stack.Screen
@@ -83,6 +101,7 @@ export default function App() {
                   headerTitle: "Buses Registered",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
+                  statusBarColor: "black",
                 }}
               />
               <Stack.Screen
@@ -93,6 +112,7 @@ export default function App() {
                   headerTitle: "Bus Info Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
+                  statusBarColor: "black",
                 }}
               />
               <Stack.Screen
@@ -103,6 +123,7 @@ export default function App() {
                   headerTitle: "Zones Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
+                  statusBarColor: "black",
                 }}
               />
               <Stack.Screen
@@ -113,6 +134,7 @@ export default function App() {
                   headerTitle: "Add Driver Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
+                  statusBarColor: "black",
                 }}
               />
               <Stack.Screen
@@ -123,6 +145,7 @@ export default function App() {
                   headerTitle: "Add Bus Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
+                  statusBarColor: "black",
                 }}
               />
               <Stack.Screen
@@ -133,6 +156,7 @@ export default function App() {
                   headerTitle: "Review Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
+                  statusBarColor: "black",
                 }}
               />
               <Stack.Screen
@@ -143,6 +167,7 @@ export default function App() {
                   headerTitle: "Add Zone",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
+                  statusBarColor: "black",
                 }}
               />
               <Stack.Screen
@@ -162,6 +187,8 @@ export default function App() {
                   headerShown: true,
                   headerTitle: "Buses in zone",
                   headerStyle: { backgroundColor: Colors.primary500 },
+                  statusBarColor: "black",
+                  headerTintColor: "white",
                 }}
               />
               <Stack.Screen
@@ -172,6 +199,7 @@ export default function App() {
                   headerTitle: "Chat Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
+                  statusBarColor: "black",
                 }}
               />
               <Stack.Screen
@@ -182,6 +210,7 @@ export default function App() {
                   headerTitle: "Chat Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
+                  statusBarColor: "black",
                 }}
               />
               <Stack.Screen
@@ -192,6 +221,7 @@ export default function App() {
                   headerTitle: "Chat Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
+                  statusBarColor: "black",
                 }}
               />
             </Stack.Navigator>

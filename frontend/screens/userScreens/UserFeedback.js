@@ -27,7 +27,6 @@ const UserFeedback = ({ navigation }) => {
       navigation.navigate("Home");
     } catch (error) {
       setLoading(false);
-      console.log("error", error);
     }
   };
 
