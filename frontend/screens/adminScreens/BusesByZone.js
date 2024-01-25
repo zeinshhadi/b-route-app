@@ -13,11 +13,12 @@ const BusesByZone = ({ navigation }) => {
   const route = useRoute();
   const item = route.params.item;
   const zone_id = item.id;
-  console.log(zone_id);
-  const [busZone, setBusZone] = useState();
+  const [busZone, setBusZone] = useState([]);
+  const [filteredBusZone, setFilteredBusZone] = useState([]);
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -27,15 +28,27 @@ const BusesByZone = ({ navigation }) => {
         });
 
         setBusZone(response.data.bus);
+        setFilteredBusZone(response.data.bus);
       } catch (error) {
         setLoading(false);
       }
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [zone_id, authorization]);
+
+  const handleSearch = (searchText) => {
+    const lowerCaseSearchText = searchText.toLowerCase();
+    const filteredData = busZone.filter(
+      (bus) =>
+        bus.id.toString().includes(lowerCaseSearchText) ||
+        bus.model.toLowerCase().includes(lowerCaseSearchText) ||
+        bus.zone_id.toString().includes(lowerCaseSearchText)
+    );
+    setFilteredBusZone(filteredData);
+  };
+
   const renderItem = ({ item }) => {
-    console.log("this is item " + item.model);
     return (
       <View style={styles.listContainer}>
         <Pressable
@@ -58,7 +71,7 @@ const BusesByZone = ({ navigation }) => {
   return (
     <View style={styles.BusesByZoneContainer}>
       <View style={styles.innerContainer}>
-        <SearchBar />
+        <SearchBar onSearchChange={handleSearch} />
         {loading ? (
           <ActivityIndicator
             size={"large"}
@@ -69,7 +82,7 @@ const BusesByZone = ({ navigation }) => {
             }}
           />
         ) : (
-          <FlatList data={busZone} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+          <FlatList data={filteredBusZone} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
         )}
       </View>
     </View>

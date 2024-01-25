@@ -60,7 +60,7 @@ export default function App() {
               <Stack.Screen
                 name="DriverHomeScreen"
                 component={DriverBottomNavigation}
-                options={{ headerShown: false }}
+                options={{ headerShown: false, statusBarColor: "black" }}
               />
               <Stack.Screen
                 name="BusDetailScreen"
@@ -70,6 +70,7 @@ export default function App() {
                   headerTitle: "Bus Details",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
+                  statusBarColor: "black",
                 }}
               />
               <Stack.Screen
@@ -80,6 +81,7 @@ export default function App() {
                   headerTitle: "Profile",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
+                  statusBarColor: "black",
                 }}
               />
               <Stack.Screen
@@ -178,6 +180,7 @@ export default function App() {
                   headerTitle: "Buses in zone",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
+                  statusBarColor: "black",
                 }}
               />
               <Stack.Screen
