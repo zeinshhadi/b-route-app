@@ -7,11 +7,14 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import Colors from "../../utils/colors";
 import { Url } from "../../core/helper/Url";
+
 const ReviewScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState();
+  const [searchText, setSearchText] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -28,6 +31,15 @@ const ReviewScreen = () => {
     };
     fetchData();
   }, []);
+
+  const filteredData = data
+    ? data.filter((item) => {
+        const firstNameMatch = item.user.first_name.toLowerCase().includes(searchText.toLowerCase());
+        const descriptionMatch = item.review.toLowerCase().includes(searchText.toLowerCase());
+        return firstNameMatch || descriptionMatch;
+      })
+    : [];
+
   const renderItem = ({ item }) => {
     const stars = Array.from({ length: item.rate }, (_, index) => (
       <Ionicons key={`${item.rate}_${index}`} name="star" size={20} color={Colors.primary500} />
@@ -45,7 +57,7 @@ const ReviewScreen = () => {
   return (
     <View style={styles.reviewContainer}>
       <View style={styles.reviewInnerContainer}>
-        <SearchBar />
+        <SearchBar searchText={searchText} onSearchChange={setSearchText} />
         {loading ? (
           <ActivityIndicator
             size={"large"}
@@ -57,7 +69,7 @@ const ReviewScreen = () => {
           />
         ) : (
           <FlatList
-            data={data}
+            data={filteredData} // Use filteredData instead of data
             renderItem={renderItem}
             keyExtractor={(item, index) => item.id || index.toString()}
             style={styles.reviewList}

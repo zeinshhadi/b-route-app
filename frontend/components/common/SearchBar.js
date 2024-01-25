@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Text, TextInput, View, StyleSheet } from "react-native";
 import Colors from "../../utils/colors";
 import { Ionicons } from "@expo/vector-icons";
-const SearchBar = () => {
-  const [searchText, setSearchText] = useState();
+const SearchBar = ({ searchText, onSearchChange }) => {
   return (
     <View style={styles.searchContainer}>
       <Ionicons style={styles.inputSearchIcon} name="search" size={15} color="grey" />
@@ -12,7 +11,7 @@ const SearchBar = () => {
         placeholder="Search"
         value={searchText}
         placeholderTextColor="grey"
-        onChangeText={(text) => setSearchText(text)}
+        onChangeText={(text) => onSearchChange(text)}
       />
     </View>
   );
