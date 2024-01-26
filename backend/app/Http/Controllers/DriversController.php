@@ -104,21 +104,10 @@ public function create_driver(Request $request)
      public function deleteDriverByUserId($userId)
     {    
         $user = User::find($userId);
-
-        if (!$user) {
-            return response()->json(['error' => 'User not found'], 404);
-        }
-
-        $driver = $user->driver;
-
-        if ($driver) {
-            $driver->delete();
             $user->delete();
-
+      
             return response()->json(['message' => 'Driver deleted successfully']);
-        }
-
-        return response()->json(['error' => 'Driver not found'], 404);
+    
     }
 
     public function getAllDrivers()
