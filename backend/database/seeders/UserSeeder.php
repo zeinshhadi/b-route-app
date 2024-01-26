@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
             'id' => 3,
             'first_name' => 'Admin',
             'last_name' => 'Admin',
-            'email' => 'admin@example.com',
+            'email' => 'admin@gmail.com',
             'password' => Hash::make('123123'),
             'phone_number' => '123456789',
             'role_type' => 'admin',
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
             User::create([
                 'first_name' => $name,
                 'last_name' => $driverLastNames[$key],
-                'email' => strtolower($name) . '@driver.com',
+                'email' => strtolower($name) . '@gmail.com',
                 'password' => Hash::make('123123'),
                 'phone_number' => '987654321',
                 'role_type' => 'driver',
