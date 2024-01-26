@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   },
   registerLink: {
     color: Colors.primary500,
-    textDecorationLine: "underline",
+    textDecorationLine: "none",
   },
   titleFormScreen: {
     fontWeight: "500",
