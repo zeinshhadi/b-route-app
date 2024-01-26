@@ -51,7 +51,7 @@ const ZonesRegisteredScreen = ({ navigation }) => {
             android_ripple={{ color: Colors.primary500, foreground: true }}
             style={({ pressed }) => [styles.button, pressed ? styles.buttonPressed : null]}>
             <DetailsCard
-              itemType={"Zone#"}
+              itemType={"Zone #"}
               cardTitle={item.id}
               cardDetail={item.zone_name}
               tempText={`Details`}
@@ -60,7 +60,7 @@ const ZonesRegisteredScreen = ({ navigation }) => {
           </Pressable>
         ) : (
           <DetailsCard
-            itemType={"Zone#"}
+            itemType={"Zone #"}
             cardTitle={item.id}
             cardDetail={item.zone_name}
             tempText={`Details`}

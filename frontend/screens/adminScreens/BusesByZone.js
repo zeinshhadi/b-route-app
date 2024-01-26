@@ -56,11 +56,11 @@ const BusesByZone = ({ navigation }) => {
           android_ripple={{ color: Colors.primary500 }}
           style={({ pressed }) => [styles.button, pressed ? styles.buttonPressed : null]}>
           <DetailsCard
-            itemType={"Bus#"}
+            itemType={"Bus #"}
             cardTitle={item.id}
             cardDetail={item.model}
             tempText={"Details"}
-            tempType={"Zone#"}
+            tempType={"Zone #"}
             status={item.zone_id}
           />
         </Pressable>

@@ -69,7 +69,7 @@ const ReviewScreen = () => {
           />
         ) : (
           <FlatList
-            data={filteredData} // Use filteredData instead of data
+            data={filteredData}
             renderItem={renderItem}
             keyExtractor={(item, index) => item.id || index.toString()}
             style={styles.reviewList}
