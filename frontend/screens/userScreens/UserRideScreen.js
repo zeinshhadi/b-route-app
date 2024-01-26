@@ -79,6 +79,7 @@ const UserRideScreen = ({ navigation }) => {
 
         const final_distance = distance(startLat, endLat, startLon, endLon);
         showAlert(`End ride type ${final_distance} and in ${minutes} minutes!`);
+        navigation.navigation("UserFeedbackScreen");
       }
     } catch (error) {
       setScanned(false);
@@ -97,17 +98,6 @@ const UserRideScreen = ({ navigation }) => {
 
   const hideAlert = () => {
     setAlertVisible(false);
-  };
-
-  const showToast = (message) => {
-    Toast.show({
-      type: "success",
-      position: "bottom",
-      text1: "Success",
-      text2: message,
-      visibilityTime: 2000,
-      autoHide: true,
-    });
   };
 
   if (hasPermission === null) {
