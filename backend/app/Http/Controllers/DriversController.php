@@ -103,11 +103,19 @@ public function create_driver(Request $request)
 
      public function deleteDriverByUserId($userId)
     {    
-        $user = User::find($userId);
-            $user->delete();
-      
-            return response()->json(['message' => 'Driver deleted successfully']);
-    
+        $user = User::where('id',$userId)->first();
+        $user->delete();
+return response()->json(['message' => 'Driver deleted successfully']);
+        // $driver = Driver::where('user_id',$userId)->first();
+
+        // if ($driver) {
+        //     $driver->delete();
+  
+
+        //     return response()->json(['message' => 'Driver deleted successfully']);
+        // }
+
+        // return response()->json(['error' => 'Driver not found'], 404);
     }
 
     public function getAllDrivers()

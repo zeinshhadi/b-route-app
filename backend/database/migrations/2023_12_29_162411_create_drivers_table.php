@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('driver_license')->unique();
             $table->boolean('driver_status')->default(false);
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('bus_id');
-            $table->foreign('bus_id')->references('id')->on('buses')->onDelete('cascade');;
+            $table->foreign('bus_id')->references('id')->on('buses')->onDelete('cascade');
             $table->timestamps();
         
         });
