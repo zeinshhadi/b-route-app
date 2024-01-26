@@ -14,7 +14,7 @@ const BusInformationScreen = ({ navigation }) => {
   const [showDelete, setShowDelete] = useState(false);
 
   const handleDelete = () => {};
-
+  const driverName = item.driver.user.first_name + " " + item.driver.user.last_name;
   return (
     <View style={styles.BusInformationContainer}>
       <DriverDetailsCard driverFirstName={item.driver.user.first_name} driverLastName={item.driver.user.last_name} />
@@ -25,7 +25,7 @@ const BusInformationScreen = ({ navigation }) => {
         color={color}
         vin={vin}
         numberOfSeats={number_of_seats}
-        zoneId={zone_id}
+        driverCredentials={driverName}
       />
 
       <View style={styles.buttonPosition}>
