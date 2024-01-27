@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, StyleSheet, View, Pressable, Modal, ScrollView } from "react-native";
+import { Text, StyleSheet, View, Pressable, Modal, ScrollView, FlatList } from "react-native";
 import DriverDetailsCard from "../../components/cards/DriverDetailsCard";
 import { useRoute } from "@react-navigation/native";
 import axios from "axios";
@@ -7,7 +7,9 @@ import { Url } from "../../core/helper/Url";
 import { useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import Colors from "../../utils/colors";
-
+import ReviewCard from "../../components/cards/ReviewCard";
+import { Ionicons } from "@expo/vector-icons";
+import Button from "../../components/common/Button";
 const BusDetails = ({ navigation }) => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
@@ -49,7 +51,7 @@ const BusDetails = ({ navigation }) => {
       const response = await axios.get(`${Url}/api/driver/reviews/${driver_id}`, {
         headers: { Authorization: authorization },
       });
-      console.log(response.data);
+      console.log(response.data.reviews);
       setReviews(response.data.reviews);
     } catch (error) {
       console.log(`error ${error}`);
@@ -97,21 +99,33 @@ const BusDetails = ({ navigation }) => {
   const handleStartRide = () => {
     navigation.navigate("UserRideScreen");
   };
+  const renderItem = ({ item }) => {
+    const stars = Array.from({ length: item.rate }, (_, index) => (
+      <Ionicons key={`${item.rate}_${index}`} name="star" size={20} color={Colors.primary500} />
+    ));
 
+    return (
+      <ReviewCard
+        cardTitle={item.user.first_name}
+        cardDetail={<View style={styles.starContainer}>{stars}</View>}
+        reviewText={item.review}
+      />
+    );
+  };
   return (
     <View style={styles.mainContainer}>
       <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={closeModal}>
         <View style={styles.modalContainer}>
-          <ScrollView>
-            {reviews.map((review, index) => (
-              <View key={index} style={styles.reviewContainer}>
-                <Text>{review.text}</Text>
-              </View>
-            ))}
-          </ScrollView>
-          <Pressable onPress={closeModal}>
+          <FlatList
+            data={reviews}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => item.id || index.toString()}
+            style={styles.reviewList}
+          />
+
+          <Button onPress={closeModal}>
             <Text>Close</Text>
-          </Pressable>
+          </Button>
         </View>
       </Modal>
       <DriverDetailsCard
@@ -218,10 +232,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: "white",
+    padding: 10,
   },
   reviewContainer: {
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#ccc",
+  },
+  starContainer: {
+    flexDirection: "row",
+    gap: 4,
+  },
+  reviewList: {
+    marginBottom: 2,
   },
 });
