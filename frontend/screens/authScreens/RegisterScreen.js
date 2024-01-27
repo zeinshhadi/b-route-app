@@ -5,12 +5,16 @@ import LogoComponent from "../../components/common/LogoComponent";
 import axios from "axios";
 import Colors from "../../utils/colors";
 import { Url } from "../../core/helper/Url";
+import CountryPicker from "react-native-country-picker-modal";
+
 const RegisterScreen = ({ navigation }) => {
   const [userData, setUserData] = useState({
-    fullName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     phoneNumber: "",
+    countryCode: "US",
   });
 
   const [loading, setLoading] = useState(false);
@@ -24,7 +28,8 @@ const RegisterScreen = ({ navigation }) => {
 
   const handleRegister = async () => {
     try {
-      if (!userData.firstName || !userData.lastName || !userData.email || !userData.password || !userData.phoneNumber) {
+      const { firstName, lastName, email, password, phoneNumber } = userData;
+      if (!firstName || !lastName || !email || !password || !phoneNumber) {
         console.error("Please fill in all fields");
         return;
       }
@@ -32,11 +37,11 @@ const RegisterScreen = ({ navigation }) => {
       setLoading(true);
 
       const registrationData = {
-        first_name: userData.firstName,
-        last_name: userData.lastName,
-        email: userData.email,
-        password: userData.password,
-        phone_number: userData.phoneNumber,
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        password,
+        phone_number: phoneNumber,
       };
 
       console.log("Registration Request Data:", registrationData);
@@ -62,12 +67,14 @@ const RegisterScreen = ({ navigation }) => {
       setLoading(false);
     }
   };
+
+  const onSelectCountry = (country) => {
+    setUserData({ ...userData, countryCode: country.cca2 });
+  };
+
   return (
     <View style={styles.outerContainer}>
-      <View>
-        <LogoComponent />
-      </View>
-
+      <LogoComponent />
       <Text style={styles.titleFormScreen}>Sign Up</Text>
       <View style={styles.formContainer}>
         <TextInput
@@ -99,13 +106,23 @@ const RegisterScreen = ({ navigation }) => {
           value={userData.password}
           onChangeText={(text) => handleInputChange("password", text)}
         />
-        <TextInput
-          style={styles.inputDesign}
-          placeholder="Enter your phone number"
-          placeholderTextColor="black"
-          value={userData.phoneNumber}
-          onChangeText={(text) => handleInputChange("phoneNumber", text)}
-        />
+        <View style={styles.phoneInputContainer}>
+          <CountryPicker
+            countryCode={userData.countryCode}
+            withCallingCode
+            withCallingCodeButton
+            withFlagButton={true}
+            onSelect={onSelectCountry}
+          />
+          <Text style={styles.countryCodeText}>{userData.callingCode}</Text>
+          <TextInput
+            style={styles.phoneInput}
+            placeholder="Enter your phone number"
+            placeholderTextColor="black"
+            value={userData.phoneNumber}
+            onChangeText={(text) => handleInputChange("phoneNumber", text)}
+          />
+        </View>
       </View>
       <Button onPress={handleRegister} disabled={loading}>
         {loading ? <ActivityIndicator size="small" color="white" /> : <Text>Sign Up</Text>}
@@ -143,6 +160,24 @@ const styles = StyleSheet.create({
     width: "90%",
     justifyContent: "center",
     gap: 10,
+  },
+  phoneInputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+  },
+  countryCodeText: {
+    fontSize: 18,
+    color: "black",
+  },
+  phoneInput: {
+    flex: 1,
+    borderRadius: 5,
+    backgroundColor: "white",
+    height: 50,
+    padding: 8,
+    borderWidth: 1,
+    borderColor: "grey",
   },
   registerContainer: {
     flexDirection: "row",
