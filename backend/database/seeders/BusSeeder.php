@@ -22,7 +22,7 @@ class BusSeeder extends Seeder
                 'color' => $this->getRandomColor(),
                 'plate_number' => rand(100000, 999999),
                 'model' => $models[array_rand($models)],
-                'number_of_seats' => rand(30, 50),
+                'number_of_seats' => 9,
                 'zone_id' => $zones[array_rand($zones)],
             ]);
         }

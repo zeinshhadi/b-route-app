@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Driver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -31,6 +33,10 @@ class AuthController extends Controller
         }
 
         $user = Auth::user();
+        if ($user->role_type =='driver'){
+            $driver = Driver::where('user_id', $user->id)->first();
+            $driver->update(['driver_status' => true]);
+        }
         return response()->json([
                 'status' => 'success',
                 'user' => $user,
@@ -73,7 +79,11 @@ class AuthController extends Controller
     }
 
     public function logout()
-    {
+    {     $user = Auth::user();
+        if ($user->role_type =='driver'){
+            $driver = Driver::where('user_id', $user->id)->first();
+            $driver->update(['driver_status' => false]);
+        }
         Auth::logout();
         return response()->json([
             'status' => 'success',
