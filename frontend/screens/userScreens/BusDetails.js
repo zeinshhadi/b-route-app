@@ -16,7 +16,7 @@ const BusDetails = ({ navigation }) => {
   const [driverFirstName, setDriverFirstName] = useState("");
   const [driverLastName, setDriverLastName] = useState("");
   const [numberOfSeats, setNumberOfSeats] = useState();
-  const [driverImageUri, setDriverImageUri] = useState(null);
+  const [driverImageUri, setDriverImageUri] = useState();
   const [seatColors, setSeatColors] = useState(Array(10).fill("grey"));
 
   useEffect(() => {
@@ -29,13 +29,12 @@ const BusDetails = ({ navigation }) => {
         const busData = response.data.bus;
         const numberOfSeats = busData.number_of_seats;
 
+        setDriverImageUri(response.data.bus.driver.image);
         setNumberOfSeats(numberOfSeats);
         const { driver } = busData;
         if (driver && driver.user) {
           setDriverFirstName(driver.user.first_name);
           setDriverLastName(driver.user.last_name);
-          const fullImageUrl = `${Url}/${busData.driver.image}`;
-          setDriverImageUri(fullImageUrl);
         }
       } catch (error) {
         console.log(`error ${error}`);
@@ -84,7 +83,11 @@ const BusDetails = ({ navigation }) => {
 
   return (
     <View style={styles.mainContainer}>
-      <DriverDetailsCard driverFirstName={driverFirstName} driverLastName={driverLastName} />
+      <DriverDetailsCard
+        driverFirstName={driverFirstName}
+        driverLastName={driverLastName}
+        driverImageUri={driverImageUri}
+      />
       <View style={styles.bigBusCardContainer}>
         <Text style={styles.bigBusCardContainerText}>Available Seats</Text>
         <Text style={styles.bigBusCardContainerText}>{numberOfSeats}</Text>
