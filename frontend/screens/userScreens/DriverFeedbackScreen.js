@@ -7,8 +7,10 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import Colors from "../../utils/colors";
 import { Url } from "../../core/helper/Url";
-
-const DriverFeedbackScreen = () => {
+import { useRoute } from "@react-navigation/native";
+const DriverFeedbackScreen = ({ navigation }) => {
+  const route = useRoute();
+  const driver_id = route.params.driver_id;
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   const [loading, setLoading] = useState(false);
@@ -19,7 +21,7 @@ const DriverFeedbackScreen = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`${Url}/api/get_driver_feedback`, {
+        const response = await axios.get(`${Url}/api/get_driver_feedback/${driver_id}`, {
           headers: { Authorization: authorization },
         });
         setData(response.data.reviews);
