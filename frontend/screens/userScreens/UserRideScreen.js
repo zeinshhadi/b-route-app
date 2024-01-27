@@ -114,7 +114,28 @@ const UserRideScreen = ({ navigation }) => {
     return <Text>No access to camera</Text>;
   }
 
-  function distance(startLat, endLat, startLon, endLon) {}
+  function distance(startLat, endLat, startLon, endLon) {
+    const earthRadius = 6371;
+
+    const lat1 = deg2rad(startLat);
+    const lon1 = deg2rad(startLon);
+    const lat2 = deg2rad(endLat);
+    const lon2 = deg2rad(endLon);
+
+    const dLat = lat2 - lat1;
+    const dLon = lon2 - lon1;
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = earthRadius * c;
+
+    return Math.round(distance);
+  }
+
+  function deg2rad(deg) {
+    return deg * (Math.PI / 180);
+  }
 
   return (
     <View style={styles.container}>
