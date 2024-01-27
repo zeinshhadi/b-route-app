@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Pressable, View, ActivityIndicator } from "react-native";
+import { FlatList, View, ActivityIndicator, RefreshControl } from "react-native";
 
 import SearchBar from "../../components/common/SearchBar";
 import { StyleSheet } from "react-native";
@@ -14,6 +14,7 @@ const DriversActiveScreen = () => {
   const [filteredBusInfo, setFilteredBusInfo] = useState([]);
   const authState = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -34,8 +35,10 @@ const DriversActiveScreen = () => {
       setBusInfo(response.data);
       setFilteredBusInfo(response.data.buses);
       setLoading(false);
+      setRefreshing(false);
     } catch (error) {
       setLoading(false);
+      setRefreshing(false);
       console.error("Error fetching buses:", error);
     }
   };
@@ -46,21 +49,30 @@ const DriversActiveScreen = () => {
       (bus) =>
         bus.id.toString().includes(lowerCaseSearchText) ||
         bus.model.toLowerCase().includes(lowerCaseSearchText) ||
-        bus.zone_id.toString().includes(lowerCaseSearchText)
+        `${bus.driver.user.first_name} ${bus.driver.user.last_name}`.toLowerCase().includes(lowerCaseSearchText) ||
+        (bus.driver.driver_status === 1 && "Active".toLowerCase().includes(lowerCaseSearchText)) ||
+        (bus.driver.driver_status === 0 && "Inactive".toLowerCase().includes(lowerCaseSearchText))
     );
+
+    filteredData.sort((a, b) => b.driver.driver_status - a.driver.driver_status);
+
     setFilteredBusInfo(filteredData);
   };
 
   const renderItem = ({ item }) => {
     const driverName = item.driver.user.first_name + " " + item.driver.user.last_name;
-
     const status = item.driver.driver_status === 1 ? "Active" : "Inactive";
-    console.log(status);
+
     return (
       <View style={styles.listContainer}>
         <DriverDetailsCard cardTitle={driverName} cardDetail={item.model} tempText={"Details"} status={status} />
       </View>
     );
+  };
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    fetchData();
   };
 
   return (
@@ -77,7 +89,12 @@ const DriversActiveScreen = () => {
             }}
           />
         ) : (
-          <FlatList data={filteredBusInfo} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+          <FlatList
+            data={filteredBusInfo}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id.toString()}
+            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+          />
         )}
       </View>
     </View>
