@@ -16,7 +16,7 @@ class BusSeeder extends Seeder
         $zones = [1, 2, 3, 4, 5];
         $models = ['Mazda', 'Toyota', 'Mercedes', 'Ford', 'Chevrolet', 'Honda'];
 
-        for ($i = 1; $i <= 6; $i++) {
+        for ($i = 1; $i <= 15; $i++) {
             Bus::create([
                 'vin' => rand(1000000000000000, 9999999999999999),
                 'color' => $this->getRandomColor(),

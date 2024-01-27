@@ -44,9 +44,8 @@ Route::post('driver/location',[LocationsController::class,'create_driver_locatio
 Route::post('update/location',[LocationsController::class,'update_driver_location']);
 Route::delete('delete/location',[LocationsController::class,'delete_driver_location']);
 Route::get('get/driver/location',[LocationsController::class,'get_driver_locations']);
-
-
 Route::get('/driver/bus/{driver_id}',[BusesController::class,'getBusAndDriver']);
+Route::get('/driver/reviews/{driver_id}',[RidesController::class,'get_driver_feedback']);
 
 
 Route::controller(DriversController::class)->group(function () {

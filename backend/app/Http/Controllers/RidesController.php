@@ -84,6 +84,18 @@ public function get_feedback() {
 
     return response()->json(['reviews' => $reviews]);
 }
+public function get_driver_feedback($driverId) {
+    $reviews = Ride::where('driver_id', $driverId)
+        ->where('rate', '!=', 0)
+        ->where('review', '!=', 'NoReview')
+        ->with(['user' => function ($query) {
+            $query->select('id', 'first_name', 'last_name');
+        }])
+        ->select('user_id', 'rate', 'review')
+        ->get();
+
+    return response()->json(['reviews' => $reviews]);
+}
 
 
 

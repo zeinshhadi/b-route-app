@@ -35,7 +35,7 @@ public function create_driver(Request $request)
         'first_name' => $request->input('first_name'),
         'last_name' => $request->input('last_name'),
         'email' => $request->input('email'),
-        'password' => bcrypt($request->input('password')),
+        'password' => Hash::make($request->input('password')),
         'phone_number' => $request->input('phone_number'),
         'role_type' => 'driver', 
     ]);
