@@ -39,7 +39,6 @@ const DriversActiveScreen = () => {
     } catch (error) {
       setLoading(false);
       setRefreshing(false);
-      console.error("Error fetching driveres:", error);
     }
   };
 

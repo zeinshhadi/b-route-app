@@ -23,6 +23,7 @@ const UserRideScreen = ({ navigation }) => {
   const [startTime, setStartTime] = useState(null);
   const [isAlertVisible, setAlertVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [scanCount, setScanCount] = useState(0);
 
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
@@ -36,7 +37,7 @@ const UserRideScreen = ({ navigation }) => {
   const handleBarCodeScanned = async ({ type, data }) => {
     setScanned(true);
     try {
-      if (rideStatus === false) {
+      if (scanCount === 0) {
         const decodedData = JSON.parse(data);
         setStartLat(decodedData.lat);
         setStartLon(decodedData.lon);
@@ -55,7 +56,8 @@ const UserRideScreen = ({ navigation }) => {
         setStartTime(new Date());
         setRideStatus(true);
         showAlert("Enjoy your ride !");
-      } else {
+        setScanCount(1);
+      } else if (scanCount === 1) {
         const endTime = new Date();
         const timeDifference = (endTime - startTime) / 1000;
         const minutes = Math.floor(timeDifference / 60);
@@ -79,7 +81,8 @@ const UserRideScreen = ({ navigation }) => {
 
         const final_distance = distance(startLat, endLat, startLon, endLon);
         showAlert(`End ride type ${final_distance} and in ${minutes} minutes!`);
-        navigation.navigation("UserFeedbackScreen");
+
+        setScanCount(0);
       }
     } catch (error) {
       setScanned(false);
@@ -98,6 +101,10 @@ const UserRideScreen = ({ navigation }) => {
 
   const hideAlert = () => {
     setAlertVisible(false);
+
+    if (alertMessage.includes("End ride type")) {
+      navigation.navigate("UserFeedbackScreen");
+    }
   };
 
   if (hasPermission === null) {
