@@ -17,6 +17,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { Url } from "../../core/helper/Url";
 import * as ImagePicker from "expo-image-picker";
+import * as FileSystem from "expo-file-system";
 
 const AddDriverScreen = () => {
   const authState = useSelector((state) => state.auth);
@@ -26,6 +27,13 @@ const AddDriverScreen = () => {
   const [imageType, setImageType] = useState(null);
   const [fileName, setFileName] = useState(null);
   const pickImage = async () => {
+    const imgDir = FileSystem.documentDirectory + "images/";
+    const ensureDirExists = async () => {
+      const dirInfo = await FileSystem.getInfoAsync(imgDir);
+      if (!dirInfo.exists) {
+        await FileSystem.makeDirectoryAsync(imgDir, { intermediates: true });
+      }
+    };
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -40,11 +48,22 @@ const AddDriverScreen = () => {
       }
 
       const type = result.assets[0].type;
+      console.log(`Type: ${type}`);
 
       const originalFileName = result.assets[0].fileName;
 
       setImageType(type);
-      setFileName(originalFileName || `image_${Date.now()}.${type.split("/")[1]}`);
+
+      const fileTypeSplit = type.split("/");
+      console.log(`File Type Split: ${fileTypeSplit}`);
+
+      const fileExtension = fileTypeSplit.length >= 2 ? fileTypeSplit[1] : "jpg";
+
+      const generatedFileName = originalFileName || `image_${Date.now()}.${fileExtension}`;
+      console.log(`Generated FileName: ${generatedFileName}`);
+      console.log(`FileName Type: ${typeof generatedFileName}`);
+
+      setFileName(generatedFileName);
     } catch (error) {
       Alert.alert("No image selected");
     }
@@ -91,7 +110,6 @@ const AddDriverScreen = () => {
   };
 
   const handleRegisterDriver = async () => {
-    console.log(`here is image sss ${selectedImage[0].uri}`);
     const image = selectedImage[0].uri;
     try {
       if (
@@ -108,22 +126,24 @@ const AddDriverScreen = () => {
 
       setLoading(true);
 
-      const registrationData = {
-        first_name: userData.firstName,
-        last_name: userData.lastName,
-        email: userData.email,
-        password: userData.password,
-        phone_number: userData.phoneNumber,
-        bus_id: userData.busId,
-        driver_license: userData.driverLicense,
-        image: null,
-      };
-      console.log(`here is image ${image}`);
-      console.log("Registration Request Data:", registrationData);
+      const formData = new FormData();
+      formData.append("first_name", userData.firstName);
+      formData.append("last_name", userData.lastName);
+      formData.append("email", userData.email);
+      formData.append("password", userData.password);
+      formData.append("phone_number", userData.phoneNumber);
+      formData.append("driver_license", userData.driverLicense);
+      formData.append("bus_id", userData.busId);
+      formData.append("image", {
+        uri: selectedImage[0].uri,
+        type: "image/jpeg",
+        name: fileName,
+      });
 
-      const response = await axios.post(`${Url}/api/register/driver`, registrationData, {
+      const response = await axios.post(`${Url}/api/register/driver`, formData, {
         headers: {
           Authorization: authorization,
+          "Content-Type": "multipart/form-data",
         },
       });
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Pressable, View, ActivityIndicator } from "react-native";
+import { FlatList, Pressable, View, ActivityIndicator, Image } from "react-native";
 import DetailsCard from "../../components/cards/DetailsCard";
 import SearchBar from "../../components/common/SearchBar";
 import { StyleSheet } from "react-native";
@@ -23,6 +23,7 @@ const BusesRegisteredScreen = ({ navigation }) => {
         const response = await axios.get(`${Url}/api/bus`, {
           headers: { Authorization: authorization },
         });
+        console.log(response.data);
         setBusInfo(response.data);
         setFilteredBusInfo(response.data.buses);
         setLoading(false);

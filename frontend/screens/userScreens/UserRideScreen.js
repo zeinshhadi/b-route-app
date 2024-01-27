@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -125,9 +125,9 @@ const UserRideScreen = ({ navigation }) => {
       <Modal isVisible={isAlertVisible} onBackdropPress={hideAlert}>
         <View style={styles.alertContainer}>
           <Text style={styles.alertMessage}>{alertMessage}</Text>
-          <TouchableOpacity style={styles.alertButton} onPress={hideAlert}>
+          <Pressable style={styles.alertButton} onPress={hideAlert}>
             <Text style={styles.alertButtonText}>OK</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </Modal>
     </View>
