@@ -28,6 +28,7 @@ import Colors from "./utils/colors";
 import DeleteButton from "./components/common/DeleteButton";
 import DriverHomeScreen from "./screens/driverScreens/DriverHomeScreen";
 import DriversActiveScreen from "./screens/adminScreens/DriversActiveScreen";
+import DriverFeedbackScreen from "./screens/userScreens/DriverFeedbackScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -222,6 +223,17 @@ export default function App() {
             <Stack.Screen
               name="DriverHomeScreen"
               component={DriversActiveScreen}
+              options={{
+                headerShown: true,
+                headerTitle: "Driver Status",
+                headerStyle: { backgroundColor: Colors.primary500 },
+                headerTintColor: "white",
+                statusBarColor: "black",
+              }}
+            />
+            <Stack.Screen
+              name="DriverFeedbackScreen"
+              component={DriverFeedbackScreen}
               options={{
                 headerShown: true,
                 headerTitle: "Driver Status",

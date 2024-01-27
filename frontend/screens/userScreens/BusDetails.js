@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, StyleSheet, View, Pressable } from "react-native";
+import { Text, StyleSheet, View, Pressable, Modal, ScrollView } from "react-native";
 import DriverDetailsCard from "../../components/cards/DriverDetailsCard";
 import { useRoute } from "@react-navigation/native";
 import axios from "axios";
@@ -18,7 +18,8 @@ const BusDetails = ({ navigation }) => {
   const [numberOfSeats, setNumberOfSeats] = useState();
   const [driverImageUri, setDriverImageUri] = useState();
   const [seatColors, setSeatColors] = useState(Array(10).fill("grey"));
-
+  const [modalVisible, setModalVisible] = useState(false);
+  const [reviews, setReviews] = useState([]);
   useEffect(() => {
     const fetchBusData = async () => {
       try {
@@ -43,7 +44,23 @@ const BusDetails = ({ navigation }) => {
 
     fetchBusData();
   }, [driver_id]);
+  const openModal = async () => {
+    try {
+      const response = await axios.get(`${Url}/api/driver/reviews/${driver_id}`, {
+        headers: { Authorization: authorization },
+      });
+      console.log(response.data);
+      setReviews(response.data.reviews);
+    } catch (error) {
+      console.log(`error ${error}`);
+    }
 
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
   useEffect(() => {
     const fetchSeatData = async () => {
       try {
@@ -80,12 +97,23 @@ const BusDetails = ({ navigation }) => {
   const handleStartRide = () => {
     navigation.navigate("UserRideScreen");
   };
-  const handleFeedback= ()=>{
-    
-  }
 
   return (
     <View style={styles.mainContainer}>
+      <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={closeModal}>
+        <View style={styles.modalContainer}>
+          <ScrollView>
+            {reviews.map((review, index) => (
+              <View key={index} style={styles.reviewContainer}>
+                <Text>{review.text}</Text>
+              </View>
+            ))}
+          </ScrollView>
+          <Pressable onPress={closeModal}>
+            <Text>Close</Text>
+          </Pressable>
+        </View>
+      </Modal>
       <DriverDetailsCard
         driverFirstName={driverFirstName}
         driverLastName={driverLastName}
@@ -104,7 +132,7 @@ const BusDetails = ({ navigation }) => {
         <View style={styles.buttonStyle}>{<Text style={styles.buttonTextStyle}>Start your ride</Text>}</View>
       </Pressable>
       <View style={styles.buttonPosition}>
-        <Pressable onPress={() => navigation.navigate("")}>
+        <Pressable onPress={openModal}>
           <MaterialIcons name="feedback" size={24} color={Colors.primary500} />
         </Pressable>
       </View>
@@ -185,5 +213,15 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginBottom: 5,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "white",
+  },
+  reviewContainer: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
   },
 });
