@@ -80,6 +80,9 @@ const BusDetails = ({ navigation }) => {
   const handleStartRide = () => {
     navigation.navigate("UserRideScreen");
   };
+  const handleFeedback= ()=>{
+    
+  }
 
   return (
     <View style={styles.mainContainer}>
