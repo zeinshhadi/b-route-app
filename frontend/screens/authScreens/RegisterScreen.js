@@ -113,6 +113,14 @@ const RegisterScreen = ({ navigation }) => {
             withCallingCodeButton
             withFlagButton={true}
             onSelect={onSelectCountry}
+            containerButtonStyle={{
+              borderRadius: 5,
+              backgroundColor: "white",
+              height: 50,
+              padding: 8,
+              borderWidth: 1,
+              borderColor: "grey",
+            }}
           />
           <Text style={styles.countryCodeText}>{userData.callingCode}</Text>
           <TextInput
@@ -164,7 +172,7 @@ const styles = StyleSheet.create({
   phoneInputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
+    gap: 3,
   },
   countryCodeText: {
     fontSize: 18,
