@@ -100,6 +100,11 @@ const BusDetails = ({ navigation }) => {
       <Pressable onPress={() => handleStartRide()}>
         <View style={styles.buttonStyle}>{<Text style={styles.buttonTextStyle}>Start your ride</Text>}</View>
       </Pressable>
+      <View style={styles.buttonPosition}>
+        <Pressable onPress={() => navigation.navigate("")}>
+          <MaterialIcons name="feedback" size={24} color={Colors.primary500} />
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -166,5 +171,16 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 18,
+  },
+  buttonPosition: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+  },
+  deleteButton: {
+    backgroundColor: Colors.primary500,
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 5,
   },
 });
