@@ -36,9 +36,10 @@ const BusInformationScreen = ({ navigation }) => {
     setLoading(false);
   };
   const driverName = item.driver.user.first_name + " " + item.driver.user.last_name;
+  const driverImageUri = item.driver.image;
   return (
     <View style={styles.BusInformationContainer}>
-      <DriverDetailsCard />
+      <DriverDetailsCard driverImageUri={driverImageUri} />
       <BusInfoCard
         id={id}
         model={model}

@@ -1,9 +1,11 @@
 import React from "react";
-import { Text, StyleSheet, View, Image, Platform } from "react-native";
-const DriverDetailsCard = ({ driverFirstName, driverLastName }) => {
+import { Text, StyleSheet, View, Image } from "react-native";
+const DriverDetailsCard = ({ driverFirstName, driverLastName, driverImageUri }) => {
+  const baseUrl = "http://192.168.0.100:8000/storage/";
+  const imageUrl = baseUrl + driverImageUri;
   return (
     <View style={styles.rowInfo}>
-      <Image style={styles.driverImage} source={require("../../assets/images/driver.jpg")} />
+      <Image style={styles.driverImage} source={{ uri: imageUrl }} />
 
       <View style={styles.driverInfoText}>
         <Text style={styles.driverInfoTextDetails}>
