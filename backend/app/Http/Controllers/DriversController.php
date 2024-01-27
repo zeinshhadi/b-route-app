@@ -43,7 +43,7 @@ public function create_driver(Request $request)
  
     $image = $request->file('image');
     $imageName = $user->id . '_' . time() . '_' . $image->getClientOriginalName();
-    Storage::putFileAs('public/driverImages', $image, $imageName);
+    Storage::putFileAs('public', $image, $imageName);
 
     $driver = Driver::create([
         'image' => $imageName,
