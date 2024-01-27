@@ -10,8 +10,8 @@ import DriverDetailsCard from "../../components/DriverDetailsCard";
 import Colors from "../../utils/colors";
 
 const DriversActiveScreen = () => {
-  const [busInfo, setBusInfo] = useState([]);
-  const [filteredBusInfo, setFilteredBusInfo] = useState([]);
+  const [driverInfo, setDriverInfo] = useState([]);
+  const [filteredDriverInfo, setFilteredDriverInfo] = useState([]);
   const authState = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
@@ -32,31 +32,37 @@ const DriversActiveScreen = () => {
       const response = await axios.get(`${Url}/api/bus`, {
         headers: { Authorization: authorization },
       });
-      setBusInfo(response.data);
-      setFilteredBusInfo(response.data.buses);
+      setDriverInfo(response.data);
+      setFilteredDriverInfo(response.data.buses);
       setLoading(false);
       setRefreshing(false);
     } catch (error) {
       setLoading(false);
       setRefreshing(false);
-      console.error("Error fetching buses:", error);
+      console.error("Error fetching driveres:", error);
     }
   };
 
   const handleSearch = (searchText) => {
     const lowerCaseSearchText = searchText.toLowerCase();
-    const filteredData = busInfo.buses.filter(
+    const filteredData = driverInfo.buses.filter(
       (bus) =>
         bus.id.toString().includes(lowerCaseSearchText) ||
         bus.model.toLowerCase().includes(lowerCaseSearchText) ||
-        `${bus.driver.user.first_name} ${bus.driver.user.last_name}`.toLowerCase().includes(lowerCaseSearchText) ||
-        (bus.driver.driver_status === 1 && "Active".toLowerCase().includes(lowerCaseSearchText)) ||
-        (bus.driver.driver_status === 0 && "Inactive".toLowerCase().includes(lowerCaseSearchText))
+        `${bus.driver.user.first_name} ${bus.driver.user.last_name}`.toLowerCase().includes(lowerCaseSearchText)
     );
 
-    filteredData.sort((a, b) => b.driver.driver_status - a.driver.driver_status);
+    filteredData.sort((a, b) => {
+      if (a.driver.driver_status === b.driver.driver_status) {
+        return 0;
+      } else if (a.driver.driver_status === 1) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
 
-    setFilteredBusInfo(filteredData);
+    setFilteredDriverInfo(filteredData);
   };
 
   const renderItem = ({ item }) => {
@@ -70,13 +76,23 @@ const DriversActiveScreen = () => {
     );
   };
 
+  const sortedData = filteredDriverInfo.slice().sort((a, b) => {
+    if (a.driver.driver_status === b.driver.driver_status) {
+      return 0;
+    } else if (a.driver.driver_status === 1) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+
   const onRefresh = () => {
     setRefreshing(true);
     fetchData();
   };
 
   return (
-    <View style={styles.BusesRegisteredContainer}>
+    <View style={styles.DriveresRegisteredContainer}>
       <View style={styles.innerContainer}>
         <SearchBar onSearchChange={handleSearch} />
         {loading ? (
@@ -90,7 +106,7 @@ const DriversActiveScreen = () => {
           />
         ) : (
           <FlatList
-            data={filteredBusInfo}
+            data={sortedData}
             renderItem={renderItem}
             keyExtractor={(item) => item.id.toString()}
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
@@ -104,7 +120,7 @@ const DriversActiveScreen = () => {
 export default DriversActiveScreen;
 
 const styles = StyleSheet.create({
-  BusesRegisteredContainer: {
+  DriveresRegisteredContainer: {
     flex: 1,
     justifyContent: "center",
     width: "100%",
