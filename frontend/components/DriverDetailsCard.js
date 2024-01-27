@@ -1,35 +1,37 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Text, View } from "react-native";
-import Colors from "../../utils/colors";
+import Colors from "../utils/colors";
 
-const DetailsCard = ({ cardTitle, cardDetail, status, tempText, itemType, tempType }) => {
+const DriverDetailsCard = ({ cardTitle, cardDetail, status, tempText, itemType, tempType }) => {
+  const dotColor = status === "Active" ? styles.greenDot : styles.redDot;
+
   return (
-    <View style={styles.detailsCardContainer}>
-      <View style={styles.detailsCard}>
+    <View style={styles.driverDetailsCardContainer}>
+      <View style={styles.driverDetailsCard}>
         <Text style={styles.cardTitleCss}>
           {itemType}
           {cardTitle}
         </Text>
         <Text style={styles.boldText}>{cardDetail}</Text>
       </View>
-      <View style={styles.detailsCard}>
+      <View style={styles.driverDetailsCard}>
         <View style={styles.cardMoreDetails}>
           <Text style={styles.detailStyle}>{tempText}</Text>
         </View>
-        <Text style={styles.boldText}>
-          {tempType}
-          {status}
-        </Text>
+        <View style={styles.statusContainer}>
+          <View style={[styles.dotContainer, dotColor]} />
+          <Text style={styles.boldText}>{status}</Text>
+        </View>
       </View>
     </View>
   );
 };
 
-export default DetailsCard;
+export default DriverDetailsCard;
 
 const styles = StyleSheet.create({
-  detailsCardContainer: {
+  driverDetailsCardContainer: {
     flexDirection: "row",
     height: 80,
     backgroundColor: Colors.cardColor,
@@ -38,14 +40,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
   },
-  detailsCard: {
+  driverDetailsCard: {
     height: "100%",
     justifyContent: "space-around",
   },
   cardTitleCss: {
     fontWeight: "bold",
   },
-
   boldText: {
     fontWeight: "500",
   },
@@ -54,5 +55,22 @@ const styles = StyleSheet.create({
     textDecorationColor: Colors.primary500,
     color: Colors.primary500,
     fontWeight: "300",
+  },
+  dotContainer: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginRight: 5,
+  },
+  greenDot: {
+    backgroundColor: "green",
+  },
+  redDot: {
+    backgroundColor: "red",
+  },
+  statusContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

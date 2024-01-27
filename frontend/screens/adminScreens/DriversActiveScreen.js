@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Pressable, View, ActivityIndicator, Image } from "react-native";
-import DetailsCard from "../../components/cards/DetailsCard";
+import { FlatList, Pressable, View, ActivityIndicator } from "react-native";
+
 import SearchBar from "../../components/common/SearchBar";
 import { StyleSheet } from "react-native";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Url } from "../../core/helper/Url";
+import DriverDetailsCard from "../../components/DriverDetailsCard";
 import Colors from "../../utils/colors";
 
 const DriversActiveScreen = () => {
@@ -13,29 +14,31 @@ const DriversActiveScreen = () => {
   const [filteredBusInfo, setFilteredBusInfo] = useState([]);
   const authState = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    const fetchData = async () => {
-      const authToken = authState.token;
-      const authorization = "Bearer " + authToken;
-      try {
-        const response = await axios.get(`${Url}/api/bus`, {
-          headers: { Authorization: authorization },
-        });
-        console.log(response.data);
-        setBusInfo(response.data);
-        setFilteredBusInfo(response.data.buses);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        console.error("Error fetching buses:", error);
-      }
-    };
-
     fetchData();
+
+    const interval = setInterval(fetchData, 60000);
+
+    return () => clearInterval(interval);
   }, [authState.token]);
+
+  const fetchData = async () => {
+    setLoading(true);
+    const authToken = authState.token;
+    const authorization = "Bearer " + authToken;
+    try {
+      const response = await axios.get(`${Url}/api/bus`, {
+        headers: { Authorization: authorization },
+      });
+      setBusInfo(response.data);
+      setFilteredBusInfo(response.data.buses);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.error("Error fetching buses:", error);
+    }
+  };
 
   const handleSearch = (searchText) => {
     const lowerCaseSearchText = searchText.toLowerCase();
@@ -50,16 +53,12 @@ const DriversActiveScreen = () => {
 
   const renderItem = ({ item }) => {
     const driverName = item.driver.user.first_name + " " + item.driver.user.last_name;
-    const status = item.driver.user.driver_status === true ? "active" : "inactive";
+
+    const status = item.driver.driver_status === 1 ? "Active" : "Inactive";
+    console.log(status);
     return (
       <View style={styles.listContainer}>
-        <DetailsCard
-          cardTitle={driverName}
-          cardDetail={item.model}
-          tempText={status}
-          tempType={"Zone #"}
-          status={item.zone_id}
-        />
+        <DriverDetailsCard cardTitle={driverName} cardDetail={item.model} tempText={status} status={status} />
       </View>
     );
   };
@@ -105,9 +104,5 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 7,
     height: 80,
-  },
-  buttonPressed: {
-    opacity: 0.5,
-    overflow: "hidden",
   },
 });
