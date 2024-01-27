@@ -6,7 +6,6 @@ import Colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { Url } from "../../core/helper/Url";
-import UserBottomNavigation from "../../components/common/bottomNavigation/UserBottomNavigation";
 
 const AddBusScreen = () => {
   const authState = useSelector((state) => state.auth);

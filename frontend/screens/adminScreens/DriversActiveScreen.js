@@ -91,7 +91,7 @@ const DriversActiveScreen = () => {
   };
 
   return (
-    <View style={styles.DriveresRegisteredContainer}>
+    <View style={styles.DriversRegisteredContainer}>
       <View style={styles.innerContainer}>
         <SearchBar onSearchChange={handleSearch} />
         {loading ? (
@@ -119,7 +119,7 @@ const DriversActiveScreen = () => {
 export default DriversActiveScreen;
 
 const styles = StyleSheet.create({
-  DriveresRegisteredContainer: {
+  DriversRegisteredContainer: {
     flex: 1,
     justifyContent: "center",
     width: "100%",

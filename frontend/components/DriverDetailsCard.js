@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   boldText: {
-    fontWeight: "500",
+    fontWeight: "400",
     textAlign: "left",
     alignSelf: "flex-start",
   },
