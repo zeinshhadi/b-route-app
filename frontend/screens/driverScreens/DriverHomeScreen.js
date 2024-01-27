@@ -14,7 +14,6 @@ const DriverHomeScreen = () => {
   const [location, setLocation] = useState(null);
   const [initialFetchComplete, setInitialFetchComplete] = useState(false);
   const [fetchLocation, setFetchLocation] = useState(false);
-
   useEffect(() => {
     const getLocation = async () => {
       try {

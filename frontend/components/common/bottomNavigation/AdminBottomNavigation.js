@@ -7,6 +7,7 @@ import ReviewScreen from "../../../screens/adminScreens/ReviewScreen";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../../utils/colors";
 import AdminChatScreen from "../../../screens/adminScreens/AdminChatScreen";
+import DriversActiveScreen from "../../../screens/adminScreens/DriversActiveScreen";
 const Tab = createBottomTabNavigator();
 
 const AdminBottomNavigation = () => {
@@ -44,11 +45,11 @@ const AdminBottomNavigation = () => {
           tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" color={color} size={size} />,
         }}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Review"
-        component={ReviewScreen}
+        component={DriversActiveScreen}
         options={{ tabBarIcon: ({ color, size }) => <Ionicons name="car" color={color} size={size} /> }}
-      /> */}
+      />
       <Tab.Screen
         name="Profile"
         component={EditProfile}
