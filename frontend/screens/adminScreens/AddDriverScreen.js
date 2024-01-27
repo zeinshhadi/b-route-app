@@ -18,7 +18,7 @@ import { useSelector } from "react-redux";
 import { Url } from "../../core/helper/Url";
 import * as ImagePicker from "expo-image-picker";
 import * as FileSystem from "expo-file-system";
-
+import CountryPicker from "react-native-country-picker-modal";
 const AddDriverScreen = () => {
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
@@ -171,6 +171,9 @@ const AddDriverScreen = () => {
       setLoading(false);
     }
   };
+  const onSelectCountry = (country) => {
+    setUserData({ ...userData, countryCode: country.cca2 });
+  };
   return (
     <View style={styles.outerContainer}>
       <View style={styles.formContainer}>
@@ -213,13 +216,32 @@ const AddDriverScreen = () => {
               value={userData.password}
               onChangeText={(text) => handleInputChange("password", text)}
             />
-            <TextInput
-              style={styles.inputDesign}
-              placeholder="Enter your phone number"
-              placeholderTextColor="black"
-              value={userData.phoneNumber}
-              onChangeText={(text) => handleInputChange("phoneNumber", text)}
-            />
+            <View style={styles.phoneInputContainer}>
+              <CountryPicker
+                countryCode={userData.countryCode}
+                withCallingCode
+                withCallingCodeButton
+                withFlagButton={true}
+                onSelect={onSelectCountry}
+                containerButtonStyle={{
+                  borderRadius: 5,
+                  backgroundColor: "white",
+                  height: 50,
+                  padding: 8,
+                  borderWidth: 1,
+                  borderColor: "grey",
+                }}
+                withFlag={true}
+              />
+              <Text style={styles.countryCodeText}>{userData.callingCode}</Text>
+              <TextInput
+                style={styles.phoneInput}
+                placeholder="Enter your phone number"
+                placeholderTextColor="black"
+                value={userData.phoneNumber}
+                onChangeText={(text) => handleInputChange("phoneNumber", text)}
+              />
+            </View>
             <TextInput
               style={styles.inputDesign}
               placeholder="Enter your Driver license"
@@ -326,5 +348,23 @@ const styles = StyleSheet.create({
   innerFormContainer: {
     gap: 5,
     marginVertical: 10,
+  },
+  phoneInputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 3,
+  },
+  countryCodeText: {
+    fontSize: 18,
+    color: "black",
+  },
+  phoneInput: {
+    flex: 1,
+    borderRadius: 5,
+    backgroundColor: "white",
+    height: 50,
+    padding: 8,
+    borderWidth: 1,
+    borderColor: "grey",
   },
 });

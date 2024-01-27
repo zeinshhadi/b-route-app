@@ -44,11 +44,7 @@ const RegisterScreen = ({ navigation }) => {
         phone_number: phoneNumber,
       };
 
-      console.log("Registration Request Data:", registrationData);
-
       const response = await axios.post(`${Url}/api/register`, registrationData);
-
-      console.log("Registration Response:", response.data);
 
       if (response.data.status === "success") {
         const storeToken = async (token) => {
