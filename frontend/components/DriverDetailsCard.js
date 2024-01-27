@@ -21,7 +21,9 @@ const DriverDetailsCard = ({ cardTitle, cardDetail, status, tempText, itemType, 
         </View>
         <View style={styles.statusContainer}>
           <View style={[styles.dotContainer, dotColor]} />
-          <Text style={styles.boldText}>{status}</Text>
+          <View>
+            <Text style={styles.boldText}>{status}</Text>
+          </View>
         </View>
       </View>
     </View>
@@ -36,19 +38,24 @@ const styles = StyleSheet.create({
     height: 80,
     backgroundColor: Colors.cardColor,
     borderRadius: 10,
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
   },
   driverDetailsCard: {
     height: "100%",
     justifyContent: "space-around",
+    padding: 5,
+    width: "70%",
   },
   cardTitleCss: {
     fontWeight: "bold",
+    textAlign: "left",
   },
   boldText: {
     fontWeight: "500",
+    textAlign: "left",
+    alignSelf: "flex-start",
   },
   detailStyle: {
     textDecorationLine: "underline",
@@ -70,7 +77,6 @@ const styles = StyleSheet.create({
   },
   statusContainer: {
     flexDirection: "row",
-    justifyContent: "center",
     alignItems: "center",
   },
 });

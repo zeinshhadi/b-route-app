@@ -58,7 +58,7 @@ const DriversActiveScreen = () => {
     console.log(status);
     return (
       <View style={styles.listContainer}>
-        <DriverDetailsCard cardTitle={driverName} cardDetail={item.model} tempText={status} status={status} />
+        <DriverDetailsCard cardTitle={driverName} cardDetail={item.model} tempText={"Details"} status={status} />
       </View>
     );
   };

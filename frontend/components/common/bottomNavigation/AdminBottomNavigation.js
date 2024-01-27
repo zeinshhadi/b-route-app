@@ -46,9 +46,9 @@ const AdminBottomNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Review"
+        name="Drivers"
         component={DriversActiveScreen}
-        options={{ tabBarIcon: ({ color, size }) => <Ionicons name="car" color={color} size={size} /> }}
+        options={{ tabBarIcon: ({ color, size }) => <Ionicons name="bus" color={color} size={size} /> }}
       />
       <Tab.Screen
         name="Profile"
