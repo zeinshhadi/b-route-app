@@ -232,6 +232,7 @@ const AddDriverScreen = () => {
                   borderColor: "grey",
                 }}
                 withFlag={true}
+                withFilter={true}
               />
               <Text style={styles.countryCodeText}>{userData.callingCode}</Text>
               <TextInput

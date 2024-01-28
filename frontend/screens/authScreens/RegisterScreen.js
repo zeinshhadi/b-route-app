@@ -117,6 +117,7 @@ const RegisterScreen = ({ navigation }) => {
               borderWidth: 1,
               borderColor: "grey",
             }}
+            withFilter={true}
           />
           <Text style={styles.countryCodeText}>{userData.callingCode}</Text>
           <TextInput
