@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BusesController;
 use App\Http\Controllers\DriversController;
+use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\LocationsController;
 use App\Http\Controllers\RidesController;
 use App\Http\Controllers\SeatsController;
@@ -20,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+Route::get('/healthy',[GeneralController::class,"checkServerStatus"])->name("server.status");
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('login', 'login');
