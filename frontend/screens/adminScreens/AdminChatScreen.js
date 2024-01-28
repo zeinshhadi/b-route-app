@@ -15,11 +15,8 @@ const AdminChatScreen = ({ navigation }) => {
     const chatMessagesRef = ref(db, "chat-messages");
 
     const handleData = (snapshot) => {
-      console.log("Handling data in AdminChatScreen:", snapshot.val());
-
       if (snapshot.exists()) {
         const data = snapshot.val();
-        console.log("Data from Firebase:", data);
 
         const userList = Object.keys(data).flatMap((userType) => {
           const users = data[userType]["admin"];
@@ -43,8 +40,6 @@ const AdminChatScreen = ({ navigation }) => {
         });
 
         const sortedUsers = userList.filter(Boolean).sort((a, b) => b.timestamp - a.timestamp);
-
-        console.log("User List:", sortedUsers);
 
         setUsers(sortedUsers);
         setLoading(false);

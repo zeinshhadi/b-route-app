@@ -28,10 +28,10 @@ const IndividualChatScreen = ({ route }) => {
   }, [userId, userType]);
 
   const sendMessage = () => {
-    console.log("Sending message...");
+
 
     if (message.trim() === "") {
-      console.log("Message is empty");
+    
       return;
     }
 
@@ -45,7 +45,7 @@ const IndividualChatScreen = ({ route }) => {
     });
 
     setMessage("");
-    console.log("Message sent!");
+  
   };
 
   return (

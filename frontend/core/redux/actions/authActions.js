@@ -14,7 +14,6 @@ export const Login = ({ email, password }) => {
         const token = data.authorization.token;
         try {
           await AsyncStorage.setItem("userToken", token);
-          console.log(`Token stored successfully: ${token}`);
         } catch (error) {
           console.error("Error storing token:", error);
         }

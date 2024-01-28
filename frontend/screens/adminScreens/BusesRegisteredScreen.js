@@ -23,7 +23,7 @@ const BusesRegisteredScreen = ({ navigation }) => {
         const response = await axios.get(`${Url}/api/bus`, {
           headers: { Authorization: authorization },
         });
-        console.log(response.data);
+     
         setBusInfo(response.data);
         setFilteredBusInfo(response.data.buses);
         setLoading(false);

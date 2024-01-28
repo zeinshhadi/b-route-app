@@ -14,7 +14,7 @@ const LoginScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const handleRegister = () => {
-    navigation.navigate("RegisterScreen");
+    navigation.navigate("LogInScreen");
   };
 
   useEffect(() => {

@@ -93,7 +93,6 @@ const HomeScreen = ({ navigation }) => {
   }
 
   async function getLocationHandler() {
-    console.log(`button pressed`);
     const hasPermission = await verifyPermissions();
     if (!hasPermission) {
       return;

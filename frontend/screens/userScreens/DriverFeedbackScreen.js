@@ -11,7 +11,6 @@ import { useRoute } from "@react-navigation/native";
 const DriverFeedbackScreen = () => {
   const route = useRoute();
   const driver_id = route.params.driver_id;
-  console.log(driver_id);
   const authState = useSelector((state) => state.auth);
   const authorization = "bearer " + authState.token;
   const [loading, setLoading] = useState(false);

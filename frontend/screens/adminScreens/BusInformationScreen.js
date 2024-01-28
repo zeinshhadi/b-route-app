@@ -16,7 +16,6 @@ const BusInformationScreen = ({ navigation }) => {
   const item = route.params.item;
   const { id, model, plate_number, color, vin, number_of_seats } = item;
   const userId = item.driver.user.id;
-  console.log(userId);
   const [showDelete, setShowDelete] = useState(false);
 
   const handleDelete = async () => {

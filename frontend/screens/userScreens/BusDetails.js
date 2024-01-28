@@ -51,7 +51,7 @@ const BusDetails = ({ navigation }) => {
       const response = await axios.get(`${Url}/api/driver/reviews/${driver_id}`, {
         headers: { Authorization: authorization },
       });
-      console.log(response.data.reviews);
+
       setReviews(response.data.reviews);
     } catch (error) {
       console.log(`error ${error}`);
