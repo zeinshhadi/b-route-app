@@ -44,40 +44,35 @@ const UserFeedback = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={Platform.OS === "ios" ? 0 : -500}
-      style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-        <View style={styles.innerContainer}>
-          <Image source={require("../../assets/1.png")} style={styles.reviewImage} />
-          <View style={styles.infoContainer}>
-            <Text style={styles.arriveText}>You Arrived!</Text>
-            <Text style={styles.infoText}>
-              Been a pleasure having you on board.
-              {"\n"}
-              Your rate and review are important to us.
-            </Text>
-          </View>
-
-          <TextInput
-            style={styles.reviewInput}
-            placeholder="Feel free to share your feedback"
-            multiline
-            textAlignVertical="top"
-            onChangeText={(text) => setReview(text)}
-          />
-
-          <Rating onFinishRating={handleRating} startingValue={rate} ratingBackgroundColor="white" imageSize={30} />
-
-          <Pressable style={styles.submitButton} onPress={submitFeedback}>
-            <Text style={styles.submitButtonText}>
-              {loading ? <ActivityIndicator size="small" color="white" /> : "Submit Feedback"}
-            </Text>
-          </Pressable>
+    <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+      <View style={styles.innerContainer}>
+        <Image source={require("../../assets/1.png")} style={styles.reviewImage} />
+        <View style={styles.infoContainer}>
+          <Text style={styles.arriveText}>You Arrived!</Text>
+          <Text style={styles.infoText}>
+            Been a pleasure having you on board.
+            {"\n"}
+            Your rate and review are important to us.
+          </Text>
         </View>
-      </ScrollView>
-    </KeyboardAvoidingView>
+
+        <TextInput
+          style={styles.reviewInput}
+          placeholder="Feel free to share your feedback"
+          multiline
+          textAlignVertical="top"
+          onChangeText={(text) => setReview(text)}
+        />
+
+        <Rating onFinishRating={handleRating} startingValue={rate} ratingBackgroundColor="white" imageSize={30} />
+
+        <Pressable style={styles.submitButton} onPress={submitFeedback}>
+          <Text style={styles.submitButtonText}>
+            {loading ? <ActivityIndicator size="small" color="white" /> : "Submit Feedback"}
+          </Text>
+        </Pressable>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -96,6 +91,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   scrollViewContainer: {
+    backgroundColor: "white",
     flexGrow: 1,
     justifyContent: "space-around",
     alignItems: "center",
@@ -134,8 +130,8 @@ const styles = StyleSheet.create({
   },
   reviewImage: {
     width: 350,
-    height: 200,
+    height: 130,
     resizeMode: "contain",
-    marginBottom: 20,
+    marginBottom: 1,
   },
 });

@@ -54,10 +54,11 @@ const UserRideScreen = ({ navigation }) => {
           }
         );
         setStartTime(new Date());
-        setRideStatus(true);
+        // setRideStatus(true);
         showAlert("Enjoy your ride !");
         setScanCount(1);
       } else if (scanCount === 1) {
+        // setRideStatus(false);
         const endTime = new Date();
         const timeDifference = (endTime - startTime) / 1000;
         const minutes = Math.floor(timeDifference / 60);
@@ -76,8 +77,6 @@ const UserRideScreen = ({ navigation }) => {
             headers: { Authorization: authorization },
           }
         );
-
-        setRideStatus(false);
 
         const final_distance = distance(startLat, endLat, startLon, endLon);
         showAlert(`End ride type ${final_distance} and in ${minutes} minutes!`);

@@ -1,7 +1,8 @@
 import React from "react";
 import { Text, StyleSheet, View, Image } from "react-native";
+import { Url } from "../../core/helper/Url";
 const DriverDetailsCard = ({ driverFirstName, driverLastName, driverImageUri }) => {
-  const baseUrl = "http://192.168.0.100:8000/storage/";
+  const baseUrl = `${Url}/storage/`;
   const imageUrl = baseUrl + driverImageUri;
   return (
     <View style={styles.rowInfo}>
