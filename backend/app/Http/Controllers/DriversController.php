@@ -70,7 +70,7 @@ public function create_driver(Request $request)
             $driver->delete();
             $user->delete();
 
-            return response()->json(['message' => 'Driver deleted successfully']);
+            return response()->json(['message' => 'Driver deleted successfully'],200);
         }
 
         return response()->json(['error' => 'Driver not found'], 404);
