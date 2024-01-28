@@ -37,16 +37,27 @@
 
   <br><br>
 
-<!-- Prototyping -->
+<!-- Tech stack -->
 <img src="./readme/title3.svg"/>
 
-> We made B-route by drawing and testing ideas until we got a design that's simple to use. It helps you track buses, check seats, and chat easily between admins, drivers, and passengers.
+### B-ROUTE is built using the following technologies:
 
-### MockUps
+- This project uses the [React Native Expo development framework](https://reactnative.dev/). React Native is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile.
+- For persistent storage (database), the app utilizes the [MySQL database](https://www.mysql.com/), enabling the creation of a custom storage schema and saving data to a local MySQL database.
+- For chat system, the app uses the [Firebase Real-Time Database](https://firebase.google.com/docs/database) package which supports Android, iOS.
+  - For location tracking, the app uses [Expo Location Library](https://docs.expo.dev/versions/latest/sdk/location/) which supports Android, iOS.
+- For tracking seats, the app uses [ESP8266 Module](https://www.espressif.com/en/products/socs/esp8266), which send uses [HTTPClient](https://www.arduino.cc/reference/en/libraries/httpclient/) to send requests yo update the current state of seats.
+- This project is hosted on [AWS](https://aws.amazon.com/websites/).
+  <br><br>
 
-| Login screen                            | Register screen                       | Landing screen                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+<!-- UI UX -->
+<img src="./readme/title4.svg"/>
+
+> Using the mockups as a guide, we implemented the B-ROUTE app with the following features:
+
+- Project Figma design [figma](https://www.figma.com/file/LsuOx5Wnh5YTGSEtrgvz4l/Purrfect-Pals?type=design&node-id=257%3A79&mode=design&t=adzbABt5hbb91ucZ-1)
+
+### Mockups
 
 | Home screen                             | Menu Screen                           | Order Screen                          |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
@@ -54,10 +65,17 @@
 
 <br><br>
 
-<!-- Implementation -->
-<img src="./readme/title4.svg"/>
+<!-- Database Design -->
+<img src="./readme/title5.svg"/>
 
-> Using the wireframes and mockups as a guide, we implemented the B-ROUTE app with the following features:
+### Architecting Data Excellence: Innovative Database Design Strategies:
+
+- Insert ER Diagram here
+
+<br><br>
+
+<!-- Implementation -->
+<img src="./readme/title6.svg"/>
 
 ### User Screens (Mobile)
 
@@ -77,21 +95,26 @@
 
 <br><br>
 
-<!-- Tech stack -->
-<img src="./readme/title5.svg"/>
+<!-- AWS Deployment -->
+<img src="./readme/title8.svg"/>
 
-### B-ROUTE is built using the following technologies:
+### Efficient AI Deployment: Unleashing the Potential with AWS Integration:
 
-- This project uses the [React Native Expo development framework](https://reactnative.dev/). React Native is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile.
-- For persistent storage (database), the app utilizes the [MySQL database](https://www.mysql.com/), enabling the creation of a custom storage schema and saving data to a local MySQL database.
-- For chat system, the app uses the [Firebase Real-Time Database](https://firebase.google.com/docs/database) package which supports Android, iOS.
-  - For location tracking, the app uses [Expo Location Library](https://docs.expo.dev/versions/latest/sdk/location/) which supports Android, iOS.
-- For tracking seats, the app uses [ESP8266 Module](https://www.espressif.com/en/products/socs/esp8266), which send uses [HTTPClient](https://www.arduino.cc/reference/en/libraries/httpclient/) to send requests yo update the current state of seats.
-- This project is hosted on [AWS](https://aws.amazon.com/websites/).
-  <br><br>
+- This project leverages AWS deployment strategies to seamlessly integrate and deploy natural language processing models. With a focus on scalability, reliability, and performance, we ensure that AI applications powered by these models deliver robust and responsive solutions for diverse use cases.
+
+<br><br>
+
+<!-- Unit Testing -->
+<img src="./readme/title9.svg"/>
+
+### Precision in Development: Harnessing the Power of Unit Testing:
+
+- This project employs rigorous unit testing methodologies to ensure the reliability and accuracy of code components. By systematically evaluating individual units of the software, we guarantee a robust foundation, identifying and addressing potential issues early in the development process.
+
+<br><br>
 
 <!-- How to run -->
-<img src="./readme/title6.svg"/>
+<img src="./readme/title10.svg"/>
 
 > To set up B-ROUTE locally, follow these steps:
 
