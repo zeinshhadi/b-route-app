@@ -85,9 +85,9 @@
 
 ### Driver Screens (Mobile)
 
-| Driver barcode screen             | Bus details screen                | Profile screen                   |
-| --------------------------------- | --------------------------------- | -------------------------------- |
-| ![Landing](./readme/barcode.jpeg) | ![fsdaf](./readme/busdetails.gif) | ![fsdaf](./readme/profiles.jpeg) |
+| Driver barcode screen             | Bus details screen                | Profile screen                  |
+| --------------------------------- | --------------------------------- | ------------------------------- |
+| ![Landing](./readme/barcode.jpeg) | ![fsdaf](./readme/busdetails.gif) | ![fsdaf](./readme/profile.jpeg) |
 
 ### Admin Screens
 
