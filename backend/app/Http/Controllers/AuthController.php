@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Driver;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -83,6 +84,10 @@ class AuthController extends Controller
         if ($user->role_type =='driver'){
             $driver = Driver::where('user_id', $user->id)->first();
             $driver->update(['driver_status' => false]);
+                    
+            $driver_id= $driver->id;
+            $location = Location::where('driver_id',$driver_id)->get()->first();
+            $location->delete();
         }
         Auth::logout();
         return response()->json([
