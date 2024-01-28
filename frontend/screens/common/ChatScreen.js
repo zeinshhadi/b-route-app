@@ -44,7 +44,7 @@ const ChatScreen = () => {
     });
 
     setMessage("");
-  
+    console.log("Message sent!");
   };
   const renderItem = ({ item }) => {
     return (

@@ -23,12 +23,12 @@ import DriverBottomNavigation from "./components/common/bottomNavigation/DriverB
 import UserRideScreen from "./screens/userScreens/UserRideScreen";
 import ChatScreen from "./screens/common/ChatScreen";
 import AdminChatScreen from "./screens/adminScreens/AdminChatScreen";
-import IndividualChatScreen from "./screens/adminScreens/IndividualChatScreen";
 import Colors from "./utils/colors";
 import DeleteButton from "./components/common/DeleteButton";
 import DriverHomeScreen from "./screens/driverScreens/DriverHomeScreen";
 import DriversActiveScreen from "./screens/adminScreens/DriversActiveScreen";
 import DriverFeedbackScreen from "./screens/userScreens/DriverFeedbackScreen";
+import IndividualChatScreen from "./screens/adminScreens/IndividualChatScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -104,6 +104,17 @@ export default function App() {
                 options={{
                   headerShown: true,
                   headerTitle: "Buses Registered",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
+                  statusBarColor: "black",
+                }}
+              />
+              <Stack.Screen
+                name="IndividualChatScreen"
+                component={IndividualChatScreen}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Driver Status",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
                   statusBarColor: "black",
