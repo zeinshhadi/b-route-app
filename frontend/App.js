@@ -109,17 +109,7 @@ export default function App() {
                   statusBarColor: "black",
                 }}
               />
-              <Stack.Screen
-                name="IndividualChatScreen"
-                component={IndividualChatScreen}
-                options={{
-                  headerShown: true,
-                  headerTitle: "Chat Screen",
-                  headerStyle: { backgroundColor: Colors.primary500 },
-                  headerTintColor: "white",
-                  statusBarColor: "black",
-                }}
-              />
+
               <Stack.Screen
                 name="BusInformation"
                 component={BusInformationScreen}
@@ -222,6 +212,17 @@ export default function App() {
               <Stack.Screen
                 name="AdminChatScreen"
                 component={AdminChatScreen}
+                options={{
+                  headerShown: true,
+                  headerTitle: "Chat Screen",
+                  headerStyle: { backgroundColor: Colors.primary500 },
+                  headerTintColor: "white",
+                  statusBarColor: "black",
+                }}
+              />
+              <Stack.Screen
+                name="IndividualChatScreen"
+                component={IndividualChatScreen}
                 options={{
                   headerShown: true,
                   headerTitle: "Chat Screen",

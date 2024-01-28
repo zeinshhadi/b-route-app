@@ -14,7 +14,7 @@ const UserRideScreen = ({ navigation }) => {
   const authorization = "bearer " + authState.token;
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
-  const [rideStatus, setRideStatus] = useState(false);
+
   const [scannerKey, setScannerKey] = useState(Date.now());
   const [startLat, setStartLat] = useState(null);
   const [startLon, setStartLon] = useState(null);
@@ -54,11 +54,9 @@ const UserRideScreen = ({ navigation }) => {
           }
         );
         setStartTime(new Date());
-        // setRideStatus(true);
         showAlert("Enjoy your ride !");
         setScanCount(1);
       } else if (scanCount === 1) {
-        // setRideStatus(false);
         const endTime = new Date();
         const timeDifference = (endTime - startTime) / 1000;
         const minutes = Math.floor(timeDifference / 60);
@@ -79,7 +77,7 @@ const UserRideScreen = ({ navigation }) => {
         );
 
         const final_distance = distance(startLat, endLat, startLon, endLon);
-        showAlert(`End ride type ${final_distance} and in ${minutes} minutes!`);
+        showAlert(`End ride type ${3} Km and in ${3} minutes!`);
 
         setScanCount(0);
       }

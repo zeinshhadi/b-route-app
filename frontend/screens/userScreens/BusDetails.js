@@ -45,7 +45,7 @@ const BusDetails = ({ navigation }) => {
     };
 
     fetchBusData();
-  }, [driver_id, authorization, driverImageUri]);
+  }, [driver_id, authorization, driverImageUri, numberOfSeats]);
 
   const openModal = async () => {
     try {
@@ -143,9 +143,9 @@ const BusDetails = ({ navigation }) => {
         <View style={styles.seatRow}>{renderSeats().slice(4, 7)}</View>
         <View style={styles.seatRow}>{renderSeats().slice(7, 10)}</View>
       </View>
-      <Pressable onPress={() => handleStartRide()}>
+      {/* <Pressable onPress={() => handleStartRide()}>
         <View style={styles.buttonStyle}>{<Text style={styles.buttonTextStyle}>Start your ride</Text>}</View>
-      </Pressable>
+      </Pressable> */}
       <View style={styles.buttonPosition}>
         <Pressable onPress={openModal}>
           <MaterialIcons name="feedback" size={24} color={Colors.primary500} />

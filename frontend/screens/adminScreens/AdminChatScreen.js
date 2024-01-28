@@ -55,7 +55,7 @@ const AdminChatScreen = ({ navigation }) => {
   }, []);
 
   const navigateToChat = (userId, userType) => {
-    navigation.navigate("IndividualChatScreen", { screen: "AdminChatScreen", param: { userId, userType } });
+    navigation.navigate("IndividualChatScreen", { userId, userType });
   };
   const renderItem = ({ item }) => {
     return (
