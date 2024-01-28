@@ -14,7 +14,7 @@ class GetAllDriversTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function test_get_all_by_zone_api(): void
 {
         
            $response = $this->postJson('/api/login', [

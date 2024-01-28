@@ -11,7 +11,7 @@ class GetBusesByZoneTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function test_get_buses_by_zone_api(): void
 {
         
            $response = $this->postJson('/api/login', [
