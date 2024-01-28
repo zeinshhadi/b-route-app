@@ -42,13 +42,11 @@
 
 > We made B-route by drawing and testing ideas until we got a design that's simple to use. It helps you track buses, check seats, and chat easily between admins, drivers, and passengers.
 
-### Wireframes
+### MockUps
 
 | Login screen                            | Register screen                       | Landing screen                        |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
 | ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-
-### Mockups
 
 | Home screen                             | Menu Screen                           | Order Screen                          |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
