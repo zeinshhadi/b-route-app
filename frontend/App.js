@@ -114,7 +114,7 @@ export default function App() {
                 component={IndividualChatScreen}
                 options={{
                   headerShown: true,
-                  headerTitle: "Driver Status",
+                  headerTitle: "Chat Screen",
                   headerStyle: { backgroundColor: Colors.primary500 },
                   headerTintColor: "white",
                   statusBarColor: "black",
