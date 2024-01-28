@@ -22,7 +22,7 @@ class CreateUserTest extends TestCase
     {
     
 
-        $userData = [
+        $user = [
             'first_name' => 'messi',
             'last_name' => 'lionel',
             'email' => 'messi@gmail.com',
@@ -30,7 +30,7 @@ class CreateUserTest extends TestCase
             'phone_number' => '123456789',
         ];
 
-        $response = $this->post('/api/register', $userData);
+        $response = $this->post('/api/register', $user);
 
         $response->assertStatus(200)
             ->assertJson([

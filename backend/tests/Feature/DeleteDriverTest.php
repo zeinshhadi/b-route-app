@@ -6,13 +6,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class GetAllBusesTest extends TestCase
+class DeleteDriverTest extends TestCase
 {
     /**
      * A basic feature test example.
      */
-    public function test_get_all_buses_api(): void
- {
+    public function test_example(): void
+{
         
            $response = $this->postJson('/api/login', [
             'email' => 'admin@gmail.com',
@@ -26,9 +26,11 @@ class GetAllBusesTest extends TestCase
 
         $response = $this->withHeaders([
             'Authorization' => 'Bearer ' . $token,
-        ])->getJson('/api/all/buses');
+        ])->deleteJson('/api/delete/driver/17');
 
         $response->assertStatus(200)
-                 ->assertJsonStructure(['buses']);
+                ->assertExactJson([
+                     'message' => 'Driver deleted successfully',
+                 ]);
     }
 }
