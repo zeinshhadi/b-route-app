@@ -45,7 +45,8 @@ const BusDetails = ({ navigation }) => {
     };
 
     fetchBusData();
-  }, [driver_id]);
+  }, [driver_id, authorization, driverImageUri]);
+
   const openModal = async () => {
     try {
       const response = await axios.get(`${Url}/api/driver/reviews/${driver_id}`, {
