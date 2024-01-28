@@ -47,7 +47,7 @@
 - For chat system, the app uses the [Firebase Real-Time Database](https://firebase.google.com/docs/database) package which supports Android, iOS.
   - For location tracking, the app uses [Expo Location Library](https://docs.expo.dev/versions/latest/sdk/location/) which supports Android, iOS.
 - For tracking seats, the app uses [ESP8266 Module](https://www.espressif.com/en/products/socs/esp8266), which send uses [HTTPClient](https://www.arduino.cc/reference/en/libraries/httpclient/) to send requests yo update the current state of seats.
-- This project is hosted on [AWS](https://aws.amazon.com/websites/).
+
   <br><br>
 
 <!-- UI UX -->
@@ -79,27 +79,21 @@
 
 ### User Screens (Mobile)
 
-| Home screen map                         | Bus details screen                    | Seats track screen                    |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/mapuser.gif)        | ![fsdaf](./readme/busdetail.gif)      | ![fsdaf](./readme/arduino.gif)        |
-| Home screen                             | Menu Screen                           | Order Screen                          |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Home screen map                  | Bus details screen                | Seats track screen             |
+| -------------------------------- | --------------------------------- | ------------------------------ |
+| ![Landing](./readme/mapuser.gif) | ![fsdaf](./readme/busdetails.gif) | ![fsdaf](./readme/arduino.gif) |
 
 ### Driver Screens (Mobile)
 
-| Driver barcode screen                   | Bus details screen                    | Profile screen                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/barcode.jpeg)       | ![fsdaf](./readme/busdetail.gif)      | ![fsdaf](./readme/profile.jpeg)       |
-| Home screen                             | Menu Screen                           | Order Screen                          |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Driver barcode screen             | Bus details screen                | Profile screen                   |
+| --------------------------------- | --------------------------------- | -------------------------------- |
+| ![Landing](./readme/barcode.jpeg) | ![fsdaf](./readme/busdetails.gif) | ![fsdaf](./readme/profiles.jpeg) |
 
 ### Admin Screens
 
-| Admin screen                            | Chat screen                           | Active users screen                   |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/admin.jpeg)         | ![fsdaf](./readme/chat.gif)           | ![fsdaf](./readme/active.jpeg)        |
-| Home screen                             | Menu Screen                           | Order Screen                          |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Admin screen                     | Chat screen                 | Active users screen             |
+| -------------------------------- | --------------------------- | ------------------------------- |
+| ![Landing](./readme/admin1.jpeg) | ![fsdaf](./readme/chat.gif) | ![fsdaf](./readme/active1.jpeg) |
 
 <br><br>
 
