@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Models\Driver;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -10,51 +9,44 @@ use Tests\TestCase;
 class CreateDriverTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * Test create driver API.
+     *
+     * @return void
      */
-    public function test_successful_create_driver_api(): void
-    {
-        $response = $this->postJson('/api/login', [
-            'email' => 'admin@gmail.com',
-            'password' => '123123',
-        ]);
+    // ...
 
-        $response->assertStatus(200);
+public function test_successful_create_driver_api(): void
+{
+    // Dummy data for creating a driver
+    $userData = [
+        'first_name' => 'John',
+        'last_name' => 'Doe',
+        'email' => 'johndoe@example.com',
+        'password' => 'password123',
+        'phone_number' => '123456789',
+        'driver_license' => 'ABC123456',
+        'bus_id' => 1,
+         'image' => realpath(__DIR__.'../../public/storage/28_1706448972_image_1706448926498.jpg.jpg')
+    ];
 
-        $token = $response['authorisation']['token'];
+    $loginResponse = $this->postJson('/api/login', [
+        'email' => 'admin@gmail.com',
+        'password' => '123123',
+    ]);
+    $loginResponse->assertStatus(200);
 
-        $response = $this->withHeaders([
-            'Authorization' => 'Bearer ' . $token,
-        ])->postJson('/api/register/driver', [
-            'first_name' => 'bernadette',
-            'last_name' => 'atieh',
-            'email' => 'atieh@gmail.com',
-            'password' => '123123',
-            'phone_number' => '654485',
-            'role_type' => 'driver', 
-        'image' => '123123.jpg',
-        'driver_license' => '3521545',
+    $token = $loginResponse['authorization']['token'];
 
-        ]);
+    $response = $this->withHeaders([
+        'Authorization' => 'Bearer ' . $token,
+    ])->postJson('/api/register/driver', $userData);
 
-        $response->assertStatus(201)
-            ->assertJson([
-                'message' => 'Donation added successfully',
-            ]);
+    $response->assertStatus(200)
+             ->assertJson([
+                 'status' => 'success',
+             ]);
 
-        $this->assertDatabaseHas('orders', [
-            'description' => 'Fifth Donation',
-            'total_weight' => '20',
-            'pickup_within' => '24',
-            'phone_number' => '+96103899901',
-            'date' => '2024-01-28',
-            'location_pickup' => '123 Street',
-        ]);
-        $this->assertDatabaseHas('locations', [
-            'latitude' => '40.7128',
-            'longitude' => '-4.73',
-            'description' => 'Al-Hamra',
-        ]);
-    }
+
 }
 
+}
