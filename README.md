@@ -59,9 +59,9 @@
 
 ### Mockups
 
-| Landing screen                   | Sign Up Screen                | Administration Screen                |
-| -------------------------------- | ----------------------------- | ------------------------------------ |
-| ![Landing](./readme/Landing.png) | ![fsdaf](./readme/Signup.png) | ![fsdaf](./readme/Adminstration.png) |
+| Landing screen                   | Sign Up Screen                | Administration Screen                 |
+| -------------------------------- | ----------------------------- | ------------------------------------- |
+| ![Landing](./readme/Landing.png) | ![fsdaf](./readme/Signup.png) | ![fsdaf](./readme/Adminstration5.png) |
 
 <br><br>
 
@@ -85,9 +85,9 @@
 
 ### Driver Screens (Mobile)
 
-| Driver barcode screen             | Bus details screen                | Profile screen                  |
+| Driver barcode screen             | Drivers displayed screen          | Profile screen                  |
 | --------------------------------- | --------------------------------- | ------------------------------- |
-| ![Landing](./readme/barcode.jpeg) | ![fsdaf](./readme/busdetails.gif) | ![fsdaf](./readme/profile.jpeg) |
+| ![Landing](./readme/barcode.jpeg) | ![fsdaf](./readme/drivermap.jpeg) | ![fsdaf](./readme/profile.jpeg) |
 
 ### Admin Screens
 
