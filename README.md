@@ -55,13 +55,13 @@
 
 > Using the mockups as a guide, we implemented the B-ROUTE app with the following features:
 
-- Project Figma design [figma](https://www.figma.com/file/LsuOx5Wnh5YTGSEtrgvz4l/Purrfect-Pals?type=design&node-id=257%3A79&mode=design&t=adzbABt5hbb91ucZ-1)
+- Project Figma design [figma](https://www.figma.com/file/GJ2YyJatUqoTfFIRbqcMKn/B-route?type=design&node-id=123%3A450&mode=design&t=PvP4zBXw9OVG0g8b-1)
 
 ### Mockups
 
-| Home screen                             | Menu Screen                           | Order Screen                          |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Landing screen                   | Sign Up Screen                | Administration Screen                |
+| -------------------------------- | ----------------------------- | ------------------------------------ |
+| ![Landing](./readme/Landing.png) | ![fsdaf](./readme/Signup.png) | ![fsdaf](./readme/Adminstration.png) |
 
 <br><br>
 
@@ -79,17 +79,25 @@
 
 ### User Screens (Mobile)
 
-| Login screen                              | Register screen                         | Landing screen                          | Loading screen                          |
-| ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-| Home screen                               | Menu Screen                             | Order Screen                            | Checkout Screen                         |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-
-### Admin Screens (Web)
-
-| Login screen                            | Register screen                       | Landing screen                        |
+| Home screen map                         | Bus details screen                    | Seats track screen                    |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
+| ![Landing](./readme/mapuser.gif)        | ![fsdaf](./readme/busdetail.gif)      | ![fsdaf](./readme/arduino.gif)        |
+| Home screen                             | Menu Screen                           | Order Screen                          |
 | ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+
+### Driver Screens (Mobile)
+
+| Driver barcode screen                   | Bus details screen                    | Profile screen                        |
+| --------------------------------------- | ------------------------------------- | ------------------------------------- |
+| ![Landing](./readme/barcode.jpeg)       | ![fsdaf](./readme/busdetail.gif)      | ![fsdaf](./readme/profile.jpeg)       |
+| Home screen                             | Menu Screen                           | Order Screen                          |
+| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+
+### Admin Screens
+
+| Admin screen                            | Chat screen                           | Active users screen                   |
+| --------------------------------------- | ------------------------------------- | ------------------------------------- |
+| ![Landing](./readme/admin.jpeg)         | ![fsdaf](./readme/chat.gif)           | ![fsdaf](./readme/active.jpeg)        |
 | Home screen                             | Menu Screen                           | Order Screen                          |
 | ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
 
