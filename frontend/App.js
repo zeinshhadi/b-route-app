@@ -29,6 +29,7 @@ import DriverHomeScreen from "./screens/driverScreens/DriverHomeScreen";
 import DriversActiveScreen from "./screens/adminScreens/DriversActiveScreen";
 import DriverFeedbackScreen from "./screens/userScreens/DriverFeedbackScreen";
 import IndividualChatScreen from "./screens/adminScreens/IndividualChatScreen";
+import SplashScreen from "./screens/SplashScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -39,7 +40,13 @@ export default function App() {
         <StatusBar backgroundColor="black" />
         <Provider store={store}>
           <NavigationContainer>
-            <Stack.Navigator initialRouteName="LogInScreen">
+            <Stack.Navigator initialRouteName="SplashScreen">
+              <Stack.Screen
+                name="SplashSCreen"
+                component={SplashScreen}
+                options={{ headerShown: false, statusBarColor: "black" }}
+              />
+
               <Stack.Screen
                 name="LogInScreen"
                 component={LoginScreen}
