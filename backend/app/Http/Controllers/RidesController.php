@@ -25,7 +25,7 @@ public function create_ride(Request $request){
      $bus = Bus::find($bus_id);
      $num_of_seats = $bus->number_of_seats;
     if($num_of_seats>=1){
-            $ride = Ride::create([
+        $ride = Ride::create([
         'start_longitude' => $request->start_longitude,
         'start_latitude' => $request->start_latitude,
         'end_longitude' => 0,
