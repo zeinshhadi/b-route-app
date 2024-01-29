@@ -27,7 +27,7 @@ class CreateUserTest extends TestCase
             'first_name' => $faker->firstName,
             'last_name' => $faker->lastName,
             'email' => $faker->unique()->safeEmail,
-            'password' => '123123', // You can also use $faker->password to generate a random password
+            'password' => '123123',
             'phone_number' => $faker->phoneNumber,
         ];
 
