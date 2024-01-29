@@ -70,7 +70,7 @@
 <!-- Database Design -->
 <img src="./readme/title5.svg"/>
 
-### Architecting Data Excellence: Innovative Database Design Strategies:
+### Database Design :
 
 ![Screenshot](./readme/er.png)
 
@@ -102,7 +102,7 @@
 <!-- AWS Deployment -->
 <img src="./readme/title8.svg"/>
 
-### Efficient AI Deployment: Unleashing the Potential with AWS Integration:
+### AWS Integration:
 
 - This project is deployed to Amazon Linux 2023 backend, by using the following steps :
 
@@ -121,7 +121,7 @@
 <!-- Unit Testing -->
 <img src="./readme/title9.svg"/>
 
-### Precision in Development: Harnessing the Power of Unit Testing:
+### Testing Screenshot:
 
 - I used some tests to test my apis functionalities, where all my tests succeeded and work as it should. Below you can find a screenshot of there tests.
 
