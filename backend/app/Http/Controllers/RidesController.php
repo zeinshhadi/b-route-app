@@ -46,29 +46,68 @@ public function create_ride(Request $request){
 
 }
 
-    public function end_ride(Request $request){
-        $user = Auth::user();
-        $ride= Ride::where('user_id',$user->id)->latest()->first();
-        $ride->update(['end_latitude' => $request->end_latitude,'end_longitude'=>$request-> end_longitude]);
-        $driver = Driver::where('user_id', $request->user_id)->first();
-        $bus_id=$driver->bus_id;
-        $bus = Bus::find($bus_id);
-        $bus->increment('number_of_seats');
-
-    }
+public function end_ride(Request $request){
+    
+    $rules = [
+        'end_latitude' => 'required|numeric',
+        'end_longitude' => 'required|numeric',
+        'user_id' => 'required|exists:users,id',
+        
+    ];
 
     
-    public function add_feedback(Request $request){
-        $user = Auth::user();
-        $ride= Ride::where('user_id',$user->id)->latest()->first();
-        if($ride){
-        $ride->update(["rate"=>$request->input('rate'),"review"=>$request->input('review')]);
-        return response()->json(['ride ',$ride]);
-        }else{
-            return response()->json(['ride not found']);
+    $validatedData = $request->validate($rules);
+
+    
+    $user = Auth::user();
+
+    $ride = Ride::where('user_id', $user->id)->latest()->first(); 
+    $ride->update([
+        'end_latitude' => $validatedData['end_latitude'],
+        'end_longitude' => $validatedData['end_longitude']
+    ]);
+
+    $driver = Driver::where('user_id', $validatedData['user_id'])->first();
+    if ($driver) {
+        $bus = Bus::find($driver->bus_id);
+        if ($bus) {
+            $bus->increment('number_of_seats');
+        } else {
+            
+            return response()->json(['error' => 'Bus not found'], 404);
         }
+    } else {
         
+        return response()->json(['error' => 'Driver not found'], 404);
     }
+
+    return response()->json(['status' => 'success'], 200);
+}
+
+    
+public function add_feedback(Request $request){
+    
+    $rules = [
+        'rate' => 'required|numeric|min:1|max:5',
+        'review' => 'nullable|string|max:255',
+        
+    ];
+ 
+    $validatedData = $request->validate($rules);
+    $user = Auth::user();
+    $ride = Ride::where('user_id', $user->id)->latest()->first();
+    if($ride){
+        $ride->update([
+            'rate' => $validatedData['rate'],
+            'review' => $validatedData['review'],
+        ]);
+
+        return response()->json(['ride' => $ride]);
+    } else {
+        return response()->json(['error' => 'Ride not found'], 404);
+    }
+}
+
 public function get_feedback() {
     $reviews = Ride::whereHas('user', function ($query) {
             $query->where('first_name', '!=', '')
