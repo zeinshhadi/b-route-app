@@ -15,7 +15,7 @@ class GetDriverReviewsTest extends TestCase
  {
         
            $response = $this->postJson('/api/login', [
-            'email' => 'john@gmail.com',
+            'email' => 'admin@gmail.com',
             'password' => '123123',
             
         ]);
@@ -27,9 +27,9 @@ class GetDriverReviewsTest extends TestCase
 
         $response = $this->withHeaders([
             'Authorization' => 'Bearer ' . $token,
-        ])->getJson('/api/all/buses');
+        ])->getJson('/api/feedback');
 
         $response->assertStatus(200)
-                 ->assertJsonStructure(['buses']);
+                 ->assertJsonStructure(['reviews']);
     }
 }

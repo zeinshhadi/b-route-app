@@ -8,10 +8,11 @@ use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Faker\Factory as Faker;
 
 class CreateUserTest extends TestCase
 {
-    // use RefreshDatabase;
+    use WithFaker;
 
     /**
      * Test user registration.
@@ -20,14 +21,14 @@ class CreateUserTest extends TestCase
      */
     public function test_successful_create_user_api()
     {
-    
+        $faker = Faker::create();
 
         $user = [
-            'first_name' => 'messi',
-            'last_name' => 'lionel',
-            'email' => 'messi@gmail.com',
-            'password' => '123123',
-            'phone_number' => '123456789',
+            'first_name' => $faker->firstName,
+            'last_name' => $faker->lastName,
+            'email' => $faker->unique()->safeEmail,
+            'password' => '123123', // You can also use $faker->password to generate a random password
+            'phone_number' => $faker->phoneNumber,
         ];
 
         $response = $this->post('/api/register', $user);
