@@ -91,9 +91,9 @@
 
 ### Admin Screens
 
-| Admin screen                     | Chat screen                 | Active users screen             |
-| -------------------------------- | --------------------------- | ------------------------------- |
-| ![Landing](./readme/admin1.jpeg) | ![fsdaf](./readme/chat.gif) | ![fsdaf](./readme/active1.jpeg) |
+| Admin screen                           | Chat screen                 | Active users screen                      |
+| -------------------------------------- | --------------------------- | ---------------------------------------- |
+| ![Landing](./readme/adminscreen1.jpeg) | ![fsdaf](./readme/chat.gif) | ![fsdaf](./readme/activedriverjpeg.jpeg) |
 
 <br><br>
 

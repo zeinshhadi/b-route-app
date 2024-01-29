@@ -34,8 +34,6 @@ const AdminBottomNavigation = () => {
         options={{
           headerShown: true,
           tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size} />,
-
-          headerTitleAlign: "center",
         }}
       />
       <Tab.Screen
