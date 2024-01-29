@@ -1,16 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  Pressable,
-  StyleSheet,
-  ActivityIndicator,
-  Image,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-} from "react-native";
+import { View, Text, TextInput, Pressable, StyleSheet, ActivityIndicator, Image, ScrollView } from "react-native";
 import { Rating } from "react-native-ratings";
 import Colors from "../../utils/colors";
 import axios from "axios";
@@ -37,6 +26,7 @@ const UserFeedback = ({ navigation }) => {
         { headers: { Authorization: authorization } }
       );
       setLoading(false);
+      console.log(response.data);
       navigation.navigate("Home");
     } catch (error) {
       setLoading(false);
