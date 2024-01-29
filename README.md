@@ -13,27 +13,27 @@
 
 ### Passenger User Stories
 
-- As a passenger, I want to view the real-time locations of the buses on the map.
+- As a passenger, I want to view the real-time locations of the buses on the map, so that I can check which bus should I take to my next stop,
 
-- As a passenger, I want to see the availability of seats on the bus in real-time.
+- As a passenger, I want to see the availability of seats on the bus in real-time, so that I can know if the closet bus has any seats available.
 
-- As a passenger, I want to scan the barcode of the driver to start and end a ride.
+- As a passenger, I want to scan the barcode of the driver to start and end a ride, so that I can reach my destination and add a feedback.
 
 ### Driver User Stories
 
-- As a driver, I want to log in to start my shift.
+- As a driver, I want to log in to start my shift, so that I can appear as active to the administration.
 
-- As a driver, I want to show my barcode to to get scanned by user and update my location.
+- As a driver, I want to show my barcode to to get scanned by user and update my location, so that user can have a seat in my bus where and to get his feedback when he arrives to his destination.
 
-- As a driver, I want to chat with admin in case of any problem I face.
+- As a driver, I want to chat with admin in case of any problem I face, so that in I can notice the administration or get noticed of any issue or important info.
 
 ### Admin User Stories
 
-- As an admin, I want to monitor the active drivers.
+- As an admin, I want to monitor the active drivers, so that he can keep track of active drivers and on which zones we have a bus working at the time being.
 
-- As an admin, I want to chat with drivers and passengers for support.
+- As an admin, I want to chat with drivers and passengers for support, so that in case of any positive or negative back, or in case of any problem we got noticed.
 
-- As an admin, I want to view and analyze passenger ratings and feedback for each journey to assess overall service quality.
+- As an admin, I want to view and analyze passenger ratings and feedback for each journey to assess overall service quality, so that we can improve the service we are offering to our users.
 
   <br><br>
 
@@ -44,8 +44,10 @@
 
 - This project uses the [React Native Expo development framework](https://reactnative.dev/). React Native is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile.
 - For persistent storage (database), the app utilizes the [MySQL database](https://www.mysql.com/), enabling the creation of a custom storage schema and saving data to a local MySQL database.
+- For server-side operations, this project leverages Laravel, a PHP framework known for its implementation of the MVC (Model-View-Controller) architectural design pattern.
+- For backend ap
 - For chat system, the app uses the [Firebase Real-Time Database](https://firebase.google.com/docs/database) package which supports Android, iOS.
-  - For location tracking, the app uses [Expo Location Library](https://docs.expo.dev/versions/latest/sdk/location/) which supports Android, iOS.
+- For location tracking, the app uses [Expo Location Library](https://docs.expo.dev/versions/latest/sdk/location/) which supports Android, iOS.
 - For tracking seats, the app uses [ESP8266 Module](https://www.espressif.com/en/products/socs/esp8266), which uses [HTTPClient](https://www.arduino.cc/reference/en/libraries/httpclient/) to send requests yo update the current state of seats.
 
   <br><br>
@@ -102,16 +104,26 @@
 
 ### Efficient AI Deployment: Unleashing the Potential with AWS Integration:
 
-- This project leverages AWS deployment strategies to seamlessly integrate and deploy natural language processing models. With a focus on scalability, reliability, and performance, we ensure that AI applications powered by these models deliver robust and responsive solutions for diverse use cases.
+- This project is deployed to Amazon Linux 2023 backend, by using the following steps :
 
-<br><br>
+1. Update Amazon Linux 2023 Packages
+2. Install LAMP Stack
+3. Start and enable the Apache and MariaDB services
+4. Create Database
+5. Install PHP Composer for Laravel on on.Linux 2023
+6. Download the Laravel framework project
+7. Install Laravel on Amazon Linux 2023
+8. Create the Laravel environment configuration file
+9. Apache Configuration for PHP Laravel App
+10. Get the Laravel demo page
+    <br><br>
 
 <!-- Unit Testing -->
 <img src="./readme/title9.svg"/>
 
 ### Precision in Development: Harnessing the Power of Unit Testing:
 
-- This project employs rigorous unit testing methodologies to ensure the reliability and accuracy of code components. By systematically evaluating individual units of the software, we guarantee a robust foundation, identifying and addressing potential issues early in the development process.
+- I used some tests to test my apis functionalities, where all my tests succeeded and work as it should. Below you can find a screenshot of there tests.
 
 ![Screenshot](./readme/unitest.png)
 <br><br>
