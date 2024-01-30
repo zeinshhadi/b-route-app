@@ -63,7 +63,15 @@
 
 | Landing screen                   | Sign Up Screen                | Administration Screen                 |
 | -------------------------------- | ----------------------------- | ------------------------------------- |
-| ![Landing](./readme/Landing.png) | ![fsdaf](./readme/Signup.png) | ![fsdaf](./readme/Adminstration5.png) |
+| ![Landing]((https://github.com/zeinshhadi/b-route-app/assets/90348288/a80b3d3e-2dfd-479f-b04e-ee078e2de1a7)) | ![fsdaf]((https://github.com/zeinshhadi/b-route-app/assets/90348288/26fe4c3c-82f3-46a4-8f4d-4999e1e645ca)) | ![fsdaf]((
+
+
+
+
+
+https://github.com/zeinshhadi/b-route-app/assets/90348288/7d98776d-cb3f-4c18-b252-6bf9dab5b052
+
+)) |
 
 <br><br>
 
@@ -98,6 +106,14 @@
 | ![Landing](./readme/adminscreen1.jpeg) | ![fsdaf](./readme/chat.gif) | ![fsdaf](./readme/activedriverjpeg.jpeg) |
 
 <br><br>
+### App Demo
+
+| Stage 1                             | Stage 2                        | Stage 3                       |
+| ----------------------------------- | ------------------------------ | ----------------------------- |
+| ![Landing](./readme/passenger1.mp4) | ![fsdaf](./readme/driver2.mp4) | ![fsdaf](./readme/admin3.mp4) |
+
+<br><br>
+
 
 <!-- AWS Deployment -->
 <img src="./readme/title8.svg"/>
