@@ -98,33 +98,27 @@
 | ![Landing](./readme/adminscreen1.jpeg) | ![fsdaf](./readme/chat.gif) | ![fsdaf](./readme/activedriverjpeg.jpeg) |
 
 <br><br>
+
 ### App Demo
 
-<table>
-  <tr>
-    <td align="center">
-      <video width="320" height="240" controls>
-        <source src="https://raw.githubusercontent.com/zeinshhadi/b-route-app/main/assets/90348288/a80b3d3e-2dfd-479f-b04e-ee078e2de1a7.mp4" type="video/mp4">
+<div style="display: flex; justify-content: space-between;">
+    <video width="30%" controls>
+        <source src="./readme/passenger1.mp4" type="video/mp4">
         Your browser does not support the video tag.
-      </video>
-    </td>
-    <td align="center">
-      <video width="320" height="240" controls>
-        <source src="https://raw.githubusercontent.com/zeinshhadi/b-route-app/main/assets/90348288/7d98776d-cb3f-4c18-b252-6bf9dab5b052.mp4" type="video/mp4">
+    </video>
+    <video width="30%" controls>
+        <source src="./readme/driver2.mp4" type="video/mp4">
         Your browser does not support the video tag.
-      </video>
-    </td>
-    <td align="center">
-      <video width="320" height="240" controls>
-        <source src="https://raw.githubusercontent.com/zeinshhadi/b-route-app/main/assets/90348288/26fe4c3c-82f3-46a4-8f4d-4999e1e645ca.mp4" type="video/mp4">
+    </video>
+    <video width="30%" controls>
+        <source src="./readme/admin3.mp4" type="video/mp4">
         Your browser does not support the video tag.
-      </video>
-    </td>
-  </tr>
-</table>
+    </video>
+</div>
 
 <br><br>
 
+<br><br>
 
 <!-- AWS Deployment -->
 <img src="./readme/title8.svg"/>
