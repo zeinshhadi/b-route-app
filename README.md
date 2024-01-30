@@ -1,4 +1,4 @@
-<img src="./readme/title1.svg"/>
+b<img src="./readme/title1.svg"/>
 
 <br><br>
 
@@ -109,6 +109,25 @@
    <video  src="https://github.com/zeinshhadi/b-route-app/assets/90348288/26f534a9-412a-48b9-a952-d00839da2f4c.mp4">
 </div>
 <br><br>
+
+### App Demo
+
+<div style="display: flex; justify-content: space-between;">
+    <video width="30%" controls>
+        <source src="./readme/passenger1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video width="30%" controls>
+        <source src="./readme/driver2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video width="30%" controls>
+        <source src="./readme/admin3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<br></br>
 
 <!-- AWS Deployment -->
 <img src="./readme/title8.svg"/>
