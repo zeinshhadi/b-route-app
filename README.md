@@ -104,42 +104,24 @@
   <tr>
     <td align="center">
       <video width="320" height="240" controls>
-        <source src="https://github.com/zeinshhadi/b-route-app/assets/90348288/a80b3d3e-2dfd-479f-b04e-ee078e2de1a7" type="video/mp4">
+        <source src="https://raw.githubusercontent.com/zeinshhadi/b-route-app/main/assets/90348288/a80b3d3e-2dfd-479f-b04e-ee078e2de1a7.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </td>
     <td align="center">
       <video width="320" height="240" controls>
-        <source src="https://github.com/zeinshhadi/b-route-app/assets/90348288/7d98776d-cb3f-4c18-b252-6bf9dab5b052" type="video/mp4">
+        <source src="https://raw.githubusercontent.com/zeinshhadi/b-route-app/main/assets/90348288/7d98776d-cb3f-4c18-b252-6bf9dab5b052.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </td>
     <td align="center">
       <video width="320" height="240" controls>
-        <source src="https://github.com/zeinshhadi/b-route-app/assets/90348288/26fe4c3c-82f3-46a4-8f4d-4999e1e645ca" type="video/mp4">
+        <source src="https://raw.githubusercontent.com/zeinshhadi/b-route-app/main/assets/90348288/26fe4c3c-82f3-46a4-8f4d-4999e1e645ca.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </td>
   </tr>
 </table>
-
-
-<div style="display: flex; justify-content: space-between;">
-    <video width="30%" controls>
-        <source src="https://github.com/zeinshhadi/b-route-app/assets/90348288/a80b3d3e-2dfd-479f-b04e-ee078e2de1a7" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <video width="30%" controls>
-        <source src="./readme/chat.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <video width="30%" controls>
-        <source src="./readme/activedriverjpeg.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-
-
 
 <br><br>
 
