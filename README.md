@@ -102,20 +102,6 @@ b<img src="./readme/title1.svg"/>
 
 ### App Demo
 
-<div width="100%">
-<div width="30%">
- <video  src="https://github.com/zeinshhadi/b-route-app/assets/90348288/aeb80066-ad8a-432e-aa13-0861c6ac6a6d.mp4">
-</div>
-<div width="30%">
- <video  src="https://github.com/zeinshhadi/b-route-app/assets/90348288/73c7038d-c238-42b3-8c0d-ab162b3656da.mp4">
-</div>
-<div width="30%">
- <video  src="https://github.com/zeinshhadi/b-route-app/assets/90348288/37809778-0a16-4f37-8743-5f0a1b1f37ca.mp4">
-</div>
-</div>
-
-<br><br>
-
 <table>
   <tr>
     <td align="center">
