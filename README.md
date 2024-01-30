@@ -102,28 +102,9 @@
 
 ### App Demo
 
-<table>
-  <tr>
-    <td align="center">
-      <video width="320" height="240" controls>
-        <source src="https://github.com/zeinshhadi/b-route-app/assets/90348288/aeb80066-ad8a-432e-aa13-0861c6ac6a6d" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </td>
-    <td align="center">
-      <video width="320" height="240" controls>
-        <source src="https://github.com/zeinshhadi/b-route-app/assets/90348288/26f534a9-412a-48b9-a952-d00839da2f4c" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </td>
-    <td align="center">
-      <video width="320" height="240" controls>
-        <source src="https://github.com/zeinshhadi/b-route-app/assets/90348288/cf93d049-595b-4d4d-8941-f29c40ba6a2e" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </td>
-  </tr>
-</table>
+ <video  src="https://github.com/zeinshhadi/b-route-app/assets/90348288/aeb80066-ad8a-432e-aa13-0861c6ac6a6d.mp4">
+  <video  src="https://github.com/zeinshhadi/b-route-app/assets/90348288/aeb80066-ad8a-432e-aa13-0861c6ac6a6d.mp4">
+   <video  src="https://github.com/zeinshhadi/b-route-app/assets/90348288/26f534a9-412a-48b9-a952-d00839da2f4c.mp4">
 <br><br>
 
 <!-- AWS Deployment -->
