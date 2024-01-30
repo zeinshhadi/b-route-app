@@ -3,6 +3,7 @@
 <br><br>
 
 <!-- project philosophy -->
+
 <img src="./readme/title2.svg"/>
 
 > B-Route is more than just an app; it's a new way to improve your bus commute. We focus on giving you real-time info about bus locations, routes, and available seats
