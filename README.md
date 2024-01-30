@@ -114,13 +114,25 @@ b<img src="./readme/title1.svg"/>
 </div>
 </div>
 
-<!-- <div width="100%">
-  <video  src="https://github.com/zeinshhadi/b-route-app/assets/90348288/73c7038d-c238-42b3-8c0d-ab162b3656da.mp4">
-</div>
-<div width="100%">
+<br><br>
 
-   <video  src="https://github.com/zeinshhadi/b-route-app/assets/90348288/37809778-0a16-4f37-8743-5f0a1b1f37ca.mp4">
-</div> -->
+<table>
+  <tr>
+    <td align="center">
+      
+https://github.com/zeinshhadi/b-route-app/assets/90348288/aeb80066-ad8a-432e-aa13-0861c6ac6a6d
+
+</td>
+    <td align="center">
+      
+https://github.com/zeinshhadi/b-route-app/assets/90348288/73c7038d-c238-42b3-8c0d-ab162b3656da
+</td>
+    <td align="center">
+
+https://github.com/zeinshhadi/b-route-app/assets/90348288/37809778-0a16-4f37-8743-5f0a1b1f37ca
+
+</td>
+</table>
 
 <br><br>
 
