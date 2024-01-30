@@ -77,7 +77,7 @@ const UserRideScreen = ({ navigation }) => {
         );
 
         const final_distance = distance(startLat, endLat, startLon, endLon);
-        showAlert(`End ride type ${3} Km and in ${3} minutes!`);
+        showAlert(`End ride distance ${1} Km and in ${2} minutes!`);
 
         setScanCount(0);
       }
@@ -99,7 +99,7 @@ const UserRideScreen = ({ navigation }) => {
   const hideAlert = () => {
     setAlertVisible(false);
 
-    if (alertMessage.includes("End ride type")) {
+    if (alertMessage.includes("End ride distance")) {
       navigation.navigate("UserFeedbackScreen");
     }
   };

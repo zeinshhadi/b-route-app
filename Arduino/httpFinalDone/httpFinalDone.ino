@@ -2,9 +2,9 @@
 #include <ESP8266WiFi.h>
 #include <ArduinoJson.h>
 
-const char *ssid = "as";
-const char *password = "1234567890";
-const char *serverUrl = "http://192.168.43.64:8000/api/update/seat";
+const char *ssid = "Luka Messi";
+const char *password = "07220910@19997";
+const char *serverUrl = "http://192.168.0.101:8000/api/update/seat";
 
 const int buttonPins[] = {D2, D3, D4, D5, D6, D7, D8, D1, D0}; 
 const int numButtons = 9;  
