@@ -123,6 +123,24 @@
   </tr>
 </table>
 
+
+<div style="display: flex; justify-content: space-between;">
+    <video width="30%" controls>
+        <source src="https://github.com/zeinshhadi/b-route-app/assets/90348288/a80b3d3e-2dfd-479f-b04e-ee078e2de1a7" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video width="30%" controls>
+        <source src="./readme/chat.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video width="30%" controls>
+        <source src="./readme/activedriverjpeg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+
+
 <br><br>
 
 
